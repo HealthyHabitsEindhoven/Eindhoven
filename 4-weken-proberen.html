@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>4 weken proberen - Healthy Habits Eindhoven</title>
+
+  <style>
+    :root{
+      --accent:#C3A300;
+      --bg:#0b0c10;
+      --bg-main:#0b0c10;
+      --bg-warm:#0f1115;
+      --bg-accent:#121418;
+      --text:#f3f4f6;
+      --muted:#cbd5e1;
+      --line:rgba(255,255,255,.15);
+      --radius:18px;
+      --max:1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      padding:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:var(--bg-main);
+      color:var(--text);
+    }
+
+    img{width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 36px));margin:0 auto}
+
+    /* =========================
+       TOP MENU BAR
+    ========================== */
+    .topbar{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:77px;
+      background:#000;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .container{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:32px;
+    }
+    .topbar__logo{
+      font-weight:800;
+      letter-spacing:.04em;
+      font-size:18px;
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+    }
+    .topbar__logo img{
+      height:48px;
+      width:auto;
+      display:block;
+    }
+    .topbar__nav{
+      display:flex;
+      align-items:center;
+      gap:32px;
+      flex:1;
+      justify-content:center;
+    }
+    .topbar__nav a{
+      color:var(--text);
+      text-decoration:none;
+      font-size:15px;
+      transition:color 0.2s ease;
+    }
+    .topbar__nav a:hover{
+      color:var(--accent);
+    }
+    .topbar__lang{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-shrink:0;
+      margin-right:16px;
+    }
+    .topbar__lang a{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:13px;
+      font-weight:400;
+      transition:color 0.2s ease;
+      padding:4px 0;
+    }
+    .topbar__lang a:hover{
+      color:var(--text);
+    }
+    .topbar__lang a.active{
+      color:var(--text);
+      font-weight:500;
+    }
+    .topbar__lang span{
+      color:var(--muted);
+      font-size:13px;
+    }
+    .topbar__cta{
+      flex-shrink:0;
+    }
+    .topbar__cta a{
+      text-decoration:none;
+    }
+    .topbar__cta button{
+      background:var(--accent);
+      color:#000;
+      border:none;
+      padding:10px 20px;
+      border-radius:8px;
+      font-weight:700;
+      font-size:14px;
+      cursor:pointer;
+      transition:filter 0.2s ease;
+    }
+    .topbar__cta button:hover{
+      filter:brightness(1.1);
+    }
+    body{ padding-top:77px; }
+
+    /* =========================
+       HERO
+    ========================== */
+    .hero-section{
+      padding:80px 0 60px;
+      background:var(--bg-main);
+      text-align:center;
+    }
+    .hero-intro{
+      font-size:18px;
+      color:var(--muted);
+      margin:0 0 16px;
+      text-align:center;
+      font-weight:normal;
+    }
+    .hero-section h1{
+      font-size:clamp(32px,5vw,48px);
+      margin:0 0 16px;
+      color:var(--text);
+    }
+    .hero-section .hero-subtitle{
+      font-size:18px;
+      color:var(--muted);
+      margin:0 0 40px;
+      max-width:600px;
+      margin-left:auto;
+      margin-right:auto;
+      line-height:1.5;
+    }
+    .hero-form-wrapper{
+      max-width:600px;
+      margin:0 auto;
+    }
+    .hero-section .form{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:32px;
+      text-align:left;
+    }
+    .hero-note{
+      font-size:14px;
+      color:var(--muted);
+      margin:20px 0 0;
+      text-align:center;
+    }
+
+    /* =========================
+       UITLEG SECTIE
+    ========================== */
+    .uitleg-section{
+      padding:60px 0;
+      background:var(--bg-main);
+      text-align:center;
+    }
+    .uitleg-content{
+      max-width:700px;
+      margin:0 auto;
+    }
+    .uitleg-content h2{
+      font-size:28px;
+      margin:0 0 24px;
+      color:var(--text);
+    }
+    .uitleg-content p{
+      font-size:18px;
+      color:var(--muted);
+      line-height:1.6;
+      margin:0;
+    }
+
+    /* =========================
+       GERUSTSTELLING
+    ========================== */
+    .geruststelling-section{
+      padding:40px 0 60px;
+      background:var(--bg-warm);
+      text-align:center;
+    }
+    .geruststelling-text{
+      font-size:16px;
+      color:var(--muted);
+      margin:0;
+    }
+    .form{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:32px;
+      max-width:600px;
+      margin:0 auto;
+    }
+    .form-group{
+      margin-bottom:20px;
+    }
+    .form-group:last-child{
+      margin-bottom:0;
+    }
+    .form-group label{
+      display:block;
+      margin-bottom:8px;
+      color:var(--text);
+      font-size:14px;
+      font-weight:500;
+    }
+    .form-group input,
+    .form-group select{
+      width:100%;
+      padding:12px 16px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      border-radius:12px;
+      color:var(--text);
+      font-size:16px;
+      font-family:inherit;
+      transition:background 0.2s ease, border-color 0.2s ease;
+    }
+    .form-group input[type="text"]{
+      width:100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus{
+      outline:none;
+      background:rgba(255,255,255,.08);
+      border-color:var(--accent);
+    }
+    .form-group input::placeholder{
+      color:rgba(255,255,255,.4);
+    }
+    .form-submit{
+      width:100%;
+      padding:14px 24px;
+      background:var(--accent);
+      color:#000;
+      border:none;
+      border-radius:8px;
+      font-weight:700;
+      font-size:16px;
+      cursor:pointer;
+      transition:filter 0.2s ease;
+      margin-top:8px;
+    }
+    .form-submit:hover{
+      filter:brightness(1.1);
+    }
+    .form-note{
+      text-align:center;
+      font-size:12px;
+      color:var(--muted);
+      margin-top:12px;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media(max-width:900px){
+      .topbar__nav{
+        gap:20px;
+      }
+      .topbar__nav a{
+        font-size:14px;
+      }
+      .topbar__lang{
+        margin-right:12px;
+        gap:6px;
+      }
+      .benefits-grid,
+      .steps-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:20px;
+      }
+    }
+    @media(max-width:560px){
+      .topbar .container{
+        gap:16px;
+      }
+      .topbar__nav{
+        gap:12px;
+      }
+      .topbar__nav a{
+        font-size:13px;
+      }
+      .topbar__lang{
+        margin-right:8px;
+        gap:4px;
+      }
+      .topbar__cta button{
+        padding:8px 12px;
+        font-size:12px;
+      }
+      .benefits-grid,
+      .steps-grid{
+        grid-template-columns:1fr;
+        gap:20px;
+      }
+      .uitleg-content h2{
+        font-size:24px;
+      }
+      .uitleg-content p{
+        font-size:16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar__logo">
+        <a href="nieuw-2025.html"><img src="assets/logo/HH logo.png" alt="Healthy Habits"></a>
+      </div>
+      <nav class="topbar__nav">
+        <a href="aanbod.html">Ons aanbod</a>
+        <a href="succesverhalen.html">Succesverhalen</a>
+        <a href="tarieven.html">Prijzen</a>
+      </nav>
+      <div class="topbar__lang">
+        <a href="nieuw-2025.html" class="active">Nederlands</a>
+        <span>/</span>
+        <a href="en/index.html">English</a>
+      </div>
+      <div class="topbar__cta">
+        <a href="4-weken-proberen.html"><button>4 weken proberen</button></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero-section">
+    <div class="container">
+      <h1>4 weken proberen bij Healthy Habits</h1>
+      <p class="hero-intro">Waarom alleen horen wat we te bieden hebben, als je het ook zelf kunt ervaren?</p>
+      <div class="hero-form-wrapper">
+        <form class="form" action="#" method="POST">
+          <div class="form-group">
+            <label for="voornaam">Voornaam *</label>
+            <input type="text" id="voornaam" name="voornaam" placeholder="Je voornaam" required>
+          </div>
+          <div class="form-group">
+            <label for="achternaam">Achternaam *</label>
+            <input type="text" id="achternaam" name="achternaam" placeholder="Je achternaam" required>
+          </div>
+          <div class="form-group">
+            <label for="telefoon">Telefoon *</label>
+            <input type="tel" id="telefoon" name="telefoon" placeholder="06 12345678" required>
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" name="email" placeholder="je@voorbeeld.nl" required>
+          </div>
+          <button type="submit" class="form-submit">Start mijn 4 weken</button>
+          <p class="form-note">Vrijblijvend · geen automatische inschrijving · persoonlijk contact</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- UITLEG -->
+  <section class="uitleg-section">
+    <div class="container">
+      <div class="uitleg-content">
+        <h2>Wat houdt 4 weken proberen in?</h2>
+        <p>Je sport 4 weken bij Healthy Habits in een rustige, persoonlijke omgeving.<br>
+        Samen met onze coaches kijk je wat voor jou werkt en wat je prettig vindt.<br>
+        Na deze periode beslis je rustig of je wilt doorgaan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GERUSTSTELLING -->
+  <section class="geruststelling-section">
+    <div class="container">
+      <p class="geruststelling-text">Geen verplichtingen. Je zit nergens aan vast.</p>
+    </div>
+  </section>
+
+</body>
+</html>
+

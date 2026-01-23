@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Succesverhalen - Healthy Habits Eindhoven</title>
+
+  <style>
+    :root{
+      --accent:#C3A300;
+      --bg:#0b0c10;
+      --bg-main:#0b0c10;
+      --bg-warm:#0f1115;
+      --bg-accent:#121418;
+      --text:#f3f4f6;
+      --muted:#cbd5e1;
+      --line:rgba(255,255,255,.15);
+      --radius:18px;
+      --max:1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      padding:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:var(--bg-main);
+      color:var(--text);
+    }
+
+    img{width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 36px));margin:0 auto}
+
+    /* =========================
+       TOP MENU BAR
+    ========================== */
+    .topbar{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:77px;
+      background:#000;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .container{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:32px;
+    }
+    .topbar__logo{
+      font-weight:800;
+      letter-spacing:.04em;
+      font-size:18px;
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+    }
+    .topbar__logo img{
+      height:48px;
+      width:auto;
+      display:block;
+    }
+    .topbar__nav{
+      display:flex;
+      align-items:center;
+      gap:32px;
+      flex:1;
+      justify-content:center;
+    }
+    .topbar__nav a{
+      color:var(--text);
+      text-decoration:none;
+      font-size:15px;
+      transition:color 0.2s ease;
+    }
+    .topbar__nav a:hover{
+      color:var(--accent);
+    }
+    .topbar__cta{
+      flex-shrink:0;
+    }
+    .topbar__cta a{
+      text-decoration:none;
+    }
+    .topbar__cta button{
+      background:var(--accent);
+      color:#000;
+      border:none;
+      padding:10px 20px;
+      border-radius:8px;
+      font-weight:700;
+      font-size:14px;
+      cursor:pointer;
+      transition:filter 0.2s ease;
+    }
+    .topbar__cta button:hover{
+      filter:brightness(1.1);
+    }
+    body{ padding-top:77px; }
+
+    /* =========================
+       SUCCESVERHALEN SECTIE
+    ========================== */
+    .succesverhalen-section{
+      padding:80px 0;
+      background:var(--bg-warm);
+    }
+    .succesverhalen-header{
+      text-align:center;
+      margin-bottom:48px;
+    }
+    .succesverhalen-header h1{
+      font-size:32px;
+      margin:0 0 12px;
+      color:var(--text);
+    }
+    .succesverhalen-header p{
+      color:var(--muted);
+      font-size:18px;
+      margin:0;
+    }
+    .succesverhalen-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+      max-width:1400px;
+      margin:0 auto;
+    }
+    .succes-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      transition:transform 0.3s ease, border-color 0.3s ease;
+    }
+    .succes-card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(255,255,255,.25);
+    }
+    .succes-card__image{
+      width:100%;
+      aspect-ratio:3/4;
+      overflow:hidden;
+      background:rgba(255,255,255,.03);
+    }
+    .succes-card__image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .succes-card__content{
+      padding:24px;
+    }
+    .succes-card__name{
+      font-size:20px;
+      font-weight:600;
+      margin:0 0 12px;
+      color:var(--text);
+    }
+    .succes-card__review{
+      font-size:14px;
+      line-height:1.6;
+      color:var(--muted);
+      margin:0;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media(max-width:900px){
+      .succesverhalen-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:20px;
+      }
+      .topbar__nav{
+        gap:20px;
+      }
+      .topbar__nav a{
+        font-size:14px;
+      }
+    }
+    @media(max-width:560px){
+      .succesverhalen-grid{
+        grid-template-columns:1fr;
+        gap:20px;
+      }
+      .topbar .container{
+        gap:16px;
+      }
+      .topbar__nav{
+        gap:12px;
+      }
+      .topbar__nav a{
+        font-size:13px;
+      }
+      .topbar__cta button{
+        padding:8px 12px;
+        font-size:12px;
+      }
+      .succesverhalen-header h1{
+        font-size:28px;
+      }
+      .succesverhalen-header p{
+        font-size:16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar__logo">
+        <a href="../nieuw-2025.html"><img src="../assets/logo/HH logo.png" alt="Healthy Habits"></a>
+      </div>
+      <nav class="topbar__nav">
+        <a href="../aanbod.html">Our Offer</a>
+        <a href="succesverhalen.html">Success Stories</a>
+        <a href="../tarieven.html">Pricing</a>
+      </nav>
+      <div class="topbar__lang">
+        <a href="../nieuw-2025.html">Nederlands</a>
+        <span>/</span>
+        <a href="index.html" class="active">English</a>
+      </div>
+      <div class="topbar__cta">
+        <a href="../4-weken-proberen.html"><button>Try 4 weeks</button></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUCCESVERHALEN SECTIE -->
+  <section class="succesverhalen-section">
+    <div class="container">
+      <div class="succesverhalen-header">
+        <h1>Succesverhalen</h1>
+        <p>Echte verhalen van mensen die hun doelen hebben bereikt bij Healthy Habits</p>
+      </div>
+      <div class="succesverhalen-grid">
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_4513.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Madelon</h3>
+            <p class="succes-card__review">Ik heb mijn doel gehaald! De persoonlijke begeleiding bij Healthy Habits heeft me geholpen om fitter te worden en meer energie te krijgen.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_4764.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Frank</h3>
+            <p class="succes-card__review">Eindelijk een plek waar ik me thuis voel. De warme sfeer en persoonlijke aanpak maken echt het verschil.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_4969.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Marayam</h3>
+            <p class="succes-card__review">Het plan past perfect bij mijn leven. Geen stress, wel resultaat. Ik voel me sterker en zelfverzekerder.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_4974.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Rob</h3>
+            <p class="succes-card__review">Eindelijk een plek waar ik op mijn eigen tempo kan werken. Perfect! Geen druk, wel resultaat.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_5025.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Miriam</h3>
+            <p class="succes-card__review">De combinatie van training, voeding en begeleiding werkt perfect. Ik zie echte vooruitgang.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_5372.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Selen</h3>
+            <p class="succes-card__review">Alles onder één dak, afgestemd op mij. Dit werkt. De sfeer bij Healthy Habits is warm en persoonlijk.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_5413.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Ik voel me sterker en energieker dan ooit. Sporten is nu onderdeel van mijn leven.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_5509.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Na jaren van verschillende sportscholen zonder resultaat, eindelijk een plek waar ik echte resultaten zie.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_5611 2.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Ik voel me sterker en zelfverzekerder. Mijn lichaam voelt weer goed. Gezond ouder worden met meer kracht.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_5800.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">De persoonlijke begeleiding maakt echt het verschil. Ik voel me hier gezien en gehoord.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_5828.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Alles wordt samen met mij afgestemd. Precies wat ik nodig had. Geen stress, wel resultaat.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_5855 2.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">De warme sfeer en persoonlijke aanpak maken het verschil. Dit is het. Eindelijk een plek waar ik me thuis voel.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_5855.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Ik had weinig energie en voelde me niet fit. Nu sport ik met plezier en voel ik me veel beter.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_5926.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Fitter worden en meer energie krijgen was mijn doel. Dat is gelukt! Ik zie nu echte vooruitgang.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_5953.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Structuur en ritme in mijn leven. Het plan past perfect bij mijn leven en ik voel me veel beter.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_6119.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Eindelijk een plek waar ik op mijn eigen tempo kan werken aan mijn gezondheid. Perfect!</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_6236.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Complete aanpak: training, voeding en begeleiding. Alles onder één dak, afgestemd op mij.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_6684.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Voelde me niet op mijn gemak in grote sportscholen. Hier voel ik me thuis en zie ik resultaten.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_6931.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Ik merkte dat ik kracht en conditie verloor. Nu voel ik me weer sterk en zelfverzekerd.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_6936.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Wist niet waar te beginnen. Met de begeleiding van Healthy Habits heb ik nu structuur en resultaat.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_6954.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">De sfeer bij Healthy Habits is warm en persoonlijk. Ik voel me hier echt gezien en gehoord.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_6958.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Sporten is nu onderdeel van mijn leven geworden. Geen stress, wel resultaat en veel plezier.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_6959 2.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Eindelijk een plek waar ik me thuis voel. De persoonlijke begeleiding maakt het verschil.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_6960.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Ik zie echte vooruitgang en voel me fitter dan ooit. De combinatie van training en begeleiding werkt perfect.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_6962.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Geen structuur en veel stress rondom sporten. Nu heeft het plan perfect in mijn leven gepast.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_6964.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Wist niet hoe ik alles moest combineren. Nu werkt de combinatie van training, voeding en begeleiding perfect.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_6965.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Ik voel me sterker en energieker. Mijn lichaam voelt weer goed en ik heb meer vertrouwen in mezelf.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_6967.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Na jaren zonder resultaat, eindelijk een plek waar ik echte vooruitgang zie en me thuis voel.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_6968.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Gezond ouder worden met meer kracht. Dat doel heb ik bereikt met de begeleiding van Healthy Habits.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_6970.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Ik had weinig energie en voelde me niet fit. Nu sport ik regelmatig en voel ik me veel beter.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_6971.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">De warme sfeer maakt echt het verschil. Hier voel ik me op mijn gemak en zie ik resultaten.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_6972.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Alles wordt samen met mij afgestemd. Precies wat ik nodig had om mijn doelen te bereiken.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_6974.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Geen druk, wel resultaat. Dit is wat ik zocht. Eindelijk een plek waar ik op mijn gemak kan sporten.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_6976.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">De combinatie van training, voeding en begeleiding werkt perfect. Ik zie echte vooruitgang en voel me fitter.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/PHOTO-2024-10-23-11-37-44.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Ik voel me sterker en zelfverzekerder dan ooit. Sporten is nu een vast onderdeel van mijn leven.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/PHOTO-2025-06-06-19-50-05 2.jpg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Eindelijk een plek waar ik me thuis voel en echte resultaten zie. De persoonlijke aanpak maakt het verschil.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/PHOTO-2025-06-13-09-00-32.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Na jaren zonder structuur, nu een plan dat perfect bij mijn leven past. Geen stress, wel resultaat.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/IMG_5611 2.jpeg" alt="Succesverhaal" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <h3 class="succes-card__name">Naam</h3>
+            <p class="succes-card__review">Ik voel me fitter en energieker dan ooit. De begeleiding bij Healthy Habits heeft me geholpen mijn doelen te bereiken.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
+

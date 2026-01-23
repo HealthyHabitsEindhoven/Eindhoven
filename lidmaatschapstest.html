@@ -1,0 +1,1686 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Online-lidmaatschapstest - Healthy Habits Eindhoven</title>
+
+  <style>
+    :root{
+      --accent:#C3A300;
+      --bg:#0b0c10;
+      --bg-main:#0b0c10;
+      --bg-warm:#0f1115;
+      --bg-accent:#121418;
+      --text:#f3f4f6;
+      --muted:#cbd5e1;
+      --line:rgba(255,255,255,.15);
+      --radius:18px;
+      --max:1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      padding:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:var(--bg-main);
+      color:var(--text);
+    }
+
+    img{width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 36px));margin:0 auto}
+
+    /* =========================
+       TOP MENU BAR
+    ========================== */
+    .topbar{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:77px;
+      background:#000;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .container{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:32px;
+    }
+    .topbar__logo{
+      font-weight:800;
+      letter-spacing:.04em;
+      font-size:18px;
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+    }
+    .topbar__logo img{
+      height:48px;
+      width:auto;
+      display:block;
+    }
+    .topbar__nav{
+      display:flex;
+      align-items:center;
+      gap:32px;
+      flex:1;
+      justify-content:center;
+    }
+    .topbar__nav a{
+      color:var(--text);
+      text-decoration:none;
+      font-size:15px;
+      transition:color 0.2s ease;
+    }
+    .topbar__nav a:hover{
+      color:var(--accent);
+    }
+    .topbar__lang{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-shrink:0;
+      margin-right:16px;
+    }
+    .topbar__lang a{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:13px;
+      font-weight:400;
+      transition:color 0.2s ease;
+      padding:4px 0;
+    }
+    .topbar__lang a:hover{
+      color:var(--text);
+    }
+    .topbar__lang a.active{
+      color:var(--text);
+      font-weight:500;
+    }
+    .topbar__lang span{
+      color:var(--muted);
+      font-size:13px;
+    }
+    .topbar__cta{
+      flex-shrink:0;
+    }
+    .topbar__cta a{
+      text-decoration:none;
+    }
+    .topbar__cta button{
+      background:var(--accent);
+      color:#000;
+      border:none;
+      padding:10px 20px;
+      border-radius:8px;
+      font-weight:700;
+      font-size:14px;
+      cursor:pointer;
+      transition:filter 0.2s ease;
+    }
+    .topbar__cta button:hover{
+      filter:brightness(1.1);
+    }
+    body{ padding-top:77px; }
+
+    /* =========================
+       HERO
+    ========================== */
+    .hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      background:var(--bg-main);
+    }
+    .hero img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center center;
+      filter:brightness(.6);
+    }
+    .hero__overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 9%, rgba(0,0,0,0.3) 18%, rgba(0,0,0,0.1) 24%, rgba(0,0,0,0) 30%),
+                  linear-gradient(to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0) 100%);
+      background-blend-mode:multiply;
+      z-index:1;
+    }
+    .hero-content{
+      position:relative;
+      z-index:2;
+      padding:48px 0;
+    }
+    .hero h1{
+      font-size:clamp(32px,5vw,56px);
+      margin:0 0 12px;
+    }
+    .hero .subtitle{
+      max-width:55ch;
+      color:var(--muted);
+      font-size:18px;
+      margin:0 0 32px;
+      line-height:1.5;
+    }
+    .hero-buttons{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-top:24px;
+    }
+    .hero-btn{
+      display:inline-block;
+      padding:14px 28px;
+      border-radius:12px;
+      font-weight:700;
+      font-size:16px;
+      text-decoration:none;
+      transition:filter 0.2s ease;
+      cursor:pointer;
+      border:none;
+    }
+    .hero-btn-primary{
+      background:var(--accent);
+      color:#000;
+    }
+    .hero-btn-primary:hover{
+      filter:brightness(1.1);
+    }
+    .hero-btn-secondary{
+      background:rgba(255,255,255,.08);
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+    .hero-btn-secondary:hover{
+      background:rgba(255,255,255,.12);
+      border-color:rgba(255,255,255,.25);
+    }
+    .hero-bullets{
+      list-style:none;
+      padding:0;
+      margin:0 0 32px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .hero-bullets li{
+      color:var(--text);
+      font-size:16px;
+      line-height:1.5;
+      padding-left:28px;
+      position:relative;
+    }
+    .hero-bullets li:before{
+      content:"•";
+      position:absolute;
+      left:0;
+      color:var(--accent);
+      font-weight:700;
+      font-size:18px;
+    }
+
+    /* =========================
+       TEST INTRO
+    ========================== */
+    .test-intro-section{
+      padding:80px 0;
+      background:var(--bg-warm);
+    }
+    .test-intro-section > .container{
+      text-align:center;
+    }
+    .test-intro-section h2{
+      font-size:28px;
+      margin:0 0 8px;
+      color:var(--text);
+      position:relative;
+      display:inline-block;
+    }
+    .test-intro-subtitle{
+      font-size:16px;
+      color:var(--muted);
+      font-weight:normal;
+      margin:0 0 16px;
+      text-align:center;
+    }
+    .test-intro-section p{
+      font-size:16px;
+      color:var(--muted);
+      line-height:1.6;
+      margin:0;
+      max-width:700px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .test-intro-section h2{
+      position:relative;
+      display:inline-block;
+    }
+    .h2-wrapper{
+      position:relative;
+      display:inline-block;
+    }
+    .title-underline-wrapper{
+      position:absolute;
+      top:calc(100% - 1px);
+      left:0;
+      width:100%;
+    }
+    .title-underline-svg{
+      display:block;
+      width:100%;
+      height:10px;
+      overflow:visible;
+    }
+    .title-underline-svg svg{
+      width:100%;
+      height:10px;
+      display:block;
+    }
+    .title-underline-path{
+      stroke:#C3A300;
+      stroke-width:3;
+      fill:none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      stroke-dasharray:1800;
+      stroke-dashoffset:1800;
+      animation:draw-wavy-line 5s ease-in-out forwards;
+      animation-delay:0.3s;
+    }
+    @keyframes draw-wavy-line{
+      0%{
+        stroke-dashoffset:1800;
+      }
+      100%{
+        stroke-dashoffset:0;
+      }
+    }
+
+    /* =========================
+       WAAROM SECTIE
+    ========================== */
+    .waarom-section{
+      padding:80px 0;
+      background:var(--bg-main);
+    }
+    .waarom-section h2{
+      font-size:28px;
+      text-align:center;
+      margin:0 0 48px;
+      color:var(--text);
+    }
+    .waarom-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:24px;
+      max-width:900px;
+      margin:0 auto;
+    }
+    .waarom-item{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:32px;
+      display:flex;
+      gap:20px;
+      align-items:flex-start;
+    }
+    .waarom-icon{
+      width:48px;
+      height:48px;
+      flex-shrink:0;
+      color:var(--accent);
+    }
+    .waarom-content{
+      flex:1;
+    }
+    .waarom-item h3{
+      font-size:18px;
+      margin:0 0 8px;
+      color:var(--text);
+    }
+    .waarom-item p{
+      font-size:14px;
+      color:var(--muted);
+      margin:0;
+      line-height:1.5;
+    }
+    .waarom-cta{
+      text-align:center;
+      margin-top:48px;
+    }
+
+    /* =========================
+       REVIEWS
+    ========================== */
+    .reviews-section{
+      padding:80px 0;
+      background:var(--bg-warm);
+    }
+    .reviews-header{
+      text-align:center;
+      margin-bottom:48px;
+    }
+    .reviews-header h2{
+      font-size:28px;
+      margin:0 0 8px;
+      color:var(--text);
+    }
+    .reviews-carousel-wrapper{
+      position:relative;
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 60px;
+    }
+    .reviews-carousel-track{
+      display:flex;
+      align-items:center;
+      gap:24px;
+      overflow:hidden;
+    }
+    .reviews-carousel-slides{
+      display:flex;
+      gap:24px;
+      transition:transform 0.6s ease;
+    }
+    .review-card{
+      flex:0 0 calc(26% - 16px);
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:24px;
+      overflow:hidden;
+      display:flex;
+      gap:16px;
+      transition:all 0.4s ease;
+      opacity:1;
+      transform:scale(0.9);
+      align-items:stretch;
+    }
+    .review-card.active{
+      opacity:1;
+      transform:scale(0.9);
+      flex:0 0 calc(26% - 16px);
+      border-color:rgba(255,255,255,.25);
+    }
+    .review-card__image{
+      flex:0 0 48%;
+      width:48%;
+      overflow:hidden;
+      background:rgba(255,255,255,.03);
+      border-radius:var(--radius);
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .review-card__image img{
+      width:100%;
+      height:110%;
+      display:block;
+      object-fit:cover;
+      object-position:center 10%;
+    }
+    .review-card__content{
+      flex:1;
+      padding:20px;
+      display:flex;
+      flex-direction:column;
+    }
+    .review-card__name{
+      font-size:20px;
+      font-weight:600;
+      margin:0 0 4px;
+      color:var(--text);
+    }
+    .review-card__age{
+      font-size:14px;
+      color:var(--muted);
+      margin:0 0 16px;
+    }
+    .review-card__quote{
+      margin-top:0;
+      padding-top:0;
+      font-size:14px;
+      line-height:1.6;
+      color:var(--text);
+      font-style:normal;
+    }
+    .reviews-nav{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      border-radius:50%;
+      width:44px;
+      height:44px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      color:var(--text);
+      transition:all 0.3s ease;
+      z-index:10;
+    }
+    .reviews-nav:hover{
+      background:rgba(255,255,255,.1);
+      border-color:var(--accent);
+    }
+    .reviews-nav.prev{
+      left:0;
+    }
+    .reviews-nav.next{
+      right:0;
+    }
+    .reviews-nav:disabled{
+      opacity:0.3;
+      cursor:not-allowed;
+    }
+
+    /* =========================
+       TEST WIZARD
+    ========================== */
+    .test-section{
+      padding:80px 0;
+      background:var(--bg-main);
+    }
+    .test-wrapper{
+      max-width:700px;
+      margin:0 auto;
+    }
+    .test-intro-section .test-wrapper{
+      margin-top:48px;
+    }
+    .test-wizard{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:48px;
+    }
+    .test-progress{
+      margin-bottom:40px;
+    }
+    .test-progress-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:12px;
+    }
+    .test-progress-text{
+      font-size:14px;
+      color:var(--muted);
+    }
+    .test-progress-bar{
+      position:relative;
+      height:6px;
+      background:rgba(255,255,255,.18);
+      border-radius:999px;
+      overflow:hidden;
+    }
+    .test-progress-fill{
+      position:absolute;
+      top:0;
+      left:0;
+      height:100%;
+      background:var(--accent);
+      border-radius:999px;
+      transition:width 0.3s ease;
+      width:0%;
+    }
+    .test-step{
+      display:none;
+    }
+    .test-step.active{
+      display:block;
+    }
+    .test-step h3{
+      font-size:24px;
+      margin:0 0 32px;
+      color:var(--text);
+      line-height:1.4;
+    }
+    .test-options{
+      list-style:none;
+      padding:0;
+      margin:0 0 40px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .test-option{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:18px 20px;
+      cursor:pointer;
+      transition:all 0.2s ease;
+    }
+    .test-option:hover{
+      background:rgba(255,255,255,.06);
+      border-color:var(--accent);
+    }
+    .test-option input[type="checkbox"],
+    .test-option input[type="radio"]{
+      margin-right:12px;
+      cursor:pointer;
+    }
+    .test-option label{
+      cursor:pointer;
+      color:var(--text);
+      font-size:16px;
+      display:flex;
+      align-items:center;
+      margin:0;
+      font-weight:400;
+    }
+    .test-input-group{
+      margin-bottom:40px;
+    }
+    .test-input-group label{
+      display:block;
+      margin-bottom:12px;
+      color:var(--text);
+      font-weight:600;
+      font-size:16px;
+    }
+    .test-input-group input,
+    .test-input-group textarea{
+      width:100%;
+      padding:14px 18px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      border-radius:12px;
+      color:var(--text);
+      font-size:16px;
+      font-family:inherit;
+      transition:border-color .2s ease, background .2s ease;
+    }
+    .test-input-group textarea{
+      resize:vertical;
+      min-height:120px;
+    }
+    .test-input-group input:focus,
+    .test-input-group textarea:focus{
+      outline:none;
+      border-color:var(--accent);
+      background:rgba(255,255,255,.08);
+    }
+    .test-input-group input::placeholder,
+    .test-input-group textarea::placeholder{
+      color:rgba(255,255,255,.4);
+    }
+    .test-input-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+    @media(max-width:560px){
+      .test-input-row{
+        grid-template-columns:1fr;
+      }
+    }
+    .test-buttons{
+      display:flex;
+      gap:16px;
+      justify-content:space-between;
+    }
+    .test-btn{
+      padding:14px 28px;
+      border-radius:12px;
+      font-weight:700;
+      font-size:16px;
+      cursor:pointer;
+      transition:filter 0.2s ease;
+      border:none;
+      flex:1;
+    }
+    .test-btn-primary{
+      background:var(--accent);
+      color:#000;
+    }
+    .test-btn-primary:hover:not(:disabled){
+      filter:brightness(1.1);
+    }
+    .test-btn-primary:disabled{
+      opacity:0.5;
+      cursor:not-allowed;
+    }
+    .test-btn-secondary{
+      background:rgba(255,255,255,.08);
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+    .test-btn-secondary:hover:not(:disabled){
+      background:rgba(255,255,255,.12);
+    }
+    .test-btn-secondary:disabled{
+      opacity:0;
+      pointer-events:none;
+    }
+    .test-success{
+      display:none;
+      text-align:center;
+      padding:48px 24px;
+    }
+    .test-success.active{
+      display:block;
+    }
+    .test-success h3{
+      font-size:28px;
+      margin:0 0 16px;
+      color:var(--text);
+    }
+    .test-success p{
+      font-size:18px;
+      color:var(--muted);
+      margin:0;
+      line-height:1.6;
+    }
+
+    @media(max-width:900px){
+      .reviews-carousel-wrapper{
+        padding:0 20px;
+      }
+      .reviews-nav{
+        width:36px;
+        height:36px;
+        font-size:20px;
+      }
+      .review-card{
+        flex:0 0 85% !important;
+      }
+      .review-card.active{
+        flex:0 0 85% !important;
+      }
+      .review-card__content{
+        padding:24px;
+      }
+    }
+
+    /* =========================
+       FAQ ACCORDION
+    ========================== */
+    .faq-section{
+      padding:80px 0;
+      background:var(--bg-warm);
+    }
+    .faq-section h2{
+      font-size:28px;
+      text-align:center;
+      margin:0 0 48px;
+      color:var(--text);
+    }
+    .faq-list{
+      max-width:700px;
+      margin:0 auto;
+      list-style:none;
+      padding:0;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    .faq-item{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+    }
+    .faq-question{
+      padding:20px 24px;
+      cursor:pointer;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      color:var(--text);
+      font-size:16px;
+      font-weight:600;
+      transition:background 0.2s ease;
+    }
+    .faq-question:hover{
+      background:rgba(255,255,255,.06);
+    }
+    .faq-question::after{
+      content:"+";
+      font-size:24px;
+      color:var(--accent);
+      font-weight:300;
+      transition:transform 0.3s ease;
+    }
+    .faq-item.active .faq-question::after{
+      transform:rotate(45deg);
+    }
+    .faq-answer{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height 0.3s ease;
+    }
+    .faq-item.active .faq-answer{
+      max-height:500px;
+    }
+    .faq-answer-content{
+      padding:0 24px 20px;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.6;
+    }
+    .faq-question-text{
+      border-bottom:2px solid transparent;
+      transition:border-color 0.2s ease;
+    }
+    .faq-item.active .faq-question-text{
+      border-bottom-color:var(--accent);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media(max-width:900px){
+      .topbar__nav{
+        gap:20px;
+      }
+      .topbar__nav a{
+        font-size:14px;
+      }
+      .topbar__lang{
+        margin-right:12px;
+        gap:6px;
+      }
+      .waarom-grid{
+        grid-template-columns:1fr;
+      }
+      .reviews-grid{
+        grid-template-columns:1fr;
+      }
+      .hero-buttons{
+        flex-direction:column;
+      }
+      .hero-btn{
+        width:100%;
+        text-align:center;
+      }
+      .form{
+        padding:32px;
+      }
+    }
+    @media(max-width:560px){
+      .topbar .container{
+        gap:16px;
+      }
+      .topbar__nav{
+        gap:12px;
+      }
+      .topbar__nav a{
+        font-size:13px;
+      }
+      .topbar__lang{
+        margin-right:8px;
+        gap:4px;
+      }
+      .topbar__lang a,
+      .topbar__lang span{
+        font-size:11px;
+      }
+      .hero{
+        min-height:80vh;
+      }
+      .test-intro-section,
+      .waarom-section,
+      .reviews-section,
+      .test-section,
+      .faq-section{
+        padding:60px 0;
+      }
+      .form{
+        padding:24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar__logo">
+        <a href="nieuw-2025.html"><img src="assets/logo/HH logo.png" alt="Healthy Habits"></a>
+      </div>
+      <nav class="topbar__nav">
+        <a href="aanbod.html">Ons aanbod</a>
+        <a href="succesverhalen.html">Succesverhalen</a>
+        <a href="tarieven.html">Prijzen</a>
+        <a href="lidmaatschapstest.html">Online-lidmaatschapstest</a>
+      </nav>
+      <div class="topbar__lang">
+        <a href="nieuw-2025.html" class="active">Nederlands</a>
+        <span>/</span>
+        <a href="en/index.html">English</a>
+      </div>
+      <div class="topbar__cta">
+        <a href="4-weken-proberen.html">
+          <button>4 weken proberen</button>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. HERO -->
+  <section class="hero">
+    <img src="assets/images/home/lidmaatschapstest.jpeg" alt="Healthy Habits sfeer">
+    <div class="hero__overlay"></div>
+    <div class="container hero-content">
+      <h1>Ontdek welk lidmaatschap bij jou past</h1>
+    </div>
+  </section>
+
+  <!-- 2. TEST INTRO + WIZARD -->
+  <section class="test-intro-section" id="test">
+    <div class="container">
+      <p>Bij Healthy Habits bieden we verschillende lidmaatschappen, zoals met of zonder yoga en maandelijks of jaarlijks.<br>Met een korte online lidmaatschapstest helpen we je kiezen wat bij jou past.</p>
+      
+      <!-- WIZARD -->
+      <div class="test-wrapper" style="margin-top:48px;">
+        <div class="test-wizard">
+          <!-- Progress bar -->
+          <div class="test-progress">
+            <div class="test-progress-header">
+              <span class="test-progress-text" id="progressText">Vraag 1 van 7</span>
+            </div>
+            <div class="test-progress-bar">
+              <div class="test-progress-fill" id="progressFill"></div>
+            </div>
+          </div>
+
+          <!-- Success message -->
+          <div class="test-success" id="testSuccess">
+            <h3>Bedankt!</h3>
+            <p>We nemen snel contact met je op.</p>
+          </div>
+
+          <!-- Step 1: Doel -->
+          <div class="test-step active" data-step="1">
+            <h3>Wat is je belangrijkste doel?</h3>
+            <ul class="test-options">
+              <li class="test-option">
+                <label>
+                  <input type="checkbox" name="doel" value="fitter">
+                  Fitter worden
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="checkbox" name="doel" value="afvallen">
+                  Afvallen
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="checkbox" name="doel" value="sterker">
+                  Sterker worden
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="checkbox" name="doel" value="minder-klachten">
+                  Minder klachten / beter bewegen
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="checkbox" name="doel" value="gezond-ritme">
+                  Gezond ritme opbouwen
+                </label>
+              </li>
+            </ul>
+            <div class="test-buttons">
+              <button type="button" class="test-btn test-btn-secondary" onclick="prevStep()" disabled>Vorige</button>
+              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()" disabled>Volgende</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Frequentie -->
+          <div class="test-step" data-step="2">
+            <h3>Hoe vaak wil je per week sporten?</h3>
+            <ul class="test-options">
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="frequentie" value="1x">
+                  1x
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="frequentie" value="2x">
+                  2x
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="frequentie" value="3x">
+                  3x
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="frequentie" value="4x">
+                  4x of meer
+                </label>
+              </li>
+            </ul>
+            <div class="test-buttons">
+              <button type="button" class="test-btn test-btn-secondary" onclick="prevStep()">Vorige</button>
+              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()" disabled>Volgende</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Voorkeur -->
+          <div class="test-step" data-step="3">
+            <h3>Wat past het beste bij jou?</h3>
+            <ul class="test-options">
+              <li class="test-option">
+                <label>
+                  <input type="checkbox" name="voorkeur" value="rustig-begeleid">
+                  Rustig en begeleid
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="checkbox" name="voorkeur" value="zelfstandig-plan">
+                  Zelfstandig met een plan
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="checkbox" name="voorkeur" value="groepslessen">
+                  Groepslessen
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="checkbox" name="voorkeur" value="combinatie">
+                  Combinatie
+                </label>
+              </li>
+            </ul>
+            <div class="test-buttons">
+              <button type="button" class="test-btn test-btn-secondary" onclick="prevStep()">Vorige</button>
+              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()" disabled>Volgende</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Nieuwe vraag 1 -->
+          <div class="test-step" data-step="4">
+            <h3>Heb je ervaring met sporten?</h3>
+            <ul class="test-options">
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="ervaring" value="beginner">
+                  Ik begin net
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="ervaring" value="enigszins">
+                  Ik sport af en toe
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="ervaring" value="ervaren">
+                  Ik sport regelmatig
+                </label>
+              </li>
+            </ul>
+            <div class="test-buttons">
+              <button type="button" class="test-btn test-btn-secondary" onclick="prevStep()">Vorige</button>
+              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()" disabled>Volgende</button>
+            </div>
+          </div>
+
+          <!-- Step 5: Nieuwe vraag 2 -->
+          <div class="test-step" data-step="5">
+            <h3>Wanneer sport je het liefst?</h3>
+            <ul class="test-options">
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="tijdstip" value="ochtend">
+                  Ochtend
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="tijdstip" value="middag">
+                  Middag
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="tijdstip" value="avond">
+                  Avond
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="tijdstip" value="maakt-niet-uit">
+                  Maakt niet uit
+                </label>
+              </li>
+            </ul>
+            <div class="test-buttons">
+              <button type="button" class="test-btn test-btn-secondary" onclick="prevStep()">Vorige</button>
+              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()" disabled>Volgende</button>
+            </div>
+          </div>
+
+          <!-- Step 6: Naam -->
+          <div class="test-step" data-step="6">
+            <h3>Wat is je naam?</h3>
+            <div class="test-input-group">
+              <input type="text" name="naam" placeholder="Je volledige naam" required>
+            </div>
+            <div class="test-buttons">
+              <button type="button" class="test-btn test-btn-secondary" onclick="prevStep()">Vorige</button>
+              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()" disabled>Volgende</button>
+            </div>
+          </div>
+
+          <!-- Step 7: Contact -->
+          <div class="test-step" data-step="7">
+            <h3>Wat is je e-mail en telefoonnummer?</h3>
+            <div class="test-input-row">
+              <div class="test-input-group">
+                <label>E-mail *</label>
+                <input type="email" name="email" placeholder="je@voorbeeld.nl" required>
+              </div>
+              <div class="test-input-group">
+                <label>Telefoon *</label>
+                <input type="tel" name="telefoon" placeholder="06 12345678" required>
+              </div>
+            </div>
+            <!-- Honeypot -->
+            <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+            <div class="test-buttons">
+              <button type="button" class="test-btn test-btn-secondary" onclick="prevStep()">Vorige</button>
+              <button type="button" class="test-btn test-btn-primary" onclick="submitForm()">Versturen</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. WAAROM DEZE LIDMAATSCHAPSTEST -->
+  <section class="waarom-section">
+    <div class="container">
+      <h2>Waarom deze online-lidmaatschapstest?</h2>
+      <div class="waarom-grid">
+        <div class="waarom-item">
+          <div class="waarom-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+            </svg>
+          </div>
+          <div class="waarom-content">
+            <h3>Gratis</h3>
+            <p>Er zijn geen kosten voor het invullen van de online-lidmaatschapstest.</p>
+          </div>
+        </div>
+        <div class="waarom-item">
+          <div class="waarom-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+              <rect x="7" y="14" width="3" height="4" fill="currentColor"/>
+              <rect x="11" y="11" width="3" height="7" fill="currentColor"/>
+              <rect x="15" y="7" width="3" height="11" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="waarom-content">
+            <h3>Inzicht in jouw persoonlijke situatie</h3>
+            <p>Jouw antwoorden helpen ons het programma te bepalen dat het beste bij jou past.</p>
+          </div>
+        </div>
+        <div class="waarom-item">
+          <div class="waarom-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="12" cy="12" r="10" fill="currentColor"/>
+              <path d="M12 6v6l4 2" stroke="#000" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="waarom-content">
+            <h3>Snel contact</h3>
+            <p>We nemen snel contact met je op voor een kennismaking en persoonlijk advies.</p>
+          </div>
+        </div>
+        <div class="waarom-item">
+          <div class="waarom-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <rect x="4" y="11" width="16" height="9" rx="1.5" fill="currentColor"/>
+              <path d="M12 3L2 12h3v-1h14v1h3L12 3z" fill="currentColor"/>
+              <rect x="10" y="16" width="4" height="4" rx="0.5" fill="rgba(0,0,0,0.3)"/>
+            </svg>
+          </div>
+          <div class="waarom-content">
+            <h3>De eerste stap naar een gezondere leefstijl</h3>
+            <p>Veel mensen hebben behoefte aan starthulp. Dit is de ideale manier om stap voor stap te starten en vol te houden.</p>
+          </div>
+        </div>
+      </div>
+      <div class="waarom-cta">
+        <a href="#test" class="hero-btn hero-btn-primary">NAAR DE ONLINE-LIDMAATSCHAPSTEST</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. WAT ONZE LEDEN ZEGGEN -->
+  <section class="reviews-section">
+    <div class="container">
+      <div class="reviews-header">
+        <h2>Wat onze leden zeggen</h2>
+      </div>
+      <div class="reviews-carousel-wrapper">
+        <button class="reviews-nav prev" id="prevReview" aria-label="Vorige review">‹</button>
+        <div class="reviews-carousel-track">
+          <div class="reviews-carousel-slides" id="reviewsSlides">
+            <div class="review-card active">
+              <div class="review-card__image">
+                <img src="assets/images/succesverhalen/Bas.jpeg" alt="Review" loading="lazy">
+              </div>
+              <div class="review-card__content">
+                <h3 class="review-card__name">Bas</h3>
+                <p class="review-card__age">45 jaar</p>
+                <p class="review-card__quote">"Sporten is nodig, maar hier voelt het gewoon fijn en makkelijk vol te houden."</p>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-card__image">
+                <img src="assets/images/succesverhalen/Esther.jpeg" alt="Review" loading="lazy">
+              </div>
+              <div class="review-card__content">
+                <h3 class="review-card__name">Esther</h3>
+                <p class="review-card__age">52 jaar</p>
+                <p class="review-card__quote">"Goede begeleiding en een gezellige sfeer. Je voelt je geen nummer."</p>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-card__image">
+                <img src="assets/images/succesverhalen/Franceska.jpeg" alt="Review" loading="lazy">
+              </div>
+              <div class="review-card__content">
+                <h3 class="review-card__name">Franceska</h3>
+                <p class="review-card__age">38 jaar</p>
+                <p class="review-card__quote">"Ik merk dat ik me fitter voel en ik blijf komen omdat het hier prettig is."</p>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-card__image">
+                <img src="assets/images/succesverhalen/Harry.jpeg" alt="Review" loading="lazy">
+              </div>
+              <div class="review-card__content">
+                <h3 class="review-card__name">Harry</h3>
+                <p class="review-card__age">60 jaar</p>
+                <p class="review-card__quote">"Ik voel me weer mezelf. Fitter, lichter en met meer vertrouwen in mijn lichaam."</p>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-card__image">
+                <img src="assets/images/succesverhalen/Ingrid.jpeg" alt="Review" loading="lazy">
+              </div>
+              <div class="review-card__content">
+                <h3 class="review-card__name">Ingrid</h3>
+                <p class="review-card__age">55 jaar</p>
+                <p class="review-card__quote">"Mijn energie is terug en ik zit weer lekker in mijn vel."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="reviews-nav next" id="nextReview" aria-label="Volgende review">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <h2>FAQ</h2>
+      <ul class="faq-list">
+        <li class="faq-item">
+          <div class="faq-question">
+            <span class="faq-question-text">Is de online-lidmaatschapstest gratis?</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Ja, de test is volledig gratis en vrijblijvend. Er zijn geen kosten aan verbonden.
+            </div>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            <span class="faq-question-text">Zit ik ergens aan vast?</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Nee, het invullen van de test is volledig vrijblijvend. Je zit nergens aan vast en er zijn geen verplichtingen.
+            </div>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            <span class="faq-question-text">Wat gebeurt er na de test?</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              We nemen binnen 1 werkdag contact met je op om je situatie kort door te nemen en je persoonlijk advies te geven op basis van jouw antwoorden.
+            </div>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            <span class="faq-question-text">Voor wie is Healthy Habits geschikt?</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Healthy Habits is geschikt voor iedereen die fitter wil worden, af wil vallen, sterker wil worden of gewoon een gezondere leefstijl wil aannemen. We bieden persoonlijke begeleiding en een warme, rustige omgeving.
+            </div>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            <span class="faq-question-text">Kan ik eerst proberen?</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Ja, je kunt 4 weken proberen bij Healthy Habits. Dit is een perfecte manier om te ontdekken of het bij jou past zonder direct een langere verbintenis aan te gaan.
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <script>
+    // Webhook URL
+    const WEBHOOK_URL = "PASTE_WEBHOOK_HERE";
+
+    // Wizard state
+    let currentStep = 1;
+    const totalSteps = 7;
+
+    // Update progress
+    function updateProgress(){
+      const progress = (currentStep / totalSteps) * 100;
+      document.getElementById('progressFill').style.width = progress + '%';
+      document.getElementById('progressText').textContent = `Vraag ${currentStep} van ${totalSteps}`;
+    }
+
+    // Validate current step
+    function validateStep(step){
+      const stepEl = document.querySelector(`.test-step[data-step="${step}"]`);
+      
+      if(step === 1){
+        // Minimaal 1 doel geselecteerd
+        const checked = stepEl.querySelectorAll('input[name="doel"]:checked');
+        return checked.length > 0;
+      } else if(step === 2){
+        // Radio button geselecteerd
+        return stepEl.querySelector('input[name="frequentie"]:checked') !== null;
+      } else if(step === 3){
+        // Minimaal 1 voorkeur geselecteerd
+        const checked = stepEl.querySelectorAll('input[name="voorkeur"]:checked');
+        return checked.length > 0;
+      } else if(step === 4){
+        // Radio button ervaring geselecteerd
+        return stepEl.querySelector('input[name="ervaring"]:checked') !== null;
+      } else if(step === 5){
+        // Radio button tijdstip geselecteerd
+        return stepEl.querySelector('input[name="tijdstip"]:checked') !== null;
+      } else if(step === 6){
+        // Naam niet leeg
+        const input = stepEl.querySelector('input[name="naam"]');
+        return input && input.value.trim().length > 0;
+      } else if(step === 7){
+        // E-mail en telefoon valide
+        const email = stepEl.querySelector('input[name="email"]');
+        const telefoon = stepEl.querySelector('input[name="telefoon"]');
+        const emailValid = email && email.value.trim().length > 0 && email.validity.valid;
+        const telefoonValid = telefoon && telefoon.value.trim().length >= 10;
+        return emailValid && telefoonValid;
+      }
+      return false;
+    }
+
+    // Update button states
+    function updateButtons(){
+      const stepEl = document.querySelector(`.test-step[data-step="${currentStep}"]`);
+      const prevBtn = stepEl.querySelector('.test-btn-secondary');
+      const nextBtn = stepEl.querySelector('.test-btn-primary');
+      
+      // Previous button
+      if(currentStep === 1){
+        prevBtn.disabled = true;
+      } else {
+        prevBtn.disabled = false;
+      }
+      
+      // Next button
+      if(validateStep(currentStep)){
+        nextBtn.disabled = false;
+      } else {
+        nextBtn.disabled = true;
+      }
+    }
+
+    // Next step (global function)
+    window.nextStep = function(){
+      if(!validateStep(currentStep)){
+        return;
+      }
+      
+      if(currentStep < totalSteps){
+        document.querySelector(`.test-step[data-step="${currentStep}"]`).classList.remove('active');
+        currentStep++;
+        document.querySelector(`.test-step[data-step="${currentStep}"]`).classList.add('active');
+        updateProgress();
+        updateButtons();
+        
+        // Focus first input if available
+        const firstInput = document.querySelector(`.test-step[data-step="${currentStep}"] input, .test-step[data-step="${currentStep}"] textarea`);
+        if(firstInput){
+          setTimeout(() => firstInput.focus(), 100);
+        }
+      }
+    }
+
+    // Previous step (global function)
+    window.prevStep = function(){
+      if(currentStep > 1){
+        document.querySelector(`.test-step[data-step="${currentStep}"]`).classList.remove('active');
+        currentStep--;
+        document.querySelector(`.test-step[data-step="${currentStep}"]`).classList.add('active');
+        updateProgress();
+        updateButtons();
+      }
+    }
+
+    // Submit form (global function)
+    window.submitForm = function(){
+      if(!validateStep(7)){
+        alert('Vul alle velden correct in.');
+        return;
+      }
+
+      // Honeypot check
+      const honeypot = document.querySelector('input[name="website"]').value;
+      if(honeypot){
+        return; // Bot detected
+      }
+
+      // Collect all data
+      const doelen = Array.from(document.querySelectorAll('input[name="doel"]:checked')).map(cb => cb.value);
+      const frequentie = document.querySelector('input[name="frequentie"]:checked')?.value || '';
+      const voorkeur = Array.from(document.querySelectorAll('input[name="voorkeur"]:checked')).map(cb => cb.value);
+      const ervaring = document.querySelector('input[name="ervaring"]:checked')?.value || '';
+      const tijdstip = document.querySelector('input[name="tijdstip"]:checked')?.value || '';
+      const naam = document.querySelector('input[name="naam"]')?.value || '';
+      const email = document.querySelector('input[name="email"]')?.value || '';
+      const telefoon = document.querySelector('input[name="telefoon"]')?.value || '';
+
+      const formData = {
+        doelen: doelen,
+        frequentie: frequentie,
+        voorkeur: voorkeur,
+        ervaring: ervaring,
+        tijdstip: tijdstip,
+        naam: naam,
+        email: email,
+        telefoon: telefoon,
+        timestamp: new Date().toISOString(),
+        page_url: window.location.href
+      };
+
+      if(WEBHOOK_URL && WEBHOOK_URL !== "PASTE_WEBHOOK_HERE"){
+        // Send to webhook
+        fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        })
+        .then(response => {
+          if(response.ok){
+            showSuccess();
+          } else {
+            console.error('Error:', response);
+            showSuccess(); // Show success anyway
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          showSuccess(); // Show success anyway
+        });
+      } else {
+        // Log to console
+        console.log('Form data:', formData);
+        showSuccess();
+      }
+    }
+
+    function showSuccess(){
+      document.querySelectorAll('.test-step').forEach(step => step.classList.remove('active'));
+      document.getElementById('testSuccess').classList.add('active');
+      document.querySelector('.test-wizard').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // Add event listeners for validation
+    (function(){
+      // Checkbox/radio change listeners
+      document.querySelectorAll('.test-option input').forEach(input => {
+        input.addEventListener('change', function(){
+          updateButtons();
+        });
+      });
+
+      // Text input listeners
+      document.querySelectorAll('.test-input-group input, .test-input-group textarea').forEach(input => {
+        input.addEventListener('input', function(){
+          updateButtons();
+        });
+      });
+
+      // Initialize
+      updateProgress();
+      updateButtons();
+    })();
+
+    // FAQ accordion
+    (function(){
+      const faqItems = document.querySelectorAll('.faq-item');
+      
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', function(){
+          const isActive = item.classList.contains('active');
+          
+          // Close all items
+          faqItems.forEach(i => i.classList.remove('active'));
+          
+          // Open clicked item if it wasn't active
+          if(!isActive){
+            item.classList.add('active');
+          }
+        });
+      });
+    })();
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href="#test"]').forEach(link => {
+      link.addEventListener('click', function(e){
+        e.preventDefault();
+        document.getElementById('test').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Set underline width equal to text width
+    function setUnderlineWidths(){
+      const h2Wrappers = document.querySelectorAll('.h2-wrapper');
+      h2Wrappers.forEach(function(wrapper){
+        const underlineWrapper = wrapper.querySelector('.title-underline-wrapper');
+        if(underlineWrapper){
+          const textWidth = wrapper.offsetWidth;
+          underlineWrapper.style.width = textWidth + 'px';
+        }
+      });
+    }
+
+    // Set width on load and resize
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', setUnderlineWidths);
+    } else {
+      setUnderlineWidths();
+    }
+    window.addEventListener('resize', setUnderlineWidths);
+
+    // Reviews Carousel
+    (function(){
+      const slidesContainer = document.getElementById('reviewsSlides');
+      const prevBtn = document.getElementById('prevReview');
+      const nextBtn = document.getElementById('nextReview');
+      
+      if(!slidesContainer) return;
+      
+      // Selecteer originele kaarten voordat we klonen
+      const originalCards = Array.from(slidesContainer.children);
+      
+      if(originalCards.length === 0) return;
+
+      // Clone laatste 3 kaarten aan begin en eerste 3 aan einde voor vloeiende loop
+      const cardsToCloneAtStart = originalCards.slice(-3);
+      const cardsToCloneAtEnd = originalCards.slice(0, 3);
+      
+      cardsToCloneAtStart.forEach(card => {
+        const clone = card.cloneNode(true);
+        clone.classList.remove('active');
+        slidesContainer.insertBefore(clone, originalCards[0]);
+      });
+      
+      cardsToCloneAtEnd.forEach(card => {
+        const clone = card.cloneNode(true);
+        clone.classList.remove('active');
+        slidesContainer.appendChild(clone);
+      });
+
+      const allCards = Array.from(slidesContainer.children);
+      const offset = cardsToCloneAtStart.length; // Offset voor originele kaarten
+      let currentIndex = offset + 1; // Start met tweede originele kaart
+      let isTransitioning = false;
+
+      function updateCarousel(disableTransition = false){
+        if(disableTransition){
+          slidesContainer.style.transition = 'none';
+        } else {
+          slidesContainer.style.transition = 'transform 0.6s ease';
+        }
+
+        // Update active class
+        allCards.forEach((card, index) => {
+          card.classList.toggle('active', index === currentIndex);
+        });
+
+        // Calculate transform to center de middelste van 3 zichtbare kaarten
+        const activeCard = allCards[currentIndex];
+        if(!activeCard) return;
+        
+        const cardWidth = activeCard.offsetWidth;
+        const gap = 24;
+        const containerWidth = slidesContainer.parentElement.offsetWidth;
+        // Centreer de middelste kaart van de 3 zichtbare
+        const translateOffset = currentIndex * (cardWidth + gap);
+        const centerOffset = (containerWidth / 2) - (cardWidth / 2);
+        
+        slidesContainer.style.transform = `translateX(calc(-${translateOffset}px + ${centerOffset}px))`;
+      }
+
+      function resetToOriginalCards(newIndex, withoutAnimation){
+        if(withoutAnimation){
+          slidesContainer.style.transition = 'none';
+        }
+        
+        currentIndex = offset + newIndex;
+        updateCarousel(withoutAnimation);
+        
+        if(withoutAnimation){
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              slidesContainer.style.transition = 'transform 0.6s ease';
+            });
+          });
+        }
+      }
+
+      function nextSlide(){
+        if(isTransitioning) return;
+        isTransitioning = true;
+        
+        currentIndex++;
+        updateCarousel();
+        
+        // Reset naar originele kaarten wanneer aan einde
+        setTimeout(() => {
+          if(currentIndex >= offset + originalCards.length){
+            resetToOriginalCards((currentIndex - offset) % originalCards.length, true);
+          }
+          isTransitioning = false;
+        }, 650);
+      }
+
+      function prevSlide(){
+        if(isTransitioning) return;
+        isTransitioning = true;
+        
+        currentIndex--;
+        updateCarousel();
+        
+        // Reset naar originele kaarten wanneer aan begin
+        setTimeout(() => {
+          if(currentIndex < offset){
+            const newIndex = originalCards.length - 1 - ((offset - currentIndex - 1) % originalCards.length);
+            resetToOriginalCards(newIndex, true);
+          }
+          isTransitioning = false;
+        }, 650);
+      }
+
+      if(prevBtn) prevBtn.addEventListener('click', prevSlide);
+      if(nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+      // Initial setup
+      updateCarousel(true);
+      
+      // Update on resize
+      let resizeTimeout;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          updateCarousel(true);
+        }, 250);
+      });
+    })();
+  </script>
+
+</body>
+</html>

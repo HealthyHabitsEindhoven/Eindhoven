@@ -1,0 +1,2776 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Healthy Habits Eindhoven</title>
+
+  <style>
+    :root{
+      --accent:#C3A300;
+      --bg:#0b0c10;
+      --bg-main:#0b0c10;
+      --bg-warm:#0f1115;
+      --bg-accent:#121418;
+      --text:#f3f4f6;
+      --muted:#cbd5e1;
+      --line:rgba(255,255,255,.15);
+      --radius:18px;
+      --max:1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      padding:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:var(--bg-main);
+      color:var(--text);
+    }
+
+    img{width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 36px));margin:0 auto}
+
+    /* =========================
+       TOP MENU BAR
+    ========================== */
+    .topbar{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:77px;
+      background:#000;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .container{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:32px;
+    }
+    .topbar__logo{
+      font-weight:800;
+      letter-spacing:.04em;
+      font-size:18px;
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+    }
+    .topbar__logo img{
+      height:48px;
+      width:auto;
+      display:block;
+    }
+    .topbar__nav{
+      display:flex;
+      align-items:center;
+      gap:32px;
+      flex:1;
+      justify-content:center;
+    }
+    .topbar__nav a{
+      color:var(--text);
+      text-decoration:none;
+      font-size:15px;
+      transition:color 0.2s ease;
+    }
+    .topbar__nav a:hover{
+      color:var(--accent);
+    }
+    .topbar__lang{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-shrink:0;
+      margin-right:16px;
+    }
+    .topbar__lang a{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:13px;
+      font-weight:400;
+      transition:color 0.2s ease;
+      padding:4px 0;
+    }
+    .topbar__lang a:hover{
+      color:var(--text);
+    }
+    .topbar__lang a.active{
+      color:var(--text);
+      font-weight:500;
+    }
+    .topbar__lang span{
+      color:var(--muted);
+      font-size:13px;
+    }
+    .topbar__cta{
+      flex-shrink:0;
+    }
+    .topbar__cta a{
+      text-decoration:none;
+    }
+    .topbar__cta button{
+      background:var(--accent);
+      color:#000;
+      border:none;
+      padding:10px 20px;
+      border-radius:8px;
+      font-weight:700;
+      font-size:14px;
+      cursor:pointer;
+      transition:filter 0.2s ease;
+    }
+    .topbar__cta button:hover{
+      filter:brightness(1.1);
+    }
+    body{ padding-top:77px; }
+    
+    /* =========================
+       SPLASH SCREEN
+    ========================== */
+    .splash-screen{
+      position:fixed;
+      inset:0;
+      background:#000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:10000;
+      opacity:1;
+      transition:opacity 0.3s ease-out;
+    }
+    .splash-screen.hidden{
+      opacity:0;
+      pointer-events:none;
+    }
+    .splash-screen img{
+      width:200px;
+      height:auto;
+      max-width:80vw;
+    }
+
+    /* =========================
+       HERO MET FOTO
+    ========================== */
+    .hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      background:var(--bg-main);
+    }
+    .hero img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center center;
+      filter:brightness(.6);
+    }
+    .hero__overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 9%, rgba(0,0,0,0.3) 18%, rgba(0,0,0,0.1) 24%, rgba(0,0,0,0) 30%),
+                  linear-gradient(to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0) 100%);
+      background-blend-mode:multiply;
+      z-index:1;
+      animation:hero-gradient 0.3s ease-out forwards;
+    }
+    @keyframes hero-gradient{
+      0%{
+        background:linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 9%, rgba(0,0,0,0) 18%, rgba(0,0,0,0) 24%, rgba(0,0,0,0) 30%),
+                    linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 100%);
+        background-blend-mode:multiply;
+      }
+      100%{
+        background:linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 9%, rgba(0,0,0,0.3) 18%, rgba(0,0,0,0.1) 24%, rgba(0,0,0,0) 30%),
+                    linear-gradient(to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0) 100%);
+        background-blend-mode:multiply;
+      }
+    }
+    .hero-content{
+      position:relative;
+      z-index:2;
+      padding:48px 0;
+    }
+    .hero h1{
+      font-size:clamp(32px,5vw,56px);
+      margin:0 0 12px;
+    }
+    .hero p{
+      max-width:55ch;
+      color:var(--muted);
+      font-size:18px;
+      margin:0 0 32px;
+    }
+    .hero-buttons{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-top:24px;
+    }
+    .hero-btn{
+      display:inline-block;
+      padding:14px 28px;
+      border-radius:12px;
+      font-weight:700;
+      font-size:16px;
+      text-decoration:none;
+      transition:filter 0.2s ease;
+      cursor:pointer;
+      border:none;
+    }
+    .hero-btn-primary{
+      background:var(--accent);
+      color:#000;
+    }
+    .hero-btn-primary:hover{
+      filter:brightness(1.1);
+    }
+    .hero-btn-secondary{
+      background:rgba(255,255,255,.08);
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+    .hero-btn-secondary:hover{
+      background:rgba(255,255,255,.12);
+      border-color:rgba(255,255,255,.25);
+    }
+
+    /* =========================
+       SPLIT CONTENT BLOCK
+    ========================== */
+    .split-block{
+      background:#000;
+      padding:56px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .split-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:40px;
+      align-items:center;
+    }
+    .split-text h2{
+      font-size:32px;
+      margin:0 0 0;
+      padding-bottom:0;
+      line-height:1.05;
+    }
+    .h2-wrapper{
+      position:relative;
+      display:inline-block;
+    }
+    .title-underline-wrapper{
+      position:absolute;
+      top:calc(100% - 1px);
+      left:0;
+      width:100%;
+    }
+    .title-underline-svg{
+      display:block;
+      width:100%;
+      height:10px;
+      overflow:visible;
+    }
+    .title-underline-svg svg{
+      width:100%;
+      height:10px;
+      display:block;
+    }
+    .title-underline-path{
+      stroke:#C3A300;
+      stroke-width:3;
+      fill:none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      stroke-dasharray:1800;
+      stroke-dashoffset:1800;
+    }
+    .split-block.in-view .title-underline-path,
+    .form-section.in-view .title-underline-path{
+      animation:draw-wavy-line 5s ease-in-out forwards;
+      animation-delay:0.3s;
+    }
+    .split-block:not(.in-view) .title-underline-path,
+    .form-section:not(.in-view) .title-underline-path{
+      stroke-dashoffset:1800;
+      animation:none;
+    }
+    @keyframes draw-wavy-line{
+      0%{
+        stroke-dashoffset:1800;
+      }
+      100%{
+        stroke-dashoffset:0;
+      }
+    }
+    .split-text p{
+      font-size:18px;
+      color:var(--muted);
+      line-height:1.5;
+      max-width:48ch;
+      margin:0 0 16px;
+    }
+    .split-text h2 + p{
+      margin-top:20px;
+    }
+    .split-text .cta{
+      display:inline-block;
+      padding:12px 16px;
+      border-radius:12px;
+      background:var(--accent);
+      color:#000;
+      font-weight:800;
+      text-decoration:none;
+    }
+    .split-text .cta:hover{ filter:brightness(1.05); }
+
+    .split-video{
+      position:relative;
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:rgba(255,255,255,.03);
+      aspect-ratio:4/3;
+      border:1px solid var(--line);
+      cursor:pointer;
+      transition:all 300ms ease;
+    }
+    .split-video:hover{
+      border-color:var(--line);
+    }
+    .split-video video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      border-radius:var(--radius);
+    }
+    .video-play-btn{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      width:60px;
+      height:60px;
+      min-width:60px;
+      min-height:60px;
+      border-radius:50%;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      font-size:20px;
+      line-height:1;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:all 300ms ease;
+      padding:0;
+      z-index:2;
+      opacity:1;
+    }
+    .split-video:hover .video-play-btn,
+    .split-video:focus-within .video-play-btn{
+      border-color:var(--line);
+      opacity:1;
+    }
+    .video-play-btn:active{
+      transform:translate(-50%, -50%) scale(0.95);
+    }
+    .video-play-btn:focus{
+      outline:none;
+    }
+    .video-icon{
+      display:block;
+      transition:opacity 300ms ease;
+      line-height:1;
+    }
+    .video-icon-play{
+      margin-left:3px;
+    }
+    .video-icon-pause{
+      display:none;
+      font-size:18px;
+    }
+    .split-video.playing .video-icon-play{
+      display:none;
+    }
+    .split-video.playing .video-icon-pause{
+      display:block;
+    }
+    .split-video.playing .video-play-btn{
+      opacity:0;
+    }
+    .split-video.playing:hover .video-play-btn{
+      opacity:1;
+    }
+    .video-mute-icon{
+      display:block;
+      line-height:1;
+    }
+    .video-mute-icon-unmute{
+      display:none;
+    }
+    .split-video.muted .video-mute-icon-unmute{
+      display:block;
+    }
+    .split-video.muted .video-mute-icon-mute{
+      display:none;
+    }
+    .video-controls-row{
+      position:absolute;
+      bottom:16px;
+      left:16px;
+      right:16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px;
+      z-index:4;
+      pointer-events:none;
+    }
+    .video-controls-row button{
+      pointer-events:auto;
+    }
+    .video-controls-left{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .video-rewind-btn,
+    .video-forward-btn{
+      width:36px;
+      height:36px;
+      min-width:36px;
+      min-height:36px;
+      border-radius:50%;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.6);
+      color:var(--text);
+      font-size:14px;
+      line-height:1;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:all 300ms ease;
+      padding:0;
+      opacity:0.8;
+    }
+    .split-video:hover .video-rewind-btn,
+    .split-video:hover .video-forward-btn{
+      opacity:1;
+    }
+    .video-rewind-btn:hover,
+    .video-forward-btn:hover{
+      background:rgba(0,0,0,.8);
+      border-color:var(--accent);
+    }
+    .video-rewind-btn:active,
+    .video-forward-btn:active{
+      transform:scale(0.95);
+    }
+    .video-rewind-btn:focus,
+    .video-forward-btn:focus{
+      outline:none;
+    }
+    .video-mute-btn{
+      position:static;
+      width:36px;
+      height:36px;
+      min-width:36px;
+      min-height:36px;
+      border-radius:50%;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.6);
+      color:var(--text);
+      font-size:16px;
+      line-height:1;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:all 300ms ease;
+      padding:0;
+      opacity:0.8;
+    }
+    .split-video:hover .video-mute-btn{
+      opacity:1;
+    }
+    .video-mute-btn:hover{
+      background:rgba(0,0,0,.8);
+      border-color:var(--accent);
+    }
+    .video-mute-btn:active{
+      transform:scale(0.95);
+    }
+    .video-mute-btn:focus{
+      outline:none;
+    }
+    .split-video-progress{
+      position:absolute;
+      bottom:0;
+      left:0;
+      right:0;
+      height:10px;
+      z-index:5;
+      cursor:pointer;
+      transition:height 150ms ease;
+      pointer-events:auto;
+    }
+    .split-video:hover .split-video-progress{
+      height:12px;
+    }
+    .split-video-progress-bg{
+      position:absolute;
+      inset:0;
+      background:rgba(255,255,255,.2);
+    }
+    .split-video-progress-bar{
+      position:absolute;
+      left:0;
+      top:0;
+      bottom:0;
+      width:0%;
+      background:var(--accent);
+      transition:width 100ms linear;
+      border-radius:0 2px 2px 0;
+    }
+    @media(max-width:900px){
+      .video-play-btn{
+        width:56px;
+        height:56px;
+        min-width:56px;
+        min-height:56px;
+        font-size:18px;
+      }
+      .video-icon-pause{
+        font-size:16px;
+      }
+    }
+
+    /* =========================
+       ONS AANBOD SECTIE
+    ========================== */
+    .aanbod-section{
+      background:var(--bg-warm);
+      padding:80px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .aanbod-carousel-wrapper{
+      position:relative;
+      width:100%;
+      overflow:hidden;
+    }
+    .aanbod-carousel-track{
+      overflow:hidden;
+      position:relative;
+    }
+    .aanbod-carousel-slides{
+      display:flex;
+      gap:20px;
+      transition:transform 1400ms ease-in-out;
+    }
+    .aanbod-card{
+      flex:0 0 calc(33.333% - 14px);
+      min-width:320px;
+      aspect-ratio:4/3;
+      border-radius:var(--radius);
+      overflow:hidden;
+      position:relative;
+      background:rgba(255,255,255,.03);
+      border:1px solid var(--line);
+      flex-shrink:0;
+    }
+    @media(max-width:900px){
+      .aanbod-card{
+        flex:0 0 calc(100% / 1.2);
+        min-width:280px;
+      }
+    }
+    .aanbod-card__image{
+      width:100%;
+      height:100%;
+      position:relative;
+    }
+    .aanbod-card__image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .aanbod-carousel-nav{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:16px;
+      margin-top:32px;
+    }
+    .aanbod-carousel-btn{
+      width:44px;
+      height:44px;
+      min-width:44px;
+      min-height:44px;
+      border-radius:50%;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      font-size:24px;
+      line-height:1;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:all 300ms ease;
+      padding:0;
+      position:relative;
+    }
+    .aanbod-carousel-btn:hover,
+    .aanbod-carousel-btn:focus{
+      border-color:var(--accent);
+      outline:none;
+    }
+    .aanbod-carousel-btn:hover::before,
+    .aanbod-carousel-btn:focus::before,
+    .aanbod-carousel-btn:active::before{
+      content:'';
+      position:absolute;
+      inset:-2px;
+      border-radius:50%;
+      border:2px solid var(--accent);
+      pointer-events:none;
+    }
+    .aanbod-carousel-btn:active{
+      transform:scale(0.95);
+    }
+
+    /* =========================
+       SECTIE + CARDS
+    ========================== */
+    .section{
+      padding:72px 0;
+      background:var(--bg-main);
+      position:relative;
+    }
+    .section-arrow-line{
+      width:100%;
+      height:20px;
+      margin-top:40px;
+      overflow:visible;
+    }
+    .section-arrow-line svg{
+      width:100%;
+      height:20px;
+      display:block;
+    }
+    .section-arrow-path{
+      stroke:#C3A300;
+      stroke-width:4;
+      fill:none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      stroke-dasharray:2000;
+      stroke-dashoffset:2000;
+    }
+    .section.in-view .section-arrow-path{
+      animation:draw-arrow-line 5s ease-in-out forwards;
+      animation-delay:0.3s;
+    }
+    .section:not(.in-view) .section-arrow-path{
+      stroke-dashoffset:2000;
+      animation:none;
+    }
+    @keyframes draw-arrow-line{
+      0%{
+        stroke-dashoffset:2000;
+      }
+      100%{
+        stroke-dashoffset:0;
+      }
+    }
+    .section h2{margin:0 0 6px;font-size:28px}
+    .section p{margin:0;color:var(--muted)}
+    .section-subtitle{
+      margin:0 0 32px;
+      color:var(--muted);
+      font-size:18px;
+    }
+
+    .grid{
+      margin-top:32px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .card{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+    .card__header{
+      width:100%;
+      background:rgba(255,255,255,.04);
+      border-bottom:1px solid var(--line);
+      color:var(--text);
+      padding:12px 18px;
+      font-size:14px;
+      font-weight:600;
+      letter-spacing:0.5px;
+      border-radius:var(--radius) var(--radius) 0 0;
+    }
+    .card__media{
+      position:relative;
+      width:100%;
+      height:180px;
+      overflow:hidden;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+    }
+    .card__header[data-step="1"] ~ .card__media{
+      background-image:url("assets/images/onze-aanpak/roos1.jpg");
+    }
+    .card__header[data-step="2"] ~ .card__media{
+      background-image:url("assets/images/onze-aanpak/roos2.jpg");
+    }
+    .card__header[data-step="3"] ~ .card__media{
+      background-image:url("assets/images/onze-aanpak/roos3.jpg");
+    }
+    .card__media img{
+      display:none;
+    }
+    .card__body{
+      padding:18px;
+      flex:1;
+    }
+    .card h3{margin:0 0 6px}
+    .card p{margin:0;color:var(--muted);line-height:1.45}
+
+    /* =========================
+       MOVING LINE
+    ========================== */
+    .movingline-wrap{ margin-top:50px; }
+    .movingline{
+      position:relative;
+      height:6px;
+      background:rgba(255,255,255,.18);
+      border-radius:999px;
+      overflow:visible;
+    }
+    .movingline::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      width:0%;
+      height:100%;
+      background:var(--accent);
+      border-radius:999px;
+      animation:movingline-fill 8s ease-out forwards;
+    }
+    .movingline::after{
+      content:"";
+      position:absolute;
+      top:50%;
+      left:0;
+      width:32px;
+      height:32px;
+      transform:translateY(-50%);
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 12h16M14 5l7 7-7 7' stroke='%23C3A300' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-size:contain;
+      background-repeat:no-repeat;
+      background-position:center;
+      animation:movingline-arrow 8s ease-out forwards;
+      filter:drop-shadow(0 2px 4px rgba(195,163,0,0.8));
+    }
+    @keyframes movingline-fill{
+      0%{ width:0%; }
+      100%{ width:100%; }
+    }
+    @keyframes movingline-arrow{
+      0%{ 
+        left:0;
+        opacity:1;
+      }
+      95%{
+        left:calc(100% - 24px);
+        opacity:1;
+      }
+      100%{ 
+        left:calc(100% - 24px);
+        opacity:1;
+      }
+    }
+
+    /* =========================
+       ONS AANBOD
+    ========================== */
+    .aanbod-section{
+      padding:64px 0;
+      background:var(--bg-main);
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .aanbod-section h2{
+      font-size:28px;
+      margin:0 0 6px;
+      text-align:center;
+    }
+    .aanbod-subtitle{
+      text-align:center;
+      color:var(--muted);
+      font-size:16px;
+      margin:0 0 40px;
+    }
+    .aanbod-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
+      max-width:1000px;
+      margin:0 auto;
+    }
+    .aanbod-item{
+      text-align:center;
+    }
+    .aanbod-image{
+      width:100px;
+      height:100px;
+      margin:0 auto 16px;
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+    }
+    .aanbod-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .aanbod-item h3{
+      font-size:16px;
+      margin:0 0 6px;
+      color:var(--text);
+    }
+    .aanbod-item p{
+      font-size:13px;
+      color:var(--muted);
+      margin:0;
+      line-height:1.4;
+    }
+
+    /* =========================
+       VISIE / WOORDZOEKER (SCHOON)
+    ========================== */
+    .vision-block{
+      background:var(--bg-accent);
+      padding:90px 0;
+      border-top:1px solid rgba(255,255,255,.08);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .vision-title{
+      font-size:32px;
+      margin:0 0 8px;
+      text-align:center;
+      color:var(--text);
+    }
+    .vision-subtitle{
+      font-size:18px;
+      margin:0 0 48px;
+      text-align:center;
+      color:var(--muted);
+    }
+    .vision-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    /* linker visual canvas */
+    .vision-left{
+      position:relative;
+      width:420px;
+      height:320px;
+      margin:0 auto;
+    }
+
+    /* nodes = ovalen (horizontaal langwerpig) */
+    .vnode{
+      position:absolute;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.03);
+      color:#fff;
+      font-weight:800;
+      padding:12px 24px;
+      min-width:120px;
+      height:auto;
+      box-shadow:0 18px 50px rgba(0,0,0,.40);
+      user-select:none;
+    }
+    .vnode.center{
+      width:142px;
+      height:142px;
+      min-width:unset;
+      padding:0;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      border:2px solid var(--accent);
+      background:rgba(255,255,255,.02);
+      letter-spacing:.08em;
+    }
+
+    /* 6 buiten nodes - gelijkmatig verdeeld rond cirkel met voldoende ruimte om overlap te voorkomen */
+    /* Center cirkel radius = 71px, nodes op 120px vanaf center voor duidelijke scheiding */
+    .vnode.fysio{
+      left:calc(50% + 0px);
+      top:calc(50% - 120px);
+      transform:translate(-50%, -100%);
+    }
+    .vnode.sporten{
+      left:calc(50% + 104px);
+      top:calc(50% - 60px);
+      transform:translate(-50%, -50%);
+    }
+    .vnode.voeding{
+      left:calc(50% + 104px);
+      top:calc(50% + 60px);
+      transform:translate(-50%, 0%);
+    }
+    .vnode.podo{
+      left:calc(50% + 0px);
+      top:calc(50% + 120px);
+      transform:translate(-50%, 0%);
+    }
+    .vnode.slaap{
+      left:calc(50% - 104px);
+      top:calc(50% + 60px);
+      transform:translate(-50%, 0%);
+    }
+    .vnode.hormonen{
+      left:calc(50% - 104px);
+      top:calc(50% - 60px);
+      transform:translate(-50%, -50%);
+    }
+
+    /* ademende animatie voor buiten nodes - alleen naar buiten (outward only) */
+    @keyframes drift-outward{
+      0%, 100%{
+        transform:translate(var(--baseX), var(--baseY));
+      }
+      50%{
+        transform:translate(calc(var(--baseX) + var(--outX)), calc(var(--baseY) + var(--outY)));
+      }
+    }
+
+    /* hover gedrag op buiten nodes */
+    .vnode.hoverable{
+      cursor:pointer;
+      transition:transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    
+    /* Base transform values per positie */
+    .vnode.fysio.hoverable{
+      --baseX:-50%;
+      --baseY:-100%;
+    }
+    .vnode.sporten.hoverable{
+      --baseX:-50%;
+      --baseY:-50%;
+    }
+    .vnode.voeding.hoverable{
+      --baseX:-50%;
+      --baseY:0%;
+    }
+    .vnode.podo.hoverable{
+      --baseX:-50%;
+      --baseY:0%;
+    }
+    .vnode.slaap.hoverable{
+      --baseX:-50%;
+      --baseY:0%;
+    }
+    .vnode.hormonen.hoverable{
+      --baseX:-50%;
+      --baseY:-50%;
+    }
+
+    /* Outward drift vectors per positie (alleen van midden af) */
+    .vnode[data-pos="top"].hoverable{
+      --outX:0px;
+      --outY:-18px; /* alleen omhoog (naar buiten) */
+      animation:drift-outward 9s ease-in-out infinite alternate;
+      animation-delay:0s;
+    }
+    .vnode[data-pos="top-right"].hoverable{
+      --outX:12px; /* naar rechts (naar buiten) */
+      --outY:-12px; /* omhoog (naar buiten) */
+      animation:drift-outward 11s ease-in-out infinite alternate;
+      animation-delay:1.5s;
+    }
+    .vnode[data-pos="bottom-right"].hoverable{
+      --outX:15px; /* naar rechts (naar buiten) */
+      --outY:15px; /* omlaag (naar buiten) */
+      animation:drift-outward 8s ease-in-out infinite alternate;
+      animation-delay:3s;
+    }
+    .vnode[data-pos="bottom"].hoverable{
+      --outX:0px;
+      --outY:22px; /* alleen omlaag (naar buiten) */
+      animation:drift-outward 13s ease-in-out infinite alternate;
+      animation-delay:0.8s;
+    }
+    .vnode[data-pos="bottom-left"].hoverable{
+      --outX:-14px; /* naar links (naar buiten) */
+      --outY:14px; /* omlaag (naar buiten) */
+      animation:drift-outward 10s ease-in-out infinite alternate;
+      animation-delay:2.2s;
+    }
+    .vnode[data-pos="top-left"].hoverable{
+      --outX:-16px; /* naar links (naar buiten) */
+      --outY:-16px; /* omhoog (naar buiten) */
+      animation:drift-outward 12s ease-in-out infinite alternate;
+      animation-delay:1.8s;
+    }
+
+    @media(prefers-reduced-motion: reduce){
+      .vnode.hoverable{
+        animation:none !important;
+      }
+    }
+    .vnode.hoverable:hover{
+      border-color:rgba(255,255,255,.45);
+      background:rgba(255,255,255,.06);
+      animation-play-state:paused;
+    }
+    .vnode.fysio.hoverable:hover{
+      transform:translate(-50%, -100%) scale(1.02);
+    }
+    .vnode.voeding.hoverable:hover,
+    .vnode.podo.hoverable:hover,
+    .vnode.slaap.hoverable:hover{
+      transform:translate(-50%, 0%) scale(1.02);
+    }
+    .vnode.sporten.hoverable:hover,
+    .vnode.hormonen.hoverable:hover{
+      transform:translate(-50%, -50%) scale(1.02);
+    }
+
+
+    /* rechter tekst */
+    .vision-right h3{
+      font-size:34px;
+      margin:0 0 12px;
+    }
+    .vision-right p{
+      font-size:18px;
+      color:var(--muted);
+      line-height:1.5;
+      max-width:48ch;
+      margin:0;
+    }
+
+    /* =========================
+       INSCHRIJF FORMULIER
+    ========================== */
+    .form-section{
+      background:var(--bg-accent);
+      padding:90px 0;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .form-container{
+      max-width:600px;
+      margin:0 auto;
+    }
+    .form-header{
+      text-align:center;
+      margin-bottom:40px;
+    }
+    .form-header h2{
+      font-size:32px;
+      margin:0 0 0;
+      padding-bottom:0;
+      line-height:1.05;
+    }
+    .form-header p{
+      color:var(--muted);
+      font-size:18px;
+      margin:0;
+    }
+    .form{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:32px;
+    }
+    .form-group{
+      margin-bottom:24px;
+    }
+    .form-group label{
+      display:block;
+      margin-bottom:8px;
+      font-weight:600;
+      font-size:14px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select{
+      width:100%;
+      padding:12px 16px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      border-radius:12px;
+      color:var(--text);
+      font-size:16px;
+      font-family:inherit;
+      transition:border-color .2s ease, background .2s ease;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus{
+      outline:none;
+      border-color:var(--accent);
+      background:rgba(255,255,255,.08);
+    }
+    .form-group textarea{
+      resize:vertical;
+      min-height:120px;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder{
+      color:rgba(255,255,255,.4);
+    }
+    .form-submit{
+      width:100%;
+      padding:14px 24px;
+      background:var(--accent);
+      color:#000;
+      border:none;
+      border-radius:12px;
+      font-size:16px;
+      font-weight:800;
+      cursor:pointer;
+      transition:filter .2s ease;
+      margin-top:8px;
+    }
+    .form-submit:hover{
+      filter:brightness(1.1);
+    }
+    .form-submit:active{
+      filter:brightness(.95);
+    }
+
+    /* =========================
+       REVIEWS CAROUSEL
+    ========================== */
+    .reviews-section{
+      padding:80px 0;
+      background:var(--bg-warm);
+    }
+    .reviews-header{
+      text-align:center;
+      margin-bottom:48px;
+    }
+    .reviews-header h2{
+      font-size:28px;
+      margin:0 0 8px;
+      color:var(--text);
+    }
+    .reviews-header p{
+      color:var(--muted);
+      font-size:16px;
+      margin:0;
+    }
+    .reviews-carousel-wrapper{
+      position:relative;
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 60px;
+    }
+    .reviews-carousel-track{
+      display:flex;
+      align-items:center;
+      gap:24px;
+      overflow:hidden;
+    }
+    .reviews-carousel-slides{
+      display:flex;
+      gap:24px;
+      transition:transform 0.6s ease;
+    }
+    .review-card{
+      flex:0 0 calc(26% - 16px);
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:24px;
+      overflow:hidden;
+      display:flex;
+      gap:16px;
+      transition:all 0.4s ease;
+      opacity:1;
+      transform:scale(0.9);
+      align-items:stretch;
+    }
+    .review-card.active{
+      opacity:1;
+      transform:scale(0.9);
+      flex:0 0 calc(26% - 16px);
+      border-color:rgba(255,255,255,.25);
+    }
+    .review-card__image{
+      flex:0 0 48%;
+      width:48%;
+      overflow:hidden;
+      background:rgba(255,255,255,.03);
+      border-radius:var(--radius);
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .review-card__image img{
+      width:100%;
+      height:110%;
+      display:block;
+      object-fit:cover;
+      object-position:center 10%;
+    }
+    .review-card__content{
+      flex:1;
+      padding:20px;
+      display:flex;
+      flex-direction:column;
+    }
+    .review-card__name{
+      font-size:20px;
+      font-weight:600;
+      margin:0 0 4px;
+      color:var(--text);
+    }
+    .review-card__age{
+      font-size:14px;
+      color:var(--muted);
+      margin:0 0 16px;
+    }
+    .review-card__detail{
+      margin-bottom:16px;
+    }
+    .review-card__detail-label{
+      font-size:12px;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:0.5px;
+      margin:0 0 4px;
+    }
+    .review-card__detail-text{
+      font-size:14px;
+      line-height:1.5;
+      color:var(--text);
+      margin:0;
+    }
+    .review-card__quote{
+      margin-top:0;
+      padding-top:0;
+      font-size:14px;
+      line-height:1.6;
+      color:var(--text);
+      font-style:normal;
+    }
+    .reviews-nav{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      border-radius:50%;
+      width:44px;
+      height:44px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      color:var(--text);
+      transition:all 0.3s ease;
+      z-index:10;
+    }
+    .reviews-nav:hover{
+      background:rgba(255,255,255,.1);
+      border-color:var(--accent);
+    }
+    .reviews-nav.prev{
+      left:0;
+    }
+    .reviews-nav.next{
+      right:0;
+    }
+    .reviews-nav:disabled{
+      opacity:0.3;
+      cursor:not-allowed;
+    }
+
+    /* =========================
+       REVIEW VIDEO'S
+    ========================== */
+    .review-videos-section{
+      padding:64px 0;
+      background:var(--bg-main);
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .review-videos-header{
+      text-align:center;
+      margin-bottom:40px;
+    }
+    .review-videos-header h2{
+      font-size:24px;
+      margin:0 0 8px;
+      color:var(--text);
+    }
+    .review-videos-header p{
+      color:var(--muted);
+      font-size:16px;
+      margin:0;
+    }
+    .review-videos-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:24px;
+      max-width:900px;
+      margin:0 auto;
+    }
+    .review-video-item{
+      display:flex;
+      flex-direction:column;
+    }
+    .video-wrapper{
+      position:relative;
+      width:100%;
+      aspect-ratio:16/9;
+      border-radius:var(--radius);
+      overflow:hidden;
+      cursor:pointer;
+    }
+    .review-video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      border-radius:var(--radius);
+    }
+    .review-video-play-btn{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      width:auto;
+      height:auto;
+      border:none;
+      background:none;
+      color:rgba(255,255,255,.9);
+      font-size:48px;
+      line-height:1;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:opacity 300ms ease;
+      padding:0;
+      z-index:2;
+      opacity:1;
+    }
+    .review-video-play-btn:hover{
+      color:rgba(255,255,255,1);
+    }
+    .review-video-play-btn:active{
+      transform:translate(-50%, -50%) scale(0.95);
+    }
+    .review-video-play-btn:focus{
+      outline:none;
+    }
+    .review-video-icon{
+      display:block;
+      transition:opacity 300ms ease;
+      line-height:1;
+      filter:drop-shadow(0 2px 8px rgba(0,0,0,.5));
+    }
+    .review-video-icon-play{
+      margin-left:4px;
+    }
+    .review-video-icon-pause{
+      display:none;
+      font-size:42px;
+    }
+    .video-wrapper.playing .review-video-icon-play{
+      display:none;
+    }
+    .video-wrapper.playing .review-video-icon-pause{
+      display:block;
+    }
+    .video-wrapper.playing .review-video-play-btn{
+      opacity:0;
+    }
+    .video-wrapper.playing:hover .review-video-play-btn{
+      opacity:1;
+    }
+    .review-video-progress{
+      position:absolute;
+      bottom:0;
+      left:0;
+      right:0;
+      height:3px;
+      z-index:3;
+      cursor:pointer;
+    }
+    .review-video-progress-bg{
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.3);
+    }
+    .review-video-progress-bar{
+      position:absolute;
+      left:0;
+      top:0;
+      bottom:0;
+      width:0%;
+      background:var(--accent);
+      transition:width 100ms linear;
+    }
+    .video-info{
+      margin-top:16px;
+    }
+    .video-info h3{
+      font-size:18px;
+      margin:0 0 6px;
+      color:var(--text);
+    }
+    .video-info p{
+      font-size:14px;
+      color:var(--muted);
+      margin:0;
+      line-height:1.5;
+    }
+
+    /* =========================
+       COACHES PREVIEW
+    ========================== */
+    .coaches-section{
+      padding:48px 0;
+      background:var(--bg-warm);
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .coaches-header{
+      text-align:center;
+      margin-bottom:32px;
+    }
+    .coaches-header h2{
+      font-size:22px;
+      margin:0 0 6px;
+      color:var(--text);
+    }
+    .coaches-header p{
+      color:var(--muted);
+      font-size:15px;
+      margin:0;
+    }
+    .coaches-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+      max-width:800px;
+      margin:0 auto;
+    }
+    .coach-card{
+      text-align:center;
+    }
+    .coach-image{
+      width:110px;
+      height:110px;
+      margin:0 auto 12px;
+      border-radius:50%;
+      overflow:hidden;
+      border:2px solid var(--line);
+      background:rgba(255,255,255,.03);
+    }
+    .coach-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .coach-info h3{
+      font-size:16px;
+      margin:0 0 6px;
+      color:var(--text);
+    }
+    .coach-info p{
+      font-size:13px;
+      color:var(--muted);
+      margin:0;
+      line-height:1.4;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media(max-width:900px){
+      .grid{
+        grid-template-columns:1fr;
+      }
+      .review-videos-grid{
+        grid-template-columns:1fr;
+      }
+      .review-video-play-btn{
+        font-size:40px;
+      }
+      .review-video-icon-pause{
+        font-size:36px;
+      }
+      .reviews-carousel-wrapper{
+        padding:0 20px;
+      }
+      .reviews-nav{
+        width:36px;
+        height:36px;
+        font-size:20px;
+      }
+      .review-card{
+        flex:0 0 85% !important;
+      }
+      .review-card.active{
+        flex:0 0 85% !important;
+      }
+      .review-card__content{
+        padding:24px;
+      }
+      .review-card__image{
+        flex:0 0 54%;
+        width:54%;
+      }
+      .review-card{
+        flex-direction:row;
+        align-items:flex-start;
+      }
+      .coaches-grid{
+        grid-template-columns:1fr;
+        gap:32px;
+      }
+      .coach-image{
+        width:120px;
+        height:120px;
+      }
+      .hero-buttons{
+        flex-direction:column;
+      }
+      .hero-btn{
+        width:100%;
+        text-align:center;
+      }
+      .topbar__nav{
+        gap:20px;
+      }
+      .topbar__nav a{
+        font-size:14px;
+      }
+      .topbar__lang{
+        margin-right:12px;
+        gap:6px;
+      }
+      .topbar__lang a,
+      .topbar__lang span{
+        font-size:12px;
+      }
+      .topbar__cta button{
+        padding:8px 16px;
+        font-size:13px;
+      }
+      .grid{grid-template-columns:1fr}
+      .split-grid{grid-template-columns:1fr}
+      .vision-grid{grid-template-columns:1fr; gap:40px}
+      .vision-left{width:420px;height:420px}
+      .vnode.center{width:124px;height:124px}
+      /* Aanpassen node posities voor kleinere cirkel op mobiel - voldoende ruimte om overlap te voorkomen */
+      .vnode.fysio{
+        left:calc(50% + 0px);
+        top:calc(50% - 105px);
+      }
+      .vnode.sporten{
+        left:calc(50% + 91px);
+        top:calc(50% - 52.5px);
+      }
+      .vnode.voeding{
+        left:calc(50% + 91px);
+        top:calc(50% + 52.5px);
+      }
+      .vnode.podo{
+        left:calc(50% + 0px);
+        top:calc(50% + 105px);
+      }
+      .vnode.slaap{
+        left:calc(50% - 91px);
+        top:calc(50% + 52.5px);
+      }
+      .vnode.hormonen{
+        left:calc(50% - 91px);
+        top:calc(50% - 52.5px);
+      }
+      .form-section{padding:64px 0}
+      .form{padding:24px}
+    }
+    @media(max-width:560px){
+      .topbar .container{
+        gap:16px;
+      }
+      .topbar__nav{
+        gap:12px;
+      }
+      .topbar__nav a{
+        font-size:13px;
+      }
+      .topbar__lang{
+        margin-right:8px;
+        gap:4px;
+      }
+      .topbar__lang a,
+      .topbar__lang span{
+        font-size:11px;
+      }
+      .topbar__cta button{
+        padding:8px 12px;
+        font-size:12px;
+      }
+      .grid{grid-template-columns:1fr}
+      .aanbod-section{padding:64px 0}
+      .aanbod-card{
+        flex:0 0 85%;
+        min-width:280px;
+      }
+      .aanbod-carousel-slides{
+        transition:transform 1400ms ease-in-out;
+      }
+      .form-header h2{font-size:28px}
+      .form-header p{font-size:16px}
+      .review-card{flex-direction:column; min-height:auto}
+      .slide-text{padding:36px 24px}
+      .slide-text h3{font-size:20px}
+      .slide-text p{font-size:16px}
+    }
+    /* Herkomst veld in formulier */
+.source-options{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.source-option{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.15);
+  padding:10px 14px;
+  border-radius:12px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.source-option input{
+  accent-color:#C3A300;
+  cursor:pointer;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <div style="color: red; padding: 10px; text-align: center;">hoi</div>
+
+  <!-- SPLASH SCREEN -->
+  <div class="splash-screen" id="splashScreen">
+    <img src="assets/logo/HH logo.png" alt="Healthy Habits">
+  </div>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar__logo">
+        <a href="nieuw-2025.html"><img src="assets/logo/HH logo.png" alt="Healthy Habits"></a>
+      </div>
+      <nav class="topbar__nav">
+        <a href="aanbod.html">Ons aanbod</a>
+        <a href="succesverhalen.html">Succesverhalen</a>
+        <a href="tarieven.html">Prijzen</a>
+        <a href="lidmaatschapstest.html">Online-lidmaatschapstest</a>
+      </nav>
+      <div class="topbar__lang">
+        <a href="nieuw-2025.html" class="active">Nederlands</a>
+        <span>/</span>
+        <a href="en/index.html">English</a>
+      </div>
+      <div class="topbar__cta">
+        <a href="4-weken-proberen.html"><button>4 weken proberen</button></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <img src="assets/images/home/intake.jpg" alt="Healthy Habits sfeer">
+    <div class="hero__overlay"></div>
+    <div class="container hero-content">
+      <h1>Warm. Persoonlijk. Resultaatgericht.</h1>
+      <p class="subtitle">Gefeliciteerd! Je hebt het gevonden, een stukje geluk in Eindhoven.</p>
+      <div class="hero-buttons">
+        <a href="4-weken-proberen.html" class="hero-btn hero-btn-primary">4 weken proberen</a>
+        <a href="lidmaatschapstest.html" class="hero-btn hero-btn-secondary">Online lidmaatschapstest</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ZWARTE CONTAINER ONDER HERO -->
+  <section class="split-block">
+    <div class="container split-grid">
+      <div class="split-text">
+        <h2>
+          <span class="h2-wrapper">
+            Niet zomaar een sportschool
+            <div class="title-underline-wrapper">
+              <div class="title-underline-svg">
+                <svg viewBox="0 0 500 8" preserveAspectRatio="none" aria-hidden="true">
+                  <path class="title-underline-path" d="M 0 4 Q 80 3.5, 160 4.5 T 320 4 Q 400 3.8, 480 4.5" vector-effect="non-scaling-stroke"/>
+                </svg>
+              </div>
+            </div>
+          </span>
+        </h2>
+        <p>Wij hebben een gezellige, warme huiskamer<br>
+waar je echt en oprecht geholpen wordt.<br><br>
+Een plek waar gezondheid samenkomt<br>
+met een fijne sfeer, ritme en gezonde gewoontes.<br><br>
+Dé manier om sporten vol te houden —<br>
+en wie weet wordt sporten, net als bij velen,<br>
+zelfs leuk.</p>
+      </div>
+
+      <div class="split-video">
+        <video id="splitVideo" muted loop playsinline>
+          <source src="assets/volledig goede kopie.MOV" type="video/quicktime">
+          Je browser ondersteunt geen video.
+        </video>
+        <button class="video-play-btn" id="videoPlayBtn" aria-label="Play video">
+          <span class="video-icon video-icon-play">▶</span>
+          <span class="video-icon video-icon-pause">⏸</span>
+        </button>
+        <div class="video-controls-row">
+          <div class="video-controls-left">
+            <button class="video-rewind-btn" id="videoRewindBtn" aria-label="Rewind 10 seconds">⏪</button>
+            <button class="video-forward-btn" id="videoForwardBtn" aria-label="Forward 10 seconds">⏩</button>
+            <button class="video-mute-btn" id="videoMuteBtn" aria-label="Toggle sound">
+              <span class="video-mute-icon video-mute-icon-mute">🔊</span>
+              <span class="video-mute-icon video-mute-icon-unmute">🔇</span>
+            </button>
+          </div>
+        </div>
+        <div class="split-video-progress">
+          <div class="split-video-progress-bg"></div>
+          <div class="split-video-progress-bar"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ONS AANBOD -->
+  <section class="aanbod-section">
+      <div class="container">
+      <div class="aanbod-carousel-wrapper">
+        <div class="aanbod-carousel-track">
+          <div class="aanbod-carousel-slides" id="aanbodSlides">
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="assets/images/aanbod/1.jpeg" alt="" loading="lazy">
+          </div>
+          </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="assets/images/aanbod/2.jpg" alt="" loading="lazy">
+          </div>
+          </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="assets/images/aanbod/3.jpeg" alt="" loading="lazy">
+        </div>
+            </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="assets/images/aanbod/4.jpg" alt="" loading="lazy">
+              </div>
+            </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="assets/images/aanbod/5.jpeg" alt="" loading="lazy">
+              </div>
+            </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="assets/images/aanbod/6.jpeg" alt="" loading="lazy">
+              </div>
+            </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="assets/images/aanbod/IMG_0374.jpeg" alt="" loading="lazy">
+              </div>
+            </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="assets/images/aanbod/IMG_5630 kopie.jpeg" alt="" loading="lazy">
+              </div>
+            </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="assets/images/aanbod/WhatsApp Image 2023-06-19 at 15.07.13 kopie.jpeg" alt="" loading="lazy">
+              </div>
+            </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="assets/images/aanbod/fitness.jpg" alt="" loading="lazy">
+              </div>
+            </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="assets/images/aanbod/groepsles.jpg" alt="" loading="lazy">
+              </div>
+            </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="assets/images/aanbod/milon.jpg" alt="" loading="lazy">
+              </div>
+            </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="assets/images/aanbod/orgineel kopie.jpg" alt="" loading="lazy">
+              </div>
+            </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="assets/images/aanbod/sauna.jpg" alt="" loading="lazy">
+              </div>
+            </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="assets/images/aanbod/yoga.jpeg" alt="" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="aanbod-carousel-nav">
+          <button class="aanbod-carousel-btn" id="aanbodPrev" aria-label="Vorige">‹</button>
+          <button class="aanbod-carousel-btn" id="aanbodNext" aria-label="Volgende">›</button>
+        </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- VISIE / JIJ-CIRKEL -->
+    <section class="vision-block">
+      <div class="container">
+        <h2 class="vision-title">Waar kunnen we jou mee helpen?</h2>
+        <p class="vision-subtitle">Healthy Habits heeft alles onder een dak</p>
+        <div class="vision-grid">
+
+        <div class="vision-left">
+          <!-- nodes -->
+          <div class="vnode center">JIJ</div>
+
+          <div class="vnode fysio hoverable" data-pos="top" data-title="Afvallen"
+               data-text="Op een gezonde manier afvallen zodat je het volhoudt — met persoonlijke begeleiding en gekoppeld aan jouw training.">
+            Afvallen
+          </div>
+
+          <div class="vnode sporten hoverable" data-pos="top-right" data-title="Sporten"
+               data-text="Slim en veilig sporten met persoonlijke begeleiding, afgestemd op jouw lichaam.">
+            Sporten
+          </div>
+
+          <div class="vnode voeding hoverable" data-pos="bottom-right" data-title="Voeding"
+               data-text="Voeding die past bij jouw leven, doelen en energie — praktisch en vol te houden.">
+            Voeding
+          </div>
+
+          <div class="vnode podo hoverable" data-pos="bottom" data-title="Rugklachten"
+               data-text="Podotherapie voor optimale voet- en looptechniek.">
+            Rugklachten
+          </div>
+
+          <div class="vnode slaap hoverable" data-pos="bottom-left" data-title="Slaap"
+               data-text="Slaapoptimalisatie voor beter herstel en meer energie.">
+            Slaap
+          </div>
+
+          <div class="vnode hormonen hoverable" data-pos="top-left" data-title="Hormonen"
+               data-text="Hormoonbalans voor optimale gezondheid en prestaties.">
+            Hormonen
+          </div>
+        </div>
+
+        <div class="vision-right" id="visionText">
+          <h3>Alles draait om jou</h3>
+          <p>
+            Hover over de zes cirkels links en ontdek hoe wij sporten, afvallen, voeding, rugklachten, slaap en hormonen
+            samenbrengen rondom één persoon: jij.
+          </p>
+        </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+    <section class="section">
+      <div class="container">
+        <h2>Onze aanpak</h2>
+        <p class="section-subtitle">Drie stappen naar een gezond ritme, met persoonlijke begeleiding wanneer jij die nodig hebt.</p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card__header" data-step="1">Stap 1</div>
+            <div class="card__media">
+          </div>
+            <div class="card__body">
+              <h3>Stap 1 – Vrijblijvende intake</h3>
+              <p>Een rustig intakegesprek met een coach die bij jou past. We luisteren, denken mee en maken samen een plan dat aansluit op jouw leven.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card__header" data-step="2">Stap 2</div>
+            <div class="card__media">
+            </div>
+            <div class="card__body">
+              <h3>Stap 2 – Begeleiding & evaluatie</h3>
+              <p>Je sport met begeleiding en evalueert wekelijks je voortgang met jouw coach. Zo blijf je gemotiveerd en sturen we bij waar nodig.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card__header" data-step="3">Stap 3</div>
+            <div class="card__media">
+            </div>
+            <div class="card__body">
+              <h3>Stap 3 – Healthy Habit</h3>
+              <p>Sporten wordt onderdeel van je leven. Je hebt een gezond ritme, meer energie en vertrouwen in je lijf.</p>
+            </div>
+          </div>
+        </div>
+        <div class="section-arrow-line">
+          <svg viewBox="0 0 1000 20" preserveAspectRatio="none" aria-hidden="true">
+            <path class="section-arrow-path" d="M 20 10 Q 150 8, 280 12 T 520 10 Q 650 8, 780 12 T 970 10 L 950 4 L 950 16 L 970 10" vector-effect="non-scaling-stroke"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS CAROUSEL -->
+    <section class="reviews-section">
+      <div class="container">
+        <div class="reviews-header">
+          <h2>Zo ervaren onze leden Healthy Habits</h2>
+          <p>Echte verhalen van mensen die hun doelen bereiken</p>
+        </div>
+        <div class="reviews-carousel-wrapper">
+          <button class="reviews-nav prev" id="prevReview" aria-label="Vorige review">‹</button>
+          <div class="reviews-carousel-track">
+            <div class="reviews-carousel-slides" id="reviewsSlides">
+              <div class="review-card active">
+                <div class="review-card__image">
+                  <img src="assets/images/resultaten/slide 1.jpeg" alt="Review" loading="lazy">
+                </div>
+                <div class="review-card__content">
+                  <h3 class="review-card__name">Pieter</h3>
+                  <p class="review-card__age">43 jaar</p>
+                  <p class="review-card__quote">Samen met coach Roos heb ik samengezeten en een plan gemaakt, en met succes! In de eerste 2 maanden ben ik 5 kilo afgevallen, dit in samenhang met een enorm prettige sfeer. De begeleiding is echt persoonlijk en past perfect bij mijn leven.</p>
+                </div>
+              </div>
+
+              <div class="review-card">
+                <div class="review-card__image">
+                  <img src="assets/images/resultaten/slide 2.jpeg" alt="Review" loading="lazy">
+                </div>
+                <div class="review-card__content">
+                  <h3 class="review-card__name">Marieke</h3>
+                  <p class="review-card__age">48 jaar</p>
+                  <p class="review-card__quote">Eindelijk een plek waar ik me thuis voel en echte resultaten zie. De warme sfeer en persoonlijke begeleiding maken dat ik me hier helemaal op mijn gemak voel. Het voelt niet als een sportschool, maar als een thuis waar ik graag kom.</p>
+                </div>
+              </div>
+
+              <div class="review-card">
+                <div class="review-card__image">
+                  <img src="assets/images/resultaten/IMG_5025.jpeg" alt="Review" loading="lazy">
+                </div>
+                <div class="review-card__content">
+                  <h3 class="review-card__name">Erik</h3>
+                  <p class="review-card__age">55 jaar</p>
+                  <p class="review-card__quote">Het plan past perfect bij mijn leven. Geen stress, wel resultaat. Ik heb eindelijk structuur en ritme gevonden in mijn trainingen. De begeleiding is praktisch en vol te houden, precies wat ik nodig had.</p>
+                </div>
+              </div>
+
+              <div class="review-card">
+                <div class="review-card__image">
+                  <img src="assets/images/resultaten/IMG_5611 2.jpeg" alt="Review" loading="lazy">
+                </div>
+                <div class="review-card__content">
+                  <h3 class="review-card__name">Linda</h3>
+                  <p class="review-card__age">50 jaar</p>
+                  <p class="review-card__quote">Ik voel me sterker en zelfverzekerder. Mijn lichaam voelt weer goed. Gezond ouder worden was mijn doel, en dankzij de persoonlijke begeleiding en training merk ik echt verschil in kracht en energie.</p>
+                </div>
+              </div>
+
+              <div class="review-card">
+                <div class="review-card__image">
+                  <img src="assets/images/resultaten/IMG_6968.jpeg" alt="Review" loading="lazy">
+                </div>
+                <div class="review-card__content">
+                  <h3 class="review-card__name">Rob</h3>
+                  <p class="review-card__age">53 jaar</p>
+                  <p class="review-card__quote">Eindelijk een plek waar ik op mijn eigen tempo kan werken aan mijn gezondheid. Er is geen druk, geen verwachtingen, alleen begeleiding die aansluit bij wat ik nodig heb. Perfect!</p>
+                </div>
+              </div>
+
+              <div class="review-card">
+                <div class="review-card__image">
+                  <img src="assets/images/resultaten/IMG_6976.jpeg" alt="Review" loading="lazy">
+                </div>
+                <div class="review-card__content">
+                  <h3 class="review-card__name">Sandra</h3>
+                  <p class="review-card__age">49 jaar</p>
+                  <p class="review-card__quote">De complete aanpak van training, voeding en begeleiding werkt perfect. Alles valt op zijn plek en ik zie echte vooruitgang. De combinatie maakt dat ik nu eindelijk resultaten behaal die blijven.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="reviews-nav next" id="nextReview" aria-label="Volgende review">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEW VIDEO'S -->
+    <section class="review-videos-section">
+      <div class="container">
+        <div class="review-videos-header">
+          <h2>Luister naar onze leden</h2>
+          <p>Persoonlijke verhalen over hun reis bij Healthy Habits</p>
+        </div>
+        <div class="review-videos-grid">
+          <div class="review-video-item">
+            <div class="video-wrapper">
+              <video class="review-video" muted loop playsinline preload="metadata">
+                <source src="assets/filmpjes revieuw/Monique.mov" type="video/quicktime">
+                Je browser ondersteunt geen video.
+              </video>
+              <button class="review-video-play-btn" aria-label="Play video">
+                <span class="review-video-icon review-video-icon-play">▶</span>
+                <span class="review-video-icon review-video-icon-pause">⏸</span>
+              </button>
+              <div class="review-video-progress">
+                <div class="review-video-progress-bg"></div>
+                <div class="review-video-progress-bar"></div>
+              </div>
+            </div>
+            <div class="video-info">
+              <h3>Monique</h3>
+              <p>Persoonlijk verhaal over de reis bij Healthy Habits</p>
+            </div>
+          </div>
+          <div class="review-video-item">
+            <div class="video-wrapper">
+              <video class="review-video" muted loop playsinline preload="metadata">
+                <source src="assets/filmpjes revieuw/ton.mov" type="video/quicktime">
+                Je browser ondersteunt geen video.
+              </video>
+              <button class="review-video-play-btn" aria-label="Play video">
+                <span class="review-video-icon review-video-icon-play">▶</span>
+                <span class="review-video-icon review-video-icon-pause">⏸</span>
+              </button>
+              <div class="review-video-progress">
+                <div class="review-video-progress-bg"></div>
+                <div class="review-video-progress-bar"></div>
+              </div>
+            </div>
+            <div class="video-info">
+              <h3>Ton</h3>
+              <p>Persoonlijk verhaal over de reis bij Healthy Habits</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COACH PREVIEW -->
+    <!-- INSCHRIJF FORMULIER -->
+    <section class="form-section" id="form">
+      <div class="container">
+        <div class="form-container">
+          <div class="form-header">
+            <h2>
+              <span class="h2-wrapper">
+                Laten we kennis maken
+                <div class="title-underline-wrapper">
+                  <div class="title-underline-svg">
+                    <svg viewBox="0 0 500 8" preserveAspectRatio="none" aria-hidden="true">
+                      <path class="title-underline-path" d="M 0 4 Q 80 3.5, 160 4.5 T 320 4 Q 400 3.8, 480 4.5" vector-effect="non-scaling-stroke"/>
+                    </svg>
+                  </div>
+                </div>
+              </span>
+            </h2>
+          </div>
+          <form class="form" action="#" method="POST">
+            <div class="form-group">
+  <label style="font-weight:normal;">
+    <div style="color:var(--muted);margin-bottom:8px;font-weight:normal;">Bij Healthy Habits gaat het net even anders.</div>
+    <div style="font-weight:normal;">We doen niet aan grote campagnes op Facebook of Google. De meeste leden komen bij ons via anderen. Daarom zijn we benieuwd hoe jij ons gevonden hebt.</div>
+  </label>
+
+  <select name="bron" id="bron" required style="margin-top:12px;">
+    <option value="vriend" selected>Via een vriend/vriendin</option>
+    <option value="eerder-lid">Eerder lid geweest</option>
+    <option value="online">Online gevonden</option>
+    <option value="anders">Anders</option>
+  </select>
+</div>
+
+            <div class="form-group">
+              <label for="naam">Naam *</label>
+              <input type="text" id="naam" name="naam" placeholder="Je volledige naam" required>
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail *</label>
+              <input type="email" id="email" name="email" placeholder="je@voorbeeld.nl" required>
+            </div>
+            <div class="form-group">
+              <label for="doel">Wat is je doel?</label>
+              <select id="doel" name="doel">
+                <option value="">Kies een optie</option>
+                <option value="fitter">Fitter worden</option>
+                <option value="sterker">Sterker worden</option>
+                <option value="afvallen">Afvallen</option>
+                <option value="spieropbouw">Spieropbouw</option>
+                <option value="conditie">Conditie verbeteren</option>
+                <option value="anders">Anders</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="telefoon">Telefoonnummer *</label>
+              <input type="tel" id="telefoon" name="telefoon" placeholder="06 12345678" required>
+            </div>
+            <div class="form-group">
+              <label for="bericht">Vertel ons iets over jezelf (optioneel)</label>
+              <textarea id="bericht" name="bericht" placeholder="Wat wil je bereiken? Heb je ervaring met sporten? Etc."></textarea>
+            </div>
+            <button type="submit" class="form-submit">Laten we kennismaken</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const items = document.querySelectorAll('.vnode.hoverable');
+    const box = document.getElementById('visionText');
+
+    items.forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        const title = item.dataset.title || item.textContent.trim();
+        const text  = item.dataset.text || '';
+        box.innerHTML = `<h3>${title}</h3><p>${text}</p>`;
+      });
+    });
+
+
+    // Reviews Carousel - 3 kaarten tegelijk, middelste prominent, vloeiende oneindige loop
+    (function(){
+      const slidesContainer = document.getElementById('reviewsSlides');
+      const prevBtn = document.getElementById('prevReview');
+      const nextBtn = document.getElementById('nextReview');
+      
+      if(!slidesContainer) return;
+      
+      // Selecteer originele kaarten voordat we klonen
+      const originalCards = Array.from(slidesContainer.children);
+      
+      if(originalCards.length === 0) return;
+
+      // Clone laatste 3 kaarten aan begin en eerste 3 aan einde voor vloeiende loop
+      const cardsToCloneAtStart = originalCards.slice(-3);
+      const cardsToCloneAtEnd = originalCards.slice(0, 3);
+      
+      cardsToCloneAtStart.forEach(card => {
+        const clone = card.cloneNode(true);
+        clone.classList.remove('active');
+        slidesContainer.insertBefore(clone, originalCards[0]);
+      });
+      
+      cardsToCloneAtEnd.forEach(card => {
+        const clone = card.cloneNode(true);
+        clone.classList.remove('active');
+        slidesContainer.appendChild(clone);
+      });
+
+      const allCards = Array.from(slidesContainer.children);
+      const offset = cardsToCloneAtStart.length; // Offset voor originele kaarten
+      let currentIndex = offset + 1; // Start met tweede originele kaart
+      let isTransitioning = false;
+
+      function updateCarousel(disableTransition = false){
+        if(disableTransition){
+          slidesContainer.style.transition = 'none';
+        } else {
+          slidesContainer.style.transition = 'transform 0.6s ease';
+        }
+
+        // Update active class
+        allCards.forEach((card, index) => {
+          card.classList.toggle('active', index === currentIndex);
+        });
+
+        // Calculate transform to center de middelste van 3 zichtbare kaarten
+        const activeCard = allCards[currentIndex];
+        if(!activeCard) return;
+        
+        const cardWidth = activeCard.offsetWidth;
+        const gap = 24;
+        const containerWidth = slidesContainer.parentElement.offsetWidth;
+        // Centreer de middelste kaart van de 3 zichtbare
+        const translateOffset = currentIndex * (cardWidth + gap);
+        const centerOffset = (containerWidth / 2) - (cardWidth / 2);
+        
+        slidesContainer.style.transform = `translateX(calc(-${translateOffset}px + ${centerOffset}px))`;
+      }
+
+      function resetToOriginalCards(newIndex, withoutAnimation){
+        if(withoutAnimation){
+          slidesContainer.style.transition = 'none';
+        }
+        
+        currentIndex = offset + newIndex;
+        updateCarousel(withoutAnimation);
+        
+        if(withoutAnimation){
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              slidesContainer.style.transition = 'transform 0.6s ease';
+            });
+          });
+        }
+      }
+
+      function nextSlide(){
+        if(isTransitioning) return;
+        isTransitioning = true;
+        
+        currentIndex++;
+        updateCarousel();
+        
+        // Reset naar originele kaarten wanneer aan einde
+        setTimeout(() => {
+          if(currentIndex >= offset + originalCards.length){
+            resetToOriginalCards((currentIndex - offset) % originalCards.length, true);
+          }
+          isTransitioning = false;
+        }, 650);
+      }
+
+      function prevSlide(){
+        if(isTransitioning) return;
+        isTransitioning = true;
+        
+        currentIndex--;
+        updateCarousel();
+        
+        // Reset naar originele kaarten wanneer aan begin
+        setTimeout(() => {
+          if(currentIndex < offset){
+            const originalIndex = (currentIndex - offset + originalCards.length) % originalCards.length;
+            resetToOriginalCards(originalIndex, true);
+          }
+          isTransitioning = false;
+        }, 650);
+      }
+
+      if(prevBtn) prevBtn.addEventListener('click', prevSlide);
+      if(nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+      // Initialize
+      setTimeout(() => {
+        updateCarousel(true);
+        currentIndex = offset + 1;
+        setTimeout(() => {
+          updateCarousel();
+        }, 50);
+      }, 100);
+
+      // Update on resize
+      let resizeTimer;
+      window.addEventListener('resize', function(){
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          updateCarousel(true);
+          setTimeout(() => {
+            isTransitioning = false;
+          }, 100);
+        }, 250);
+      });
+    })();
+
+    // Review video's - custom controls met play/pause en voortgangsbalk
+    (function(){
+      const videoWrappers = document.querySelectorAll('.review-video-item .video-wrapper');
+      
+      videoWrappers.forEach(function(wrapper){
+        const video = wrapper.querySelector('.review-video');
+        const playBtn = wrapper.querySelector('.review-video-play-btn');
+        const progressBar = wrapper.querySelector('.review-video-progress-bar');
+        const progressContainer = wrapper.querySelector('.review-video-progress');
+        
+        if(!video || !playBtn || !progressBar) return;
+
+        // Toggle play/pause
+        function togglePlay(){
+          if(video.paused){
+            video.play();
+            wrapper.classList.add('playing');
+          } else {
+            video.pause();
+            wrapper.classList.remove('playing');
+          }
+        }
+
+        // Update voortgangsbalk
+        function updateProgress(){
+          if(video.duration){
+            const percent = (video.currentTime / video.duration) * 100;
+            progressBar.style.width = percent + '%';
+          }
+        }
+
+        // Click op progress bar om te seeken
+        function seekTo(e){
+          if(!video.duration) return;
+          const rect = progressContainer.getBoundingClientRect();
+          const percent = (e.clientX - rect.left) / rect.width;
+          video.currentTime = percent * video.duration;
+        }
+
+        // Event listeners
+        playBtn.addEventListener('click', function(e){
+          e.stopPropagation();
+          togglePlay();
+        });
+
+        wrapper.addEventListener('click', function(e){
+          if(e.target === video || e.target === playBtn || playBtn.contains(e.target) || 
+             e.target === progressContainer || progressContainer.contains(e.target)){
+            return;
+          }
+          togglePlay();
+        });
+
+        progressContainer.addEventListener('click', seekTo);
+
+        video.addEventListener('timeupdate', updateProgress);
+        video.addEventListener('loadedmetadata', updateProgress);
+        video.addEventListener('play', function(){
+          wrapper.classList.add('playing');
+        });
+        video.addEventListener('pause', function(){
+          wrapper.classList.remove('playing');
+        });
+
+        // Keyboard support
+        wrapper.setAttribute('tabindex', '0');
+        wrapper.addEventListener('keydown', function(e){
+          if(e.code === 'Space' || e.code === 'Enter'){
+            e.preventDefault();
+            togglePlay();
+          }
+        });
+      });
+    })();
+
+    // Aanbod carousel - automatisch scrollen met infinite loop + navigatieknoppen
+    (function(){
+      const slidesContainer = document.getElementById('aanbodSlides');
+      const prevBtn = document.getElementById('aanbodPrev');
+      const nextBtn = document.getElementById('aanbodNext');
+      
+      if(!slidesContainer) return;
+      
+      // Selecteer originele cards VOOR cloning
+      const originalCards = Array.from(document.querySelectorAll('.aanbod-card'));
+      
+      if(originalCards.length === 0) return;
+
+      // Clone alle cards aan einde voor seamless infinite loop
+      originalCards.forEach(card => {
+        const clone = card.cloneNode(true);
+        slidesContainer.appendChild(clone);
+      });
+
+      let currentIndex = 0;
+      let autoScrollInterval = null;
+      const TRANSITION_DURATION = 1400; // ms
+      const AUTO_SCROLL_INTERVAL = 13000; // ms (13 seconden)
+
+      function updateCarousel(disableTransition = false){
+        if(disableTransition){
+          slidesContainer.style.transition = 'none';
+        } else {
+          slidesContainer.style.transition = `transform ${TRANSITION_DURATION}ms ease-in-out`;
+        }
+
+        const cardWidth = originalCards[0]?.offsetWidth || 320;
+        const gap = 20;
+        const offset = currentIndex * (cardWidth + gap);
+        
+        slidesContainer.style.transform = `translateX(-${offset}px)`;
+      }
+
+      function goToNext(){
+        currentIndex++;
+        updateCarousel();
+        
+        // Reset naar begin wanneer aan einde van originele cards (na transition)
+        if(currentIndex >= originalCards.length){
+          setTimeout(() => {
+            slidesContainer.style.transition = 'none';
+            currentIndex = 0;
+            updateCarousel(true);
+            // Herstel transition na reset
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                slidesContainer.style.transition = `transform ${TRANSITION_DURATION}ms ease-in-out`;
+              });
+            });
+          }, TRANSITION_DURATION);
+        }
+      }
+
+      function goToPrev(){
+        if(currentIndex <= 0){
+          // Spring naar einde (cloned cards) zonder transition
+          currentIndex = originalCards.length;
+          slidesContainer.style.transition = 'none';
+          updateCarousel(true);
+          // Wacht op repaint, ga dan naar vorige
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              currentIndex--;
+              slidesContainer.style.transition = `transform ${TRANSITION_DURATION}ms ease-in-out`;
+              updateCarousel();
+            });
+          });
+        } else {
+          currentIndex--;
+          updateCarousel();
+        }
+      }
+
+      function autoScroll(){
+        goToNext();
+      }
+
+      // Start automatisch scrollen (zorg dat er maar één timer actief is)
+      function startAutoScroll(){
+        stopAutoScroll(); // Zorg dat er geen dubbele timers zijn
+        autoScrollInterval = setInterval(autoScroll, AUTO_SCROLL_INTERVAL);
+      }
+
+      // Stop automatisch scrollen
+      function stopAutoScroll(){
+        if(autoScrollInterval){
+          clearInterval(autoScrollInterval);
+          autoScrollInterval = null;
+        }
+      }
+
+      // Navigatieknoppen handlers
+      if(nextBtn){
+        nextBtn.addEventListener('click', function(){
+          goToNext();
+          // Reset autoplay timer na klik (zorg dat er maar één timer is)
+          startAutoScroll();
+        });
+      }
+
+      if(prevBtn){
+        prevBtn.addEventListener('click', function(){
+          goToPrev();
+          // Reset autoplay timer na klik (zorg dat er maar één timer is)
+          startAutoScroll();
+        });
+      }
+
+      // Initialize
+      setTimeout(() => {
+        updateCarousel(true);
+        setTimeout(() => {
+          slidesContainer.style.transition = `transform ${TRANSITION_DURATION}ms ease-in-out`;
+          startAutoScroll();
+        }, 100);
+      }, 100);
+
+      // Update on resize
+      let resizeTimer;
+      window.addEventListener('resize', function(){
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          stopAutoScroll();
+          updateCarousel(true);
+          setTimeout(() => {
+            slidesContainer.style.transition = `transform ${TRANSITION_DURATION}ms ease-in-out`;
+            startAutoScroll();
+          }, 50);
+        }, 250);
+      });
+
+      // Stop autoplay bij tab switch (visibility API)
+      document.addEventListener('visibilitychange', function(){
+        if(document.hidden){
+          stopAutoScroll();
+        } else {
+          startAutoScroll();
+        }
+      });
+    })();
+
+    // Split video play/pause functionaliteit
+    (function(){
+      const video = document.getElementById('splitVideo');
+      const playBtn = document.getElementById('videoPlayBtn');
+      const muteBtn = document.getElementById('videoMuteBtn');
+      const rewindBtn = document.getElementById('videoRewindBtn');
+      const forwardBtn = document.getElementById('videoForwardBtn');
+      const videoWrapper = document.querySelector('.split-video');
+      const progressBar = document.querySelector('.split-video-progress-bar');
+      const progressContainer = document.querySelector('.split-video-progress');
+      
+      if(!video || !playBtn || !videoWrapper) return;
+
+      // Toggle play/pause
+      function togglePlay(){
+        if(video.paused){
+          video.play();
+          videoWrapper.classList.add('playing');
+        } else {
+          video.pause();
+          videoWrapper.classList.remove('playing');
+        }
+      }
+
+      // Toggle mute/unmute
+      function toggleMute(){
+        if(video.muted){
+          video.muted = false;
+          videoWrapper.classList.remove('muted');
+        } else {
+          video.muted = true;
+          videoWrapper.classList.add('muted');
+        }
+      }
+
+      // Rewind 10 seconds
+      function rewind(){
+        video.currentTime = Math.max(0, video.currentTime - 10);
+      }
+
+      // Forward 10 seconds
+      function forward(){
+        if(video.duration){
+          video.currentTime = Math.min(video.duration, video.currentTime + 10);
+        }
+      }
+
+      // Update progress bar
+      function updateProgress(){
+        if(progressBar && video.duration){
+          const percent = (video.currentTime / video.duration) * 100;
+          progressBar.style.width = percent + '%';
+        }
+      }
+
+      // Click op progress bar om te springen
+      if(progressContainer){
+        progressContainer.addEventListener('click', function(e){
+          if(!video.duration) return;
+          const rect = progressContainer.getBoundingClientRect();
+          const percent = (e.clientX - rect.left) / rect.width;
+          video.currentTime = percent * video.duration;
+        });
+      }
+
+      // Click op button of video wrapper
+      playBtn.addEventListener('click', function(e){
+        e.stopPropagation();
+        togglePlay();
+      });
+
+      if(muteBtn){
+        muteBtn.addEventListener('click', function(e){
+          e.stopPropagation();
+          toggleMute();
+        });
+      }
+
+      if(rewindBtn){
+        rewindBtn.addEventListener('click', function(e){
+          e.stopPropagation();
+          rewind();
+        });
+      }
+
+      if(forwardBtn){
+        forwardBtn.addEventListener('click', function(e){
+          e.stopPropagation();
+          forward();
+        });
+      }
+
+      videoWrapper.addEventListener('click', function(e){
+        if(e.target === video || e.target === playBtn || playBtn.contains(e.target) || 
+           (muteBtn && (e.target === muteBtn || muteBtn.contains(e.target))) ||
+           (rewindBtn && (e.target === rewindBtn || rewindBtn.contains(e.target))) ||
+           (forwardBtn && (e.target === forwardBtn || forwardBtn.contains(e.target))) ||
+           (progressContainer && progressContainer.contains(e.target))){
+          return;
+        }
+        togglePlay();
+      });
+
+      // Update progress tijdens afspelen
+      video.addEventListener('timeupdate', updateProgress);
+      video.addEventListener('loadedmetadata', updateProgress);
+
+      // Update state wanneer video automatisch eindigt (voor loop)
+      video.addEventListener('play', function(){
+        videoWrapper.classList.add('playing');
+      });
+
+      video.addEventListener('pause', function(){
+        videoWrapper.classList.remove('playing');
+      });
+
+      // Keyboard support (Space bar op video wrapper)
+      videoWrapper.addEventListener('keydown', function(e){
+        if(e.code === 'Space' || e.code === 'Enter'){
+          e.preventDefault();
+          togglePlay();
+        }
+      });
+
+      // Focusable maken voor accessibility
+      videoWrapper.setAttribute('tabindex', '0');
+    })();
+
+    // Splash screen - verberg na 1 seconde
+    (function(){
+      const splashScreen = document.getElementById('splashScreen');
+      if(splashScreen){
+        setTimeout(function(){
+          splashScreen.classList.add('hidden');
+          setTimeout(function(){
+            splashScreen.style.display = 'none';
+          }, 300);
+        }, 1000);
+      }
+    })();
+
+    // Taal-switch - markeer actieve taal op basis van URL
+    (function(){
+      const langLinks = document.querySelectorAll('.topbar__lang a');
+      const currentPath = window.location.pathname;
+      const currentHref = window.location.href;
+      
+      // Reset alle actieve states
+      langLinks.forEach(link => {
+        link.classList.remove('active');
+      });
+
+      // Bepaal actieve taal op basis van URL
+      // Als URL /en bevat, markeer English als actief, anders Nederlands (standaard)
+      if(currentPath.includes('/en') || currentHref.includes('/en/')){
+        langLinks.forEach(link => {
+          if(link.getAttribute('href').includes('/en') || link.getAttribute('href').includes('en/index.html')){
+            link.classList.add('active');
+          }
+        });
+      } else {
+        // Standaard: Nederlands is actief
+        langLinks.forEach(link => {
+          if(link.getAttribute('href').includes('nieuw-2025.html') || !link.getAttribute('href').includes('/en')){
+            if(link.textContent.trim() === 'Nederlands'){
+              link.classList.add('active');
+            }
+          }
+        });
+      }
+    })();
+
+    // Title underline animatie - start wanneer sectie in beeld komt, reset bij uit beeld
+    (function(){
+      const splitBlock = document.querySelector('.split-block');
+      const formSection = document.querySelector('.form-section');
+      
+      // Zet underline breedte gelijk aan tekst breedte voor alle h2-wrappers
+      function setUnderlineWidths(){
+        const h2Wrappers = document.querySelectorAll('.h2-wrapper');
+        h2Wrappers.forEach(function(wrapper){
+          const underlineWrapper = wrapper.querySelector('.title-underline-wrapper');
+          if(underlineWrapper){
+            const textWidth = wrapper.offsetWidth;
+            underlineWrapper.style.width = textWidth + 'px';
+          }
+        });
+      }
+
+      // Zet breedte bij load en resize
+      if(document.readyState === 'loading'){
+        document.addEventListener('DOMContentLoaded', setUnderlineWidths);
+      } else {
+        setUnderlineWidths();
+      }
+      window.addEventListener('resize', setUnderlineWidths);
+
+      const observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('in-view');
+          } else {
+            // Reset animatie wanneer sectie uit beeld gaat
+            entry.target.classList.remove('in-view');
+          }
+        });
+      }, {
+        threshold: 0.2,
+        rootMargin: '0px'
+      });
+
+      if(splitBlock) observer.observe(splitBlock);
+      if(formSection) observer.observe(formSection);
+
+      // Observeer ook de sectie met arrow line
+      const aanpakSection = document.querySelector('.section');
+      if(aanpakSection) observer.observe(aanpakSection);
+    })();
+  </script>
+
+</body>
+</html>

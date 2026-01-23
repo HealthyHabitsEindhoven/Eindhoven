@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Prijzen - Healthy Habits Eindhoven</title>
+
+  <style>
+    :root{
+      --accent:#C3A300;
+      --bg:#0b0c10;
+      --bg-main:#0b0c10;
+      --bg-warm:#0f1115;
+      --bg-accent:#121418;
+      --text:#f3f4f6;
+      --muted:#cbd5e1;
+      --line:rgba(255,255,255,.15);
+      --radius:18px;
+      --max:1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      padding:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:var(--bg-main);
+      color:var(--text);
+    }
+
+    img{width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 36px));margin:0 auto}
+
+    /* =========================
+       TOP MENU BAR
+    ========================== */
+    .topbar{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:77px;
+      background:#000;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .container{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:32px;
+    }
+    .topbar__logo{
+      font-weight:800;
+      letter-spacing:.04em;
+      font-size:18px;
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+    }
+    .topbar__logo img{
+      height:48px;
+      width:auto;
+      display:block;
+    }
+    .topbar__nav{
+      display:flex;
+      align-items:center;
+      gap:32px;
+      flex:1;
+      justify-content:center;
+    }
+    .topbar__nav a{
+      color:var(--text);
+      text-decoration:none;
+      font-size:15px;
+      transition:color 0.2s ease;
+    }
+    .topbar__nav a:hover{
+      color:var(--accent);
+    }
+    .topbar__lang{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-shrink:0;
+      margin-right:16px;
+    }
+    .topbar__lang a{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:13px;
+      font-weight:400;
+      transition:color 0.2s ease;
+      padding:4px 0;
+    }
+    .topbar__lang a:hover{
+      color:var(--text);
+    }
+    .topbar__lang a.active{
+      color:var(--text);
+      font-weight:500;
+    }
+    .topbar__lang span{
+      color:var(--muted);
+      font-size:13px;
+    }
+    .topbar__cta{
+      flex-shrink:0;
+    }
+    .topbar__cta a{
+      text-decoration:none;
+    }
+    .topbar__cta button{
+      background:var(--accent);
+      color:#000;
+      border:none;
+      padding:10px 20px;
+      border-radius:8px;
+      font-weight:700;
+      font-size:14px;
+      cursor:pointer;
+      transition:filter 0.2s ease;
+    }
+    .topbar__cta button:hover{
+      filter:brightness(1.1);
+    }
+    body{ padding-top:77px; }
+
+    /* =========================
+       HERO
+    ========================== */
+    .hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      background:var(--bg-main);
+    }
+    .hero img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center center;
+      filter:brightness(.6);
+    }
+    .hero__overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 9%, rgba(0,0,0,0.3) 18%, rgba(0,0,0,0.1) 24%, rgba(0,0,0,0) 30%),
+                  linear-gradient(to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0) 100%);
+      background-blend-mode:multiply;
+      z-index:1;
+    }
+    .hero-content{
+      position:relative;
+      z-index:2;
+      padding:48px 0;
+      text-align:center;
+    }
+    .hero h1{
+      font-size:clamp(32px,5vw,56px);
+      margin:0 0 12px;
+    }
+    .hero p{
+      max-width:55ch;
+      color:var(--muted);
+      font-size:18px;
+      margin:0 0 32px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .hero-buttons{
+      display:flex;
+      gap:16px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .hero-btn{
+      display:inline-block;
+      padding:14px 28px;
+      border-radius:12px;
+      font-weight:700;
+      font-size:16px;
+      text-decoration:none;
+      transition:filter 0.2s ease;
+      cursor:pointer;
+      border:none;
+    }
+    .hero-btn-primary{
+      background:var(--accent);
+      color:#000;
+    }
+    .hero-btn-primary:hover{
+      filter:brightness(1.1);
+    }
+    .hero-btn-secondary{
+      background:rgba(255,255,255,.08);
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+    .hero-btn-secondary:hover{
+      background:rgba(255,255,255,.12);
+      border-color:rgba(255,255,255,.25);
+    }
+
+    /* =========================
+       PRIJS-ANKER BLOCK
+    ========================== */
+    .price-anchor{
+      padding:60px 0;
+      background:var(--bg-warm);
+      text-align:center;
+    }
+    .price-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:48px 32px;
+      max-width:700px;
+      margin:0 auto;
+    }
+    .price-card__main{
+      font-size:28px;
+      font-weight:700;
+      color:var(--text);
+      margin:0 0 12px;
+    }
+    .price-card__sub{
+      font-size:16px;
+      color:var(--muted);
+      margin:0;
+      line-height:1.5;
+    }
+
+    /* =========================
+       UITLEG SECTIE
+    ========================== */
+    .uitleg-section{
+      padding:80px 0;
+      background:var(--bg-main);
+    }
+    .uitleg-content{
+      max-width:700px;
+      margin:0 auto;
+      text-align:center;
+    }
+    .uitleg-content h2{
+      font-size:28px;
+      margin:0 0 32px;
+      color:var(--text);
+    }
+    .uitleg-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+    .uitleg-list li{
+      font-size:18px;
+      color:var(--text);
+      padding:0;
+    }
+
+    /* =========================
+       TARIEVENCHECK FORM
+    ========================== */
+    .tariefcheck-section{
+      padding:80px 0;
+      background:var(--bg-warm);
+    }
+    .tariefcheck-section h2{
+      font-size:28px;
+      text-align:center;
+      margin:0 0 40px;
+      color:var(--text);
+    }
+    .form{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:32px;
+      max-width:600px;
+      margin:0 auto;
+    }
+    .form-group{
+      margin-bottom:24px;
+    }
+    .form-group:last-child{
+      margin-bottom:0;
+    }
+    .form-group label{
+      display:block;
+      margin-bottom:8px;
+      color:var(--text);
+      font-size:14px;
+      font-weight:600;
+    }
+    .form-group input,
+    .form-group select{
+      width:100%;
+      padding:12px 16px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      border-radius:12px;
+      color:var(--text);
+      font-size:16px;
+      font-family:inherit;
+      transition:border-color .2s ease, background .2s ease;
+    }
+    .form-group input:focus,
+    .form-group select:focus{
+      outline:none;
+      border-color:var(--accent);
+      background:rgba(255,255,255,.08);
+    }
+    .form-group input::placeholder{
+      color:rgba(255,255,255,.4);
+    }
+    .form-submit{
+      width:100%;
+      padding:14px 24px;
+      background:var(--accent);
+      color:#000;
+      border:none;
+      border-radius:12px;
+      font-size:16px;
+      font-weight:800;
+      cursor:pointer;
+      transition:filter .2s ease;
+      margin-top:8px;
+    }
+    .form-submit:hover{
+      filter:brightness(1.1);
+    }
+    .form-note{
+      text-align:center;
+      font-size:14px;
+      color:var(--muted);
+      margin-top:16px;
+    }
+
+    /* =========================
+       WAT JE KRIJGT CARDS
+    ========================== */
+    .benefits-section{
+      padding:80px 0;
+      background:var(--bg-main);
+    }
+    .benefits-section h2{
+      font-size:28px;
+      text-align:center;
+      margin:0 0 48px;
+      color:var(--text);
+    }
+    .benefits-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+      max-width:1100px;
+      margin:0 auto;
+    }
+    .benefit-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:32px;
+      text-align:center;
+    }
+    .benefit-card h3{
+      font-size:20px;
+      margin:0 0 12px;
+      color:var(--text);
+    }
+    .benefit-card p{
+      font-size:15px;
+      color:var(--muted);
+      margin:0;
+      line-height:1.6;
+    }
+
+    /* =========================
+       FAQ
+    ========================== */
+    .faq-section{
+      padding:80px 0;
+      background:var(--bg-warm);
+    }
+    .faq-section h2{
+      font-size:28px;
+      text-align:center;
+      margin:0 0 48px;
+      color:var(--text);
+    }
+    .faq-list{
+      max-width:700px;
+      margin:0 auto;
+      list-style:none;
+      padding:0;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    .faq-item{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+    }
+    .faq-question{
+      padding:20px 24px;
+      cursor:pointer;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      color:var(--text);
+      font-size:16px;
+      font-weight:600;
+      transition:background 0.2s ease;
+    }
+    .faq-question:hover{
+      background:rgba(255,255,255,.06);
+    }
+    .faq-question::after{
+      content:"+";
+      font-size:24px;
+      color:var(--accent);
+      font-weight:300;
+      transition:transform 0.3s ease;
+    }
+    .faq-item.active .faq-question::after{
+      transform:rotate(45deg);
+    }
+    .faq-answer{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height 0.3s ease;
+    }
+    .faq-item.active .faq-answer{
+      max-height:500px;
+    }
+    .faq-answer-content{
+      padding:0 24px 20px;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.6;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media(max-width:900px){
+      .topbar__nav{
+        gap:20px;
+      }
+      .topbar__nav a{
+        font-size:14px;
+      }
+      .topbar__lang{
+        margin-right:12px;
+        gap:6px;
+      }
+      .topbar__lang a,
+      .topbar__lang span{
+        font-size:12px;
+      }
+      .hero-buttons{
+        flex-direction:column;
+        align-items:center;
+      }
+      .hero-btn{
+        width:100%;
+        max-width:300px;
+        text-align:center;
+      }
+      .hero{
+        min-height:80vh;
+      }
+      .benefits-grid{
+        grid-template-columns:1fr;
+      }
+      .uitleg-list li{
+        text-align:left;
+      }
+    }
+    @media(max-width:560px){
+      .topbar .container{
+        gap:16px;
+      }
+      .topbar__nav{
+        gap:12px;
+      }
+      .topbar__nav a{
+        font-size:13px;
+      }
+      .topbar__lang{
+        margin-right:8px;
+        gap:4px;
+      }
+      .topbar__lang a,
+      .topbar__lang span{
+        font-size:11px;
+      }
+      .topbar__cta button{
+        padding:8px 16px;
+        font-size:13px;
+      }
+      .hero{
+        min-height:80vh;
+      }
+      .hero h1{
+        font-size:28px;
+      }
+      .hero p{
+        font-size:16px;
+      }
+      .price-card{
+        padding:32px 24px;
+      }
+      .price-card__main{
+        font-size:24px;
+      }
+      .form{
+        padding:24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar__logo">
+        <a href="nieuw-2025.html"><img src="assets/logo/HH logo.png" alt="Healthy Habits"></a>
+      </div>
+      <nav class="topbar__nav">
+        <a href="aanbod.html">Ons aanbod</a>
+        <a href="succesverhalen.html">Succesverhalen</a>
+        <a href="tarieven.html">Prijzen</a>
+        <a href="lidmaatschapstest.html">Online-lidmaatschapstest</a>
+      </nav>
+      <div class="topbar__lang">
+        <a href="nieuw-2025.html" class="active">Nederlands</a>
+        <span>/</span>
+        <a href="en/index.html">English</a>
+      </div>
+      <div class="topbar__cta">
+        <a href="4-weken-proberen.html"><button>4 weken proberen</button></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. HERO -->
+  <section class="hero">
+    <img src="assets/images/home/intake.jpg" alt="Healthy Habits sfeer">
+    <div class="hero__overlay"></div>
+    <div class="container hero-content">
+      <h1>Prijzen</h1>
+      <p>Eerlijk betalen voor wat je gebruikt. We stemmen je lidmaatschap af op jouw ritme en begeleiding.</p>
+      <div class="hero-buttons">
+        <a href="#tariefcheck" class="hero-btn hero-btn-primary">Ontdek jouw tarief (30 sec)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. PRIJS-ANKER -->
+  <section class="price-anchor">
+    <div class="container">
+      <div class="price-card">
+        <p class="price-card__main">Lidmaatschappen starten vanaf €56,95 per maand.</p>
+        <p class="price-card__sub">Inclusief persoonlijke begeleiding en onze warme, huiselijke sfeer.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. HOE WORDT JE TARIEF BEPAALD? -->
+  <section class="uitleg-section">
+    <div class="container">
+      <div class="uitleg-content">
+        <h2>Hoe wordt je tarief bepaald?</h2>
+        <ul class="uitleg-list">
+          <li>Je doel</li>
+          <li>Hoe vaak je wilt komen</li>
+          <li>Welke begeleiding je prettig vindt</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. TARIEFCHECK -->
+  <section class="tariefcheck-section" id="tariefcheck">
+    <div class="container">
+      <h2>Ontdek jouw tarief</h2>
+      <form class="form" action="#" method="POST">
+        <div class="form-group">
+          <label for="doel">Doel</label>
+          <select id="doel" name="doel" required>
+            <option value="">Kies een optie</option>
+            <option value="fitter">Fitter voelen</option>
+            <option value="afvallen">Afvallen</option>
+            <option value="sterker">Sterker worden</option>
+            <option value="gezond-ouder">Gezond ouder worden</option>
+            <option value="structuur">Structuur/ritme</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="ritme">Ritme</label>
+          <select id="ritme" name="ritme" required>
+            <option value="">Kies een optie</option>
+            <option value="1x">1x per week</option>
+            <option value="2x">2x per week</option>
+            <option value="3x">3x per week</option>
+            <option value="4x">4x of meer per week</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="naam">Naam</label>
+          <input type="text" id="naam" name="naam" placeholder="Je volledige naam" required>
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="je@voorbeeld.nl" required>
+        </div>
+        <div class="form-group">
+          <label for="telefoon">Telefoon</label>
+          <input type="tel" id="telefoon" name="telefoon" placeholder="06 12345678" required>
+        </div>
+        <button type="submit" class="form-submit">Ontdek jouw tarief (30 sec)</button>
+        <p class="form-note">Vrijblijvend · reactie binnen 1 werkdag</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- 5. WAT JE KRIJGT -->
+  <section class="benefits-section">
+    <div class="container">
+      <h2>Wat je krijgt</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <h3>Persoonlijke begeleiding</h3>
+          <p>Een coach die bij jou past en meedenkt met jouw doelen en ritme.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Warm 'huiskamer' gevoel</h3>
+          <p>Een gezellige plek waar je je thuis voelt en rustig kunt werken aan je gezondheid.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Plan dat je volhoudt</h3>
+          <p>Een programma afgestemd op jouw leven, zodat je het langdurig vol kunt houden.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <h2>Veelgestelde vragen</h2>
+      <ul class="faq-list">
+        <li class="faq-item">
+          <div class="faq-question">Moet ik direct een jaar vast?</div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Nee, dat hoeft niet. We bespreken samen wat het beste bij jou past. Flexibele maandabonnementen zijn ook mogelijk.
+            </div>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">Kan ik eerst proberen?</div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Ja, we bieden een proefperiode aan zodat je eerst kunt ervaren of Healthy Habits bij jou past.
+            </div>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">Krijg ik begeleiding?</div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Ja, alle lidmaatschappen inclusief persoonlijke begeleiding van een coach die bij jou past.
+            </div>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">Wat als ik blessures heb?</div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Onze coaches hebben ervaring met blessures en helpen je veilig te trainen. We passen je programma aan op jouw situatie.
+            </div>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">Kan ik maandelijks opzeggen?</div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Ja, bij maandabonnementen kun je maandelijks opzeggen met een opzegtermijn van 1 maand.
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <script>
+    // FAQ toggle
+    (function(){
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(function(item){
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', function(){
+          const isActive = item.classList.contains('active');
+          // Close all items
+          faqItems.forEach(function(i){
+            i.classList.remove('active');
+          });
+          // Open clicked item if it wasn't active
+          if(!isActive){
+            item.classList.add('active');
+          }
+        });
+      });
+    })();
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e){
+        const href = this.getAttribute('href');
+        if(href !== '#'){
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if(target){
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

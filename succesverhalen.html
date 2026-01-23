@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Succesverhalen - Healthy Habits Eindhoven</title>
+
+  <style>
+    :root{
+      --accent:#C3A300;
+      --bg:#0b0c10;
+      --bg-main:#0b0c10;
+      --bg-warm:#0f1115;
+      --bg-accent:#121418;
+      --text:#f3f4f6;
+      --muted:#cbd5e1;
+      --line:rgba(255,255,255,.15);
+      --radius:18px;
+      --max:1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      padding:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:var(--bg-main);
+      color:var(--text);
+    }
+
+    img{width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 36px));margin:0 auto}
+
+    /* =========================
+       TOP MENU BAR
+    ========================== */
+    .topbar{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:77px;
+      background:#000;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .container{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:32px;
+    }
+    .topbar__logo{
+      font-weight:800;
+      letter-spacing:.04em;
+      font-size:18px;
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+    }
+    .topbar__logo img{
+      height:48px;
+      width:auto;
+      display:block;
+    }
+    .topbar__nav{
+      display:flex;
+      align-items:center;
+      gap:32px;
+      flex:1;
+      justify-content:center;
+    }
+    .topbar__nav a{
+      color:var(--text);
+      text-decoration:none;
+      font-size:15px;
+      transition:color 0.2s ease;
+    }
+    .topbar__nav a:hover{
+      color:var(--accent);
+    }
+    .topbar__cta{
+      flex-shrink:0;
+    }
+    .topbar__cta a{
+      text-decoration:none;
+    }
+    .topbar__cta button{
+      background:var(--accent);
+      color:#000;
+      border:none;
+      padding:10px 20px;
+      border-radius:8px;
+      font-weight:700;
+      font-size:14px;
+      cursor:pointer;
+      transition:filter 0.2s ease;
+    }
+    .topbar__cta button:hover{
+      filter:brightness(1.1);
+    }
+    body{ padding-top:77px; }
+
+    /* =========================
+       SUCCESVERHALEN SECTIE
+    ========================== */
+    .succesverhalen-section{
+      padding:80px 0;
+      background:var(--bg-warm);
+    }
+    .succesverhalen-header{
+      text-align:center;
+      margin-bottom:48px;
+    }
+    .succesverhalen-header h1{
+      font-size:32px;
+      margin:0 0 12px;
+      color:var(--text);
+    }
+    .succesverhalen-header p{
+      color:var(--muted);
+      font-size:18px;
+      margin:0;
+    }
+    .succesverhalen-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+      max-width:1400px;
+      margin:0 auto;
+      align-items:stretch;
+    }
+    .succes-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      position:relative;
+      perspective:1000px;
+      cursor:pointer;
+      display:flex;
+      flex-direction:column;
+      height:100%;
+      min-height:550px;
+      align-items:stretch;
+    }
+    .succes-card__inner{
+      position:relative;
+      width:100%;
+      height:100%;
+      transition:transform 0.6s;
+      transform-style:preserve-3d;
+      display:flex;
+      flex-direction:column;
+    }
+    .succes-card:hover .succes-card__inner{
+      transform:rotateY(180deg);
+    }
+    .succes-card__front,
+    .succes-card__back{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      backface-visibility:hidden;
+      -webkit-backface-visibility:hidden;
+      border-radius:var(--radius);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      background:rgba(255,255,255,.04);
+    }
+    .succes-card__front{
+      transform:rotateY(0deg);
+    }
+    .succes-card__back{
+      transform:rotateY(180deg);
+      background:rgba(255,255,255,.04);
+    }
+    .succes-card__name-header{
+      padding:24px 24px 12px 24px;
+      font-size:20px;
+      font-weight:700;
+      color:var(--text);
+      margin:0;
+      text-align:left;
+      flex-shrink:0;
+    }
+    .succes-card__name-header .age{
+      font-weight:400;
+      opacity:0.8;
+    }
+    .succes-card__image{
+      width:100%;
+      aspect-ratio:1/1;
+      overflow:hidden;
+      background:rgba(255,255,255,.03);
+      flex-shrink:0;
+      position:relative;
+      border-radius:0 0 0 0;
+    }
+    .succes-card__image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    /* Specifieke foto-cropping voor Esther en Marlies */
+    .succes-card__image img[src*="Esther"],
+    .succes-card__image img[src*="Marlies"]{
+      object-position:bottom center;
+    }
+    .succes-card__content{
+      padding:18px;
+      flex:1 1 auto;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      justify-content:flex-start;
+      background:rgba(255,255,255,.04);
+      overflow:visible;
+      min-height:auto;
+      flex-shrink:0;
+      max-height:100%;
+    }
+    .succes-card__result{
+      margin:0 0 6px;
+      color:var(--accent);
+      flex-shrink:0;
+      display:block;
+      font-size:16px;
+      font-weight:500;
+    }
+    .succes-card__quote,
+    .succes-card__review{
+      margin:7px 0 0 0;
+      color:var(--muted);
+      line-height:1.5;
+      flex-shrink:0;
+      display:block;
+      font-size:14px;
+      font-weight:400;
+    }
+    /* Achterkant kaart */
+    .succes-card__back-content{
+      padding:24px;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      overflow-y:auto;
+      box-sizing:border-box;
+    }
+    .succes-card__back-name{
+      font-size:20px;
+      font-weight:600;
+      margin:0 0 24px;
+      color:var(--text);
+    }
+    .succes-card__back-name .age{
+      font-weight:400;
+      opacity:0.8;
+    }
+    .succes-card__back-section{
+      margin-bottom:20px;
+    }
+    .succes-card__back-section:last-child{
+      margin-bottom:0;
+    }
+    .succes-card__back-label{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:0.5px;
+      color:var(--accent);
+      margin:0 0 8px;
+      font-weight:600;
+    }
+    .succes-card__back-text{
+      font-size:14px;
+      line-height:1.6;
+      color:var(--text);
+      margin:0;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media(max-width:900px){
+      .succesverhalen-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:20px;
+      }
+      .topbar__nav{
+        gap:20px;
+      }
+      .topbar__nav a{
+        font-size:14px;
+      }
+      /* Geen flip op mobiel */
+      .succes-card:hover .succes-card__inner{
+        transform:rotateY(0deg);
+      }
+      .succes-card__back{
+        display:none;
+      }
+    }
+    @media(max-width:560px){
+      .succesverhalen-grid{
+        grid-template-columns:1fr;
+        gap:20px;
+      }
+      .topbar .container{
+        gap:16px;
+      }
+      .topbar__nav{
+        gap:12px;
+      }
+      .topbar__nav a{
+        font-size:13px;
+      }
+      .topbar__cta button{
+        padding:8px 12px;
+        font-size:12px;
+      }
+      .succesverhalen-header h1{
+        font-size:28px;
+      }
+      .succesverhalen-header p{
+        font-size:16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar__logo">
+        <a href="nieuw-2025.html"><img src="assets/logo/HH logo.png" alt="Healthy Habits"></a>
+      </div>
+      <nav class="topbar__nav">
+        <a href="aanbod.html">Ons aanbod</a>
+        <a href="succesverhalen.html">Succesverhalen</a>
+        <a href="tarieven.html">Prijzen</a>
+      </nav>
+      <div class="topbar__lang">
+        <a href="nieuw-2025.html" class="active">Nederlands</a>
+        <span>/</span>
+        <a href="en/index.html">English</a>
+      </div>
+      <div class="topbar__cta">
+        <a href="4-weken-proberen.html"><button>4 weken proberen</button></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUCCESVERHALEN SECTIE -->
+  <section class="succesverhalen-section">
+    <div class="container">
+      <div class="succesverhalen-header">
+        <h1>Succesverhalen</h1>
+        <p>Echte verhalen van mensen die hun doelen hebben bereikt bij Healthy Habits</p>
+      </div>
+      <div class="succesverhalen-grid">
+        <div class="succes-card">
+          <h3 class="succes-card__name-header">Madelon<span class="age">, 52</span></h3>
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/madelon.jpeg" alt="Madelon" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <div class="succes-card__result">Meer energie</div>
+            <p class="succes-card__review">Ik heb mijn doel gehaald! De persoonlijke begeleiding bij Healthy Habits heeft me geholpen om fitter te worden en meer energie te krijgen.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <h3 class="succes-card__name-header">Ronald<span class="age">, 54</span></h3>
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/Ronald.jpeg" alt="Ronald" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <div class="succes-card__result">Fitter worden</div>
+            <p class="succes-card__review">De combinatie van training, voeding en begeleiding werkt perfect. Ik zie echte vooruitgang en voel me fitter.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <h3 class="succes-card__name-header">Ingrid<span class="age">, 47</span></h3>
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/Ingrid.jpeg" alt="Ingrid" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <div class="succes-card__result">Fitter worden</div>
+            <p class="succes-card__review">Fitter worden en meer energie krijgen was mijn doel. Dat is gelukt! Ik zie nu echte vooruitgang.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <h3 class="succes-card__name-header">Esther<span class="age">, 38</span></h3>
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/Esther.jpeg" alt="Esther" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <div class="succes-card__result">Meer energie</div>
+            <p class="succes-card__review">De combinatie van training, voeding en begeleiding werkt perfect. Ik zie echte vooruitgang.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <h3 class="succes-card__name-header">Harry<span class="age">, 52</span></h3>
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/Harry.jpeg" alt="Harry" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <div class="succes-card__result">Meer kracht</div>
+            <p class="succes-card__review">Gezond ouder worden met meer kracht. Dat doel heb ik bereikt met de begeleiding van Healthy Habits.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <h3 class="succes-card__name-header">Laura<span class="age">, 36</span></h3>
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/Laura.jpeg" alt="Laura" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <div class="succes-card__result">Meer energie</div>
+            <p class="succes-card__review">Eindelijk een plek waar ik op mijn eigen tempo kan werken aan mijn gezondheid. Perfect!</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <h3 class="succes-card__name-header">Jan<span class="age">, 55</span></h3>
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/Jan.jpeg" alt="Jan" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <div class="succes-card__result">Meer kracht</div>
+            <p class="succes-card__review">Ik voel me sterker en zelfverzekerder. Mijn lichaam voelt weer goed. Gezond ouder worden met meer kracht.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <h3 class="succes-card__name-header">Marlies<span class="age">, 44</span></h3>
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/Marlies.jpeg" alt="Marlies" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <div class="succes-card__result">Meer kracht</div>
+            <p class="succes-card__review">Ik merkte dat ik kracht en conditie verloor. Nu voel ik me weer sterk en zelfverzekerd.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <h3 class="succes-card__name-header">Bas<span class="age">, 45</span></h3>
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/Bas.jpeg" alt="Bas" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <div class="succes-card__result">Meer kracht</div>
+            <p class="succes-card__review">Ik voel me sterker en energieker dan ooit. Sporten is nu onderdeel van mijn leven.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <h3 class="succes-card__name-header">Franceska<span class="age">, 42</span></h3>
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/Franceska.jpeg" alt="Franceska" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <div class="succes-card__result">Meer energie</div>
+            <p class="succes-card__review">Alles wordt samen met mij afgestemd. Precies wat ik nodig had. Geen stress, wel resultaat.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <h3 class="succes-card__name-header">Karin<span class="age">, 41</span></h3>
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/Karin.jpeg" alt="Karin" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <div class="succes-card__result">Meer energie</div>
+            <p class="succes-card__review">Structuur en ritme in mijn leven. Het plan past perfect bij mijn leven en ik voel me veel beter.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <h3 class="succes-card__name-header">Nienke<span class="age">, 39</span></h3>
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/Nienke.jpeg" alt="Nienke" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <div class="succes-card__result">Meer energie</div>
+            <p class="succes-card__review">Wist niet waar te beginnen. Met de begeleiding van Healthy Habits heb ik nu structuur en resultaat.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <h3 class="succes-card__name-header">Renee<span class="age">, 48</span></h3>
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/Renee.jpeg" alt="Renee" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <div class="succes-card__result">Meer energie</div>
+            <p class="succes-card__review">Alles wordt samen met mij afgestemd. Precies wat ik nodig had om mijn doelen te bereiken.</p>
+          </div>
+        </div>
+        <div class="succes-card">
+          <h3 class="succes-card__name-header">Robbert<span class="age">, 50</span></h3>
+          <div class="succes-card__image">
+            <img src="assets/images/succesverhalen/Robbert.jpeg" alt="Robbert" loading="lazy">
+          </div>
+          <div class="succes-card__content">
+            <div class="succes-card__result">Meer energie</div>
+            <p class="succes-card__review">Geen druk, wel resultaat. Dit is wat ik zocht. Eindelijk een plek waar ik op mijn gemak kan sporten.</p>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <script>
+    // Functie om tekst te beperken tot 3 zinnen
+    function limitToThreeSentences(text){
+      if(!text) return '';
+      
+      // Splits op punt, vraagteken, uitroepteken
+      const sentences = text.split(/([.!?]+)/).filter(function(item, index, arr){
+        // Behoud leestekens
+        if(/^[.!?]+$/.test(item)) return true;
+        // Behoud niet-lege strings
+        return item.trim().length > 0;
+      });
+      
+      // Groepeer zinnen met leestekens
+      const grouped = [];
+      for(let i = 0; i < sentences.length; i += 2){
+        const sentence = sentences[i];
+        const punctuation = sentences[i + 1] || '';
+        if(sentence){
+          grouped.push(sentence.trim() + punctuation);
+        }
+      }
+      
+      if(grouped.length <= 3){
+        return text;
+      }
+      
+      // Neem eerste 3 zinnen en voeg "..." toe
+      return grouped.slice(0, 3).join(' ') + '…';
+    }
+    
+    // Succesverhalen content
+    const successStoriesContent = {
+      madelon: {
+        front: {
+          headline: "–10 kg",
+          quote: "\"Ik voel me weer mezelf. Fitter, lichter en met meer vertrouwen in mijn lichaam.\"",
+        },
+        back: {
+          voor: "Ik voelde me niet fit en herkende mezelf steeds minder. Afvallen lukte niet goed en ik miste structuur en houvast.",
+          tijdens: "Met persoonlijke begeleiding en vaste momenten kreeg ik weer overzicht. Geen druk, maar duidelijke stappen die bij mij passen.",
+          na: "Ik ben 10 kilo afgevallen en voel me fitter en zekerder. Sporten is nu een vast onderdeel van mijn leven geworden.",
+        },
+      },
+      ronald: {
+        front: {
+          headline: "Fitter geworden",
+          quote: "\"Ik beweeg makkelijker en voel me gewoon weer goed in mijn lijf.\"",
+        },
+        back: {
+          voor: "Ik bewoog weinig en voelde me vaak stijf en futloos. De motivatie om te sporten ontbrak.",
+          tijdens: "Door rustig op te bouwen en begeleiding te krijgen werd sporten haalbaar en overzichtelijk.",
+          na: "Ik voel me fitter, beweeg soepeler en heb een ritme gevonden dat ik kan volhouden.",
+        },
+      },
+      ingrid: {
+        front: {
+          headline: "–20 kg",
+          quote: "\"Mijn energie is terug en ik zit weer lekker in mijn vel.\"",
+        },
+        back: {
+          voor: "Ik was vaak moe en had het gevoel dat afvallen me niet lukte. Dat gaf frustratie en onzekerheid.",
+          tijdens: "Met structuur, begeleiding en duidelijke afspraken kreeg ik weer grip op mijn leefstijl.",
+          na: "Ik ben 20 kilo kwijt en heb veel meer energie. Ik zit weer lekker in mijn vel.",
+        },
+      },
+      esther: {
+        front: {
+          headline: "Geen schouderklachten meer",
+          quote: "\"Ik kan weer bewegen zonder pijn of twijfel.\"",
+        },
+        back: {
+          voor: "Schouderklachten hielden me tegen in sporten en dagelijkse beweging.",
+          tijdens: "De trainingen werden aangepast aan wat mijn lichaam aankon, met veel aandacht voor techniek.",
+          na: "Mijn klachten zijn verdwenen en ik kan weer bewegen zonder pijn of twijfel.",
+        },
+      },
+      harry: {
+        front: {
+          headline: "–7,3 kg in 2 maanden",
+          quote: "\"Resultaat zonder extreme diëten of stress.\"",
+        },
+        back: {
+          voor: "Ik wilde afvallen, maar niet met strenge diëten of ingewikkelde schema's.",
+          tijdens: "Met vaste trainingsmomenten en begeleiding bleef ik consistent en gemotiveerd.",
+          na: "In 2 maanden ben ik 7,3 kilo kwijt en voel ik me fitter en energieker.",
+        },
+      },
+      laura: {
+        front: {
+          headline: "–6,4 kg & plezier in sporten",
+          quote: "\"Ik kijk nu uit naar het sporten.\"",
+        },
+        back: {
+          voor: "Sporten voelde als iets dat moest en hield ik nooit lang vol.",
+          tijdens: "Ik ontdekte wat bij mij past en kreeg begeleiding die me hielp volhouden.",
+          na: "Ik ben 6,4 kilo afgevallen en sport nu met plezier en vertrouwen.",
+        },
+      },
+      jan: {
+        front: {
+          headline: "Fitter en zekerder",
+          quote: "\"Ik beweeg weer met vertrouwen.\"",
+        },
+        back: {
+          voor: "Ik wilde fitter worden, maar was onzeker over mijn lichaam en wat verstandig was.",
+          tijdens: "Door begeleiding en duidelijke uitleg kreeg ik vertrouwen in wat ik deed.",
+          na: "Ik voel me fitter en beweeg zekerder in het dagelijks leven.",
+        },
+      },
+      marlies: {
+        front: {
+          headline: "Vast ritme: 2× per week",
+          quote: "\"Sporten is nu gewoon onderdeel van mijn week.\"",
+        },
+        back: {
+          voor: "Ik begon vaak enthousiast met sporten, maar verloor steeds het ritme door drukte.",
+          tijdens: "Met vaste momenten en een simpel plan werd sporten onderdeel van mijn week.",
+          na: "Ik sport nu twee keer per week en dat voelt heel normaal en haalbaar.",
+        },
+      },
+      bas: {
+        front: {
+          headline: "–2,2 kg",
+          quote: "\"Ik voel me sterker en energieker in het dagelijks leven.\"",
+        },
+        back: {
+          voor: "Ik wilde gezonder worden zonder ingewikkelde plannen of hoge drempels.",
+          tijdens: "De trainingen waren overzichtelijk en goed begeleid, op mijn eigen tempo.",
+          na: "Ik ben 2,2 kilo kwijt en voel me sterker en energieker.",
+        },
+      },
+      franceska: {
+        front: {
+          headline: "–3,9 kg in 2,5 maand",
+          quote: "\"Alles werd afgestemd op mijn leven. Dat maakte het haalbaar.\"",
+        },
+        back: {
+          voor: "Ik wilde resultaat, maar wel op een manier die bij mijn leven past.",
+          tijdens: "Alles werd afgestemd op mijn ritme, zonder stress of strenge regels.",
+          na: "In 2,5 maand ben ik 3,9 kilo kwijt en voel ik me fitter.",
+        },
+      },
+      karin: {
+        front: {
+          headline: "Meer kracht & energie",
+          quote: "\"Ik voel me sterker dan ik had verwacht.\"",
+        },
+        back: {
+          voor: "Ik had weinig energie en voelde me niet sterk in mijn lichaam.",
+          tijdens: "Met rustige begeleiding bouwde ik stap voor stap kracht en vertrouwen op.",
+          na: "Ik voel me sterker, energieker en zekerder in het dagelijks leven.",
+        },
+      },
+      nienke: {
+        front: {
+          headline: "Meer energie",
+          quote: "\"Ik heb weer energie over na mijn werkdag.\"",
+        },
+        back: {
+          voor: "Ik was vaak moe na mijn werkdag en had weinig energie over.",
+          tijdens: "Door regelmaat en begeleiding kreeg ik weer structuur in mijn week.",
+          na: "Ik voel me energieker en sporten hoort nu vanzelf bij mijn leven.",
+        },
+      },
+    };
+    
+    // Functie om naam te normaliseren voor lookup
+    function normalizeName(name){
+      return name.toLowerCase().trim();
+    }
+    
+    // Converteer kaarten naar flip-kaart structuur
+    (function(){
+      const cards = document.querySelectorAll('.succes-card');
+      
+      cards.forEach(function(card){
+        // Skip als al flip-kaart structuur heeft
+        if(card.querySelector('.succes-card__inner')) return;
+        
+        const nameHeader = card.querySelector('.succes-card__name-header');
+        const image = card.querySelector('.succes-card__image');
+        const content = card.querySelector('.succes-card__content');
+        const result = card.querySelector('.succes-card__result');
+        const review = card.querySelector('.succes-card__review');
+        
+        if(!nameHeader || !image || !content || !review) return;
+        
+        const nameWithAge = nameHeader.innerHTML;
+        const nameText = nameHeader.textContent.match(/^[^,]+/)?.[0]?.trim() || '';
+        const normalizedName = normalizeName(nameText);
+        const storyContent = successStoriesContent[normalizedName];
+        
+        const img = image.querySelector('img');
+        const imgSrcAttr = img ? img.getAttribute('src') : '';
+        const imgAltAttr = img ? (img.getAttribute('alt') || 'Succesverhaal') : 'Succesverhaal';
+        
+        // Gebruik content uit object als beschikbaar, anders fallback
+        let headline, quote, voor, tijdens, na;
+        if(storyContent){
+          headline = storyContent.front.headline;
+          quote = storyContent.front.quote;
+          voor = storyContent.back.voor;
+          tijdens = storyContent.back.tijdens;
+          na = storyContent.back.na;
+        } else {
+          // Fallback naar bestaande content
+          quote = limitToThreeSentences(review.textContent.trim());
+          headline = result ? result.textContent.trim() : '';
+          voor = 'Ik had weinig energie en voelde me niet fit.';
+          tijdens = 'Met de begeleiding van Healthy Habits kreeg ik structuur en ritme.';
+          na = 'De combinatie van training, voeding en begeleiding werkt perfect. Ik zie echte vooruitgang.';
+        }
+        
+        // Maak nieuwe structuur met voorkant en achterkant
+        const inner = document.createElement('div');
+        inner.className = 'succes-card__inner';
+        inner.innerHTML = 
+          '<div class="succes-card__front">' +
+            '<h3 class="succes-card__name-header">' + nameWithAge + '</h3>' +
+            '<div class="succes-card__image">' +
+              '<img src="' + imgSrcAttr + '" alt="' + imgAltAttr + '" loading="lazy">' +
+            '</div>' +
+            '<div class="succes-card__content">' +
+              '<div class="succes-card__result">' + headline + '</div>' +
+              '<p class="succes-card__review">' + quote + '</p>' +
+            '</div>' +
+          '</div>' +
+          '<div class="succes-card__back">' +
+            '<div class="succes-card__back-content">' +
+              '<h3 class="succes-card__back-name">' + nameWithAge + '</h3>' +
+              '<div class="succes-card__back-section">' +
+                '<div class="succes-card__back-label">VOOR</div>' +
+                '<p class="succes-card__back-text">' + voor + '</p>' +
+              '</div>' +
+              '<div class="succes-card__back-section">' +
+                '<div class="succes-card__back-label">TIJDENS</div>' +
+                '<p class="succes-card__back-text">' + tijdens + '</p>' +
+              '</div>' +
+              '<div class="succes-card__back-section">' +
+                '<div class="succes-card__back-label">NU</div>' +
+                '<p class="succes-card__back-text">' + na + '</p>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
+        
+        // Leeg de card en voeg de nieuwe structuur toe
+        card.innerHTML = '';
+        card.appendChild(inner);
+      });
+    })();
+  </script>
+
+</body>
+</html>
+
