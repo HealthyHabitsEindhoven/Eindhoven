@@ -1708,7 +1708,7 @@
         min-width:280px;
         max-width:calc(100% / 1.2);
         border-radius:var(--radius);
-        max-height:85vh;
+        max-height:90vh;
         flex-shrink:0;
         scroll-snap-align:start;
         overflow:hidden;
@@ -1718,27 +1718,33 @@
         transform:none;
       }
       .review-card__image{
-        flex:0 0 45% !important;
+        flex:0 0 auto !important;
         width:100% !important;
-        max-height:45%;
+        max-height:50vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background:rgba(255,255,255,.03);
       }
       .review-card__image img{
         width:100%;
-        height:100%;
-        object-fit:cover;
+        height:auto;
+        max-height:50vh;
+        object-fit:contain;
         object-position:center;
+        display:block;
       }
       .review-card__content{
-        padding:14px;
+        padding:16px;
         flex:1;
         overflow-y:auto;
-        max-height:55%;
         display:flex;
         flex-direction:column;
+        min-height:0;
       }
       .review-card__quote{
-        font-size:12px;
-        line-height:1.4;
+        font-size:13px;
+        line-height:1.5;
         margin:0;
       }
       .coaches-grid{
@@ -1829,7 +1835,7 @@
         max-width:85%;
         gap:0;
         border-radius:var(--radius);
-        max-height:85vh;
+        max-height:90vh;
         flex-shrink:0;
         scroll-snap-align:start;
         overflow:hidden;
@@ -1839,27 +1845,33 @@
         transform:none;
       }
       .review-card__image{
-        flex:0 0 45% !important;
+        flex:0 0 auto !important;
         width:100% !important;
-        max-height:45%;
+        max-height:50vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background:rgba(255,255,255,.03);
       }
       .review-card__image img{
         width:100%;
-        height:100%;
-        object-fit:cover;
+        height:auto;
+        max-height:50vh;
+        object-fit:contain;
         object-position:center;
+        display:block;
       }
       .review-card__content{
-        padding:12px;
+        padding:14px;
         flex:1;
         overflow-y:auto;
-        max-height:55%;
         display:flex;
         flex-direction:column;
+        min-height:0;
       }
       .review-card__quote{
-        font-size:12px;
-        line-height:1.4;
+        font-size:13px;
+        line-height:1.5;
         margin:0;
       }
       .slide-text{padding:36px 24px}
