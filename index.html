@@ -1641,7 +1641,6 @@
         min-width:280px;
         max-width:calc(100% / 1.2);
         border-radius:var(--radius);
-        height:auto;
       }
       .review-card.active{
         flex:0 0 calc(100% / 1.2) !important;
@@ -1651,21 +1650,22 @@
         flex:0 0 auto !important;
         width:100% !important;
         aspect-ratio:4/3;
-        max-height:auto;
       }
       .review-card__image img{
+        width:100%;
         height:100%;
         object-fit:cover;
         object-position:center;
       }
       .review-card__content{
-        padding:24px;
+        padding:20px;
         flex:1;
-        min-height:auto;
+        overflow-y:auto;
+        max-height:200px;
       }
       .review-card__quote{
-        font-size:15px;
-        line-height:1.6;
+        font-size:14px;
+        line-height:1.5;
       }
       .coaches-grid{
         grid-template-columns:1fr;
@@ -1755,7 +1755,6 @@
         max-width:85%;
         gap:0;
         border-radius:var(--radius);
-        height:auto;
       }
       .review-card.active{
         flex:0 0 85% !important;
@@ -1765,21 +1764,22 @@
         flex:0 0 auto !important;
         width:100% !important;
         aspect-ratio:4/3;
-        max-height:auto;
       }
       .review-card__image img{
+        width:100%;
         height:100%;
         object-fit:cover;
         object-position:center;
       }
       .review-card__content{
-        padding:20px;
+        padding:18px;
         flex:1;
-        min-height:auto;
+        overflow-y:auto;
+        max-height:180px;
       }
       .review-card__quote{
-        font-size:15px;
-        line-height:1.6;
+        font-size:14px;
+        line-height:1.5;
       }
       .slide-text{padding:36px 24px}
       .slide-text h3{font-size:20px}
