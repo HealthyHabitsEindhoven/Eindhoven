@@ -1636,13 +1636,14 @@
         padding:0 20px;
       }
       .review-card{
-        flex:0 0 100% !important;
+        flex:0 0 calc(100% / 1.2) !important;
         flex-direction:column !important;
-        min-height:auto;
+        min-width:280px;
         max-width:100%;
+        border-radius:var(--radius);
       }
       .review-card.active{
-        flex:0 0 100% !important;
+        flex:0 0 calc(100% / 1.2) !important;
         transform:scale(1);
       }
       .review-card__image{
