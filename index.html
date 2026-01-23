@@ -681,6 +681,55 @@
     .aanbod-carousel-btn:active{
       transform:scale(0.95);
     }
+    .reviews-carousel-nav{
+      display:none;
+    }
+    @media(max-width:900px){
+      .reviews-carousel-nav{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:16px;
+        margin-top:32px;
+      }
+    }
+    .reviews-carousel-btn{
+      width:44px;
+      height:44px;
+      min-width:44px;
+      min-height:44px;
+      border-radius:50%;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      font-size:24px;
+      line-height:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:all 0.3s ease;
+      position:relative;
+    }
+    .reviews-carousel-btn:hover,
+    .reviews-carousel-btn:focus{
+      border-color:var(--accent);
+      background:rgba(255,255,255,.08);
+      outline:none;
+    }
+    .reviews-carousel-btn:hover::before,
+    .reviews-carousel-btn:focus::before,
+    .reviews-carousel-btn:active::before{
+      content:'';
+      position:absolute;
+      inset:-2px;
+      border-radius:50%;
+      border:2px solid var(--accent);
+      pointer-events:none;
+    }
+    .reviews-carousel-btn:active{
+      transform:scale(0.95);
+    }
 
     /* =========================
        SECTIE + CARDS
@@ -1237,10 +1286,25 @@
       gap:24px;
       overflow:hidden;
     }
+    @media(max-width:900px){
+      .reviews-carousel-track{
+        overflow-x:auto;
+        overflow-y:hidden;
+        scroll-behavior:smooth;
+        scroll-snap-type:x mandatory;
+        -webkit-overflow-scrolling:touch;
+      }
+    }
     .reviews-carousel-slides{
       display:flex;
       gap:24px;
       transition:transform 0.6s ease;
+    }
+    @media(max-width:900px){
+      .reviews-carousel-slides{
+        gap:20px;
+        transition:none;
+      }
     }
     .review-card{
       flex:0 0 calc(26% - 16px);
@@ -1635,22 +1699,27 @@
       .reviews-carousel-wrapper{
         padding:0 20px;
       }
+      .reviews-nav{
+        display:none;
+      }
       .review-card{
         flex:0 0 calc(100% / 1.2) !important;
         flex-direction:column !important;
         min-width:280px;
-        max-width:calc(100% / 1.2);
         border-radius:var(--radius);
-        max-height:420px;
+        aspect-ratio:4/3;
+        flex-shrink:0;
+        scroll-snap-align:start;
+        overflow:hidden;
       }
       .review-card.active{
         flex:0 0 calc(100% / 1.2) !important;
-        transform:scale(1);
+        transform:none;
       }
       .review-card__image{
-        flex:0 0 50% !important;
+        flex:0 0 60% !important;
         width:100% !important;
-        max-height:210px;
+        height:60%;
       }
       .review-card__image img{
         width:100%;
@@ -1662,11 +1731,11 @@
         padding:16px;
         flex:1;
         overflow-y:auto;
-        max-height:180px;
+        height:40%;
       }
       .review-card__quote{
-        font-size:14px;
-        line-height:1.5;
+        font-size:13px;
+        line-height:1.4;
       }
       .coaches-grid{
         grid-template-columns:1fr;
@@ -1753,19 +1822,21 @@
         flex:0 0 85% !important;
         flex-direction:column !important;
         min-width:280px;
-        max-width:85%;
         gap:0;
         border-radius:var(--radius);
-        max-height:400px;
+        aspect-ratio:4/3;
+        flex-shrink:0;
+        scroll-snap-align:start;
+        overflow:hidden;
       }
       .review-card.active{
         flex:0 0 85% !important;
-        transform:scale(1);
+        transform:none;
       }
       .review-card__image{
-        flex:0 0 50% !important;
+        flex:0 0 60% !important;
         width:100% !important;
-        max-height:200px;
+        height:60%;
       }
       .review-card__image img{
         width:100%;
@@ -1774,14 +1845,14 @@
         object-position:center;
       }
       .review-card__content{
-        padding:16px;
+        padding:14px;
         flex:1;
         overflow-y:auto;
-        max-height:160px;
+        height:40%;
       }
       .review-card__quote{
-        font-size:14px;
-        line-height:1.5;
+        font-size:13px;
+        line-height:1.4;
       }
       .slide-text{padding:36px 24px}
       .slide-text h3{font-size:20px}
@@ -2108,7 +2179,7 @@ zelfs leuk.</p>
         </div>
         <div class="reviews-carousel-wrapper">
           <button class="reviews-nav prev" id="prevReview" aria-label="Vorige review">‹</button>
-          <div class="reviews-carousel-track">
+          <div class="reviews-carousel-track" id="reviewsTrack">
             <div class="reviews-carousel-slides" id="reviewsSlides">
               <div class="review-card active">
                 <div class="review-card__image">
@@ -2178,6 +2249,10 @@ zelfs leuk.</p>
             </div>
           </div>
           <button class="reviews-nav next" id="nextReview" aria-label="Volgende review">›</button>
+          <div class="reviews-carousel-nav">
+            <button class="reviews-carousel-btn" id="reviewsPrev" aria-label="Vorige">‹</button>
+            <button class="reviews-carousel-btn" id="reviewsNext" aria-label="Volgende">›</button>
+          </div>
         </div>
       </div>
     </section>
@@ -2268,10 +2343,54 @@ zelfs leuk.</p>
     // Reviews Carousel - 3 kaarten tegelijk, middelste prominent, vloeiende oneindige loop
     (function(){
       const slidesContainer = document.getElementById('reviewsSlides');
+      const trackContainer = document.getElementById('reviewsTrack');
       const prevBtn = document.getElementById('prevReview');
       const nextBtn = document.getElementById('nextReview');
+      const mobilePrevBtn = document.getElementById('reviewsPrev');
+      const mobileNextBtn = document.getElementById('reviewsNext');
       
       if(!slidesContainer) return;
+      
+      // Check if mobile (max-width: 900px)
+      const isMobile = () => window.innerWidth <= 900;
+      
+      // Mobile scroll functionality
+      if(trackContainer && isMobile()){
+        const cards = Array.from(slidesContainer.querySelectorAll('.review-card'));
+        
+        function scrollToNext(){
+          if(cards.length === 0) return;
+          const firstCard = cards[0];
+          const cardWidth = firstCard.offsetWidth;
+          const gap = 20;
+          const scrollAmount = cardWidth + gap;
+          trackContainer.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+          });
+        }
+        
+        function scrollToPrev(){
+          if(cards.length === 0) return;
+          const firstCard = cards[0];
+          const cardWidth = firstCard.offsetWidth;
+          const gap = 20;
+          const scrollAmount = cardWidth + gap;
+          trackContainer.scrollBy({
+            left: -scrollAmount,
+            behavior: 'smooth'
+          });
+        }
+        
+        if(mobileNextBtn) mobileNextBtn.addEventListener('click', scrollToNext);
+        if(mobilePrevBtn) mobilePrevBtn.addEventListener('click', scrollToPrev);
+        
+        // Hide side navigation buttons on mobile
+        if(prevBtn) prevBtn.style.display = 'none';
+        if(nextBtn) nextBtn.style.display = 'none';
+        
+        return; // Exit early for mobile
+      }
       
       // Selecteer originele kaarten voordat we klonen
       const originalCards = Array.from(slidesContainer.children);
