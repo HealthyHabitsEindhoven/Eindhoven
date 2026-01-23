@@ -101,6 +101,33 @@
     .topbar__cta button:hover{
       filter:brightness(1.1);
     }
+    .topbar__menu-toggle{
+      display:none;
+      background:none;
+      border:none;
+      cursor:pointer;
+      padding:8px;
+      flex-shrink:0;
+      z-index:10001;
+    }
+    .topbar__menu-toggle span{
+      display:block;
+      width:24px;
+      height:2px;
+      background:var(--accent);
+      margin:5px 0;
+      transition:all 0.3s ease;
+      border-radius:2px;
+    }
+    .topbar__menu-toggle.active span:nth-child(1){
+      transform:rotate(45deg) translate(7px, 7px);
+    }
+    .topbar__menu-toggle.active span:nth-child(2){
+      opacity:0;
+    }
+    .topbar__menu-toggle.active span:nth-child(3){
+      transform:rotate(-45deg) translate(7px, -7px);
+    }
     body{ padding-top:77px; }
 
     /* =========================
@@ -174,6 +201,63 @@
        RESPONSIVE
     ========================== */
     @media(max-width:900px){
+      .topbar__menu-toggle{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+      }
+      .topbar__nav,
+      .topbar__lang,
+      .topbar__cta{
+        display:none;
+      }
+      .topbar__nav.mobile-open{
+        display:flex;
+        position:fixed;
+        top:77px;
+        left:0;
+        right:0;
+        background:#000;
+        flex-direction:column;
+        padding:24px;
+        gap:20px;
+        border-top:1px solid rgba(255,255,255,.08);
+        z-index:10000;
+        box-shadow:0 4px 12px rgba(0,0,0,.3);
+      }
+      .topbar__nav.mobile-open a{
+        font-size:16px;
+        padding:12px 0;
+        border-bottom:1px solid rgba(255,255,255,.08);
+      }
+      .topbar__nav.mobile-open a:last-child{
+        border-bottom:none;
+      }
+      .topbar__lang.mobile-open,
+      .topbar__cta.mobile-open{
+        display:flex;
+        position:fixed;
+        left:0;
+        right:0;
+        background:#000;
+        padding:16px 24px;
+        border-top:1px solid rgba(255,255,255,.08);
+        z-index:10000;
+      }
+      .topbar__lang.mobile-open{
+        top:calc(77px + 280px);
+        justify-content:center;
+      }
+      .topbar__cta.mobile-open{
+        top:calc(77px + 280px + 50px);
+        justify-content:center;
+      }
+      .topbar__cta.mobile-open button{
+        width:100%;
+        padding:12px 20px;
+        font-size:15px;
+      }
       .succesverhalen-grid{
         grid-template-columns:repeat(2,1fr);
         gap:20px;
@@ -220,18 +304,23 @@
       <div class="topbar__logo">
         <a href="../index.html"><img src="../assets/logo/HH logo.png" alt="Healthy Habits"></a>
       </div>
-      <nav class="topbar__nav">
+      <button class="topbar__menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="topbar__nav" id="topbarNav">
         <a href="../aanbod.html">Our Offer</a>
         <a href="succesverhalen.html">Success Stories</a>
         <a href="../tarieven.html">Pricing</a>
         <a href="../lidmaatschapstest.html">Online membership test</a>
       </nav>
-      <div class="topbar__lang">
+      <div class="topbar__lang" id="topbarLang">
         <a href="../index.html">Nederlands</a>
         <span>/</span>
         <a href="index.html" class="active">English</a>
       </div>
-      <div class="topbar__cta">
+      <div class="topbar__cta" id="topbarCta">
         <a href="../4-weken-proberen.html"><button>Try 4 weeks</button></a>
       </div>
     </div>
@@ -591,6 +680,47 @@
     </div>
   </section>
 
+  <script>
+    // Mobile menu toggle
+    (function(){
+      const menuToggle = document.getElementById('menuToggle');
+      const topbarNav = document.getElementById('topbarNav');
+      const topbarLang = document.getElementById('topbarLang');
+      const topbarCta = document.getElementById('topbarCta');
+      
+      if(menuToggle && topbarNav){
+        menuToggle.addEventListener('click', function(){
+          const isOpen = menuToggle.classList.contains('active');
+          
+          if(isOpen){
+            menuToggle.classList.remove('active');
+            topbarNav.classList.remove('mobile-open');
+            topbarLang.classList.remove('mobile-open');
+            topbarCta.classList.remove('mobile-open');
+            document.body.style.overflow = '';
+          } else {
+            menuToggle.classList.add('active');
+            topbarNav.classList.add('mobile-open');
+            topbarLang.classList.add('mobile-open');
+            topbarCta.classList.add('mobile-open');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+        
+        // Sluit menu bij klik op link
+        const navLinks = topbarNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+          link.addEventListener('click', function(){
+            menuToggle.classList.remove('active');
+            topbarNav.classList.remove('mobile-open');
+            topbarLang.classList.remove('mobile-open');
+            topbarCta.classList.remove('mobile-open');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
 
