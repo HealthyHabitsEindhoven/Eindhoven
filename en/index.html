@@ -1530,17 +1530,6 @@ The way to keep exercising —<br>
 and who knows, just like many others, you might even start enjoying it.</p>
         <a class="cta" href="#">Book an intake</a>
       </div>
-
-      <div class="split-video">
-        <video id="splitVideo" muted loop playsinline>
-          <source src="../assets/volledig goede kopie.MOV" type="video/quicktime">
-          Your browser does not support video.
-        </video>
-        <button class="video-play-btn" id="videoPlayBtn" aria-label="Play video">
-          <span class="video-icon video-icon-play">▶</span>
-          <span class="video-icon video-icon-pause">⏸</span>
-        </button>
-      </div>
     </div>
   </section>
 
@@ -1809,58 +1798,6 @@ and who knows, just like many others, you might even start enjoying it.</p>
       </div>
     </section>
 
-    <!-- REVIEW VIDEO'S -->
-    <section class="review-videos-section">
-      <div class="container">
-        <div class="review-videos-header">
-          <h2>Listen to our members</h2>
-          <p>Personal stories about their journey at Healthy Habits</p>
-        </div>
-        <div class="review-videos-grid">
-          <div class="review-video-item">
-            <div class="video-wrapper">
-              <video class="review-video" muted loop playsinline preload="metadata">
-                <source src="../assets/filmpjes revieuw/Monique.mov" type="video/quicktime">
-                Your browser does not support video.
-              </video>
-              <button class="review-video-play-btn" aria-label="Play video">
-                <span class="review-video-icon review-video-icon-play">▶</span>
-                <span class="review-video-icon review-video-icon-pause">⏸</span>
-              </button>
-              <div class="review-video-progress">
-                <div class="review-video-progress-bg"></div>
-                <div class="review-video-progress-bar"></div>
-              </div>
-            </div>
-            <div class="video-info">
-              <h3>Monique</h3>
-              <p>Personal story about the journey at Healthy Habits</p>
-            </div>
-          </div>
-          <div class="review-video-item">
-            <div class="video-wrapper">
-              <video class="review-video" muted loop playsinline preload="metadata">
-                <source src="../assets/filmpjes revieuw/ton.mov" type="video/quicktime">
-                Your browser does not support video.
-              </video>
-              <button class="review-video-play-btn" aria-label="Play video">
-                <span class="review-video-icon review-video-icon-play">▶</span>
-                <span class="review-video-icon review-video-icon-pause">⏸</span>
-              </button>
-              <div class="review-video-progress">
-                <div class="review-video-progress-bg"></div>
-                <div class="review-video-progress-bar"></div>
-              </div>
-            </div>
-            <div class="video-info">
-              <h3>Ton</h3>
-              <p>Personal story about the journey at Healthy Habits</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- COACH PREVIEW -->
     <!-- INSCHRIJF FORMULIER -->
     <section class="form-section">
@@ -2068,81 +2005,6 @@ and who knows, just like many others, you might even start enjoying it.</p>
       });
     })();
 
-    // Review video's - custom controls met play/pause en voortgangsbalk
-    (function(){
-      const videoWrappers = document.querySelectorAll('.review-video-item .video-wrapper');
-      
-      videoWrappers.forEach(function(wrapper){
-        const video = wrapper.querySelector('.review-video');
-        const playBtn = wrapper.querySelector('.review-video-play-btn');
-        const progressBar = wrapper.querySelector('.review-video-progress-bar');
-        const progressContainer = wrapper.querySelector('.review-video-progress');
-        
-        if(!video || !playBtn || !progressBar) return;
-
-        // Toggle play/pause
-        function togglePlay(){
-          if(video.paused){
-            video.play();
-            wrapper.classList.add('playing');
-          } else {
-            video.pause();
-            wrapper.classList.remove('playing');
-          }
-        }
-
-        // Update voortgangsbalk
-        function updateProgress(){
-          if(video.duration){
-            const percent = (video.currentTime / video.duration) * 100;
-            progressBar.style.width = percent + '%';
-          }
-        }
-
-        // Click op progress bar om te seeken
-        function seekTo(e){
-          if(!video.duration) return;
-          const rect = progressContainer.getBoundingClientRect();
-          const percent = (e.clientX - rect.left) / rect.width;
-          video.currentTime = percent * video.duration;
-        }
-
-        // Event listeners
-        playBtn.addEventListener('click', function(e){
-          e.stopPropagation();
-          togglePlay();
-        });
-
-        wrapper.addEventListener('click', function(e){
-          if(e.target === video || e.target === playBtn || playBtn.contains(e.target) || 
-             e.target === progressContainer || progressContainer.contains(e.target)){
-            return;
-          }
-          togglePlay();
-        });
-
-        progressContainer.addEventListener('click', seekTo);
-
-        video.addEventListener('timeupdate', updateProgress);
-        video.addEventListener('loadedmetadata', updateProgress);
-        video.addEventListener('play', function(){
-          wrapper.classList.add('playing');
-        });
-        video.addEventListener('pause', function(){
-          wrapper.classList.remove('playing');
-        });
-
-        // Keyboard support
-        wrapper.setAttribute('tabindex', '0');
-        wrapper.addEventListener('keydown', function(e){
-          if(e.code === 'Space' || e.code === 'Enter'){
-            e.preventDefault();
-            togglePlay();
-          }
-        });
-      });
-    })();
-
     // Aanbod carousel - automatisch scrollen met infinite loop + navigatieknoppen
     (function(){
       const slidesContainer = document.getElementById('aanbodSlides');
@@ -2287,59 +2149,6 @@ and who knows, just like many others, you might even start enjoying it.</p>
           startAutoScroll();
         }
       });
-    })();
-
-    // Split video play/pause functionaliteit
-    (function(){
-      const video = document.getElementById('splitVideo');
-      const playBtn = document.getElementById('videoPlayBtn');
-      const videoWrapper = document.querySelector('.split-video');
-      
-      if(!video || !playBtn || !videoWrapper) return;
-
-      // Toggle play/pause
-      function togglePlay(){
-        if(video.paused){
-          video.play();
-          videoWrapper.classList.add('playing');
-        } else {
-          video.pause();
-          videoWrapper.classList.remove('playing');
-        }
-      }
-
-      // Click op button of video wrapper
-      playBtn.addEventListener('click', function(e){
-        e.stopPropagation();
-        togglePlay();
-      });
-
-      videoWrapper.addEventListener('click', function(e){
-        if(e.target === video || e.target === playBtn || playBtn.contains(e.target)){
-          return;
-        }
-        togglePlay();
-      });
-
-      // Update state wanneer video automatisch eindigt (voor loop)
-      video.addEventListener('play', function(){
-        videoWrapper.classList.add('playing');
-      });
-
-      video.addEventListener('pause', function(){
-        videoWrapper.classList.remove('playing');
-      });
-
-      // Keyboard support (Space bar op video wrapper)
-      videoWrapper.addEventListener('keydown', function(e){
-        if(e.code === 'Space' || e.code === 'Enter'){
-          e.preventDefault();
-          togglePlay();
-        }
-      });
-
-      // Focusable maken voor accessibility
-      videoWrapper.setAttribute('tabindex', '0');
     })();
 
     // Splash screen - verberg na 1 seconde
