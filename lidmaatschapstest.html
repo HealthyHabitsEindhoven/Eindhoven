@@ -1506,7 +1506,7 @@
       }
     }
 
-    // Honeypot check on form submit
+    // Form submit handler voor redirect naar bedankt pagina
     (function(){
       const form = document.querySelector('form.test-wizard');
       if(form){
@@ -1531,7 +1531,47 @@
             return false; // Bot detected
           }
           
-          // Allow normal form submission
+          e.preventDefault();
+          
+          const submitButton = form.querySelector('button[type="submit"]');
+          if(submitButton){
+            submitButton.disabled = true;
+            submitButton.textContent = 'Verzenden...';
+          }
+          
+          const formData = new FormData(form);
+          const urlParams = new URLSearchParams();
+          formData.forEach((value, key) => {
+            if(Array.isArray(value)) {
+              value.forEach(item => urlParams.append(key, item));
+            } else {
+              urlParams.append(key, value);
+            }
+          });
+          
+          // Handle checkboxes with same name
+          document.querySelectorAll('input[name="doel"]:checked').forEach(cb => {
+            urlParams.append('doel', cb.value);
+          });
+          document.querySelectorAll('input[name="voorkeur"]:checked').forEach(cb => {
+            urlParams.append('voorkeur', cb.value);
+          });
+          
+          fetch('https://hooks.zapier.com/hooks/catch/16872475/uqae6wf/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: urlParams.toString()
+          })
+          .then(response => {
+            // Redirect naar bedankt pagina ongeacht response
+            window.location.href = 'bedankt.html';
+          })
+          .catch(error => {
+            // Redirect naar bedankt pagina ook bij error
+            window.location.href = 'bedankt.html';
+          });
         });
       }
     })();
