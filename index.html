@@ -1646,7 +1646,18 @@
       max-width:900px;
       margin:0 auto;
     }
+    .testimonial-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:28px;
+      max-width:900px;
+      margin:0 auto;
+    }
     .review-video-item{
+      display:flex;
+      flex-direction:column;
+    }
+    .testimonial-card{
       display:flex;
       flex-direction:column;
     }
@@ -1744,6 +1755,40 @@
       height: 100%;
       border: 0;
       display: block;
+    }
+
+    /* Testimonial video cards - exact same size */
+    .testimonial-card .video-wrap {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .testimonial-card .video-wrap iframe,
+    .testimonial-card .video-wrap video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    /* Crop/zoom zodat beide gelijk ogen */
+    .testimonial-card .video-wrap iframe {
+      transform: scale(1.08);
+      transform-origin: center;
+    }
+
+    /* Individuele video scaling indien nodig */
+    .video-monique iframe {
+      transform: scale(1.05);
+    }
+
+    .video-ton iframe {
+      transform: scale(1.12);
     }
 
     /* =========================
@@ -2616,9 +2661,9 @@ zelfs leuk.</p>
           <h2>Luister naar onze leden</h2>
           <p>Persoonlijke verhalen over hun reis bij Healthy Habits</p>
         </div>
-        <div class="review-videos-grid">
-          <div class="review-video-item">
-            <div class="video-wrapper">
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <div class="video-wrap video-monique">
               <iframe
                 src="https://player.vimeo.com/video/1157995417?h=clean&dnt=1&title=0&byline=0&portrait=0&badge=0&controls=1"
                 allow="autoplay; fullscreen; picture-in-picture"
@@ -2633,8 +2678,8 @@ zelfs leuk.</p>
               <p>Persoonlijk verhaal over de reis bij Healthy Habits</p>
             </div>
           </div>
-          <div class="review-video-item">
-            <div class="video-wrapper">
+          <div class="testimonial-card">
+            <div class="video-wrap video-ton">
               <iframe
                 src="https://player.vimeo.com/video/1157996124?h=clean&dnt=1&title=0&byline=0&portrait=0&badge=0&controls=1"
                 allow="autoplay; fullscreen; picture-in-picture"
