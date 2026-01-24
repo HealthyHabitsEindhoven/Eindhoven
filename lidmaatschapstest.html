@@ -1543,8 +1543,8 @@
         telefoon: telefoon
       };
 
-      // Send to Zapier webhook
-      fetch(WEBHOOK_URL, {
+      // Send to Zapier webhook - DIRECT bij afronden test
+      fetch('https://hooks.zapier.com/hooks/catch/16872475/ugntte5/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1554,15 +1554,16 @@
       .then(response => {
         if(response.ok){
           console.log("Zapier sent", formData);
-          showSuccess();
         } else {
           console.error("Zapier failed", response);
-          showSuccess(); // Show success anyway
         }
+        // Show success regardless of response
+        showSuccess();
       })
       .catch(error => {
         console.error("Zapier failed", error);
-        showSuccess(); // Show success anyway
+        // Show success anyway
+        showSuccess();
       });
     }
 
