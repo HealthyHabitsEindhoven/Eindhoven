@@ -1403,7 +1403,7 @@
 
   <script>
     // Webhook URL
-    const WEBHOOK_URL = "PASTE_WEBHOOK_HERE";
+    const WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/16872475/ugntte5/";
 
     // Wizard state
     let currentStep = 1;
@@ -1529,6 +1529,10 @@
       const telefoon = document.querySelector('input[name="telefoon"]')?.value || '';
 
       const formData = {
+        form_name: "online-lidmaatschapstest",
+        source: "website",
+        page_url: window.location.href,
+        timestamp: new Date().toISOString(),
         doelen: doelen,
         frequentie: frequentie,
         voorkeur: voorkeur,
@@ -1536,37 +1540,30 @@
         tijdstip: tijdstip,
         naam: naam,
         email: email,
-        telefoon: telefoon,
-        timestamp: new Date().toISOString(),
-        page_url: window.location.href
+        telefoon: telefoon
       };
 
-      if(WEBHOOK_URL && WEBHOOK_URL !== "PASTE_WEBHOOK_HERE"){
-        // Send to webhook
-        fetch(WEBHOOK_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData)
-        })
-        .then(response => {
-          if(response.ok){
-            showSuccess();
-          } else {
-            console.error('Error:', response);
-            showSuccess(); // Show success anyway
-          }
-        })
-        .catch(error => {
-          console.error('Error:', error);
+      // Send to Zapier webhook
+      fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => {
+        if(response.ok){
+          console.log("Zapier sent", formData);
+          showSuccess();
+        } else {
+          console.error("Zapier failed", response);
           showSuccess(); // Show success anyway
-        });
-      } else {
-        // Log to console
-        console.log('Form data:', formData);
-        showSuccess();
-      }
+        }
+      })
+      .catch(error => {
+        console.error("Zapier failed", error);
+        showSuccess(); // Show success anyway
+      });
     }
 
     function showSuccess(){
