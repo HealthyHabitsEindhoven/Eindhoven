@@ -1641,10 +1641,11 @@
     }
     .review-videos-grid{
       display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:24px;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:28px;
       max-width:900px;
       margin:0 auto;
+      align-items:stretch;
     }
     .review-video-item{
       display:flex;
@@ -1727,12 +1728,12 @@
       display: block;
     }
 
-    /* Vimeo video wrapper for review videos (Monique) */
+    /* Vimeo video wrapper for review videos - exact same size */
     .review-video-item .video-wrapper {
       position: relative;
       width: 100%;
       aspect-ratio: 4 / 5;
-      border-radius: 18px;
+      border-radius: 22px;
       overflow: hidden;
       background: #000;
     }
@@ -1744,6 +1745,17 @@
       height: 100%;
       border: 0;
       display: block;
+      transform: scale(1.08);
+      transform-origin: center;
+    }
+
+    /* Individuele video scaling voor gelijke weergave */
+    .review-video-item:first-child .video-wrapper iframe {
+      transform: scale(1.05);
+    }
+
+    .review-video-item:last-child .video-wrapper iframe {
+      transform: scale(1.12);
     }
 
 
