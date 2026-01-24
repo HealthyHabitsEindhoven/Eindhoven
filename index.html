@@ -2814,70 +2814,60 @@ zelfs leuk.</p>
           <button class="reviews-nav prev" id="prevReview" aria-label="Vorige review">‹</button>
           <div class="reviews-carousel-track" id="reviewsTrack">
             <div class="reviews-carousel-slides" id="reviewsSlides">
-              <div class="review-card active exp-card">
-                <div class="review-card__image">
-                  <div class="exp-media">
-                    <img src="./assets/images/resultaten/slide 1.jpeg" alt="Review" loading="lazy" width="400" height="300" decoding="async">
-                  </div>
+              <article class="review-card active exp-card">
+                <div class="exp-media">
+                  <img src="./assets/images/resultaten/slide 1.jpeg" alt="Review" loading="lazy" decoding="async">
                 </div>
-                <div class="review-card__content exp-content">
+                <div class="review-card__content exp-body">
                   <h3 class="review-card__name">Pieter</h3>
                   <p class="review-card__age">43 jaar</p>
                   <p class="review-card__quote">Samen met coach Roos heb ik samengezeten en een plan gemaakt, en met succes! In de eerste 2 maanden ben ik 5 kilo afgevallen, dit in samenhang met een enorm prettige sfeer. De begeleiding is echt persoonlijk en past perfect bij mijn leven.</p>
                 </div>
-              </div>
+              </article>
 
-              <div class="review-card exp-card">
-                <div class="review-card__image">
-                  <div class="exp-media">
-                    <img src="./assets/images/resultaten/slide 2.jpeg" alt="Review" loading="lazy">
-                  </div>
+              <article class="review-card exp-card">
+                <div class="exp-media">
+                  <img src="./assets/images/resultaten/slide 2.jpeg" alt="Review" loading="lazy" decoding="async">
                 </div>
-                <div class="review-card__content exp-content">
+                <div class="review-card__content exp-body">
                   <h3 class="review-card__name">Marieke</h3>
                   <p class="review-card__age">48 jaar</p>
                   <p class="review-card__quote">Eindelijk een plek waar ik me thuis voel en echte resultaten zie. De warme sfeer en persoonlijke begeleiding maken dat ik me hier helemaal op mijn gemak voel. Het voelt niet als een sportschool, maar als een thuis waar ik graag kom.</p>
                 </div>
-              </div>
+              </article>
 
-              <div class="review-card exp-card">
-                <div class="review-card__image">
-                  <div class="exp-media">
-                    <img src="./assets/images/resultaten/IMG_5025.jpeg" alt="Review" loading="lazy">
-                  </div>
+              <article class="review-card exp-card">
+                <div class="exp-media">
+                  <img src="./assets/images/resultaten/IMG_5025.jpeg" alt="Review" loading="lazy" decoding="async">
                 </div>
-                <div class="review-card__content exp-content">
+                <div class="review-card__content exp-body">
                   <h3 class="review-card__name">Erik</h3>
                   <p class="review-card__age">55 jaar</p>
                   <p class="review-card__quote">Het plan past perfect bij mijn leven. Geen stress, wel resultaat. Ik heb eindelijk structuur en ritme gevonden in mijn trainingen. De begeleiding is praktisch en vol te houden, precies wat ik nodig had.</p>
                 </div>
-              </div>
+              </article>
 
-              <div class="review-card exp-card">
-                <div class="review-card__image">
-                  <div class="exp-media">
-                    <img src="./assets/images/resultaten/IMG_5611 2.jpeg" alt="Review" loading="lazy">
-                  </div>
+              <article class="review-card exp-card">
+                <div class="exp-media">
+                  <img src="./assets/images/resultaten/IMG_5611 2.jpeg" alt="Review" loading="lazy" decoding="async">
                 </div>
-                <div class="review-card__content exp-content">
+                <div class="review-card__content exp-body">
                   <h3 class="review-card__name">Linda</h3>
                   <p class="review-card__age">50 jaar</p>
                   <p class="review-card__quote">Ik voel me sterker en zelfverzekerder. Mijn lichaam voelt weer goed. Gezond ouder worden was mijn doel, en dankzij de persoonlijke begeleiding en training merk ik echt verschil in kracht en energie.</p>
                 </div>
-              </div>
+              </article>
 
-              <div class="review-card exp-card">
-                <div class="review-card__image">
-                  <div class="exp-media">
-                    <img src="./assets/images/resultaten/IMG_6968.jpeg" alt="Review" loading="lazy">
-                  </div>
+              <article class="review-card exp-card">
+                <div class="exp-media">
+                  <img src="./assets/images/resultaten/IMG_6968.jpeg" alt="Review" loading="lazy" decoding="async">
                 </div>
-                <div class="review-card__content exp-content">
+                <div class="review-card__content exp-body">
                   <h3 class="review-card__name">Rob</h3>
                   <p class="review-card__age">53 jaar</p>
                   <p class="review-card__quote">Eindelijk een plek waar ik op mijn eigen tempo kan werken aan mijn gezondheid. Er is geen druk, geen verwachtingen, alleen begeleiding die aansluit bij wat ik nodig heb. Perfect!</p>
                 </div>
-              </div>
+              </article>
 
               <div class="review-card exp-card">
                 <div class="review-card__image">
@@ -3670,7 +3660,104 @@ zelfs leuk.</p>
   </script>
 
   <!-- Vimeo Player API -->
-  <script src="https://player.vimeo.com/api/player.js"></script>
+  <script src="https://player.vimeo.com/api/player.js">  </script>
+
+  <style>
+  @media (max-width: 768px) {
+
+    /* ========== SCOPE: ALLEEN DEZE SECTIE ========== */
+    .experience-section { 
+      width: 100%;
+      overflow: hidden;
+    }
+
+    /* ========== KILL ALLE "ZOOM" OORZAKEN ========== */
+    .experience-section,
+    .experience-section * ,
+    .experience-section *::before,
+    .experience-section *::after {
+      transform: none !important;
+      filter: none !important;
+      animation: none !important;
+      transition: none !important;
+      will-change: auto !important;
+    }
+
+    /* als slider libs rare 3d transform doen */
+    .experience-section .swiper-wrapper,
+    .experience-section .swiper-slide,
+    .experience-section .slick-track,
+    .experience-section .slick-slide,
+    .experience-section .glide__track,
+    .experience-section .glide__slides {
+      transform: none !important;
+    }
+
+    /* ========== FORCE CARD LAYOUT ========== */
+    .experience-section .exp-card {
+      width: min(92vw, 420px) !important;
+      max-width: 420px !important;
+      margin: 0 auto !important;
+    }
+
+    /* ========== FORCE MEDIA BOX ========== */
+    .experience-section .exp-media {
+      position: relative !important;
+      width: 100% !important;
+      height: 240px !important;
+      max-height: 240px !important;
+      overflow: hidden !important;
+      border-radius: 18px !important;
+      background: #0b0c10 !important;
+    }
+
+    /* ========== VERBIED BACKGROUND IMAGES (die veroorzaken vaak crop) ========== */
+    .experience-section .exp-media,
+    .experience-section .exp-card,
+    .experience-section .exp-media * {
+      background-image: none !important;
+      background-size: initial !important;
+      background-position: initial !important;
+    }
+
+    /* ========== FORCE IMG BEHAVIOR ========== */
+    .experience-section .exp-media img,
+    .experience-section .exp-media picture,
+    .experience-section .exp-media picture img {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      min-width: 0 !important;
+      min-height: 0 !important;
+      max-width: none !important;
+      max-height: none !important;
+      display: block !important;
+      object-fit: cover !important;
+      object-position: center center !important;
+
+      /* kill de klassieke absolute-centering bug */
+      left: 0 !important;
+      top: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      margin: 0 !important;
+      translate: none !important;
+    }
+
+    /* ========== ALS ER NOG OUDE IMG-STYLES ZIJN ========== */
+    .experience-section img[style*="transform"],
+    .experience-section img[style*="translate"],
+    .experience-section img[style*="scale"] {
+      transform: none !important;
+    }
+
+    /* ========== TYPO / BODY spacing unchanged-ish ========== */
+    .experience-section .exp-body { 
+      padding-top: 12px;
+    }
+  }
+  </style>
 
 </body>
 </html>
