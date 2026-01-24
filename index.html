@@ -2078,10 +2078,10 @@
         display:none;
       }
       .review-card{
-        flex:0 0 calc(100% / 1.2) !important;
+        flex:0 0 calc(100% - 40px) !important;
         flex-direction:column !important;
         min-width:280px;
-        max-width:calc(100% / 1.2);
+        max-width:calc(100% - 40px);
         border-radius:var(--radius);
         flex-shrink:0;
         scroll-snap-align:start;
@@ -2092,7 +2092,7 @@
         align-items:stretch;
       }
       .review-card.active{
-        flex:0 0 calc(100% / 1.2) !important;
+        flex:0 0 calc(100% - 40px) !important;
         transform:none;
       }
       .review-card__image{
@@ -2107,6 +2107,7 @@
         width:100%;
         height:100%;
         object-fit:cover;
+        object-position:center center;
         display:block;
       }
       .review-card__content{
