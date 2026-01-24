@@ -1209,6 +1209,21 @@
     </div>
   </section>
 
+  <!-- Hidden form voor Zapier submit -->
+  <form id="testForm" action="https://hooks.zapier.com/hooks/catch/16872475/uqaidcv/" method="POST" style="display:none;">
+    <input type="hidden" name="form_name" value="">
+    <input type="hidden" name="source" value="">
+    <input type="hidden" name="page_url" value="">
+    <input type="hidden" name="doelen" value="">
+    <input type="hidden" name="frequentie" value="">
+    <input type="hidden" name="voorkeur" value="">
+    <input type="hidden" name="ervaring" value="">
+    <input type="hidden" name="tijdstip" value="">
+    <input type="hidden" name="naam" value="">
+    <input type="hidden" name="email" value="">
+    <input type="hidden" name="telefoon" value="">
+  </form>
+
   <!-- 3. WAAROM DEZE LIDMAATSCHAPSTEST -->
   <section class="waarom-section">
     <div class="container">
@@ -1810,6 +1825,9 @@
         });
       }
     })();
+
+    // Vul page_url voor alle formulieren
+    document.querySelectorAll('input[name="page_url"]').forEach(i => i.value = location.href);
   </script>
 
 </body>
