@@ -1612,6 +1612,9 @@
     // Wizard state
     let currentStep = 1;
     const totalSteps = 7;
+    
+    // Store answers as user progresses
+    const answers = {};
 
     // Update progress
     function updateProgress(){
@@ -1677,11 +1680,52 @@
       }
     }
 
+    // Save current step answers
+    function saveStepAnswers(step){
+      const stepEl = document.querySelector(`.test-step[data-step="${step}"]`);
+      if(!stepEl) return;
+      
+      if(step === 1){
+        // Checkboxes: doel
+        const checked = Array.from(stepEl.querySelectorAll('input[name="doel"]:checked')).map(cb => cb.value);
+        answers.vraag1_doel = checked;
+      } else if(step === 2){
+        // Radio: frequentie
+        const selected = stepEl.querySelector('input[name="frequentie"]:checked');
+        answers.vraag2_frequentie = selected ? selected.value : null;
+      } else if(step === 3){
+        // Checkboxes: voorkeur
+        const checked = Array.from(stepEl.querySelectorAll('input[name="voorkeur"]:checked')).map(cb => cb.value);
+        answers.vraag3_voorkeur = checked;
+      } else if(step === 4){
+        // Radio: ervaring
+        const selected = stepEl.querySelector('input[name="ervaring"]:checked');
+        answers.vraag4_ervaring = selected ? selected.value : null;
+      } else if(step === 5){
+        // Radio: tijdstip
+        const selected = stepEl.querySelector('input[name="tijdstip"]:checked');
+        answers.vraag5_tijdstip = selected ? selected.value : null;
+      } else if(step === 6){
+        // Text: naam
+        const input = stepEl.querySelector('input[name="naam"]');
+        answers.vraag6_naam = input ? input.value.trim() : '';
+      } else if(step === 7){
+        // Email and telefoon
+        const email = stepEl.querySelector('input[name="email"]');
+        const telefoon = stepEl.querySelector('input[name="telefoon"]');
+        answers.vraag7_email = email ? email.value.trim() : '';
+        answers.vraag7_telefoon = telefoon ? telefoon.value.trim() : '';
+      }
+    }
+
     // Next step (global function)
     window.nextStep = function(){
       if(!validateStep(currentStep)){
         return;
       }
+      
+      // Save current step answers before moving forward
+      saveStepAnswers(currentStep);
       
       if(currentStep < totalSteps){
         document.querySelector(`.test-step[data-step="${currentStep}"]`).classList.remove('active');
@@ -1709,20 +1753,20 @@
       }
     }
 
-    // Form submit handler voor redirect naar bedankt pagina
+    // Form submit handler - send to Zapier at the end
     (function(){
       const form = document.querySelector('form.test-wizard');
       if(form){
         form.addEventListener('submit', function(e){
+          e.preventDefault();
+          
           // Only allow submit on last step
           if(currentStep !== totalSteps){
-            e.preventDefault();
             return false;
           }
           
           // Validate last step
           if(!validateStep(totalSteps)){
-            e.preventDefault();
             alert('Vul alle velden correct in.');
             return false;
           }
@@ -1730,49 +1774,38 @@
           // Honeypot check
           const honeypot = document.querySelector('input[name="website"]').value;
           if(honeypot){
-            e.preventDefault();
             return false; // Bot detected
           }
           
-          e.preventDefault();
+          // Save final step answers
+          saveStepAnswers(totalSteps);
           
-          const submitButton = form.querySelector('button[type="submit"]');
-          if(submitButton){
-            submitButton.disabled = true;
-            submitButton.textContent = 'Verzenden...';
-          }
+          // Build payload
+          const payload = {
+            page: 'online-lidmaatschapstest',
+            timestamp: new Date().toISOString(),
+            answers: answers,
+            userAgent: navigator.userAgent,
+            url: window.location.href
+          };
           
-          const formData = new FormData(form);
-          const urlParams = new URLSearchParams();
-          formData.forEach((value, key) => {
-            if(Array.isArray(value)) {
-              value.forEach(item => urlParams.append(key, item));
-            } else {
-              urlParams.append(key, value);
-            }
-          });
-          
-          // Handle checkboxes with same name
-          document.querySelectorAll('input[name="doel"]:checked').forEach(cb => {
-            urlParams.append('doel', cb.value);
-          });
-          document.querySelectorAll('input[name="voorkeur"]:checked').forEach(cb => {
-            urlParams.append('voorkeur', cb.value);
-          });
-          
+          // Send to Zapier (non-blocking, keepalive for reliability)
           fetch('https://hooks.zapier.com/hooks/catch/16872475/uqac534/', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
+              'Content-Type': 'application/json',
             },
-            body: urlParams.toString()
+            body: JSON.stringify(payload),
+            keepalive: true
           })
           .then(response => {
-            // Redirect naar bedankt pagina ongeacht response
+            // Always redirect, even if fetch fails
             window.location.href = 'bedankt.html';
           })
           .catch(error => {
-            // Redirect naar bedankt pagina ook bij error
+            // Log error but don't block user
+            console.error('Zapier error:', error);
+            // Still redirect to thank you page
             window.location.href = 'bedankt.html';
           });
         });
