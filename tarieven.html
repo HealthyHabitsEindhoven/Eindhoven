@@ -876,120 +876,148 @@
     })();
 
     // Prijzen formulier - Zapier webhook handler
-    // Regel 878-992
-    (function initPrijzenForm(){
-      // Wait for DOM to be ready
-      if(document.readyState === 'loading'){
-        document.addEventListener('DOMContentLoaded', function(){
-          setupForm();
-        });
-      } else {
-        setupForm();
+    // Regel 878-1000
+    document.addEventListener('DOMContentLoaded', function(){
+      console.log("DOM geladen, initialiseer prijzen formulier");
+      
+      // Set page_url in hidden input
+      const pageUrlInput = document.querySelector('input[name="page_url"]');
+      if(pageUrlInput){
+        pageUrlInput.value = window.location.href;
+        console.log("Page URL gezet:", window.location.href);
       }
       
-      function setupForm(){
-        // Set page_url in hidden input before form submission
-        const pageUrlInput = document.querySelector('input[name="page_url"]');
-        if(pageUrlInput){
-          pageUrlInput.value = window.location.href;
-        }
-        
-        // Get form and button
-        const form = document.querySelector('form.form');
-        const submitButton = document.querySelector('button.form-submit');
-        
-        if(form && submitButton){
-          // Make sure button is clickable
-          submitButton.style.pointerEvents = 'auto';
-          submitButton.style.cursor = 'pointer';
-          submitButton.disabled = false;
-          
-          // Add submit handler - preventDefault en stuur via fetch naar Zapier
-          form.addEventListener('submit', function(e){
-            e.preventDefault();
-            e.stopPropagation();
-            
-            console.log("Formulier submit event triggered");
-            
-            // Disable button during submission
-            submitButton.disabled = true;
-            submitButton.textContent = 'Verzenden...';
-            
-            // Verzamel alle formuliervelden
-            const formData = new FormData(form);
-            const payload = {
-              form_name: "prijzen",
-              source: "website",
-              page_url: window.location.href,
-              timestamp: new Date().toISOString()
-            };
-            
-            // Voeg alle formuliervelden toe aan payload
-            formData.forEach((value, key) => {
-              if(key !== 'form_name' && key !== 'source' && key !== 'page_url'){
-                payload[key] = value;
-              }
-            });
-            
-            console.log("Payload voor Zapier:", payload);
-            console.log("Verzenden naar:", 'https://hooks.zapier.com/hooks/catch/16872475/uqaroxx/');
-            
-            // Stuur naar Zapier via fetch POST
-            fetch('https://hooks.zapier.com/hooks/catch/16872475/uqaroxx/', {
-              method: 'POST',
-              mode: 'cors',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(payload)
-            })
-            .then(response => {
-              console.log("Zapier response status:", response.status);
-              console.log("Zapier response headers:", response.headers);
-              
-              // Probeer response body te lezen voor debugging
-              return response.text().then(text => {
-                console.log("Zapier response body:", text);
-                return { status: response.status, ok: response.ok, text: text };
-              });
-            })
-            .then(result => {
-              if(result.ok || result.status === 200){
-                console.log("Zapier sent successfully", payload);
-                alert('Bedankt! We nemen snel contact met je op.');
-                form.reset();
-              } else {
-                console.error("Zapier failed with status:", result.status, "Response:", result.text);
-                alert('Bedankt! We nemen snel contact met je op.');
-                form.reset();
-              }
-              // Re-enable button
-              submitButton.disabled = false;
-              submitButton.textContent = 'Ontdek jouw tarief (30 sec)';
-            })
-            .catch(error => {
-              console.error("Zapier fetch error:", error);
-              console.error("Error details:", error.message, error.stack);
-              alert('Bedankt! We nemen snel contact met je op.');
-              form.reset();
-              // Re-enable button
-              submitButton.disabled = false;
-              submitButton.textContent = 'Ontdek jouw tarief (30 sec)';
-            });
-          });
-          
-          // Ook click handler op button als backup
-          submitButton.addEventListener('click', function(e){
-            console.log("Button clicked");
-            // Laat de submit handler het werk doen
-          });
-          
-          console.log("Prijzen formulier geïnitialiseerd - fetch POST naar Zapier");
-        } else {
-          console.error("Formulier of button niet gevonden", {form, submitButton});
-        }
+      // Get form and button
+      const form = document.querySelector('form.form');
+      const submitButton = document.querySelector('button.form-submit');
+      
+      console.log("Form gevonden:", form);
+      console.log("Button gevonden:", submitButton);
+      
+      if(!form){
+        console.error("Formulier niet gevonden!");
+        return;
       }
-    })();
+      
+      if(!submitButton){
+        console.error("Submit button niet gevonden!");
+        return;
+      }
+      
+      // Make sure button is clickable
+      submitButton.style.pointerEvents = 'auto';
+      submitButton.style.cursor = 'pointer';
+      submitButton.disabled = false;
+      
+      // Remove any existing submit listeners by cloning the form
+      const newForm = form.cloneNode(true);
+      form.parentNode.replaceChild(newForm, form);
+      const newButton = newForm.querySelector('button.form-submit');
+      
+      // Add submit handler - preventDefault en stuur via fetch naar Zapier
+      newForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        
+        console.log("=== FORMULIER SUBMIT GESTART ===");
+        
+        // Disable button during submission
+        if(newButton){
+          newButton.disabled = true;
+          newButton.textContent = 'Verzenden...';
+        }
+        
+        // Verzamel alle formuliervelden
+        const formData = new FormData(newForm);
+        const payload = {
+          form_name: "prijzen",
+          source: "website",
+          page_url: window.location.href,
+          timestamp: new Date().toISOString()
+        };
+        
+        // Voeg alle formuliervelden toe aan payload
+        formData.forEach((value, key) => {
+          if(key !== 'form_name' && key !== 'source' && key !== 'page_url'){
+            payload[key] = value;
+          }
+        });
+        
+        console.log("Payload voor Zapier:", JSON.stringify(payload, null, 2));
+        console.log("Verzenden naar: https://hooks.zapier.com/hooks/catch/16872475/uqaroxx/");
+        
+        // Stuur naar Zapier via fetch POST
+        const fetchPromise = fetch('https://hooks.zapier.com/hooks/catch/16872475/uqaroxx/', {
+          method: 'POST',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload)
+        });
+        
+        console.log("Fetch gestart, wacht op response...");
+        
+        fetchPromise
+        .then(response => {
+          console.log("=== ZAPIER RESPONSE ONTVANGEN ===");
+          console.log("Status:", response.status);
+          console.log("Status text:", response.statusText);
+          console.log("OK:", response.ok);
+          
+          // Probeer response body te lezen voor debugging
+          return response.text().then(text => {
+            console.log("Response body:", text);
+            return { status: response.status, ok: response.ok, text: text };
+          });
+        })
+        .then(result => {
+          if(result.ok || result.status === 200){
+            console.log("=== ZAPIER SUCCES ===");
+            console.log("Zapier sent successfully", payload);
+            alert('Bedankt! We nemen snel contact met je op.');
+            newForm.reset();
+          } else {
+            console.error("=== ZAPIER FAILED ===");
+            console.error("Status:", result.status, "Response:", result.text);
+            alert('Bedankt! We nemen snel contact met je op.');
+            newForm.reset();
+          }
+          // Re-enable button
+          if(newButton){
+            newButton.disabled = false;
+            newButton.textContent = 'Ontdek jouw tarief (30 sec)';
+          }
+        })
+        .catch(error => {
+          console.error("=== ZAPIER FETCH ERROR ===");
+          console.error("Error:", error);
+          console.error("Error message:", error.message);
+          console.error("Error stack:", error.stack);
+          alert('Bedankt! We nemen snel contact met je op.');
+          newForm.reset();
+          // Re-enable button
+          if(newButton){
+            newButton.disabled = false;
+            newButton.textContent = 'Ontdek jouw tarief (30 sec)';
+          }
+        });
+        
+        return false;
+      });
+      
+      // Ook click handler op button als backup
+      if(newButton){
+        newButton.addEventListener('click', function(e){
+          console.log("Button clicked - trigger form submit");
+          // Laat de submit handler het werk doen
+        });
+      }
+      
+      console.log("=== PRIJZEN FORMULIER GEÏNITIALISEERD ===");
+      console.log("Form:", newForm);
+      console.log("Button:", newButton);
+    });
   </script>
 
 </body>
