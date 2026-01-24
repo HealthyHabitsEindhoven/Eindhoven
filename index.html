@@ -368,6 +368,13 @@
       aspect-ratio:16/9;
       border-radius:var(--radius);
       overflow:hidden;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      transition:all 300ms ease;
+    }
+    .split-video-wrapper:hover{
+      border-color:rgba(255,255,255,.25);
+      background:rgba(255,255,255,.04);
     }
     .split-video-wrapper iframe{
       position:absolute;
