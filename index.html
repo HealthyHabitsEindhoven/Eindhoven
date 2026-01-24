@@ -2757,6 +2757,45 @@ zelfs leuk.</p>
       if(aanpakSection) observer.observe(aanpakSection);
     })();
 
+    // Form submit handler voor redirect naar bedankt pagina
+    (function(){
+      const form = document.getElementById('homeForm');
+      if(form){
+        form.addEventListener('submit', function(e){
+          e.preventDefault();
+          
+          const submitButton = form.querySelector('button[type="submit"]');
+          const originalText = submitButton ? submitButton.textContent : '';
+          if(submitButton){
+            submitButton.disabled = true;
+            submitButton.textContent = 'Verzenden...';
+          }
+          
+          const formData = new FormData(form);
+          const urlParams = new URLSearchParams();
+          formData.forEach((value, key) => {
+            urlParams.append(key, value);
+          });
+          
+          fetch('https://hooks.zapier.com/hooks/catch/16872475/uqaepel/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: urlParams.toString()
+          })
+          .then(response => {
+            // Redirect naar bedankt pagina ongeacht response
+            window.location.href = 'bedankt.html';
+          })
+          .catch(error => {
+            // Redirect naar bedankt pagina ook bij error
+            window.location.href = 'bedankt.html';
+          });
+        });
+      }
+    })();
+
   </script>
 
 </body>
