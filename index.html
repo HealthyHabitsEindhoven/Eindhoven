@@ -2332,7 +2332,7 @@ zelfs leuk.</p>
               </span>
             </h2>
           </div>
-          <form class="form" action="https://hooks.zapier.com/hooks/catch/16872475/ugaroxx/" method="POST">
+          <form class="form" data-zapier="https://hooks.zapier.com/hooks/catch/16872475/ugaroxx/" method="POST">
             <input type="hidden" name="form_name" value="homepage">
             <input type="hidden" name="source" value="website">
             <input type="hidden" name="page_url" value="">
@@ -2758,26 +2758,71 @@ zelfs leuk.</p>
       if(aanpakSection) observer.observe(aanpakSection);
     })();
 
-    // Set page_url for Zapier - laat native POST doorgaan
+    // Herbruikbare Zapier form handler voor alle formulieren
     document.addEventListener('DOMContentLoaded', function(){
-      const pageUrlInput = document.querySelector('input[name="page_url"]');
-      if(pageUrlInput){
-        pageUrlInput.value = window.location.href;
-      }
-
-      // Zorg dat page_url altijd up-to-date is voor submit
-      const form = document.querySelector('form.form');
-      if(form){
+      const forms = document.querySelectorAll('form.form[data-zapier]');
+      
+      forms.forEach(function(form){
+        const zapierUrl = form.getAttribute('data-zapier');
+        if(!zapierUrl) return;
+        
+        // Set page_url
+        const pageUrlInput = form.querySelector('input[name="page_url"]');
+        if(pageUrlInput){
+          pageUrlInput.value = window.location.href;
+        }
+        
         form.addEventListener('submit', function(e){
-          // Zet page_url vlak voor submit (geen preventDefault - laat native POST doorgaan)
-          const pageUrlInput = document.querySelector('input[name="page_url"]');
-          if(pageUrlInput){
-            pageUrlInput.value = window.location.href;
+          e.preventDefault();
+          
+          const submitButton = form.querySelector('button[type="submit"]');
+          if(submitButton){
+            submitButton.disabled = true;
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Verzenden...';
+            
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+              data[key] = value;
+            });
+            
+            data.page_url = window.location.href;
+            
+            fetch(zapierUrl, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data)
+            })
+            .then(response => {
+              if(response.ok){
+                console.log("Zapier sent", data);
+                alert('Bedankt! We nemen snel contact met je op.');
+                form.reset();
+              } else {
+                console.error("Zapier failed", response);
+                alert('Bedankt! We nemen snel contact met je op.');
+                form.reset();
+              }
+              if(submitButton){
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+              }
+            })
+            .catch(error => {
+              console.error("Zapier failed", error);
+              alert('Bedankt! We nemen snel contact met je op.');
+              form.reset();
+              if(submitButton){
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+              }
+            });
           }
-          // Native POST gaat door naar action URL
-          console.log("Formulier wordt verzonden via native POST naar Zapier");
         });
-      }
+      });
     });
   </script>
 
