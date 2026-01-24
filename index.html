@@ -364,6 +364,25 @@
 
     .split-video{
       position:relative;
+    }
+    .split-video-wrapper{
+      position:relative;
+      width:100%;
+      aspect-ratio:16/9;
+      border-radius:var(--radius);
+      overflow:hidden;
+    }
+    .split-video-wrapper iframe{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      border:none;
+      border-radius:var(--radius);
+    }
+    .split-video-old{
+      position:relative;
       border-radius:var(--radius);
       overflow:hidden;
       background:rgba(255,255,255,.03);
@@ -2202,6 +2221,11 @@ met een fijne sfeer, ritme en gezonde gewoontes.<br><br>
 Dé manier om sporten vol te houden —<br>
 en wie weet wordt sporten, net als bij velen,<br>
 zelfs leuk.</p>
+      </div>
+      <div class="split-video">
+        <div class="split-video-wrapper">
+          <iframe src="https://www.youtube.com/embed/WTFwUNQ4n_0" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
   </section>
