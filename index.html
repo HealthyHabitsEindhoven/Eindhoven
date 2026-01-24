@@ -1558,6 +1558,42 @@
         flex:0 0 calc(100% - 40px) !important;
       }
     }
+
+    /* Mobile fix for experience section - no extreme zoom */
+    @media(max-width:768px){
+      .experience-section,
+      .experience-section * {
+        transform: none !important;
+      }
+
+      .experience-section .review-card,
+      .experience-section .card,
+      .experience-section .slide,
+      .experience-section .swiper-slide,
+      .experience-section .testimonial-card {
+        width: min(92vw, 420px) !important;
+        max-width: 420px !important;
+        margin: 0 auto !important;
+      }
+
+      .experience-section .hh-card-media {
+        width: 100% !important;
+        aspect-ratio: 4 / 5;
+        max-height: 520px;
+        border-radius: 18px;
+        overflow: hidden;
+        background: #0b0c10;
+        position: relative;
+      }
+
+      .experience-section .hh-card-media img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        display: block;
+      }
+    }
     .review-card{
       flex:0 0 calc(26% - 16px);
       background:rgba(255,255,255,.04);
