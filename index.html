@@ -1971,16 +1971,22 @@
       .form{padding:24px}
     }
     @media(max-width:768px){
-      /* Perfect horizontale centrering JIJ cirkel op mobiel */
+      /* Perfect horizontale centrering JIJ cirkel op mobiel - exact op schermmidden */
       .vision-left{
-        display:flex;
-        justify-content:center;
-        align-items:center;
+        position:relative;
+        width:100%;
+        max-width:420px;
+        margin-left:auto;
+        margin-right:auto;
+        padding:0;
       }
       .vnode.center{
+        position:absolute;
         left:50% !important;
+        top:50%;
         transform:translate(-50%,-50%) !important;
         margin-left:0 !important;
+        margin-right:0 !important;
       }
     }
     @media(max-width:560px){
