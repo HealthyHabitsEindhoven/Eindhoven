@@ -3355,5 +3355,72 @@ zelfs leuk.</p>
   }
   </script>
 
+  <!-- VIDEO MODAL -->
+  <div class="video-modal" id="videoModal">
+    <div class="video-modal-overlay" id="videoModalOverlay"></div>
+    <div class="video-modal-content">
+      <button class="video-modal-close" id="videoModalClose" aria-label="Sluiten"></button>
+      <iframe id="videoModalIframe" src="" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script>
+    // Video modal functionality
+    (function(){
+      const videoModal = document.getElementById('videoModal');
+      const videoModalOverlay = document.getElementById('videoModalOverlay');
+      const videoModalClose = document.getElementById('videoModalClose');
+      const videoModalIframe = document.getElementById('videoModalIframe');
+      const videoWrappers = document.querySelectorAll('.video-wrapper[data-video-id]');
+
+      if(!videoModal || !videoWrappers.length) return;
+
+      function openModal(videoId){
+        videoModalIframe.src = 'https://www.youtube.com/embed/' + videoId;
+        videoModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal(){
+        videoModal.classList.remove('active');
+        videoModalIframe.src = '';
+        document.body.style.overflow = '';
+      }
+
+      // Open modal on video card click
+      videoWrappers.forEach(function(wrapper){
+        wrapper.addEventListener('click', function(e){
+          e.preventDefault();
+          const videoId = wrapper.getAttribute('data-video-id');
+          if(videoId){
+            openModal(videoId);
+          }
+        });
+      });
+
+      // Close modal on X button click
+      if(videoModalClose){
+        videoModalClose.addEventListener('click', function(e){
+          e.stopPropagation();
+          closeModal();
+        });
+      }
+
+      // Close modal on overlay click
+      if(videoModalOverlay){
+        videoModalOverlay.addEventListener('click', function(){
+          closeModal();
+        });
+      }
+
+      // Close modal on Escape key
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape' && videoModal.classList.contains('active')){
+          closeModal();
+        }
+      });
+    })();
+  </script>
+
 </body>
 </html>
