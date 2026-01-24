@@ -981,7 +981,8 @@
       
       <!-- WIZARD -->
       <div class="test-wrapper" style="margin-top:48px;">
-        <div class="test-wizard">
+        <form action="https://hooks.zapier.com/hooks/catch/16872475/uqae6wf/" method="POST" class="test-wizard">
+          <input type="hidden" name="source" value="online-lidmaatschapstest">
           <!-- Progress bar -->
           <div class="test-progress">
             <div class="test-progress-header">
@@ -1202,10 +1203,10 @@
             <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
             <div class="test-buttons">
               <button type="button" class="test-btn test-btn-secondary" onclick="prevStep()">Vorige</button>
-              <button type="button" class="test-btn test-btn-primary" onclick="submitForm()">Versturen</button>
+              <button type="submit" class="test-btn test-btn-primary">Versturen</button>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </section>
@@ -1505,38 +1506,20 @@
       }
     }
 
-    // Submit form (global function)
-    window.submitForm = function(){
-      if(!validateStep(7)){
-        alert('Vul alle velden correct in.');
-        return;
+    // Honeypot check on form submit
+    (function(){
+      const form = document.querySelector('form.test-wizard');
+      if(form){
+        form.addEventListener('submit', function(e){
+          const honeypot = document.querySelector('input[name="website"]').value;
+          if(honeypot){
+            e.preventDefault();
+            return false; // Bot detected
+          }
+          // Allow normal form submission
+        });
       }
-
-      // Honeypot check
-      const honeypot = document.querySelector('input[name="website"]').value;
-      if(honeypot){
-        return; // Bot detected
-      }
-
-      // Collect all data
-      const doelen = Array.from(document.querySelectorAll('input[name="doel"]:checked')).map(cb => cb.value);
-      const frequentie = document.querySelector('input[name="frequentie"]:checked')?.value || '';
-      const voorkeur = Array.from(document.querySelectorAll('input[name="voorkeur"]:checked')).map(cb => cb.value);
-      const ervaring = document.querySelector('input[name="ervaring"]:checked')?.value || '';
-      const tijdstip = document.querySelector('input[name="tijdstip"]:checked')?.value || '';
-      const naam = document.querySelector('input[name="naam"]')?.value || '';
-      const email = document.querySelector('input[name="email"]')?.value || '';
-      const telefoon = document.querySelector('input[name="telefoon"]')?.value || '';
-
-      // Show success message
-      showSuccess();
-    }
-
-    function showSuccess(){
-      document.querySelectorAll('.test-step').forEach(step => step.classList.remove('active'));
-      document.getElementById('testSuccess').classList.add('active');
-      document.querySelector('.test-wizard').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
+    })();
 
     // Add event listeners for validation
     (function(){
