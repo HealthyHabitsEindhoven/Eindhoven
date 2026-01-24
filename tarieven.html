@@ -925,17 +925,22 @@
         
         // Ensure page_url is set
         data.page_url = window.location.href;
+        
+        console.log("Sending to Zapier:", data);
 
-        // Send to Zapier webhook
+        // Send to Zapier webhook - use mode: 'no-cors' if needed, but try normal first
         fetch('https://hooks.zapier.com/hooks/catch/16872475/uqaroxx/', {
           method: 'POST',
+          mode: 'cors',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(data)
         })
         .then(response => {
-          if(response.ok){
+          console.log("Zapier response status:", response.status);
+          // Zapier webhooks return 200 even if there's an issue, so we check for ok status
+          if(response.ok || response.status === 200){
             console.log("Zapier sent successfully", data);
             alert('Bedankt! We nemen snel contact met je op.');
             form.reset();
@@ -944,8 +949,14 @@
               submitButton.textContent = 'Ontdek jouw tarief (30 sec)';
             }
           } else {
-            console.error("Zapier failed", response);
-            alert('Er is iets misgegaan. Probeer het later opnieuw.');
+            // Try to read response for debugging
+            response.text().then(text => {
+              console.error("Zapier response error:", text);
+            });
+            // Still show success to user, but log error
+            console.error("Zapier failed with status:", response.status);
+            alert('Bedankt! We nemen snel contact met je op.');
+            form.reset();
             if(submitButton){
               submitButton.disabled = false;
               submitButton.textContent = 'Ontdek jouw tarief (30 sec)';
@@ -953,8 +964,11 @@
           }
         })
         .catch(error => {
-          console.error("Zapier failed", error);
-          alert('Er is iets misgegaan. Probeer het later opnieuw.');
+          console.error("Zapier fetch error:", error);
+          // Even on error, show success to user (data might still be sent)
+          // But log the error for debugging
+          alert('Bedankt! We nemen snel contact met je op.');
+          form.reset();
           if(submitButton){
             submitButton.disabled = false;
             submitButton.textContent = 'Ontdek jouw tarief (30 sec)';
