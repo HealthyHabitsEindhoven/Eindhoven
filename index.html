@@ -3262,6 +3262,7 @@ zelfs leuk.</p>
             urlParams.append(key, value);
           });
           
+          // Send to Zapier (non-blocking)
           fetch('https://hooks.zapier.com/hooks/catch/16872475/uqaepel/', {
             method: 'POST',
             headers: {
@@ -3270,13 +3271,14 @@ zelfs leuk.</p>
             body: urlParams.toString()
           })
           .then(response => {
-            // Redirect naar bedankt pagina ongeacht response
-            window.location.href = 'bedankt.html';
+            console.log('Zapier sent successfully');
           })
           .catch(error => {
-            // Redirect naar bedankt pagina ook bij error
-            window.location.href = 'bedankt.html';
+            console.error('Zapier error:', error);
           });
+          
+          // Always redirect to bedankt page immediately
+          window.location.href = 'bedankt.html';
         });
       }
     })();

@@ -1857,6 +1857,7 @@
           };
           
           // Send to Zapier (non-blocking, keepalive for reliability)
+          // Start redirect immediately, don't wait for response
           fetch('https://hooks.zapier.com/hooks/catch/16872475/uqac534/', {
             method: 'POST',
             headers: {
@@ -1866,15 +1867,15 @@
             keepalive: true
           })
           .then(response => {
-            // Always redirect, even if fetch fails
-            window.location.href = 'bedankt.html';
+            console.log('Zapier sent successfully');
           })
           .catch(error => {
             // Log error but don't block user
             console.error('Zapier error:', error);
-            // Still redirect to thank you page
-            window.location.href = 'bedankt.html';
           });
+          
+          // Always redirect to bedankt page immediately
+          window.location.href = 'bedankt.html';
         });
       }
     })();
