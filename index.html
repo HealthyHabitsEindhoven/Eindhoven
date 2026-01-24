@@ -2782,7 +2782,7 @@ zelfs leuk.</p>
       });
     })();
 
-    // Aanbod carousel - simpele scroll-gebaseerde navigatie
+    // Aanbod carousel - simpele scroll-gebaseerde navigatie met automatische scroll
     (function(){
       const slidesContainer = document.getElementById('aanbodSlides');
       const trackContainer = slidesContainer?.parentElement;
@@ -2795,6 +2795,9 @@ zelfs leuk.</p>
       const cards = Array.from(slidesContainer.querySelectorAll('.aanbod-card'));
       if(cards.length === 0) return;
 
+      let autoScrollInterval = null;
+      let isUserInteracting = false;
+
       // Functie om naar volgende card te scrollen
       function scrollToNext(){
         const firstCard = cards[0];
@@ -2802,10 +2805,21 @@ zelfs leuk.</p>
         const cardWidth = firstCard.offsetWidth;
         const gap = 20;
         const scrollAmount = cardWidth + gap;
-        trackContainer.scrollBy({
-          left: scrollAmount,
-          behavior: 'smooth'
-        });
+        
+        // Check if we're at the end, then loop back to start
+        const maxScroll = trackContainer.scrollWidth - trackContainer.clientWidth;
+        if(trackContainer.scrollLeft >= maxScroll - 10){
+          // Smooth scroll back to start
+          trackContainer.scrollTo({
+            left: 0,
+            behavior: 'smooth'
+          });
+        } else {
+          trackContainer.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+          });
+        }
       }
 
       // Functie om naar vorige card te scrollen
@@ -2821,14 +2835,60 @@ zelfs leuk.</p>
         });
       }
 
+      // Start automatische scroll (elke 4 seconden)
+      function startAutoScroll(){
+        if(autoScrollInterval) return; // Al actief
+        autoScrollInterval = setInterval(() => {
+          if(!isUserInteracting){
+            scrollToNext();
+          }
+        }, 4000); // 4 seconden tussen elke scroll
+      }
+
+      // Stop automatische scroll
+      function stopAutoScroll(){
+        if(autoScrollInterval){
+          clearInterval(autoScrollInterval);
+          autoScrollInterval = null;
+        }
+      }
+
+      // Pause on user interaction
+      function pauseOnInteraction(){
+        isUserInteracting = true;
+        stopAutoScroll();
+        setTimeout(() => {
+          isUserInteracting = false;
+          startAutoScroll();
+        }, 10000); // Herstart na 10 seconden
+      }
+
       // Navigatieknoppen handlers
       if(nextBtn){
-        nextBtn.addEventListener('click', scrollToNext);
+        nextBtn.addEventListener('click', () => {
+          scrollToNext();
+          pauseOnInteraction();
+        });
       }
 
       if(prevBtn){
-        prevBtn.addEventListener('click', scrollToPrev);
+        prevBtn.addEventListener('click', () => {
+          scrollToPrev();
+          pauseOnInteraction();
+        });
       }
+
+      // Pause on scroll (touch/mouse)
+      trackContainer.addEventListener('scroll', pauseOnInteraction);
+      trackContainer.addEventListener('touchstart', pauseOnInteraction);
+      trackContainer.addEventListener('mousedown', pauseOnInteraction);
+
+      // Start automatische scroll
+      startAutoScroll();
+
+      // Pause on hover
+      trackContainer.addEventListener('mouseenter', stopAutoScroll);
+      trackContainer.addEventListener('mouseleave', startAutoScroll);
     })();
 
     // Splash screen - verberg na 1 seconde
