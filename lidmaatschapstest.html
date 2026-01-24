@@ -686,6 +686,11 @@
     .test-btn-primary:disabled{
       opacity:0.5;
       cursor:not-allowed;
+      pointer-events:none;
+    }
+    .test-btn-primary:not(:disabled){
+      pointer-events:auto;
+      cursor:pointer;
     }
     .test-btn-secondary{
       background:rgba(255,255,255,.08);
@@ -1662,8 +1667,12 @@
     // Update button states
     function updateButtons(){
       const stepEl = document.querySelector(`.test-step[data-step="${currentStep}"]`);
+      if(!stepEl) return;
+      
       const prevBtn = stepEl.querySelector('.test-btn-secondary');
       const nextBtn = stepEl.querySelector('.test-btn-primary');
+      
+      if(!prevBtn || !nextBtn) return;
       
       // Previous button
       if(currentStep === 1){
@@ -1672,9 +1681,12 @@
         prevBtn.disabled = false;
       }
       
-      // Next button
-      if(validateStep(currentStep)){
+      // Next button - only disable if truly no selection
+      const isValid = validateStep(currentStep);
+      if(isValid){
         nextBtn.disabled = false;
+        nextBtn.style.pointerEvents = 'auto';
+        nextBtn.style.cursor = 'pointer';
       } else {
         nextBtn.disabled = true;
       }
@@ -1720,13 +1732,40 @@
 
     // Next step (global function)
     window.nextStep = function(){
+      console.log("NEXT CLICK - Step:", currentStep);
+      
+      // Get current selection for debug
+      const stepEl = document.querySelector(`.test-step[data-step="${currentStep}"]`);
+      let selected = null;
+      if(stepEl){
+        if(currentStep === 1 || currentStep === 3){
+          const checked = Array.from(stepEl.querySelectorAll('input:checked')).map(cb => cb.value);
+          selected = checked;
+        } else if(currentStep === 2 || currentStep === 4 || currentStep === 5){
+          const radio = stepEl.querySelector('input:checked');
+          selected = radio ? radio.value : null;
+        } else if(currentStep === 6){
+          const input = stepEl.querySelector('input[name="naam"]');
+          selected = input ? input.value : null;
+        } else if(currentStep === 7){
+          const email = stepEl.querySelector('input[name="email"]');
+          const tel = stepEl.querySelector('input[name="telefoon"]');
+          selected = { email: email ? email.value : null, tel: tel ? tel.value : null };
+        }
+      }
+      console.log("selected:", selected);
+      
+      // Validate - show warning if invalid, but don't block
       if(!validateStep(currentStep)){
+        console.log("Validation failed - staying on step");
+        // Show warning if needed (current validation already handles this)
         return;
       }
       
       // Save current step answers before moving forward
       saveStepAnswers(currentStep);
       
+      // Move to next step immediately (no waiting)
       if(currentStep < totalSteps){
         document.querySelector(`.test-step[data-step="${currentStep}"]`).classList.remove('active');
         currentStep++;
@@ -1814,17 +1853,30 @@
 
     // Add event listeners for validation
     (function(){
-      // Checkbox/radio change listeners
+      // Checkbox/radio change listeners - update buttons immediately on change
       document.querySelectorAll('.test-option input').forEach(input => {
         input.addEventListener('change', function(){
+          console.log("Input changed:", this.name, this.value, this.checked);
+          // Update buttons immediately when selection changes
           updateButtons();
         });
       });
 
-      // Text input listeners
+      // Text input listeners - update buttons on every keystroke
       document.querySelectorAll('.test-input-group input, .test-input-group textarea').forEach(input => {
         input.addEventListener('input', function(){
+          console.log("Input typed:", this.name, this.value);
           updateButtons();
+        });
+      });
+
+      // Also listen to click events on options for immediate feedback
+      document.querySelectorAll('.test-option').forEach(option => {
+        option.addEventListener('click', function(e){
+          // If clicking on the label/option itself, update buttons after a tiny delay
+          setTimeout(() => {
+            updateButtons();
+          }, 10);
         });
       });
 
