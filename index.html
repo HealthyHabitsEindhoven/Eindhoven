@@ -1497,6 +1497,16 @@
         transition:none;
       }
     }
+    @media(max-width:560px){
+      .review-card{
+        flex:0 0 calc(100% - 40px) !important;
+        min-width:calc(100% - 40px);
+        max-width:calc(100% - 40px);
+      }
+      .review-card.active{
+        flex:0 0 calc(100% - 40px) !important;
+      }
+    }
     .review-card{
       flex:0 0 calc(26% - 16px);
       background:rgba(255,255,255,.04);
