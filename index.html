@@ -1970,6 +1970,19 @@
       .form-section{padding:64px 0}
       .form{padding:24px}
     }
+    @media(max-width:768px){
+      /* Perfect horizontale centrering JIJ cirkel op mobiel */
+      .vision-left{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+      }
+      .vnode.center{
+        left:50% !important;
+        transform:translate(-50%,-50%) !important;
+        margin-left:0 !important;
+      }
+    }
     @media(max-width:560px){
       .topbar .container{
         gap:16px;
