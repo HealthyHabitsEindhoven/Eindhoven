@@ -683,16 +683,18 @@
     .test-btn-primary:hover:not(:disabled){
       filter:brightness(1.1);
     }
+    .test-btn-primary{
+      pointer-events:auto !important;
+      cursor:pointer !important;
+    }
+    .test-btn-primary.disabled-visual{
+      opacity:0.5;
+      cursor:not-allowed;
+    }
     .test-btn-primary:disabled{
       opacity:0.5;
       cursor:not-allowed;
-      pointer-events:none !important;
-    }
-    .test-btn-primary:not(:disabled),
-    .test-btn-primary[disabled="false"]{
-      pointer-events:auto !important;
-      cursor:pointer !important;
-      opacity:1 !important;
+      pointer-events:auto !important; /* ALWAYS allow clicks, validation happens in function */
     }
     .test-btn-secondary{
       background:rgba(255,255,255,.08);
@@ -1197,7 +1199,7 @@
             </ul>
             <div class="test-buttons">
               <button type="button" class="test-btn test-btn-secondary" onclick="prevStep()" disabled>Vorige</button>
-              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()" disabled>Volgende</button>
+              <button type="button" class="test-btn test-btn-primary" id="nextBtn1" onclick="nextStep()">Volgende</button>
             </div>
           </div>
 
@@ -1232,7 +1234,7 @@
             </ul>
             <div class="test-buttons">
               <button type="button" class="test-btn test-btn-secondary" onclick="prevStep()">Vorige</button>
-              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()" disabled>Volgende</button>
+              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()">Volgende</button>
             </div>
           </div>
 
@@ -1267,7 +1269,7 @@
             </ul>
             <div class="test-buttons">
               <button type="button" class="test-btn test-btn-secondary" onclick="prevStep()">Vorige</button>
-              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()" disabled>Volgende</button>
+              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()">Volgende</button>
             </div>
           </div>
 
@@ -1296,7 +1298,7 @@
             </ul>
             <div class="test-buttons">
               <button type="button" class="test-btn test-btn-secondary" onclick="prevStep()">Vorige</button>
-              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()" disabled>Volgende</button>
+              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()">Volgende</button>
             </div>
           </div>
 
@@ -1331,7 +1333,7 @@
             </ul>
             <div class="test-buttons">
               <button type="button" class="test-btn test-btn-secondary" onclick="prevStep()">Vorige</button>
-              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()" disabled>Volgende</button>
+              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()">Volgende</button>
             </div>
           </div>
 
@@ -1343,7 +1345,7 @@
             </div>
             <div class="test-buttons">
               <button type="button" class="test-btn test-btn-secondary" onclick="prevStep()">Vorige</button>
-              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()" disabled>Volgende</button>
+              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()">Volgende</button>
             </div>
           </div>
 
@@ -1666,7 +1668,7 @@
       return false;
     }
 
-    // Update button states - FORCE ENABLE when valid
+    // Update button states - BUTTON IS ALWAYS CLICKABLE, validation in function
     function updateButtons(){
       const stepEl = document.querySelector(`.test-step[data-step="${currentStep}"]`);
       if(!stepEl) {
@@ -1689,21 +1691,23 @@
         prevBtn.disabled = false;
       }
       
-      // Next button - FORCE ENABLE when valid
+      // Next button - ALWAYS CLICKABLE, just change visual style
       const isValid = validateStep(currentStep);
       console.log("updateButtons: step", currentStep, "isValid:", isValid);
       
+      // Remove disabled attribute completely - button is always clickable
+      nextBtn.removeAttribute('disabled');
+      nextBtn.style.pointerEvents = 'auto';
+      nextBtn.style.cursor = 'pointer';
+      
       if(isValid){
-        nextBtn.disabled = false;
-        nextBtn.removeAttribute('disabled');
-        nextBtn.style.pointerEvents = 'auto';
-        nextBtn.style.cursor = 'pointer';
         nextBtn.style.opacity = '1';
-        console.log("Next button ENABLED");
+        nextBtn.classList.remove('disabled-visual');
+        console.log("Next button VISUALLY ENABLED");
       } else {
-        nextBtn.disabled = true;
-        nextBtn.setAttribute('disabled', 'disabled');
-        console.log("Next button DISABLED");
+        nextBtn.style.opacity = '0.5';
+        nextBtn.classList.add('disabled-visual');
+        console.log("Next button VISUALLY DISABLED (but still clickable)");
       }
     }
 
