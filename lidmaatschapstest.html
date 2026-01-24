@@ -1511,11 +1511,26 @@
       const form = document.querySelector('form.test-wizard');
       if(form){
         form.addEventListener('submit', function(e){
+          // Only allow submit on last step
+          if(currentStep !== totalSteps){
+            e.preventDefault();
+            return false;
+          }
+          
+          // Validate last step
+          if(!validateStep(totalSteps)){
+            e.preventDefault();
+            alert('Vul alle velden correct in.');
+            return false;
+          }
+          
+          // Honeypot check
           const honeypot = document.querySelector('input[name="website"]').value;
           if(honeypot){
             e.preventDefault();
             return false; // Bot detected
           }
+          
           // Allow normal form submission
         });
       }
