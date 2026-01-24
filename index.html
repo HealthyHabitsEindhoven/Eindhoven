@@ -2758,72 +2758,8 @@ zelfs leuk.</p>
       if(aanpakSection) observer.observe(aanpakSection);
     })();
 
-    // Herbruikbare Zapier form handler voor alle formulieren
-    document.addEventListener('DOMContentLoaded', function(){
-      const forms = document.querySelectorAll('form.form[data-zapier]');
-      
-      forms.forEach(function(form){
-        const zapierUrl = form.getAttribute('data-zapier');
-        if(!zapierUrl) return;
-        
-        // Set page_url
-        const pageUrlInput = form.querySelector('input[name="page_url"]');
-        if(pageUrlInput){
-          pageUrlInput.value = window.location.href;
-        }
-        
-        form.addEventListener('submit', function(e){
-          e.preventDefault();
-          
-          const submitButton = form.querySelector('button[type="submit"]');
-          if(submitButton){
-            submitButton.disabled = true;
-            const originalText = submitButton.textContent;
-            submitButton.textContent = 'Verzenden...';
-            
-            const formData = new FormData(form);
-            formData.set('page_url', window.location.href);
-            
-            const urlParams = new URLSearchParams();
-            formData.forEach((value, key) => {
-              urlParams.append(key, value);
-            });
-            
-            fetch(zapierUrl, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-              },
-              body: urlParams.toString()
-            })
-            .then(response => {
-              if(response.ok){
-                console.log("Zapier sent");
-                alert('Bedankt! We nemen snel contact met je op.');
-                form.reset();
-              } else {
-                console.error("Zapier failed", response);
-                alert('Bedankt! We nemen snel contact met je op.');
-                form.reset();
-              }
-              if(submitButton){
-                submitButton.disabled = false;
-                submitButton.textContent = originalText;
-              }
-            })
-            .catch(error => {
-              console.error("Zapier failed", error);
-              alert('Bedankt! We nemen snel contact met je op.');
-              form.reset();
-              if(submitButton){
-                submitButton.disabled = false;
-                submitButton.textContent = originalText;
-              }
-            });
-          }
-        });
-      });
-    });
+    // Vul page_url voor alle formulieren
+    document.querySelectorAll('input[name="page_url"]').forEach(i => i.value = location.href);
   </script>
 
 </body>
