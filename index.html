@@ -1633,15 +1633,62 @@
       border-radius:var(--radius);
       overflow:hidden;
       cursor:pointer;
+      transition:opacity 0.3s ease, transform 0.3s ease;
     }
-    .video-wrapper iframe{
+    .video-wrapper:hover{
+      opacity:0.9;
+      transform:scale(1.02);
+    }
+    .video-wrapper a{
+      display:block;
+      width:100%;
+      height:100%;
+      position:relative;
+      text-decoration:none;
+    }
+    .video-wrapper img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      border-radius:var(--radius);
+    }
+    .video-wrapper .video-play-overlay{
       position:absolute;
       top:0;
       left:0;
       width:100%;
       height:100%;
-      border:none;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(0,0,0,.2);
       border-radius:var(--radius);
+      transition:background 0.3s ease;
+    }
+    .video-wrapper:hover .video-play-overlay{
+      background:rgba(0,0,0,.3);
+    }
+    .video-wrapper .video-play-icon{
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      background:rgba(255,255,255,.9);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#000;
+      font-size:24px;
+      transition:all 0.3s ease;
+      box-shadow:0 4px 12px rgba(0,0,0,.3);
+    }
+    .video-wrapper:hover .video-play-icon{
+      background:rgba(255,255,255,1);
+      transform:scale(1.1);
+    }
+    .video-wrapper .video-play-icon::before{
+      content:'▶';
+      margin-left:4px;
     }
     .review-video{
       width:100%;
@@ -2410,7 +2457,12 @@ zelfs leuk.</p>
         <div class="review-videos-grid">
           <div class="review-video-item">
             <div class="video-wrapper">
-              <iframe src="https://www.youtube.com/embed/P36NzNTqOgI" allowfullscreen></iframe>
+              <a href="https://youtube.com/shorts/P36NzNTqOgI" target="_blank" rel="noopener noreferrer">
+                <img src="https://i.ytimg.com/vi/P36NzNTqOgI/hqdefault.jpg" alt="Monique - Healthy Habits video" loading="lazy">
+                <div class="video-play-overlay">
+                  <div class="video-play-icon"></div>
+                </div>
+              </a>
             </div>
             <div class="video-info">
               <h3>Monique</h3>
@@ -2419,7 +2471,12 @@ zelfs leuk.</p>
           </div>
           <div class="review-video-item">
             <div class="video-wrapper">
-              <iframe src="https://www.youtube.com/embed/AYdicWRebxI?rel=0&modestbranding=1&playsinline=1" allowfullscreen></iframe>
+              <a href="https://youtube.com/shorts/AYdicWRebxI" target="_blank" rel="noopener noreferrer">
+                <img src="https://i.ytimg.com/vi/AYdicWRebxI/hqdefault.jpg" alt="Ton - Healthy Habits video" loading="lazy">
+                <div class="video-play-overlay">
+                  <div class="video-play-icon"></div>
+                </div>
+              </a>
             </div>
             <div class="video-info">
               <h3>Ton</h3>
