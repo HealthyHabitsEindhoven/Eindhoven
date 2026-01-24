@@ -688,7 +688,7 @@
   <section class="tariefcheck-section" id="tariefcheck">
     <div class="container">
       <h2>Ontdek jouw tarief</h2>
-      <form class="form" action="https://hooks.zapier.com/hooks/catch/16872475/ugaroxx/" method="POST">
+      <form class="form" action="https://hooks.zapier.com/hooks/catch/16872475/uqaroxx/" method="POST">
         <input type="hidden" name="form_name" value="prijzen">
         <input type="hidden" name="source" value="website">
         <input type="hidden" name="page_url" value="">
@@ -909,6 +909,8 @@
             e.preventDefault();
             e.stopPropagation();
             
+            console.log("Formulier submit event triggered");
+            
             // Disable button during submission
             submitButton.disabled = true;
             submitButton.textContent = 'Verzenden...';
@@ -924,27 +926,40 @@
             
             // Voeg alle formuliervelden toe aan payload
             formData.forEach((value, key) => {
-              // Overschrijf alleen als het niet al bestaat
-              if(!payload.hasOwnProperty(key) || key !== 'form_name' && key !== 'source' && key !== 'page_url'){
+              if(key !== 'form_name' && key !== 'source' && key !== 'page_url'){
                 payload[key] = value;
               }
             });
             
+            console.log("Payload voor Zapier:", payload);
+            console.log("Verzenden naar:", 'https://hooks.zapier.com/hooks/catch/16872475/uqaroxx/');
+            
             // Stuur naar Zapier via fetch POST
-            fetch('https://hooks.zapier.com/hooks/catch/16872475/ugaroxx/', {
+            fetch('https://hooks.zapier.com/hooks/catch/16872475/uqaroxx/', {
               method: 'POST',
+              mode: 'cors',
               headers: {
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify(payload)
             })
             .then(response => {
-              if(response.ok || response.status === 200){
-                console.log("Zapier sent", payload);
+              console.log("Zapier response status:", response.status);
+              console.log("Zapier response headers:", response.headers);
+              
+              // Probeer response body te lezen voor debugging
+              return response.text().then(text => {
+                console.log("Zapier response body:", text);
+                return { status: response.status, ok: response.ok, text: text };
+              });
+            })
+            .then(result => {
+              if(result.ok || result.status === 200){
+                console.log("Zapier sent successfully", payload);
                 alert('Bedankt! We nemen snel contact met je op.');
                 form.reset();
               } else {
-                console.error("Zapier failed", response);
+                console.error("Zapier failed with status:", result.status, "Response:", result.text);
                 alert('Bedankt! We nemen snel contact met je op.');
                 form.reset();
               }
@@ -953,13 +968,20 @@
               submitButton.textContent = 'Ontdek jouw tarief (30 sec)';
             })
             .catch(error => {
-              console.error("Zapier failed", error);
+              console.error("Zapier fetch error:", error);
+              console.error("Error details:", error.message, error.stack);
               alert('Bedankt! We nemen snel contact met je op.');
               form.reset();
               // Re-enable button
               submitButton.disabled = false;
               submitButton.textContent = 'Ontdek jouw tarief (30 sec)';
             });
+          });
+          
+          // Ook click handler op button als backup
+          submitButton.addEventListener('click', function(e){
+            console.log("Button clicked");
+            // Laat de submit handler het werk doen
           });
           
           console.log("Prijzen formulier geïnitialiseerd - fetch POST naar Zapier");
