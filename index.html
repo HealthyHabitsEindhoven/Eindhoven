@@ -2878,17 +2878,33 @@ zelfs leuk.</p>
         });
       }
 
-      // Pause on scroll (touch/mouse)
-      trackContainer.addEventListener('scroll', pauseOnInteraction);
+      // Debounce voor scroll event om niet te vaak te pauzeren
+      let scrollTimeout = null;
+      trackContainer.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          // Alleen pauzeren als gebruiker echt scrollt (niet door auto-scroll)
+          if(!isUserInteracting){
+            pauseOnInteraction();
+          }
+        }, 100);
+      });
+      
       trackContainer.addEventListener('touchstart', pauseOnInteraction);
       trackContainer.addEventListener('mousedown', pauseOnInteraction);
 
-      // Start automatische scroll
-      startAutoScroll();
+      // Start automatische scroll na korte delay
+      setTimeout(() => {
+        startAutoScroll();
+      }, 2000); // Start na 2 seconden
 
       // Pause on hover
       trackContainer.addEventListener('mouseenter', stopAutoScroll);
-      trackContainer.addEventListener('mouseleave', startAutoScroll);
+      trackContainer.addEventListener('mouseleave', () => {
+        if(!isUserInteracting){
+          startAutoScroll();
+        }
+      });
     })();
 
     // Splash screen - verberg na 1 seconde
