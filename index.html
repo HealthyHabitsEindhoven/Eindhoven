@@ -2332,7 +2332,7 @@ zelfs leuk.</p>
               </span>
             </h2>
           </div>
-          <form class="form" data-zapier="https://hooks.zapier.com/hooks/catch/16872475/uqaicdv/" method="POST">
+          <form class="form" data-zapier="https://hooks.zapier.com/hooks/catch/16872475/uqaidcv/" method="POST">
             <input type="hidden" name="form_name" value="homepage">
             <input type="hidden" name="source" value="website">
             <input type="hidden" name="page_url" value="">
@@ -2782,19 +2782,19 @@ zelfs leuk.</p>
             submitButton.textContent = 'Verzenden...';
             
             const formData = new FormData(form);
-            const data = {};
-            formData.forEach((value, key) => {
-              data[key] = value;
-            });
+            formData.set('page_url', window.location.href);
             
-            data.page_url = window.location.href;
+            const urlParams = new URLSearchParams();
+            formData.forEach((value, key) => {
+              urlParams.append(key, value);
+            });
             
             fetch(zapierUrl, {
               method: 'POST',
               headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/x-www-form-urlencoded',
               },
-              body: JSON.stringify(data)
+              body: urlParams.toString()
             })
             .then(response => {
               if(response.ok){
