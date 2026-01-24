@@ -410,6 +410,143 @@
         font-size:16px;
       }
     }
+    /* =========================
+       COOKIE BANNER
+    ========================== */
+    .cookie-banner{
+      position:fixed;
+      bottom:0;
+      left:0;
+      right:0;
+      background:var(--bg-warm);
+      border-top:1px solid var(--line);
+      padding:24px;
+      z-index:10000;
+      transform:translateY(100%);
+      transition:transform 0.3s ease;
+      box-shadow:0 -4px 12px rgba(0,0,0,.3);
+    }
+    .cookie-banner.show{
+      transform:translateY(0);
+    }
+    .cookie-banner-content{
+      max-width:1100px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      flex-wrap:wrap;
+    }
+    .cookie-banner-text{
+      flex:1;
+      min-width:250px;
+      font-size:14px;
+      color:var(--text);
+      line-height:1.5;
+    }
+    .cookie-banner-text a{
+      color:var(--accent);
+      text-decoration:underline;
+    }
+    .cookie-banner-buttons{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .cookie-btn{
+      padding:10px 20px;
+      border-radius:8px;
+      font-size:14px;
+      font-weight:600;
+      cursor:pointer;
+      border:none;
+      transition:filter 0.2s ease;
+    }
+    .cookie-btn-accept{
+      background:var(--accent);
+      color:#000;
+    }
+    .cookie-btn-accept:hover{
+      filter:brightness(1.1);
+    }
+    .cookie-btn-reject{
+      background:rgba(255,255,255,.08);
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+    .cookie-btn-reject:hover{
+      background:rgba(255,255,255,.12);
+    }
+    .cookie-btn-settings{
+      background:transparent;
+      color:var(--muted);
+      border:1px solid var(--line);
+    }
+    .cookie-btn-settings:hover{
+      color:var(--text);
+      border-color:var(--accent);
+    }
+    .cookie-settings{
+      max-width:1100px;
+      margin:0 auto;
+      padding-top:24px;
+      border-top:1px solid var(--line);
+      margin-top:24px;
+      display:none;
+    }
+    .cookie-settings.show{
+      display:block;
+    }
+    .cookie-setting-item{
+      margin-bottom:20px;
+    }
+    .cookie-setting-item label{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      font-size:14px;
+      color:var(--text);
+      cursor:pointer;
+    }
+    .cookie-setting-item input[type="checkbox"]{
+      width:20px;
+      height:20px;
+      cursor:pointer;
+    }
+    .cookie-setting-item p{
+      font-size:12px;
+      color:var(--muted);
+      margin:4px 0 0 0;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+    .footer{
+      padding:48px 0;
+      background:var(--bg-warm);
+      border-top:1px solid var(--line);
+      margin-top:80px;
+    }
+    .footer-content{
+      max-width:1100px;
+      margin:0 auto;
+      text-align:center;
+    }
+    .footer-content p{
+      font-size:14px;
+      color:var(--muted);
+      margin:8px 0;
+    }
+    .footer-content a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+    .footer-content a:hover{
+      text-decoration:underline;
+    }
+
   </style>
 </head>
 <body>
@@ -593,6 +730,54 @@
         </div>
       </div>
   </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p><strong>Healthy Habits Eindhoven</strong></p>
+        <p>Eindhoven, Nederland</p>
+        <p><a href="privacy.html">Privacyverklaring</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- COOKIE BANNER -->
+  <div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-banner-content">
+      <div class="cookie-banner-text">
+        <p>Deze website gebruikt cookies. Functionele cookies zijn noodzakelijk voor de werking van de website. Marketing cookies (voor video's) worden alleen geplaatst met je toestemming. <a href="privacy.html">Meer informatie</a></p>
+      </div>
+      <div class="cookie-banner-buttons">
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accepteren</button>
+        <button class="cookie-btn cookie-btn-reject" id="cookieReject">Weigeren</button>
+        <button class="cookie-btn cookie-btn-settings" id="cookieSettings">Instellen</button>
+      </div>
+      <div class="cookie-settings" id="cookieSettingsPanel">
+        <div class="cookie-setting-item">
+          <label>
+            <span>
+              <strong>Functionele cookies</strong>
+              <p>Noodzakelijk voor het functioneren van de website. Deze kunnen niet worden uitgeschakeld.</p>
+            </span>
+            <input type="checkbox" checked disabled>
+          </label>
+        </div>
+        <div class="cookie-setting-item">
+          <label>
+            <span>
+              <strong>Marketing cookies</strong>
+              <p>Voor embedded video's (YouTube/Vimeo). Deze worden alleen geplaatst met je toestemming.</p>
+            </span>
+            <input type="checkbox" id="cookieMarketing">
+          </label>
+        </div>
+        <div class="cookie-banner-buttons" style="margin-top:16px;">
+          <button class="cookie-btn cookie-btn-accept" id="cookieSave">Opslaan</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
     // Functie om tekst te beperken tot 3 zinnen
@@ -883,6 +1068,77 @@
             document.body.style.overflow = '';
           });
         });
+      }
+    })();
+
+    // Cookie banner
+    (function(){
+      const cookieBanner = document.getElementById('cookieBanner');
+      const cookieAccept = document.getElementById('cookieAccept');
+      const cookieReject = document.getElementById('cookieReject');
+      const cookieSettings = document.getElementById('cookieSettings');
+      const cookieSettingsPanel = document.getElementById('cookieSettingsPanel');
+      const cookieMarketing = document.getElementById('cookieMarketing');
+      const cookieSave = document.getElementById('cookieSave');
+
+      if(!cookieBanner) return;
+
+      // Check if user has already made a choice
+      const cookieConsent = localStorage.getItem('cookieConsent');
+      if(!cookieConsent){
+        // Show banner after a short delay
+        setTimeout(() => {
+          cookieBanner.classList.add('show');
+        }, 1000);
+      }
+
+      function saveCookiePreferences(marketing){
+        localStorage.setItem('cookieConsent', 'true');
+        localStorage.setItem('cookieMarketing', marketing ? 'true' : 'false');
+        cookieBanner.classList.remove('show');
+        
+        // Load marketing content if accepted
+        if(marketing){
+          loadMarketingContent();
+        }
+      }
+
+      function loadMarketingContent(){
+        console.log('Marketing cookies accepted - video embeds can be loaded');
+      }
+
+      // Accept all
+      if(cookieAccept){
+        cookieAccept.addEventListener('click', function(){
+          saveCookiePreferences(true);
+        });
+      }
+
+      // Reject all (only functional)
+      if(cookieReject){
+        cookieReject.addEventListener('click', function(){
+          saveCookiePreferences(false);
+        });
+      }
+
+      // Show settings
+      if(cookieSettings){
+        cookieSettings.addEventListener('click', function(){
+          cookieSettingsPanel.classList.toggle('show');
+        });
+      }
+
+      // Save settings
+      if(cookieSave){
+        cookieSave.addEventListener('click', function(){
+          const marketing = cookieMarketing ? cookieMarketing.checked : false;
+          saveCookiePreferences(marketing);
+        });
+      }
+
+      // Load marketing content if previously accepted
+      if(cookieConsent === 'true' && localStorage.getItem('cookieMarketing') === 'true'){
+        loadMarketingContent();
       }
     })();
   </script>
