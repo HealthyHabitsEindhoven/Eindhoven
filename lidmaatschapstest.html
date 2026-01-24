@@ -1543,34 +1543,35 @@
         telefoon: telefoon
       };
 
-      // Send to Zapier webhook - DIRECT bij afronden test
-      fetch('https://hooks.zapier.com/hooks/catch/16872475/ugntte5/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
-      })
-      .then(response => {
-        if(response.ok){
-          console.log("Zapier sent", formData);
-        } else {
-          console.error("Zapier failed", response);
-        }
-        // Show success regardless of response
+      // Verzamel data en submit via hidden form
+      const hiddenForm = document.getElementById('testForm');
+      if(hiddenForm){
+        // Vul alle hidden inputs
+        hiddenForm.querySelector('input[name="form_name"]').value = "online-lidmaatschapstest";
+        hiddenForm.querySelector('input[name="source"]').value = "website";
+        hiddenForm.querySelector('input[name="page_url"]').value = window.location.href;
+        hiddenForm.querySelector('input[name="doelen"]').value = doelen.join(',');
+        hiddenForm.querySelector('input[name="frequentie"]').value = frequentie;
+        hiddenForm.querySelector('input[name="voorkeur"]').value = voorkeur.join(',');
+        hiddenForm.querySelector('input[name="ervaring"]').value = ervaring;
+        hiddenForm.querySelector('input[name="tijdstip"]').value = tijdstip;
+        hiddenForm.querySelector('input[name="naam"]').value = naam;
+        hiddenForm.querySelector('input[name="email"]').value = email;
+        hiddenForm.querySelector('input[name="telefoon"]').value = telefoon;
+        
+        // Submit form
+        hiddenForm.submit();
+      } else {
+        // Fallback: show success
         showSuccess();
-      })
-      .catch(error => {
-        console.error("Zapier failed", error);
-        // Show success anyway
-        showSuccess();
-      });
+      }
     }
 
     function showSuccess(){
       document.querySelectorAll('.test-step').forEach(step => step.classList.remove('active'));
       document.getElementById('testSuccess').classList.add('active');
       document.querySelector('.test-wizard').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Form is al gesubmit, success scherm blijft staan
     }
 
     // Add event listeners for validation
