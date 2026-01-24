@@ -1209,20 +1209,6 @@
     </div>
   </section>
 
-  <!-- Hidden form voor Zapier submit -->
-  <form id="testForm" action="https://hooks.zapier.com/hooks/catch/16872475/uqaidcv/" method="POST" style="display:none;">
-    <input type="hidden" name="form_name" value="">
-    <input type="hidden" name="source" value="">
-    <input type="hidden" name="page_url" value="">
-    <input type="hidden" name="doelen" value="">
-    <input type="hidden" name="frequentie" value="">
-    <input type="hidden" name="voorkeur" value="">
-    <input type="hidden" name="ervaring" value="">
-    <input type="hidden" name="tijdstip" value="">
-    <input type="hidden" name="naam" value="">
-    <input type="hidden" name="email" value="">
-    <input type="hidden" name="telefoon" value="">
-  </form>
 
   <!-- 3. WAAROM DEZE LIDMAATSCHAPSTEST -->
   <section class="waarom-section">
@@ -1417,8 +1403,6 @@
   </section>
 
   <script>
-    // Webhook URL
-    const WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/16872475/ugntte5/";
 
     // Wizard state
     let currentStep = 1;
@@ -1543,50 +1527,14 @@
       const email = document.querySelector('input[name="email"]')?.value || '';
       const telefoon = document.querySelector('input[name="telefoon"]')?.value || '';
 
-      const formData = {
-        form_name: "online-lidmaatschapstest",
-        source: "website",
-        page_url: window.location.href,
-        timestamp: new Date().toISOString(),
-        doelen: doelen,
-        frequentie: frequentie,
-        voorkeur: voorkeur,
-        ervaring: ervaring,
-        tijdstip: tijdstip,
-        naam: naam,
-        email: email,
-        telefoon: telefoon
-      };
-
-      // Verzamel data en submit via hidden form
-      const hiddenForm = document.getElementById('testForm');
-      if(hiddenForm){
-        // Vul alle hidden inputs
-        hiddenForm.querySelector('input[name="form_name"]').value = "online-lidmaatschapstest";
-        hiddenForm.querySelector('input[name="source"]').value = "website";
-        hiddenForm.querySelector('input[name="page_url"]').value = window.location.href;
-        hiddenForm.querySelector('input[name="doelen"]').value = doelen.join(',');
-        hiddenForm.querySelector('input[name="frequentie"]').value = frequentie;
-        hiddenForm.querySelector('input[name="voorkeur"]').value = voorkeur.join(',');
-        hiddenForm.querySelector('input[name="ervaring"]').value = ervaring;
-        hiddenForm.querySelector('input[name="tijdstip"]').value = tijdstip;
-        hiddenForm.querySelector('input[name="naam"]').value = naam;
-        hiddenForm.querySelector('input[name="email"]').value = email;
-        hiddenForm.querySelector('input[name="telefoon"]').value = telefoon;
-        
-        // Submit form
-        hiddenForm.submit();
-      } else {
-        // Fallback: show success
-        showSuccess();
-      }
+      // Show success message
+      showSuccess();
     }
 
     function showSuccess(){
       document.querySelectorAll('.test-step').forEach(step => step.classList.remove('active'));
       document.getElementById('testSuccess').classList.add('active');
       document.querySelector('.test-wizard').scrollIntoView({ behavior: 'smooth', block: 'center' });
-      // Form is al gesubmit, success scherm blijft staan
     }
 
     // Add event listeners for validation
@@ -1826,8 +1774,6 @@
       }
     })();
 
-    // Vul page_url voor alle formulieren
-    document.querySelectorAll('input[name="page_url"]').forEach(i => i.value = location.href);
   </script>
 
 </body>
