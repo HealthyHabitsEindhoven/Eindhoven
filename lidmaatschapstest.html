@@ -1866,60 +1866,46 @@
       }
     })();
 
-    // Add event listeners for validation - DIRECT and IMMEDIATE
+    // Add event listeners for validation - USE EVENT DELEGATION (always works)
     (function(){
-      function attachListeners(){
-        // Checkbox/radio change listeners - update buttons IMMEDIATELY on change
-        document.querySelectorAll('.test-option input').forEach(input => {
-          // Remove existing listeners first
-          const newInput = input.cloneNode(true);
-          input.parentNode.replaceChild(newInput, input);
-          
-          newInput.addEventListener('change', function(){
-            console.log("Input changed:", this.name, this.value, this.checked);
-            // Update buttons IMMEDIATELY
-            setTimeout(() => updateButtons(), 0);
-          });
-          
-          // Also on click for immediate feedback
-          newInput.addEventListener('click', function(){
-            setTimeout(() => updateButtons(), 0);
-          });
-        });
-
-        // Text input listeners - update buttons on every keystroke
-        document.querySelectorAll('.test-input-group input, .test-input-group textarea').forEach(input => {
-          input.addEventListener('input', function(){
-            console.log("Input typed:", this.name, this.value);
+      const form = document.querySelector('form.test-wizard');
+      if(!form) return;
+      
+      // Event delegation on form - catches ALL input changes
+      form.addEventListener('change', function(e){
+        if(e.target.matches('.test-option input, .test-input-group input, .test-input-group textarea')){
+          console.log("Input changed via delegation:", e.target.name, e.target.value, e.target.checked);
+          // Update buttons IMMEDIATELY
+          setTimeout(() => updateButtons(), 0);
+        }
+      });
+      
+      // Also on input event for text fields
+      form.addEventListener('input', function(e){
+        if(e.target.matches('.test-input-group input, .test-input-group textarea')){
+          console.log("Input typed via delegation:", e.target.name, e.target.value);
+          updateButtons();
+        }
+      });
+      
+      // Click on option boxes
+      form.addEventListener('click', function(e){
+        if(e.target.closest('.test-option')){
+          // Update after a tiny delay to let checkbox state update
+          setTimeout(() => {
             updateButtons();
-          });
-        });
-
-        // Click on entire option box
-        document.querySelectorAll('.test-option').forEach(option => {
-          option.addEventListener('click', function(e){
-            // Update after checkbox state changes
-            setTimeout(() => {
-              updateButtons();
-            }, 50);
-          });
-        });
-      }
-      
-      // Attach listeners immediately
-      attachListeners();
-      
-      // Re-attach when step changes (for dynamically shown steps)
-      const originalNextStep = window.nextStep;
-      window.nextStep = function(){
-        const result = originalNextStep();
-        setTimeout(() => attachListeners(), 100);
-        return result;
-      };
+          }, 50);
+        }
+      });
 
       // Initialize
       updateProgress();
       updateButtons();
+      
+      // Also update buttons periodically as fallback (every 500ms)
+      setInterval(() => {
+        updateButtons();
+      }, 500);
     })();
 
     // FAQ accordion
