@@ -1561,37 +1561,66 @@
 
     /* Mobile fix for experience section - no extreme zoom */
     @media(max-width:768px){
-      .experience-section,
+      /* 1) kill zoom/transform/overlays die het beeld slopen */
+      .experience-section, 
       .experience-section * {
         transform: none !important;
       }
+      .experience-section *::before,
+      .experience-section *::after {
+        transform: none !important;
+      }
 
-      .experience-section .review-card,
-      .experience-section .card,
-      .experience-section .slide,
-      .experience-section .swiper-slide,
-      .experience-section .testimonial-card {
+      /* 2) kaartbreedte zoals succesverhalen */
+      .experience-section .exp-card,
+      .experience-section .swiper-slide .exp-card,
+      .experience-section .slide .exp-card,
+      .experience-section .review-card.exp-card {
         width: min(92vw, 420px) !important;
         max-width: 420px !important;
         margin: 0 auto !important;
       }
 
-      .experience-section .hh-card-media {
+      /* 3) media: vaste hoogte, geen gekke scaling, geen absolute bugs */
+      .experience-section .exp-media {
         width: 100% !important;
-        aspect-ratio: 4 / 5;
-        max-height: 520px;
-        border-radius: 18px;
-        overflow: hidden;
-        background: #0b0c10;
-        position: relative;
+        height: 260px !important;
+        border-radius: 18px !important;
+        overflow: hidden !important;
+        background: #0b0c10 !important;
+        position: relative !important;
+        display: block !important;
       }
 
-      .experience-section .hh-card-media img {
+      /* Als er per ongeluk een overlay layer op zit: uit */
+      .experience-section .exp-media .overlay,
+      .experience-section .exp-media .hero_overlay,
+      .experience-section .exp-media .video_overlay,
+      .experience-section .exp-media .image_overlay {
+        display: none !important;
+      }
+
+      /* 4) img/picture/video altijd correct vullen */
+      .experience-section .exp-media img,
+      .experience-section .exp-media picture,
+      .experience-section .exp-media picture img,
+      .experience-section .exp-media video,
+      .experience-section .exp-media iframe {
         width: 100% !important;
         height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        display: block !important;
         object-fit: cover !important;
-        object-position: center !important;
-        display: block;
+        object-position: center center !important;
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+      }
+
+      /* 5) als de sectie per ongeluk backgrounds gebruikt: forceer uit */
+      .experience-section .exp-media {
+        background-image: none !important;
       }
     }
     .review-card{
@@ -2785,78 +2814,78 @@ zelfs leuk.</p>
           <button class="reviews-nav prev" id="prevReview" aria-label="Vorige review">‹</button>
           <div class="reviews-carousel-track" id="reviewsTrack">
             <div class="reviews-carousel-slides" id="reviewsSlides">
-              <div class="review-card active">
+              <div class="review-card active exp-card">
                 <div class="review-card__image">
-                  <div class="hh-card-media">
+                  <div class="exp-media">
                     <img src="./assets/images/resultaten/slide 1.jpeg" alt="Review" loading="lazy" width="400" height="300" decoding="async">
                   </div>
                 </div>
-                <div class="review-card__content">
+                <div class="review-card__content exp-content">
                   <h3 class="review-card__name">Pieter</h3>
                   <p class="review-card__age">43 jaar</p>
                   <p class="review-card__quote">Samen met coach Roos heb ik samengezeten en een plan gemaakt, en met succes! In de eerste 2 maanden ben ik 5 kilo afgevallen, dit in samenhang met een enorm prettige sfeer. De begeleiding is echt persoonlijk en past perfect bij mijn leven.</p>
                 </div>
               </div>
 
-              <div class="review-card">
+              <div class="review-card exp-card">
                 <div class="review-card__image">
-                  <div class="hh-card-media">
+                  <div class="exp-media">
                     <img src="./assets/images/resultaten/slide 2.jpeg" alt="Review" loading="lazy">
                   </div>
                 </div>
-                <div class="review-card__content">
+                <div class="review-card__content exp-content">
                   <h3 class="review-card__name">Marieke</h3>
                   <p class="review-card__age">48 jaar</p>
                   <p class="review-card__quote">Eindelijk een plek waar ik me thuis voel en echte resultaten zie. De warme sfeer en persoonlijke begeleiding maken dat ik me hier helemaal op mijn gemak voel. Het voelt niet als een sportschool, maar als een thuis waar ik graag kom.</p>
                 </div>
               </div>
 
-              <div class="review-card">
+              <div class="review-card exp-card">
                 <div class="review-card__image">
-                  <div class="hh-card-media">
+                  <div class="exp-media">
                     <img src="./assets/images/resultaten/IMG_5025.jpeg" alt="Review" loading="lazy">
                   </div>
                 </div>
-                <div class="review-card__content">
+                <div class="review-card__content exp-content">
                   <h3 class="review-card__name">Erik</h3>
                   <p class="review-card__age">55 jaar</p>
                   <p class="review-card__quote">Het plan past perfect bij mijn leven. Geen stress, wel resultaat. Ik heb eindelijk structuur en ritme gevonden in mijn trainingen. De begeleiding is praktisch en vol te houden, precies wat ik nodig had.</p>
                 </div>
               </div>
 
-              <div class="review-card">
+              <div class="review-card exp-card">
                 <div class="review-card__image">
-                  <div class="hh-card-media">
+                  <div class="exp-media">
                     <img src="./assets/images/resultaten/IMG_5611 2.jpeg" alt="Review" loading="lazy">
                   </div>
                 </div>
-                <div class="review-card__content">
+                <div class="review-card__content exp-content">
                   <h3 class="review-card__name">Linda</h3>
                   <p class="review-card__age">50 jaar</p>
                   <p class="review-card__quote">Ik voel me sterker en zelfverzekerder. Mijn lichaam voelt weer goed. Gezond ouder worden was mijn doel, en dankzij de persoonlijke begeleiding en training merk ik echt verschil in kracht en energie.</p>
                 </div>
               </div>
 
-              <div class="review-card">
+              <div class="review-card exp-card">
                 <div class="review-card__image">
-                  <div class="hh-card-media">
+                  <div class="exp-media">
                     <img src="./assets/images/resultaten/IMG_6968.jpeg" alt="Review" loading="lazy">
                   </div>
                 </div>
-                <div class="review-card__content">
+                <div class="review-card__content exp-content">
                   <h3 class="review-card__name">Rob</h3>
                   <p class="review-card__age">53 jaar</p>
                   <p class="review-card__quote">Eindelijk een plek waar ik op mijn eigen tempo kan werken aan mijn gezondheid. Er is geen druk, geen verwachtingen, alleen begeleiding die aansluit bij wat ik nodig heb. Perfect!</p>
                 </div>
               </div>
 
-              <div class="review-card">
+              <div class="review-card exp-card">
                 <div class="review-card__image">
-                  <div class="hh-card-media">
+                  <div class="exp-media">
                     <img src="./assets/images/resultaten/IMG_6976.jpeg" alt="Review" loading="lazy">
                   </div>
                 </div>
-                <div class="review-card__content">
+                <div class="review-card__content exp-content">
                   <h3 class="review-card__name">Sandra</h3>
                   <p class="review-card__age">49 jaar</p>
                   <p class="review-card__quote">De complete aanpak van training, voeding en begeleiding werkt perfect. Alles valt op zijn plek en ik zie echte vooruitgang. De combinatie maakt dat ik nu eindelijk resultaten behaal die blijven.</p>
