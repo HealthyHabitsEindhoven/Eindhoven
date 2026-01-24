@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Privacyverklaring - Healthy Habits Eindhoven</title>
+
+  <style>
+    :root{
+      --accent:#C3A300;
+      --bg:#0b0c10;
+      --bg-main:#0b0c10;
+      --bg-warm:#0f1115;
+      --bg-accent:#121418;
+      --text:#f3f4f6;
+      --muted:#cbd5e1;
+      --line:rgba(255,255,255,.15);
+      --radius:18px;
+      --max:1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      padding:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:var(--bg-main);
+      color:var(--text);
+    }
+
+    img{width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 36px));margin:0 auto}
+
+    /* =========================
+       TOP MENU BAR
+    ========================== */
+    .topbar{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:77px;
+      background:#000;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .container{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:32px;
+    }
+    .topbar__logo{
+      font-weight:800;
+      letter-spacing:.04em;
+      font-size:18px;
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+    }
+    .topbar__logo img{
+      height:48px;
+      width:auto;
+      display:block;
+    }
+    .topbar__nav{
+      display:flex;
+      align-items:center;
+      gap:32px;
+      flex:1;
+      justify-content:center;
+    }
+    .topbar__nav a{
+      color:var(--text);
+      text-decoration:none;
+      font-size:15px;
+      transition:color 0.2s ease;
+    }
+    .topbar__nav a:hover{
+      color:var(--accent);
+    }
+    .topbar__lang{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-shrink:0;
+      margin-right:16px;
+    }
+    .topbar__lang a{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:13px;
+      font-weight:400;
+      transition:color 0.2s ease;
+      padding:4px 0;
+    }
+    .topbar__lang a:hover{
+      color:var(--text);
+    }
+    .topbar__lang a.active{
+      color:var(--text);
+      font-weight:500;
+    }
+    .topbar__lang span{
+      color:var(--muted);
+      font-size:13px;
+    }
+    .topbar__cta{
+      flex-shrink:0;
+    }
+    .topbar__cta a{
+      text-decoration:none;
+    }
+    .topbar__cta button{
+      background:var(--accent);
+      color:#000;
+      border:none;
+      padding:10px 20px;
+      border-radius:8px;
+      font-weight:700;
+      font-size:14px;
+      cursor:pointer;
+      transition:filter 0.2s ease;
+    }
+    .topbar__cta button:hover{
+      filter:brightness(1.1);
+    }
+    .topbar__menu-toggle{
+      display:none;
+      background:none;
+      border:none;
+      cursor:pointer;
+      padding:8px;
+      flex-shrink:0;
+      z-index:10001;
+    }
+    .topbar__menu-toggle span{
+      display:block;
+      width:24px;
+      height:2px;
+      background:var(--accent);
+      margin:5px 0;
+      transition:all 0.3s ease;
+      border-radius:2px;
+    }
+    .topbar__menu-toggle.active span:nth-child(1){
+      transform:rotate(45deg) translate(7px, 7px);
+    }
+    .topbar__menu-toggle.active span:nth-child(2){
+      opacity:0;
+    }
+    .topbar__menu-toggle.active span:nth-child(3){
+      transform:rotate(-45deg) translate(7px, -7px);
+    }
+    body{ padding-top:77px; }
+
+    /* =========================
+       PRIVACY CONTENT
+    ========================== */
+    .privacy-section{
+      padding:80px 0;
+      background:var(--bg-main);
+    }
+    .privacy-content{
+      max-width:800px;
+      margin:0 auto;
+    }
+    .privacy-content h1{
+      font-size:clamp(32px,5vw,48px);
+      margin:0 0 24px;
+      color:var(--text);
+    }
+    .privacy-content h2{
+      font-size:24px;
+      margin:40px 0 16px;
+      color:var(--text);
+    }
+    .privacy-content p{
+      font-size:16px;
+      color:var(--muted);
+      margin:0 0 16px;
+      line-height:1.6;
+    }
+    .privacy-content ul{
+      font-size:16px;
+      color:var(--muted);
+      margin:0 0 16px;
+      padding-left:24px;
+      line-height:1.6;
+    }
+    .privacy-content li{
+      margin-bottom:8px;
+    }
+    .privacy-content a{
+      color:var(--accent);
+      text-decoration:underline;
+    }
+    .privacy-content a:hover{
+      color:var(--text);
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+    .footer{
+      padding:48px 0;
+      background:var(--bg-warm);
+      border-top:1px solid var(--line);
+    }
+    .footer-content{
+      max-width:1100px;
+      margin:0 auto;
+      text-align:center;
+    }
+    .footer-content p{
+      font-size:14px;
+      color:var(--muted);
+      margin:8px 0;
+    }
+    .footer-content a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+    .footer-content a:hover{
+      text-decoration:underline;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media(max-width:900px){
+      .topbar__menu-toggle{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+      }
+      .topbar__nav,
+      .topbar__lang,
+      .topbar__cta{
+        display:none;
+      }
+      .topbar__nav.mobile-open{
+        display:flex;
+        position:fixed;
+        top:77px;
+        left:0;
+        right:0;
+        background:#000;
+        flex-direction:column;
+        padding:24px;
+        gap:20px;
+        border-top:1px solid rgba(255,255,255,.08);
+        z-index:10000;
+        box-shadow:0 4px 12px rgba(0,0,0,.3);
+      }
+      .topbar__nav.mobile-open a{
+        font-size:16px;
+        padding:12px 0;
+        border-bottom:1px solid rgba(255,255,255,.08);
+      }
+      .topbar__nav.mobile-open a:last-child{
+        border-bottom:none;
+      }
+      .topbar__lang.mobile-open,
+      .topbar__cta.mobile-open{
+        display:flex;
+        position:fixed;
+        left:0;
+        right:0;
+        background:#000;
+        padding:16px 24px;
+        border-top:1px solid rgba(255,255,255,.08);
+        z-index:10000;
+      }
+      .topbar__lang.mobile-open{
+        top:calc(77px + 280px);
+        justify-content:center;
+      }
+      .topbar__cta.mobile-open{
+        top:calc(77px + 280px + 50px);
+        justify-content:center;
+      }
+      .topbar__cta.mobile-open button{
+        width:100%;
+        padding:12px 20px;
+        font-size:15px;
+      }
+      .privacy-section{
+        padding:48px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar__logo">
+        <a href="index.html"><img src="./assets/logo/HH logo.png" alt="Healthy Habits"></a>
+      </div>
+      <button class="topbar__menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="topbar__nav" id="topbarNav">
+        <a href="aanbod.html">Ons aanbod</a>
+        <a href="succesverhalen.html">Succesverhalen</a>
+        <a href="tarieven.html">Prijzen</a>
+        <a href="lidmaatschapstest.html">Online-lidmaatschapstest</a>
+        <a href="testform.html">Testform</a>
+      </nav>
+      <div class="topbar__lang" id="topbarLang">
+        <a href="index.html" class="active">Nederlands</a>
+        <span>/</span>
+        <a href="en/index.html">English</a>
+      </div>
+      <div class="topbar__cta" id="topbarCta">
+        <a href="4-weken-proberen.html"><button>4 weken proberen</button></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRIVACY CONTENT -->
+  <section class="privacy-section">
+    <div class="container">
+      <div class="privacy-content">
+        <h1>Privacyverklaring</h1>
+        <p><strong>Laatst bijgewerkt:</strong> januari 2025</p>
+
+        <h2>1. Wie zijn wij?</h2>
+        <p>Healthy Habits Eindhoven<br>
+        Eindhoven, Nederland</p>
+        <p>Voor vragen over deze privacyverklaring kun je contact met ons opnemen via de contactgegevens op onze website.</p>
+
+        <h2>2. Welke gegevens verzamelen wij?</h2>
+        <p>Wij verzamelen de volgende persoonsgegevens wanneer je een formulier op onze website invult:</p>
+        <ul>
+          <li><strong>Naam:</strong> om je persoonlijk te kunnen aanspreken</li>
+          <li><strong>E-mailadres:</strong> om contact met je op te kunnen nemen</li>
+          <li><strong>Telefoonnummer:</strong> om je te kunnen bellen voor afspraken en intakegesprekken</li>
+          <li><strong>Optionele informatie:</strong> zoals je doel, voorkeuren en andere informatie die je vrijwillig deelt in formulieren</li>
+        </ul>
+
+        <h2>3. Waarom verzamelen wij deze gegevens?</h2>
+        <p>Wij gebruiken je gegevens voor de volgende doeleinden:</p>
+        <ul>
+          <li>Het beantwoorden van je vragen en verzoeken</li>
+          <li>Het plannen van intakegesprekken en proeflessen</li>
+          <li>Het verwerken van aanmeldingen voor lidmaatschappen</li>
+          <li>Het afnemen van de online lidmaatschapstest</li>
+          <li>Het onderhouden van contact over je lidmaatschap</li>
+        </ul>
+
+        <h2>4. Met wie delen wij je gegevens?</h2>
+        <p>Wij delen je gegevens alleen met:</p>
+        <ul>
+          <li><strong>Zapier:</strong> voor het verwerken van formulierinzendingen. Zapier handelt je gegevens conform hun privacybeleid.</li>
+          <li><strong>YouTube/Vimeo:</strong> wanneer je video's op onze website bekijkt, kunnen deze platforms cookies plaatsen (alleen met je toestemming).</li>
+        </ul>
+        <p>Wij verkopen of verhuren je gegevens niet aan derden.</p>
+
+        <h2>5. Bewaartermijnen</h2>
+        <p>Wij bewaren je gegevens niet langer dan noodzakelijk voor de doeleinden waarvoor ze zijn verzameld. In het algemeen bewaren wij gegevens maximaal 24 maanden na het laatste contact, tenzij er een wettelijke bewaarplicht geldt.</p>
+
+        <h2>6. Je rechten</h2>
+        <p>Je hebt de volgende rechten met betrekking tot je persoonsgegevens:</p>
+        <ul>
+          <li><strong>Inzagerecht:</strong> je kunt opvragen welke gegevens wij van je hebben</li>
+          <li><strong>Rectificatierecht:</strong> je kunt onjuiste gegevens laten corrigeren</li>
+          <li><strong>Verwijderingsrecht:</strong> je kunt vragen om verwijdering van je gegevens</li>
+          <li><strong>Bezwaarrecht:</strong> je kunt bezwaar maken tegen de verwerking van je gegevens</li>
+          <li><strong>Dataportabiliteit:</strong> je kunt je gegevens in een gestructureerd formaat ontvangen</li>
+        </ul>
+        <p>Om gebruik te maken van deze rechten, kun je contact met ons opnemen via de contactgegevens op onze website.</p>
+
+        <h2>7. Cookies</h2>
+        <p>Onze website gebruikt cookies voor:</p>
+        <ul>
+          <li><strong>Functionele cookies:</strong> deze zijn noodzakelijk voor het goed functioneren van de website</li>
+          <li><strong>Marketing cookies:</strong> voor embedded video's (YouTube/Vimeo) - deze worden alleen geplaatst met je toestemming</li>
+        </ul>
+        <p>Je kunt je cookievoorkeuren aanpassen via de cookiebanner op onze website.</p>
+
+        <h2>8. Wijzigingen</h2>
+        <p>Wij behouden ons het recht voor om deze privacyverklaring aan te passen. Wijzigingen worden op deze pagina gepubliceerd met een bijgewerkte datum.</p>
+
+        <h2>9. Contact</h2>
+        <p>Voor vragen over deze privacyverklaring of over de verwerking van je persoonsgegevens, kun je contact met ons opnemen via de contactgegevens op onze website.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p><strong>Healthy Habits Eindhoven</strong></p>
+        <p>Eindhoven, Nederland</p>
+        <p><a href="privacy.html">Privacyverklaring</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    (function(){
+      const menuToggle = document.getElementById('menuToggle');
+      const topbarNav = document.getElementById('topbarNav');
+      const topbarLang = document.getElementById('topbarLang');
+      const topbarCta = document.getElementById('topbarCta');
+      
+      if(menuToggle && topbarNav){
+        menuToggle.addEventListener('click', function(){
+          const isOpen = menuToggle.classList.contains('active');
+          
+          if(isOpen){
+            menuToggle.classList.remove('active');
+            topbarNav.classList.remove('mobile-open');
+            topbarLang.classList.remove('mobile-open');
+            topbarCta.classList.remove('mobile-open');
+            document.body.style.overflow = '';
+          } else {
+            menuToggle.classList.add('active');
+            topbarNav.classList.add('mobile-open');
+            topbarLang.classList.add('mobile-open');
+            topbarCta.classList.add('mobile-open');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+        
+        // Sluit menu bij klik op link
+        const navLinks = topbarNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+          link.addEventListener('click', function(){
+            menuToggle.classList.remove('active');
+            topbarNav.classList.remove('mobile-open');
+            topbarLang.classList.remove('mobile-open');
+            topbarCta.classList.remove('mobile-open');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
