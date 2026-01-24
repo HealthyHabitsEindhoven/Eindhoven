@@ -1693,6 +1693,23 @@
       margin-left:4px;
     }
 
+    /* Vimeo video wrapper CSS */
+    .split-video .video-wrapper {
+      position: relative;
+      padding-top: 56.25%;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .split-video .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
     /* =========================
        VIDEO MODAL
     ========================== */
@@ -2375,8 +2392,14 @@ en wie weet wordt sporten, net als bij velen,<br>
 zelfs leuk.</p>
       </div>
       <div class="split-video">
-        <div class="split-video-wrapper">
-          <iframe src="https://www.youtube.com/embed/WTFwUNQ4n_0" allowfullscreen></iframe>
+        <div class="video-wrapper">
+          <iframe
+            src="https://player.vimeo.com/video/884819743?badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+            title="Healthy Habits video">
+          </iframe>
         </div>
       </div>
     </div>
