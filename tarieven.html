@@ -875,11 +875,47 @@
       }
     })();
 
-    // Set page_url for Zapier
+    // Set page_url for Zapier and handle form submission
     document.addEventListener('DOMContentLoaded', function(){
       const pageUrlInput = document.querySelector('input[name="page_url"]');
       if(pageUrlInput){
         pageUrlInput.value = window.location.href;
+      }
+
+      // Handle form submission via fetch to Zapier
+      const form = document.querySelector('form.form');
+      if(form){
+        form.addEventListener('submit', function(e){
+          e.preventDefault();
+          
+          const formData = new FormData(form);
+          const data = {};
+          formData.forEach((value, key) => {
+            data[key] = value;
+          });
+
+          fetch('https://hooks.zapier.com/hooks/catch/16872475/ugntte5/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+          })
+          .then(response => {
+            if(response.ok){
+              console.log("Zapier sent", data);
+              alert('Bedankt! We nemen snel contact met je op.');
+              form.reset();
+            } else {
+              console.error("Zapier failed", response);
+              alert('Er is iets misgegaan. Probeer het later opnieuw.');
+            }
+          })
+          .catch(error => {
+            console.error("Zapier failed", error);
+            alert('Er is iets misgegaan. Probeer het later opnieuw.');
+          });
+        });
       }
     });
   </script>
