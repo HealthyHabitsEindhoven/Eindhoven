@@ -686,11 +686,13 @@
     .test-btn-primary:disabled{
       opacity:0.5;
       cursor:not-allowed;
-      pointer-events:none;
+      pointer-events:none !important;
     }
-    .test-btn-primary:not(:disabled){
-      pointer-events:auto;
-      cursor:pointer;
+    .test-btn-primary:not(:disabled),
+    .test-btn-primary[disabled="false"]{
+      pointer-events:auto !important;
+      cursor:pointer !important;
+      opacity:1 !important;
     }
     .test-btn-secondary{
       background:rgba(255,255,255,.08);
@@ -1664,15 +1666,21 @@
       return false;
     }
 
-    // Update button states
+    // Update button states - FORCE ENABLE when valid
     function updateButtons(){
       const stepEl = document.querySelector(`.test-step[data-step="${currentStep}"]`);
-      if(!stepEl) return;
+      if(!stepEl) {
+        console.log("updateButtons: stepEl not found for step", currentStep);
+        return;
+      }
       
       const prevBtn = stepEl.querySelector('.test-btn-secondary');
       const nextBtn = stepEl.querySelector('.test-btn-primary');
       
-      if(!prevBtn || !nextBtn) return;
+      if(!prevBtn || !nextBtn) {
+        console.log("updateButtons: buttons not found");
+        return;
+      }
       
       // Previous button
       if(currentStep === 1){
@@ -1681,14 +1689,21 @@
         prevBtn.disabled = false;
       }
       
-      // Next button - only disable if truly no selection
+      // Next button - FORCE ENABLE when valid
       const isValid = validateStep(currentStep);
+      console.log("updateButtons: step", currentStep, "isValid:", isValid);
+      
       if(isValid){
         nextBtn.disabled = false;
+        nextBtn.removeAttribute('disabled');
         nextBtn.style.pointerEvents = 'auto';
         nextBtn.style.cursor = 'pointer';
+        nextBtn.style.opacity = '1';
+        console.log("Next button ENABLED");
       } else {
         nextBtn.disabled = true;
+        nextBtn.setAttribute('disabled', 'disabled');
+        console.log("Next button DISABLED");
       }
     }
 
@@ -1851,34 +1866,56 @@
       }
     })();
 
-    // Add event listeners for validation
+    // Add event listeners for validation - DIRECT and IMMEDIATE
     (function(){
-      // Checkbox/radio change listeners - update buttons immediately on change
-      document.querySelectorAll('.test-option input').forEach(input => {
-        input.addEventListener('change', function(){
-          console.log("Input changed:", this.name, this.value, this.checked);
-          // Update buttons immediately when selection changes
-          updateButtons();
+      function attachListeners(){
+        // Checkbox/radio change listeners - update buttons IMMEDIATELY on change
+        document.querySelectorAll('.test-option input').forEach(input => {
+          // Remove existing listeners first
+          const newInput = input.cloneNode(true);
+          input.parentNode.replaceChild(newInput, input);
+          
+          newInput.addEventListener('change', function(){
+            console.log("Input changed:", this.name, this.value, this.checked);
+            // Update buttons IMMEDIATELY
+            setTimeout(() => updateButtons(), 0);
+          });
+          
+          // Also on click for immediate feedback
+          newInput.addEventListener('click', function(){
+            setTimeout(() => updateButtons(), 0);
+          });
         });
-      });
 
-      // Text input listeners - update buttons on every keystroke
-      document.querySelectorAll('.test-input-group input, .test-input-group textarea').forEach(input => {
-        input.addEventListener('input', function(){
-          console.log("Input typed:", this.name, this.value);
-          updateButtons();
-        });
-      });
-
-      // Also listen to click events on options for immediate feedback
-      document.querySelectorAll('.test-option').forEach(option => {
-        option.addEventListener('click', function(e){
-          // If clicking on the label/option itself, update buttons after a tiny delay
-          setTimeout(() => {
+        // Text input listeners - update buttons on every keystroke
+        document.querySelectorAll('.test-input-group input, .test-input-group textarea').forEach(input => {
+          input.addEventListener('input', function(){
+            console.log("Input typed:", this.name, this.value);
             updateButtons();
-          }, 10);
+          });
         });
-      });
+
+        // Click on entire option box
+        document.querySelectorAll('.test-option').forEach(option => {
+          option.addEventListener('click', function(e){
+            // Update after checkbox state changes
+            setTimeout(() => {
+              updateButtons();
+            }, 50);
+          });
+        });
+      }
+      
+      // Attach listeners immediately
+      attachListeners();
+      
+      // Re-attach when step changes (for dynamically shown steps)
+      const originalNextStep = window.nextStep;
+      window.nextStep = function(){
+        const result = originalNextStep();
+        setTimeout(() => attachListeners(), 100);
+        return result;
+      };
 
       // Initialize
       updateProgress();
