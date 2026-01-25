@@ -3665,42 +3665,6 @@ zelfs leuk.</p>
   <!-- Vimeo Player API -->
   <script src="https://player.vimeo.com/api/player.js">  </script>
 
-  <!-- Nuclear fix: force form submit -->
-  <script>
-    (function(){
-      const form = document.getElementById('leadFormIndex');
-      if(!form) return;
-      
-      // Remove all existing submit listeners
-      const newForm = form.cloneNode(true);
-      form.parentNode.replaceChild(newForm, form);
-      
-      // Force action, method, target
-      newForm.action = 'https://hooks.zapier.com/hooks/catch/16872475/uqaepel/';
-      newForm.method = 'POST';
-      newForm.target = '_blank';
-      
-      // Add submit handler
-      newForm.addEventListener('submit', function(e){
-        e.preventDefault();
-        
-        // Create hidden iframe for silent submit
-        const iframe = document.createElement('iframe');
-        iframe.name = 'zapierSubmitFrame';
-        iframe.style.display = 'none';
-        document.body.appendChild(iframe);
-        newForm.target = 'zapierSubmitFrame';
-        
-        // Submit form
-        newForm.submit();
-        
-        // Redirect after short delay
-        setTimeout(function(){
-          window.location.href = './bedankt.html';
-        }, 500);
-      });
-    })();
-  </script>
 
   <style>
   @media (max-width: 768px) {
