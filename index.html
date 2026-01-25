@@ -3771,6 +3771,87 @@ zelfs leuk.</p>
       padding-top: 12px;
     }
   }
+
+  @media (max-width: 767px) {
+
+    .hh-testimonials * { box-sizing: border-box; }
+    .hh-testimonials { overflow-x: hidden; }
+
+    .hh-testimonials .slider,
+    .hh-testimonials .testimonials-slider,
+    .hh-testimonials .swiper,
+    .hh-testimonials .swiper-wrapper {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .hh-testimonials .slide,
+    .hh-testimonials .swiper-slide {
+      padding: 0 14px;
+    }
+
+    .hh-testimonials .card,
+    .hh-testimonials .testimonial-card {
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .hh-testimonials img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hh-testimonials .content {
+      padding: 14px 16px 16px;
+    }
+
+    .hh-testimonials h2 {
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    .hh-testimonials h3 {
+      margin: 0 0 2px;
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    .hh-testimonials .meta {
+      margin: 0 0 10px;
+      font-size: 14px;
+      opacity: .8;
+    }
+
+    .hh-testimonials p {
+      font-size: 14px;
+      line-height: 1.45;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .hh-testimonials .nav,
+    .hh-testimonials .slider-nav,
+    .hh-testimonials .swiper-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .hh-testimonials button {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+    }
+  }
   </style>
 
 </body>
