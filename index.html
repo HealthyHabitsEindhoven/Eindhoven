@@ -3852,74 +3852,40 @@ zelfs leuk.</p>
       border-radius: 999px;
     }
 
-    /* Image crop fix - kill zoom/transform/overlays */
-    .hh-testimonials .image,
-    .hh-testimonials .img,
-    .hh-testimonials .card-image,
+    /* Image crop fix - definitieve versie */
+    .hh-testimonials .testimonial-media,
     .hh-testimonials .testimonial-image,
+    .hh-testimonials .card-image,
     .hh-testimonials .image-wrapper,
-    .hh-testimonials .card__image,
-    .hh-testimonials .exp-media,
-    .hh-testimonials .review-card__image {
+    .hh-testimonials .exp-media {
       width: 100% !important;
-      aspect-ratio: 16 / 10 !important;
-      height: auto !important;
+      max-width: 100% !important;
+      aspect-ratio: 4 / 3 !important;
       overflow: hidden !important;
       border-radius: 16px 16px 0 0 !important;
       position: relative !important;
+      background: none !important;
     }
 
-    /* kill overlays die vaak "zoom" of rare lagen geven */
-    .hh-testimonials .image::before,
-    .hh-testimonials .image::after,
-    .hh-testimonials .card-image::before,
-    .hh-testimonials .card-image::after,
-    .hh-testimonials .testimonial-image::before,
-    .hh-testimonials .testimonial-image::after,
-    .hh-testimonials .image-wrapper::before,
-    .hh-testimonials .image-wrapper::after,
-    .hh-testimonials .exp-media::before,
-    .hh-testimonials .exp-media::after,
-    .hh-testimonials .review-card__image::before,
-    .hh-testimonials .review-card__image::after {
-      content: none !important;
-      display: none !important;
-    }
-
-    /* Als het een IMG is: geen absolute/transform zoom */
+    .hh-testimonials .testimonial-media img,
     .hh-testimonials img {
       width: 100% !important;
       height: 100% !important;
+      display: block !important;
       object-fit: cover !important;
       object-position: center !important;
-      display: block !important;
+      transform: none !important;
       position: static !important;
-      transform: none !important;
-      filter: none !important;
     }
 
-    /* Als het een background-image DIV is */
-    .hh-testimonials .image,
-    .hh-testimonials .card-image,
-    .hh-testimonials .testimonial-image,
-    .hh-testimonials .image-wrapper,
-    .hh-testimonials .exp-media,
-    .hh-testimonials .review-card__image {
-      background-size: cover !important;
-      background-position: center !important;
-      background-repeat: no-repeat !important;
+    /* kill overlays/transforms in deze sectie */
+    .hh-testimonials * {
       transform: none !important;
-      filter: none !important;
     }
-
-    /* Extra: als er ergens nog zoom staat via scale op children */
-    .hh-testimonials .image * ,
-    .hh-testimonials .card-image * ,
-    .hh-testimonials .testimonial-image * ,
-    .hh-testimonials .image-wrapper * ,
-    .hh-testimonials .exp-media * ,
-    .hh-testimonials .review-card__image * {
-      transform: none !important;
+    .hh-testimonials *::before,
+    .hh-testimonials *::after {
+      display: none !important;
+      content: none !important;
     }
   }
   </style>
