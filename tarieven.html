@@ -1205,7 +1205,7 @@
           
           // POST to Zapier with FormData directly
           const formData = new FormData(form);
-          const response = await fetch('https://hooks.zapier.com/hooks/catch/16872475/uqalft8/', {
+          const response = await fetch('https://hooks.zapier.com/hooks/catch/16872475/uqae6wf/', {
             method: 'POST',
             body: formData,
             keepalive: true
@@ -1217,7 +1217,7 @@
           }
           
           // Redirect to bedankt page after successful POST
-          window.location.href = 'bedankt.html';
+          window.location.href = './bedankt.html';
           
         } catch(error){
           console.error('Form submit error:', error);
