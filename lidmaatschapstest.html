@@ -2185,5 +2185,36 @@
   }
   </script>
 
+  <script>
+  (function () {
+    const form = document.getElementById('online-lidmaatschap-form');
+    if (!form) return;
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      // Prepare form (validate, save answers)
+      if(!prepareFormSubmit()){
+        return;
+      }
+
+      try {
+        const actionUrl = form.getAttribute('action');
+        const formData = new FormData(form);
+
+        await fetch(actionUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: formData
+        });
+
+        window.location.href = '/Eindhoven/bedankt.html';
+      } catch (err) {
+        alert('Oeps, er ging iets mis. Probeer het opnieuw.');
+      }
+    });
+  })();
+  </script>
+
 </body>
 </html>
