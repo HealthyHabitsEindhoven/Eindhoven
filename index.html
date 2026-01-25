@@ -2815,8 +2815,8 @@ zelfs leuk.</p>
           <div class="reviews-carousel-track" id="reviewsTrack">
             <div class="reviews-carousel-slides" id="reviewsSlides">
               <article class="review-card active exp-card">
-                <div class="exp-media">
-                  <img src="./assets/images/resultaten/slide 1.jpeg" alt="Review" loading="lazy" decoding="async">
+                <div class="exp-media hh-testi-media">
+                  <img class="hh-testi-img" src="./assets/images/resultaten/slide 1.jpeg" alt="Review" loading="lazy" decoding="async">
                 </div>
                 <div class="review-card__content exp-body">
                   <h3 class="review-card__name">Pieter</h3>
@@ -2826,8 +2826,8 @@ zelfs leuk.</p>
               </article>
 
               <article class="review-card exp-card">
-                <div class="exp-media">
-                  <img src="./assets/images/resultaten/slide 2.jpeg" alt="Review" loading="lazy" decoding="async">
+                <div class="exp-media hh-testi-media">
+                  <img class="hh-testi-img" src="./assets/images/resultaten/slide 2.jpeg" alt="Review" loading="lazy" decoding="async">
                 </div>
                 <div class="review-card__content exp-body">
                   <h3 class="review-card__name">Marieke</h3>
@@ -2837,8 +2837,8 @@ zelfs leuk.</p>
               </article>
 
               <article class="review-card exp-card">
-                <div class="exp-media">
-                  <img src="./assets/images/resultaten/IMG_5025.jpeg" alt="Review" loading="lazy" decoding="async">
+                <div class="exp-media hh-testi-media">
+                  <img class="hh-testi-img" src="./assets/images/resultaten/IMG_5025.jpeg" alt="Review" loading="lazy" decoding="async">
                 </div>
                 <div class="review-card__content exp-body">
                   <h3 class="review-card__name">Erik</h3>
@@ -2848,8 +2848,8 @@ zelfs leuk.</p>
               </article>
 
               <article class="review-card exp-card">
-                <div class="exp-media">
-                  <img src="./assets/images/resultaten/IMG_5611 2.jpeg" alt="Review" loading="lazy" decoding="async">
+                <div class="exp-media hh-testi-media">
+                  <img class="hh-testi-img" src="./assets/images/resultaten/IMG_5611 2.jpeg" alt="Review" loading="lazy" decoding="async">
                 </div>
                 <div class="review-card__content exp-body">
                   <h3 class="review-card__name">Linda</h3>
@@ -2859,8 +2859,8 @@ zelfs leuk.</p>
               </article>
 
               <article class="review-card exp-card">
-                <div class="exp-media">
-                  <img src="./assets/images/resultaten/IMG_6968.jpeg" alt="Review" loading="lazy" decoding="async">
+                <div class="exp-media hh-testi-media">
+                  <img class="hh-testi-img" src="./assets/images/resultaten/IMG_6968.jpeg" alt="Review" loading="lazy" decoding="async">
                 </div>
                 <div class="review-card__content exp-body">
                   <h3 class="review-card__name">Rob</h3>
@@ -2870,8 +2870,8 @@ zelfs leuk.</p>
               </article>
 
               <article class="review-card exp-card">
-                <div class="exp-media">
-                  <img src="./assets/images/resultaten/IMG_6976.jpeg" alt="Review" loading="lazy" decoding="async">
+                <div class="exp-media hh-testi-media">
+                  <img class="hh-testi-img" src="./assets/images/resultaten/IMG_6976.jpeg" alt="Review" loading="lazy" decoding="async">
                 </div>
                 <div class="review-card__content exp-body">
                   <h3 class="review-card__name">Sandra</h3>
@@ -3852,40 +3852,39 @@ zelfs leuk.</p>
       border-radius: 999px;
     }
 
-    /* Image crop fix - definitieve versie */
-    .hh-testimonials .testimonial-media,
-    .hh-testimonials .testimonial-image,
-    .hh-testimonials .card-image,
-    .hh-testimonials .image-wrapper,
-    .hh-testimonials .exp-media {
+    /* Harde vaste mediabox - definitieve fix */
+    .hh-testimonials .hh-testi-media {
       width: 100% !important;
       max-width: 100% !important;
-      aspect-ratio: 4 / 3 !important;
+      height: 220px !important;
       overflow: hidden !important;
       border-radius: 16px 16px 0 0 !important;
       position: relative !important;
-      background: none !important;
+      background: transparent !important;
     }
 
-    .hh-testimonials .testimonial-media img,
-    .hh-testimonials img {
+    /* kill ALLES binnen de mediabox dat kan zoomen/verplaatsen */
+    .hh-testimonials .hh-testi-media * {
+      position: static !important;
+      transform: none !important;
+      filter: none !important;
+      animation: none !important;
+    }
+
+    /* forceer de img correct */
+    .hh-testimonials .hh-testi-img {
       width: 100% !important;
       height: 100% !important;
       display: block !important;
       object-fit: cover !important;
       object-position: center !important;
-      transform: none !important;
-      position: static !important;
     }
 
-    /* kill overlays/transforms in deze sectie */
-    .hh-testimonials * {
-      transform: none !important;
-    }
-    .hh-testimonials *::before,
-    .hh-testimonials *::after {
+    /* als er per ongeluk video/iframe in zit: verberg die */
+    .hh-testimonials .hh-testi-media video,
+    .hh-testimonials .hh-testi-media iframe,
+    .hh-testimonials .hh-testi-media canvas {
       display: none !important;
-      content: none !important;
     }
   }
   </style>
