@@ -851,7 +851,7 @@
   <section class="tariefcheck-section" id="tariefcheck">
     <div class="container">
       <h2>Ontdek jouw tarief</h2>
-      <form class="form" id="tarievenForm">
+      <form class="form" id="tarievenForm" action="https://hooks.zapier.com/hooks/catch/16872475/uqalft8/" method="POST">
         <input type="hidden" name="page_name" value="tarieven">
         <input type="hidden" name="source" value="tarieven">
         <div class="form-group">
@@ -1187,48 +1187,7 @@
   <!-- Form submit handler -->
   <script>
     (function(){
-      const form = document.getElementById('tarievenForm');
-      if(!form) return;
-      
-      form.addEventListener('submit', async function(e){
-        e.preventDefault();
-        
-        const submitButton = form.querySelector('button[type="submit"]');
-        const originalText = submitButton ? submitButton.textContent : '';
-        
-        try {
-          // Disable button and show loading state
-          if(submitButton){
-            submitButton.disabled = true;
-            submitButton.textContent = 'Verzenden...';
-          }
-          
-          // POST to Zapier with FormData directly
-          const formData = new FormData(form);
-          const response = await fetch('https://hooks.zapier.com/hooks/catch/16872475/uqalft8/', {
-            method: 'POST',
-            body: formData,
-            keepalive: true
-          });
-          
-          // Check if response is ok
-          if(!response.ok){
-            throw new Error('Zapier request failed');
-          }
-          
-          // Redirect to bedankt page after successful POST
-          window.location.href = 'bedankt.html';
-          
-        } catch(error){
-          console.error('Form submit error:', error);
-          // Re-enable button on error
-          if(submitButton){
-            submitButton.disabled = false;
-            submitButton.textContent = originalText;
-          }
-          alert('Er is iets misgegaan. Probeer het opnieuw.');
-        }
-      });
+      // Form uses native HTML POST, no JavaScript needed
     })();
   </script>
 
