@@ -1153,9 +1153,17 @@
       
       <!-- WIZARD -->
       <div class="test-wrapper" style="margin-top:48px;">
-        <form class="test-wizard">
+        <form id="quizForm" class="test-wizard">
           <input type="hidden" name="page_name" value="online-lidmaatschapstest">
           <input type="hidden" name="source" value="online-lidmaatschapstest">
+          <!-- Hidden inputs for answers -->
+          <input type="hidden" name="q1" id="q1" value="">
+          <input type="hidden" name="q2" id="q2" value="">
+          <input type="hidden" name="q3" id="q3" value="">
+          <input type="hidden" name="q4" id="q4" value="">
+          <input type="hidden" name="q5" id="q5" value="">
+          <input type="hidden" name="q6" id="q6" value="">
+          <input type="hidden" name="q7" id="q7" value="">
           <!-- Progress bar -->
           <div class="test-progress">
             <div class="test-progress-header">
@@ -1763,35 +1771,14 @@
     window.nextStep = function(){
       console.log("NEXT CLICK - Step:", currentStep);
       
-      // Get current selection for debug
-      const stepEl = document.querySelector(`.test-step[data-step="${currentStep}"]`);
-      let selected = null;
-      if(stepEl){
-        if(currentStep === 1 || currentStep === 3){
-          const checked = Array.from(stepEl.querySelectorAll('input:checked')).map(cb => cb.value);
-          selected = checked;
-        } else if(currentStep === 2 || currentStep === 4 || currentStep === 5){
-          const radio = stepEl.querySelector('input:checked');
-          selected = radio ? radio.value : null;
-        } else if(currentStep === 6){
-          const input = stepEl.querySelector('input[name="naam"]');
-          selected = input ? input.value : null;
-        } else if(currentStep === 7){
-          const email = stepEl.querySelector('input[name="email"]');
-          const tel = stepEl.querySelector('input[name="telefoon"]');
-          selected = { email: email ? email.value : null, tel: tel ? tel.value : null };
-        }
-      }
-      console.log("selected:", selected);
-      
       // Validate - show warning if invalid, but don't block
       if(!validateStep(currentStep)){
         console.log("Validation failed - staying on step");
-        // Show warning if needed (current validation already handles this)
+        alert('Selecteer een optie voordat je doorgaat.');
         return;
       }
       
-      // Save current step answers before moving forward
+      // Save current step answers to hidden inputs before moving forward
       saveStepAnswers(currentStep);
       
       // Move to next step immediately (no waiting)
@@ -1823,83 +1810,68 @@
 
     // Form submit handler - POST to Zapier with await, then redirect
     (function(){
-      const form = document.querySelector('form.test-wizard');
-      if(form){
-        form.addEventListener('submit', async function(e){
-          e.preventDefault();
-          
-          // Only allow submit on last step
-          if(currentStep !== totalSteps){
-            return false;
+      const form = document.getElementById('quizForm');
+      if(!form) return;
+      
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        
+        // Only allow submit on last step
+        if(currentStep !== totalSteps){
+          return false;
+        }
+        
+        // Validate last step
+        if(!validateStep(totalSteps)){
+          alert('Vul alle velden correct in.');
+          return false;
+        }
+        
+        // Honeypot check
+        const honeypot = document.querySelector('input[name="website"]').value;
+        if(honeypot){
+          return false; // Bot detected
+        }
+        
+        // Save final step answers to hidden inputs
+        saveStepAnswers(totalSteps);
+        
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalText = submitButton ? submitButton.textContent : '';
+        
+        try {
+          // Disable button and show loading state
+          if(submitButton){
+            submitButton.disabled = true;
+            submitButton.textContent = 'Verzenden...';
           }
           
-          // Validate last step
-          if(!validateStep(totalSteps)){
-            alert('Vul alle velden correct in.');
-            return false;
+          // POST to Zapier with FormData directly
+          const formData = new FormData(form);
+          const response = await fetch('https://hooks.zapier.com/hooks/catch/16872475/uqac534/', {
+            method: 'POST',
+            body: formData,
+            keepalive: true
+          });
+          
+          // Check if response is ok
+          if(!response.ok){
+            throw new Error('Zapier request failed');
           }
           
-          // Honeypot check
-          const honeypot = document.querySelector('input[name="website"]').value;
-          if(honeypot){
-            return false; // Bot detected
+          // Redirect to bedankt page after successful POST
+          window.location.href = 'bedankt.html';
+          
+        } catch(error){
+          console.error('Form submit error:', error);
+          // Re-enable button on error
+          if(submitButton){
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
           }
-          
-          // Save final step answers
-          saveStepAnswers(totalSteps);
-          
-          const submitButton = form.querySelector('button[type="submit"]');
-          const originalText = submitButton ? submitButton.textContent : '';
-          
-          try {
-            // Disable button and show loading state
-            if(submitButton){
-              submitButton.disabled = true;
-              submitButton.textContent = 'Verzenden...';
-            }
-            
-            // Build FormData
-            const formData = new FormData(form);
-            const urlParams = new URLSearchParams();
-            formData.forEach((value, key) => {
-              // Handle multiple values for checkboxes
-              if(key === 'doel' || key === 'voorkeur'){
-                const values = formData.getAll(key);
-                values.forEach(v => urlParams.append(key, v));
-              } else {
-                urlParams.append(key, value);
-              }
-            });
-            
-            // POST to Zapier with await and keepalive
-            const response = await fetch('https://hooks.zapier.com/hooks/catch/16872475/uqalft8/', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-              },
-              body: urlParams.toString(),
-              keepalive: true
-            });
-            
-            // Check if response is ok
-            if(!response.ok){
-              throw new Error('Zapier request failed');
-            }
-            
-            // Redirect to bedankt page after successful POST
-            window.location.href = 'bedankt.html';
-            
-          } catch(error){
-            console.error('Form submit error:', error);
-            // Re-enable button on error
-            if(submitButton){
-              submitButton.disabled = false;
-              submitButton.textContent = originalText;
-            }
-            alert('Er is iets misgegaan. Probeer het opnieuw.');
-          }
-        });
-      }
+          alert('Er is iets misgegaan. Probeer het opnieuw.');
+        }
+      });
     })();
 
     // Add event listeners for validation - USE EVENT DELEGATION (always works)
