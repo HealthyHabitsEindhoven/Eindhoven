@@ -2948,7 +2948,14 @@ zelfs leuk.</p>
             </div>
             <div class="form-group">
               <label for="telefoon">Telefoonnummer *</label>
-              <input type="tel" id="telefoon" name="telefoon" placeholder="06 12345678" required>
+              <input 
+                type="tel"
+                id="telefoon"
+                name="telefoon"
+                placeholder="06xxxxxxxx of +31612345678"
+                required
+                pattern="^(06[0-9]{8}|\\+[1-9][0-9]{7,14})$"
+                title="Vul een geldig telefoonnummer in (NL: 06xxxxxxxx of internationaal: +31612345678)">
             </div>
             <div class="form-group">
               <label for="bericht">Vertel ons iets over jezelf (optioneel)</label>
