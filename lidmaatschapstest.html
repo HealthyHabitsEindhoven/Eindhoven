@@ -1686,7 +1686,7 @@
         const email = stepEl.querySelector('input[name="email"]');
         const telefoon = stepEl.querySelector('input[name="telefoon"]');
         const emailValid = email && email.value.trim().length > 0 && email.validity.valid;
-        const telefoonValid = telefoon && telefoon.value.trim().length >= 10;
+        const telefoonValid = telefoon && telefoon.value.trim().length > 0 && telefoon.validity.valid;
         return emailValid && telefoonValid;
       }
       return false;
