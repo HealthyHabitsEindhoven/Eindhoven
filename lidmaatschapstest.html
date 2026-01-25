@@ -1153,7 +1153,7 @@
       
       <!-- WIZARD -->
       <div class="test-wrapper" style="margin-top:48px;">
-        <form id="quizForm" class="test-wizard">
+        <form id="online-lidmaatschap-form" class="test-wizard" action="https://hooks.zapier.com/hooks/catch/16872475/uqac534/">
           <input type="hidden" name="page_name" value="online-lidmaatschapstest">
           <input type="hidden" name="source" value="online-lidmaatschapstest">
           <!-- Hidden inputs for answers -->
@@ -1814,71 +1814,29 @@
       }
     }
 
-    // Form submit handler - POST to Zapier with await, then redirect
-    (function(){
-      const form = document.getElementById('quizForm');
-      if(!form) return;
+    // Save final step answers before submit (called by new submit handler)
+    function prepareFormSubmit(){
+      // Only allow submit on last step
+      if(currentStep !== totalSteps){
+        return false;
+      }
       
-      form.addEventListener('submit', async function(e){
-        e.preventDefault();
-        
-        // Only allow submit on last step
-        if(currentStep !== totalSteps){
-          return false;
-        }
-        
-        // Validate last step
-        if(!validateStep(totalSteps)){
-          alert('Vul alle velden correct in.');
-          return false;
-        }
-        
-        // Honeypot check
-        const honeypot = document.querySelector('input[name="website"]').value;
-        if(honeypot){
-          return false; // Bot detected
-        }
-        
-        // Save final step answers to hidden inputs
-        saveStepAnswers(totalSteps);
-        
-        const submitButton = form.querySelector('button[type="submit"]');
-        const originalText = submitButton ? submitButton.textContent : '';
-        
-        try {
-          // Disable button and show loading state
-          if(submitButton){
-            submitButton.disabled = true;
-            submitButton.textContent = 'Verzenden...';
-          }
-          
-          // POST to Zapier with FormData directly
-          const formData = new FormData(form);
-          const response = await fetch('https://hooks.zapier.com/hooks/catch/16872475/uqac534/', {
-            method: 'POST',
-            body: formData,
-            keepalive: true
-          });
-          
-          // Check if response is ok
-          if(!response.ok){
-            throw new Error('Zapier request failed');
-          }
-          
-          // Redirect to bedankt page after successful POST
-          window.location.href = 'bedankt.html';
-          
-        } catch(error){
-          console.error('Form submit error:', error);
-          // Re-enable button on error
-          if(submitButton){
-            submitButton.disabled = false;
-            submitButton.textContent = originalText;
-          }
-          alert('Er is iets misgegaan. Probeer het opnieuw.');
-        }
-      });
-    })();
+      // Validate last step
+      if(!validateStep(totalSteps)){
+        alert('Vul alle velden correct in.');
+        return false;
+      }
+      
+      // Honeypot check
+      const honeypot = document.querySelector('input[name="website"]').value;
+      if(honeypot){
+        return false; // Bot detected
+      }
+      
+      // Save final step answers to hidden inputs
+      saveStepAnswers(totalSteps);
+      return true;
+    }
 
     // Add event listeners for validation - USE EVENT DELEGATION (always works)
     (function(){
