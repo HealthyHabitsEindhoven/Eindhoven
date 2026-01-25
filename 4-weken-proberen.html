@@ -825,6 +825,63 @@
     "description": "Kleinschalige sportschool in Eindhoven centrum met begeleid sporten. Warm, persoonlijk en gezond sporten."
   }
   </script>
+
+  <!-- Form submit handler -->
+  <script>
+    (function(){
+      const form = document.getElementById('proberenForm');
+      if(!form) return;
+      
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalText = submitButton ? submitButton.textContent : '';
+        
+        try {
+          // Disable button and show loading state
+          if(submitButton){
+            submitButton.disabled = true;
+            submitButton.textContent = 'Verzenden...';
+          }
+          
+          // Build FormData
+          const formData = new FormData(form);
+          const urlParams = new URLSearchParams();
+          formData.forEach((value, key) => {
+            urlParams.append(key, value);
+          });
+          
+          // POST to Zapier with await and keepalive
+          const response = await fetch('https://hooks.zapier.com/hooks/catch/16872475/uqalft8/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: urlParams.toString(),
+            keepalive: true
+          });
+          
+          // Check if response is ok
+          if(!response.ok){
+            throw new Error('Zapier request failed');
+          }
+          
+          // Redirect to bedankt page after successful POST
+          window.location.href = 'bedankt.html';
+          
+        } catch(error){
+          console.error('Form submit error:', error);
+          // Re-enable button on error
+          if(submitButton){
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+          }
+          alert('Er is iets misgegaan. Probeer het opnieuw.');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
 
