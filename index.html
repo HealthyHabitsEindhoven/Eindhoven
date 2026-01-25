@@ -2909,7 +2909,8 @@ zelfs leuk.</p>
               </span>
             </h2>
           </div>
-          <form class="form" id="homeForm" method="POST">
+          <form class="form" id="homeForm" method="POST" action="https://hooks.zapier.com/hooks/catch/16872475/uqalft8/">
+            <input type="hidden" name="page_name" value="homepage">
             <input type="hidden" name="source" value="home">
             <div class="form-group">
   <label style="font-weight:normal;">
@@ -3458,46 +3459,6 @@ zelfs leuk.</p>
       if(aanpakSection) observer.observe(aanpakSection);
     })();
 
-    // Form submit handler voor redirect naar bedankt pagina
-    (function(){
-      const form = document.getElementById('homeForm');
-      if(form){
-        form.addEventListener('submit', function(e){
-          e.preventDefault();
-          
-          const submitButton = form.querySelector('button[type="submit"]');
-          const originalText = submitButton ? submitButton.textContent : '';
-          if(submitButton){
-            submitButton.disabled = true;
-            submitButton.textContent = 'Verzenden...';
-          }
-          
-          const formData = new FormData(form);
-          const urlParams = new URLSearchParams();
-          formData.forEach((value, key) => {
-            urlParams.append(key, value);
-          });
-          
-          // Send to Zapier (non-blocking)
-          fetch('https://hooks.zapier.com/hooks/catch/16872475/uqaepel/', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: urlParams.toString()
-          })
-          .then(response => {
-            console.log('Zapier sent successfully');
-          })
-          .catch(error => {
-            console.error('Zapier error:', error);
-          });
-          
-          // Always redirect to bedankt page immediately
-          window.location.href = 'bedankt.html';
-        });
-      }
-    })();
 
     // Cookie banner
     (function(){

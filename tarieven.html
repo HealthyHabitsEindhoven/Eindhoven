@@ -851,7 +851,8 @@
   <section class="tariefcheck-section" id="tariefcheck">
     <div class="container">
       <h2>Ontdek jouw tarief</h2>
-      <form class="form" id="tarievenForm" method="POST">
+      <form class="form" id="tarievenForm" method="POST" action="https://hooks.zapier.com/hooks/catch/16872475/uqalft8/">
+        <input type="hidden" name="page_name" value="tarieven">
         <input type="hidden" name="source" value="tarieven">
         <div class="form-group">
           <label for="doel">Doel</label>
@@ -1045,46 +1046,6 @@
       });
     });
     
-    // Form submit handler voor redirect naar bedankt pagina
-    (function(){
-      const form = document.getElementById('tarievenForm');
-      if(form){
-        form.addEventListener('submit', function(e){
-          e.preventDefault();
-          
-          const submitButton = form.querySelector('button[type="submit"]');
-          const originalText = submitButton ? submitButton.textContent : '';
-          if(submitButton){
-            submitButton.disabled = true;
-            submitButton.textContent = 'Verzenden...';
-          }
-          
-          const formData = new FormData(form);
-          const urlParams = new URLSearchParams();
-          formData.forEach((value, key) => {
-            urlParams.append(key, value);
-          });
-          
-          // Send to Zapier (non-blocking)
-          fetch('https://hooks.zapier.com/hooks/catch/16872475/uqae6wf/', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: urlParams.toString()
-          })
-          .then(response => {
-            console.log('Zapier sent successfully');
-          })
-          .catch(error => {
-            console.error('Zapier error:', error);
-          });
-          
-          // Always redirect to bedankt page immediately
-          window.location.href = 'bedankt.html';
-        });
-      }
-    })();
 
     // Mobile menu toggle
     (function(){

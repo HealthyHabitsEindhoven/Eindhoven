@@ -1153,7 +1153,8 @@
       
       <!-- WIZARD -->
       <div class="test-wrapper" style="margin-top:48px;">
-        <form action="https://hooks.zapier.com/hooks/catch/16872475/uqac534/" method="POST" class="test-wizard">
+        <form action="https://hooks.zapier.com/hooks/catch/16872475/uqalft8/" method="POST" class="test-wizard">
+          <input type="hidden" name="page_name" value="online-lidmaatschapstest">
           <input type="hidden" name="source" value="online-lidmaatschapstest">
           <!-- Progress bar -->
           <div class="test-progress">
@@ -1820,20 +1821,20 @@
       }
     }
 
-    // Form submit handler - send to Zapier at the end
+    // Form submit handler - only validate on last step, then let HTML POST handle it
     (function(){
       const form = document.querySelector('form.test-wizard');
       if(form){
         form.addEventListener('submit', function(e){
-          e.preventDefault();
-          
           // Only allow submit on last step
           if(currentStep !== totalSteps){
+            e.preventDefault();
             return false;
           }
           
           // Validate last step
           if(!validateStep(totalSteps)){
+            e.preventDefault();
             alert('Vul alle velden correct in.');
             return false;
           }
@@ -1841,41 +1842,15 @@
           // Honeypot check
           const honeypot = document.querySelector('input[name="website"]').value;
           if(honeypot){
+            e.preventDefault();
             return false; // Bot detected
           }
           
-          // Save final step answers
+          // Save final step answers (for potential future use)
           saveStepAnswers(totalSteps);
           
-          // Build payload
-          const payload = {
-            page: 'online-lidmaatschapstest',
-            timestamp: new Date().toISOString(),
-            answers: answers,
-            userAgent: navigator.userAgent,
-            url: window.location.href
-          };
-          
-          // Send to Zapier (non-blocking, keepalive for reliability)
-          // Start redirect immediately, don't wait for response
-          fetch('https://hooks.zapier.com/hooks/catch/16872475/uqac534/', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(payload),
-            keepalive: true
-          })
-          .then(response => {
-            console.log('Zapier sent successfully');
-          })
-          .catch(error => {
-            // Log error but don't block user
-            console.error('Zapier error:', error);
-          });
-          
-          // Always redirect to bedankt page immediately
-          window.location.href = 'bedankt.html';
+          // Let HTML form submit normally - no preventDefault
+          // Zapier will handle redirect to bedankt.html
         });
       }
     })();
