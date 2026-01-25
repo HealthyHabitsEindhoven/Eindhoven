@@ -1620,11 +1620,30 @@
       }
       /* Desktop: gebruik normale review-card__image styling */
       @media(min-width:769px){
-        .review-card.exp-card .review-card__image.exp-media img{
+        .review-card.exp-card .review-card__image.exp-media,
+        .review-card.exp-card .exp-media{
+          flex: 0 0 48% !important;
+          width: 48% !important;
+          height: auto !important;
+          border-radius: var(--radius) !important;
+          overflow: hidden !important;
+          background: rgba(255,255,255,.03) !important;
+          flex-shrink: 0 !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+        .review-card.exp-card .review-card__image.exp-media img,
+        .review-card.exp-card .exp-media img{
           width: 100% !important;
           height: 110% !important;
           object-fit: cover !important;
           object-position: center 10% !important;
+        }
+        .review-card.exp-card .review-card__content.exp-body,
+        .review-card.exp-card .exp-body{
+          flex: 1 !important;
+          padding: 20px !important;
         }
       }
 
