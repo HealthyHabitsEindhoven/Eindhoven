@@ -1497,61 +1497,127 @@
         transition:none;
       }
     }
-    /* Mobile: clean, simple, small cards */
     @media(max-width:768px){
-      .reviews-section .review-card.exp-card{
-        flex: 0 0 calc(100% - 40px) !important;
+      .reviews-section .review-card{
+        flex:0 0 calc(100% - 40px) !important;
+        flex-direction:column !important;
+        min-width:calc(100% - 40px);
+        max-width:calc(100% - 40px);
+        width:calc(100% - 40px);
+        border-radius:var(--radius);
+        flex-shrink:0;
+        scroll-snap-align:start;
+        overflow:hidden;
+        background:rgba(255,255,255,.04);
+        border:1px solid var(--line);
+        display:flex;
+        align-items:stretch;
+        margin:0 auto;
+        transform:none !important;
+      }
+      .reviews-section .review-card.active{
+        flex:0 0 calc(100% - 40px) !important;
+        transform:none !important;
+      }
+      .reviews-section .review-card__image{
+        width:100% !important;
+        aspect-ratio:1/1;
+        overflow:hidden;
+        background:rgba(255,255,255,.03);
+        flex-shrink:0;
+        position:relative;
+        border-radius:0;
+      }
+      .reviews-section .review-card__image img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        object-position:center center;
+        display:block;
+      }
+      .reviews-section .review-card__content{
+        padding:18px;
+        flex:1 1 auto;
+        display:flex;
+        flex-direction:column;
+        align-items:flex-start;
+        justify-content:flex-start;
+        background:rgba(255,255,255,.04);
+        overflow:visible;
+        min-height:auto;
+        flex-shrink:0;
+      }
+    }
+    @media(max-width:560px){
+      .review-card{
+        flex:0 0 calc(100% - 40px) !important;
+        min-width:calc(100% - 40px);
+        max-width:calc(100% - 40px);
+      }
+      .review-card.active{
+        flex:0 0 calc(100% - 40px) !important;
+      }
+    }
+
+    /* Mobile fix for experience section - no extreme zoom */
+    @media(max-width:768px){
+      /* 1) kill zoom/transform/overlays die het beeld slopen */
+      .experience-section, 
+      .experience-section * {
+        transform: none !important;
+      }
+      .experience-section *::before,
+      .experience-section *::after {
+        transform: none !important;
+      }
+
+      /* 2) kaartbreedte zoals succesverhalen - ALLEEN MOBILE */
+      .experience-section .exp-card,
+      .experience-section .swiper-slide .exp-card,
+      .experience-section .slide .exp-card,
+      .experience-section .review-card.exp-card {
         width: min(92vw, 420px) !important;
         max-width: 420px !important;
         margin: 0 auto !important;
-        flex-direction: column !important;
+        flex: 0 0 calc(100% - 40px) !important;
+      }
+
+      /* 3) media: vaste hoogte, geen gekke scaling, geen absolute bugs */
+      .experience-section .exp-media {
+        width: 100% !important;
+        height: 260px !important;
         border-radius: 18px !important;
         overflow: hidden !important;
-        transform: none !important;
+        background: #0b0c10 !important;
+        position: relative !important;
+        display: block !important;
       }
-      
-      .reviews-section .review-card.exp-card .review-card__image.exp-media,
-      .reviews-section .review-card.exp-card .exp-media{
-        width: 100% !important;
-        height: 200px !important;
-        max-height: 200px !important;
-        border-radius: 18px 18px 0 0 !important;
-        overflow: hidden !important;
-        flex-shrink: 0 !important;
+
+      /* Als er per ongeluk een overlay layer op zit: uit */
+      .experience-section .exp-media .overlay,
+      .experience-section .exp-media .hero_overlay,
+      .experience-section .exp-media .video_overlay,
+      .experience-section .exp-media .image_overlay {
+        display: none !important;
       }
-      
-      .reviews-section .review-card.exp-card .review-card__image.exp-media img,
-      .reviews-section .review-card.exp-card .exp-media img{
+
+      /* 4) img/picture/video altijd correct vullen - ALLEEN MOBILE */
+      .experience-section .exp-media img,
+      .experience-section .exp-media picture,
+      .experience-section .exp-media picture img,
+      .experience-section .exp-media video,
+      .experience-section .exp-media iframe {
         width: 100% !important;
         height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        display: block !important;
         object-fit: cover !important;
         object-position: center center !important;
-        display: block !important;
-        transform: none !important;
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
       }
-      
-      .reviews-section .review-card.exp-card .review-card__content.exp-body,
-      .reviews-section .review-card.exp-card .exp-body{
-        padding: 16px !important;
-        flex: 1 1 auto !important;
-      }
-      
-      .reviews-section .review-card.exp-card .review-card__name{
-        font-size: 18px !important;
-        margin: 0 0 4px !important;
-      }
-      
-      .reviews-section .review-card.exp-card .review-card__age{
-        font-size: 13px !important;
-        margin: 0 0 12px !important;
-      }
-      
-      .reviews-section .review-card.exp-card .review-card__quote{
-        font-size: 14px !important;
-        line-height: 1.5 !important;
-        margin: 0 !important;
-      }
-    }
       /* Desktop: gebruik normale review-card__image styling */
       @media(min-width:769px){
         .review-card.exp-card .review-card__image.exp-media,
@@ -2786,7 +2852,7 @@ zelfs leuk.</p>
                 <div class="review-card__content exp-body">
                   <h3 class="review-card__name">Madelon</h3>
                   <p class="review-card__age">52 jaar</p>
-                  <p class="review-card__quote">Ik voel me weer mezelf. Fitter, lichter en met meer vertrouwen in mijn lichaam.</p>
+                  <p class="review-card__quote">Ik heb mijn doel gehaald! De persoonlijke begeleiding bij Healthy Habits heeft me geholpen om fitter te worden en meer energie te krijgen.</p>
                 </div>
               </article>
 
@@ -2797,7 +2863,7 @@ zelfs leuk.</p>
                 <div class="review-card__content exp-body">
                   <h3 class="review-card__name">Ronald</h3>
                   <p class="review-card__age">54 jaar</p>
-                  <p class="review-card__quote">Ik beweeg makkelijker en voel me gewoon weer goed in mijn lijf.</p>
+                  <p class="review-card__quote">De combinatie van training, voeding en begeleiding werkt perfect. Ik zie echte vooruitgang en voel me fitter.</p>
                 </div>
               </article>
 
@@ -2808,7 +2874,7 @@ zelfs leuk.</p>
                 <div class="review-card__content exp-body">
                   <h3 class="review-card__name">Ingrid</h3>
                   <p class="review-card__age">47 jaar</p>
-                  <p class="review-card__quote">Mijn energie is terug en ik zit weer lekker in mijn vel.</p>
+                  <p class="review-card__quote">Fitter worden en meer energie krijgen was mijn doel. Dat is gelukt! Ik zie nu echte vooruitgang.</p>
                 </div>
               </article>
 
