@@ -851,7 +851,7 @@
   <section class="tariefcheck-section" id="tariefcheck">
     <div class="container">
       <h2>Ontdek jouw tarief</h2>
-      <form class="form" id="leadFormTarieven">
+      <form class="form" id="leadFormTarieven" action="https://hooks.zapier.com/hooks/catch/16872475/uqae6wf/" method="POST" target="zapierSubmitFrame">
         <input type="hidden" name="page_name" value="tarieven">
         <input type="hidden" name="source" value="tarieven">
         <div class="form-group">
@@ -898,6 +898,18 @@
         <p class="form-note">Vrijblijvend · reactie binnen 1 werkdag</p>
         <p class="form-privacy">Door dit formulier te versturen ga je akkoord met onze <a href="privacy.html">privacyverklaring</a>.</p>
       </form>
+      <iframe name="zapierSubmitFrame" style="display:none;"></iframe>
+      <script>
+        (function(){
+          const form = document.getElementById('leadFormTarieven');
+          if(!form) return;
+          form.addEventListener('submit', function(){
+            setTimeout(function(){
+              window.location.href = './bedankt.html';
+            }, 300);
+          });
+        })();
+      </script>
     </div>
   </section>
 
@@ -1185,42 +1197,6 @@
   </script>
 
   <!-- Form submit handler -->
-  <!-- Nuclear fix: force form submit -->
-  <script>
-    (function(){
-      const form = document.getElementById('leadFormTarieven');
-      if(!form) return;
-      
-      // Remove all existing submit listeners
-      const newForm = form.cloneNode(true);
-      form.parentNode.replaceChild(newForm, form);
-      
-      // Force action, method, target
-      newForm.action = 'https://hooks.zapier.com/hooks/catch/16872475/uqae6wf/';
-      newForm.method = 'POST';
-      newForm.target = '_blank';
-      
-      // Add submit handler
-      newForm.addEventListener('submit', function(e){
-        e.preventDefault();
-        
-        // Create hidden iframe for silent submit
-        const iframe = document.createElement('iframe');
-        iframe.name = 'zapierSubmitFrame';
-        iframe.style.display = 'none';
-        document.body.appendChild(iframe);
-        newForm.target = 'zapierSubmitFrame';
-        
-        // Submit form
-        newForm.submit();
-        
-        // Redirect after short delay
-        setTimeout(function(){
-          window.location.href = './bedankt.html';
-        }, 500);
-      });
-    })();
-  </script>
 
 </body>
 </html>

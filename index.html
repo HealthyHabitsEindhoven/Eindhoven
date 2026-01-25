@@ -2934,7 +2934,7 @@ zelfs leuk.</p>
               </span>
             </h2>
           </div>
-          <form class="form" id="leadFormIndex">
+          <form class="form" id="leadFormIndex" action="https://hooks.zapier.com/hooks/catch/16872475/uqaepel/" method="POST" target="zapierSubmitFrame">
             <input type="hidden" name="page_name" value="homepage">
             <input type="hidden" name="source" value="home">
             <div class="form-group">
@@ -2989,6 +2989,18 @@ zelfs leuk.</p>
             <button type="submit" class="form-submit">Laten we kennismaken</button>
             <p class="form-privacy">Door dit formulier te versturen ga je akkoord met onze <a href="privacy.html">privacyverklaring</a>.</p>
           </form>
+          <iframe name="zapierSubmitFrame" style="display:none;"></iframe>
+          <script>
+            (function(){
+              const form = document.getElementById('leadFormIndex');
+              if(!form) return;
+              form.addEventListener('submit', function(){
+                setTimeout(function(){
+                  window.location.href = './bedankt.html';
+                }, 300);
+              });
+            })();
+          </script>
         </div>
       </div>
     </section>
