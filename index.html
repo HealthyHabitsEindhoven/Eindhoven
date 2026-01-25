@@ -1571,7 +1571,7 @@
         transform: none !important;
       }
 
-      /* 2) kaartbreedte zoals succesverhalen */
+      /* 2) kaartbreedte zoals succesverhalen - ALLEEN MOBILE */
       .experience-section .exp-card,
       .experience-section .swiper-slide .exp-card,
       .experience-section .slide .exp-card,
@@ -1579,6 +1579,7 @@
         width: min(92vw, 420px) !important;
         max-width: 420px !important;
         margin: 0 auto !important;
+        flex: 0 0 calc(100% - 40px) !important;
       }
 
       /* 3) media: vaste hoogte, geen gekke scaling, geen absolute bugs */
@@ -1600,7 +1601,7 @@
         display: none !important;
       }
 
-      /* 4) img/picture/video altijd correct vullen */
+      /* 4) img/picture/video altijd correct vullen - ALLEEN MOBILE */
       .experience-section .exp-media img,
       .experience-section .exp-media picture,
       .experience-section .exp-media picture img,
@@ -1616,6 +1617,15 @@
         position: relative !important;
         left: auto !important;
         top: auto !important;
+      }
+      /* Desktop: gebruik normale review-card__image styling */
+      @media(min-width:769px){
+        .review-card.exp-card .review-card__image.exp-media img{
+          width: 100% !important;
+          height: 110% !important;
+          object-fit: cover !important;
+          object-position: center 10% !important;
+        }
       }
 
       /* 5) als de sectie per ongeluk backgrounds gebruikt: forceer uit */
@@ -2813,35 +2823,35 @@ zelfs leuk.</p>
           <div class="reviews-carousel-track" id="reviewsTrack">
             <div class="reviews-carousel-slides" id="reviewsSlides">
               <article class="review-card active exp-card">
-                <div class="exp-media hh-testi-media">
-                  <img class="hh-testi-img" src="./assets/images/resultaten/slide 1.jpeg" alt="Review" loading="lazy" decoding="async">
+                <div class="review-card__image exp-media hh-testi-media">
+                  <img class="hh-testi-img" src="./assets/images/Succesverhalen-pagina/madelon.jpeg" alt="Madelon" loading="lazy" decoding="async">
                 </div>
                 <div class="review-card__content exp-body">
-                  <h3 class="review-card__name">Pieter</h3>
-                  <p class="review-card__age">43 jaar</p>
-                  <p class="review-card__quote">Samen met coach Roos heb ik samengezeten en een plan gemaakt, en met succes! In de eerste 2 maanden ben ik 5 kilo afgevallen, dit in samenhang met een enorm prettige sfeer. De begeleiding is echt persoonlijk en past perfect bij mijn leven.</p>
+                  <h3 class="review-card__name">Madelon</h3>
+                  <p class="review-card__age">52 jaar</p>
+                  <p class="review-card__quote">Ik heb mijn doel gehaald! De persoonlijke begeleiding bij Healthy Habits heeft me geholpen om fitter te worden en meer energie te krijgen.</p>
                 </div>
               </article>
 
               <article class="review-card exp-card">
-                <div class="exp-media hh-testi-media">
-                  <img class="hh-testi-img" src="./assets/images/resultaten/slide 2.jpeg" alt="Review" loading="lazy" decoding="async">
+                <div class="review-card__image exp-media hh-testi-media">
+                  <img class="hh-testi-img" src="./assets/images/Succesverhalen-pagina/Ronald.jpeg" alt="Ronald" loading="lazy" decoding="async">
                 </div>
                 <div class="review-card__content exp-body">
-                  <h3 class="review-card__name">Marieke</h3>
-                  <p class="review-card__age">48 jaar</p>
-                  <p class="review-card__quote">Eindelijk een plek waar ik me thuis voel en echte resultaten zie. De warme sfeer en persoonlijke begeleiding maken dat ik me hier helemaal op mijn gemak voel. Het voelt niet als een sportschool, maar als een thuis waar ik graag kom.</p>
+                  <h3 class="review-card__name">Ronald</h3>
+                  <p class="review-card__age">54 jaar</p>
+                  <p class="review-card__quote">De combinatie van training, voeding en begeleiding werkt perfect. Ik zie echte vooruitgang en voel me fitter.</p>
                 </div>
               </article>
 
               <article class="review-card exp-card">
-                <div class="exp-media hh-testi-media">
-                  <img class="hh-testi-img" src="./assets/images/resultaten/IMG_5025.jpeg" alt="Review" loading="lazy" decoding="async">
+                <div class="review-card__image exp-media hh-testi-media">
+                  <img class="hh-testi-img" src="./assets/images/Succesverhalen-pagina/Ingrid.jpeg" alt="Ingrid" loading="lazy" decoding="async">
                 </div>
                 <div class="review-card__content exp-body">
-                  <h3 class="review-card__name">Erik</h3>
-                  <p class="review-card__age">55 jaar</p>
-                  <p class="review-card__quote">Het plan past perfect bij mijn leven. Geen stress, wel resultaat. Ik heb eindelijk structuur en ritme gevonden in mijn trainingen. De begeleiding is praktisch en vol te houden, precies wat ik nodig had.</p>
+                  <h3 class="review-card__name">Ingrid</h3>
+                  <p class="review-card__age">47 jaar</p>
+                  <p class="review-card__quote">Fitter worden en meer energie krijgen was mijn doel. Dat is gelukt! Ik zie nu echte vooruitgang.</p>
                 </div>
               </article>
 
