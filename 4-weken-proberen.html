@@ -1017,6 +1017,16 @@
           saveCookiePreferences(marketing);
         });
       }
+      
+      // Footer cookies link
+      const cookieSettingsFooter = document.getElementById('cookieSettingsFooter');
+      if(cookieSettingsFooter && cookieBanner){
+        cookieSettingsFooter.addEventListener('click', function(e){
+          e.preventDefault();
+          cookieBanner.classList.add('show');
+          if(cookieSettingsPanel) cookieSettingsPanel.classList.add('show');
+        });
+      }
 
       // Load marketing content if previously accepted
       if(cookieConsent === 'true' && localStorage.getItem('cookieMarketing') === 'true'){
