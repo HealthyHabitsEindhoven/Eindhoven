@@ -154,23 +154,46 @@
     }
 
     /* =========================
-       HERO SECTION
+       HERO
     ========================== */
-    .team-hero{
-      padding:140px 0 80px;
+    .hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
       background:var(--bg-main);
+      background-image:url('/Eindhoven/assets/images/werknemers/hoofdfoto.JPG');
+      background-size:cover;
+      background-position:center center;
+      background-repeat:no-repeat;
+    }
+    .hero__overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 9%, rgba(0,0,0,0.3) 18%, rgba(0,0,0,0.1) 24%, rgba(0,0,0,0) 30%),
+                  linear-gradient(to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0) 100%);
+      background-blend-mode:multiply;
+      z-index:1;
+    }
+    .hero-content{
+      position:relative;
+      z-index:2;
+      padding:48px 0;
       text-align:center;
     }
-    .team-hero h1{
-      font-size:clamp(32px,5vw,48px);
-      margin:0 0 16px;
+    .hero h1{
+      font-size:clamp(32px,5vw,56px);
+      margin:0 0 12px;
       color:var(--text);
     }
-    .team-hero p{
-      font-size:18px;
+    .hero p{
+      max-width:55ch;
       color:var(--muted);
-      max-width:600px;
-      margin:0 auto;
+      font-size:18px;
+      margin:0 0 16px;
+      margin-left:auto;
+      margin-right:auto;
       line-height:1.6;
     }
 
@@ -244,24 +267,6 @@
       line-height:1.5;
     }
 
-    /* =========================
-       HERO IMAGE
-    ========================== */
-    .hero-image-section{
-      padding:0 0 80px;
-      background:var(--bg-main);
-    }
-    .hero-image-wrapper{
-      max-width:1200px;
-      margin:0 auto;
-      border-radius:var(--radius);
-      overflow:hidden;
-    }
-    .hero-image-wrapper img{
-      width:100%;
-      height:auto;
-      display:block;
-    }
 
         /* =========================
        FOOTER
@@ -588,9 +593,6 @@
         grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
         gap:24px;
       }
-      .team-hero{
-        padding:120px 0 60px;
-      }
     }
     @media(max-width:600px){
       .team-grid{
@@ -632,20 +634,12 @@
   </div>
 
   <!-- HERO -->
-  <section class="team-hero">
-    <div class="container">
+  <section class="hero">
+    <div class="hero__overlay"></div>
+    <div class="container hero-content">
       <h1>Ons team</h1>
-      <p>Het écht en persoonlijk helpen</p>
+      <p>Het écht en persoonlijk helpen.</p>
       <p>Bij Healthy Habits werken we met een deskundig en betrokken team. Zo is er altijd een coach die perfect bij jou past.</p>
-    </div>
-  </section>
-
-  <!-- HERO IMAGE -->
-  <section class="hero-image-section">
-    <div class="container">
-      <div class="hero-image-wrapper">
-        <img src="assets/images/werknemers/hoofdfoto.JPG" alt="Healthy Habits team" loading="eager">
-      </div>
     </div>
   </section>
 
