@@ -529,23 +529,37 @@
     .footer-hours{
       display:flex;
       flex-direction:column;
-      gap:4px;
+      gap:0;
     }
     .footer-hours-row{
       display:flex;
       justify-content:space-between;
-      gap:16px;
-      font-size:13px;
+      align-items:center;
+      gap:20px;
+      padding:10px 0;
+      font-size:14px;
       color:var(--muted);
-      line-height:1.5;
+      line-height:1.6;
+      border-bottom:1px solid rgba(255,255,255,.05);
+      transition:color 0.2s ease;
+    }
+    .footer-hours-row:last-child{
+      border-bottom:none;
+    }
+    .footer-hours-row:hover{
+      color:var(--text);
     }
     .footer-hours-day{
-      min-width:80px;
+      min-width:90px;
       flex-shrink:0;
+      font-weight:500;
+      color:var(--text);
     }
     .footer-hours-time{
       text-align:right;
       flex:1;
+      font-variant-numeric:tabular-nums;
+      letter-spacing:0.01em;
     }
     .footer-links{
       display:flex;
