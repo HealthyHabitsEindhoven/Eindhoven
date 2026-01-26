@@ -1,0 +1,869 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <base href="/Eindhoven/">
+  <title>Ons Team | Healthy Habits Eindhoven</title>
+  <meta name="description" content="Ontmoet ons deskundige en betrokken team van fitness coaches, docenten en therapeuten bij Healthy Habits Eindhoven.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://healthyhabitseindhoven.github.io/Eindhoven/over-ons.html">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TL31XLWFEF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TL31XLWFEF');
+  </script>
+
+  <style>
+    :root{
+      --accent:#C3A300;
+      --bg:#0b0c10;
+      --bg-main:#0b0c10;
+      --bg-warm:#0f1115;
+      --bg-accent:#121418;
+      --text:#f3f4f6;
+      --muted:#cbd5e1;
+      --line:rgba(255,255,255,.15);
+      --radius:18px;
+      --max:1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      padding:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:var(--bg-main);
+      color:var(--text);
+    }
+
+    img{width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 36px));margin:0 auto}
+
+    /* =========================
+       TOP MENU BAR
+    ========================== */
+    .topbar{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:77px;
+      background:#000;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .container{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:32px;
+    }
+    .topbar__logo{
+      font-weight:800;
+      letter-spacing:.04em;
+      font-size:18px;
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+    }
+    .topbar__logo img{
+      height:48px;
+      width:auto;
+      display:block;
+    }
+    .topbar__nav{
+      display:flex;
+      align-items:center;
+      gap:32px;
+      flex:1;
+      justify-content:center;
+    }
+    .topbar__nav a{
+      color:var(--text);
+      text-decoration:none;
+      font-size:15px;
+      transition:color 0.2s ease;
+    }
+    .topbar__nav a:hover{
+      color:var(--accent);
+    }
+    .topbar__cta{
+      flex-shrink:0;
+    }
+    .topbar__cta a{
+      text-decoration:none;
+    }
+    .topbar__cta button{
+      background:var(--accent);
+      color:#000;
+      border:none;
+      padding:10px 20px;
+      border-radius:8px;
+      font-weight:700;
+      font-size:14px;
+      cursor:pointer;
+      transition:filter 0.2s ease;
+    }
+    .topbar__cta button:hover{
+      filter:brightness(1.1);
+    }
+    .topbar__lang{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-shrink:0;
+    }
+    .topbar__lang a{
+      color:var(--text);
+      text-decoration:none;
+      font-size:14px;
+      transition:color 0.2s ease;
+    }
+    .topbar__lang a.active{
+      color:var(--accent);
+    }
+    .topbar__lang span{
+      color:var(--muted);
+    }
+    .topbar__menu-toggle{
+      display:none;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      width:32px;
+      height:32px;
+      background:transparent;
+      border:none;
+      cursor:pointer;
+      gap:5px;
+      padding:0;
+    }
+    .topbar__menu-toggle span{
+      width:24px;
+      height:3px;
+      background:var(--text);
+      border-radius:2px;
+      transition:all 0.3s ease;
+    }
+
+    /* =========================
+       HERO SECTION
+    ========================== */
+    .team-hero{
+      padding:140px 0 80px;
+      background:var(--bg-main);
+      text-align:center;
+    }
+    .team-hero h1{
+      font-size:clamp(32px,5vw,48px);
+      margin:0 0 16px;
+      color:var(--text);
+    }
+    .team-hero p{
+      font-size:18px;
+      color:var(--muted);
+      max-width:600px;
+      margin:0 auto;
+      line-height:1.6;
+    }
+
+    /* =========================
+       TEAM SECTIONS
+    ========================== */
+    .team-section{
+      padding:80px 0;
+      background:var(--bg-warm);
+    }
+    .team-section:first-of-type{
+      background:var(--bg-main);
+    }
+    .team-section-header{
+      text-align:center;
+      margin-bottom:48px;
+    }
+    .team-section-header h2{
+      font-size:32px;
+      margin:0 0 12px;
+      color:var(--text);
+    }
+    .team-section-header p{
+      font-size:16px;
+      color:var(--muted);
+      margin:0;
+    }
+    .team-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+      gap:32px;
+      max-width:1200px;
+      margin:0 auto;
+    }
+    .team-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      transition:all 0.3s ease;
+    }
+    .team-card:hover{
+      border-color:rgba(255,255,255,.25);
+      transform:translateY(-4px);
+    }
+    .team-card__image{
+      width:100%;
+      aspect-ratio:3/4;
+      overflow:hidden;
+      background:rgba(255,255,255,.03);
+    }
+    .team-card__image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .team-card__content{
+      padding:24px;
+    }
+    .team-card__name{
+      font-size:20px;
+      font-weight:700;
+      margin:0 0 8px;
+      color:var(--text);
+    }
+    .team-card__role{
+      font-size:14px;
+      color:var(--muted);
+      margin:0;
+      line-height:1.5;
+    }
+
+    /* =========================
+       HERO IMAGE
+    ========================== */
+    .hero-image-section{
+      padding:0 0 80px;
+      background:var(--bg-main);
+    }
+    .hero-image-wrapper{
+      max-width:1200px;
+      margin:0 auto;
+      border-radius:var(--radius);
+      overflow:hidden;
+    }
+    .hero-image-wrapper img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+    .footer{
+      padding:48px 0;
+      background:var(--bg-warm);
+      border-top:1px solid var(--line);
+      margin-top:80px;
+    }
+    .footer-content{
+      max-width:1100px;
+      margin:0 auto;
+      text-align:center;
+    }
+    .footer-content p{
+      font-size:14px;
+      color:var(--muted);
+      margin:8px 0;
+    }
+    .footer-content a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+    .footer-content a:hover{
+      text-decoration:underline;
+    }
+
+    /* =========================
+       COOKIE BANNER
+    ========================== */
+    .cookie-banner{
+      position:fixed;
+      bottom:0;
+      left:0;
+      right:0;
+      background:rgba(0,0,0,.95);
+      border-top:1px solid var(--line);
+      padding:20px;
+      z-index:10000;
+      display:none;
+    }
+    .cookie-banner.show{
+      display:block;
+    }
+    .cookie-banner-content{
+      max-width:1100px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      flex-wrap:wrap;
+    }
+    .cookie-banner-text{
+      flex:1;
+      min-width:250px;
+      font-size:14px;
+      color:var(--text);
+      line-height:1.5;
+    }
+    .cookie-banner-text a{
+      color:var(--accent);
+      text-decoration:underline;
+    }
+    .cookie-banner-buttons{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .cookie-btn{
+      padding:10px 20px;
+      border-radius:8px;
+      font-size:14px;
+      font-weight:600;
+      cursor:pointer;
+      border:none;
+      transition:filter 0.2s ease;
+    }
+    .cookie-btn-accept{
+      background:var(--accent);
+      color:#000;
+    }
+    .cookie-btn-accept:hover{
+      filter:brightness(1.1);
+    }
+    .cookie-btn-reject{
+      background:transparent;
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+    .cookie-btn-reject:hover{
+      background:rgba(255,255,255,.05);
+    }
+    .cookie-btn-settings{
+      background:transparent;
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+    .cookie-btn-settings:hover{
+      background:rgba(255,255,255,.05);
+    }
+    .cookie-settings{
+      display:none;
+      margin-top:16px;
+      padding-top:16px;
+      border-top:1px solid var(--line);
+    }
+    .cookie-settings.show{
+      display:block;
+    }
+    .cookie-setting-item{
+      margin-bottom:12px;
+    }
+    .cookie-setting-item label{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:16px;
+      font-size:14px;
+      color:var(--text);
+      cursor:pointer;
+    }
+    .cookie-setting-item input[type="checkbox"]{
+      width:20px;
+      height:20px;
+      cursor:pointer;
+    }
+    .cookie-setting-item p{
+      font-size:12px;
+      color:var(--muted);
+      margin:4px 0 0 0;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media(max-width:900px){
+      .topbar__menu-toggle{
+        display:flex;
+      }
+      .topbar__nav,
+      .topbar__lang,
+      .topbar__cta{
+        display:none;
+      }
+      .topbar__nav.mobile-open{
+        display:flex;
+        position:fixed;
+        top:77px;
+        left:0;
+        right:0;
+        background:#000;
+        flex-direction:column;
+        padding:24px;
+        gap:16px;
+        border-bottom:1px solid var(--line);
+      }
+      .topbar__lang.mobile-open,
+      .topbar__cta.mobile-open{
+        display:flex;
+        position:fixed;
+        top:77px;
+        left:0;
+        right:0;
+        background:#000;
+        padding:24px;
+        gap:16px;
+        border-bottom:1px solid var(--line);
+      }
+      .topbar__lang.mobile-open{
+        top:auto;
+        bottom:77px;
+      }
+      .team-grid{
+        grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+        gap:24px;
+      }
+      .team-hero{
+        padding:120px 0 60px;
+      }
+    }
+    @media(max-width:600px){
+      .team-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar__logo">
+        <a href="index.html"><img src="./assets/logo/HH logo.png" alt="Healthy Habits"></a>
+      </div>
+      <button class="topbar__menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="topbar__nav" id="topbarNav">
+        <a href="aanbod.html">Ons aanbod</a>
+        <a href="succesverhalen.html">Succesverhalen</a>
+        <a href="tarieven.html">Prijzen</a>
+        <a href="lidmaatschapstest.html">Online-lidmaatschapstest</a>
+        <a href="over-ons.html">Ons team</a>
+      </nav>
+      <div class="topbar__lang" id="topbarLang">
+        <a href="index.html" class="active">Nederlands</a>
+        <span>/</span>
+        <a href="en/index.html">English</a>
+      </div>
+      <div class="topbar__cta" id="topbarCta">
+        <a href="4-weken-proberen.html"><button>4 weken proberen</button></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="team-hero">
+    <div class="container">
+      <h1>Ons team</h1>
+      <p>Het écht en persoonlijk helpen</p>
+      <p>Bij Healthy Habits werken we met een deskundig en betrokken team. Zo is er altijd een coach die perfect bij jou past.</p>
+    </div>
+  </section>
+
+  <!-- HERO IMAGE -->
+  <section class="hero-image-section">
+    <div class="container">
+      <div class="hero-image-wrapper">
+        <img src="./assets/images/werknemers/hoofdfoto.JPG" alt="Healthy Habits team" loading="eager">
+      </div>
+    </div>
+  </section>
+
+  <!-- FITNESS COACHES -->
+  <section class="team-section">
+    <div class="container">
+      <div class="team-section-header">
+        <h2>Fitness coaches</h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-card__image">
+            <img src="./assets/images/werknemers/IMG_9213.webp" alt="Joris" loading="lazy">
+          </div>
+          <div class="team-card__content">
+            <h3 class="team-card__name">Joris</h3>
+            <p class="team-card__role">Fysiotherapeut</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__image">
+            <img src="./assets/images/werknemers/IMG_9214.webp" alt="Patsy" loading="lazy">
+          </div>
+          <div class="team-card__content">
+            <h3 class="team-card__name">Patsy</h3>
+            <p class="team-card__role">Hormooncoacho-instructeur</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__image">
+            <img src="./assets/images/werknemers/IMG_9215.webp" alt="Merel" loading="lazy">
+          </div>
+          <div class="team-card__content">
+            <h3 class="team-card__name">Merel</h3>
+            <p class="team-card__role">Voedingscoach</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__image">
+            <img src="./assets/images/werknemers/IMG_9216.webp" alt="Jasper" loading="lazy">
+          </div>
+          <div class="team-card__content">
+            <h3 class="team-card__name">Jasper</h3>
+            <p class="team-card__role">Slaapcoach</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__image">
+            <img src="./assets/images/werknemers/IMG_9217.webp" alt="Roos" loading="lazy">
+          </div>
+          <div class="team-card__content">
+            <h3 class="team-card__name">Roos</h3>
+            <p class="team-card__role">Hormooncoacho-instructeur</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__image">
+            <img src="./assets/images/werknemers/IMG_9218.webp" alt="Cees" loading="lazy">
+          </div>
+          <div class="team-card__content">
+            <h3 class="team-card__name">Cees</h3>
+            <p class="team-card__role">Mobiliteitcoach</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCENTEN -->
+  <section class="team-section">
+    <div class="container">
+      <div class="team-section-header">
+        <h2>Docenten</h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-card__image">
+            <img src="./assets/images/werknemers/IMG_9219.webp" alt="Imme" loading="lazy">
+          </div>
+          <div class="team-card__content">
+            <h3 class="team-card__name">Imme</h3>
+            <p class="team-card__role">Mobiliteitcoacho-instructeur</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__image">
+            <img src="./assets/images/werknemers/IMG_9221.webp" alt="Wies" loading="lazy">
+          </div>
+          <div class="team-card__content">
+            <h3 class="team-card__name">Wies</h3>
+            <p class="team-card__role">Voedingscoach</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__image">
+            <img src="./assets/images/werknemers/IMG_9232-1536x1536.webp" alt="Jitske" loading="lazy">
+          </div>
+          <div class="team-card__content">
+            <h3 class="team-card__name">Jitske</h3>
+            <p class="team-card__role">Voedingscoaching</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__image">
+            <img src="./assets/images/werknemers/IMG_9237-1-1536x1536.webp" alt="Lisa" loading="lazy">
+          </div>
+          <div class="team-card__content">
+            <h3 class="team-card__name">Lisa</h3>
+            <p class="team-card__role">Mental coacho-instructeur</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__image">
+            <img src="./assets/images/werknemers/IMG_9257-1536x1536.webp" alt="Stefan" loading="lazy">
+          </div>
+          <div class="team-card__content">
+            <h3 class="team-card__name">Stefan</h3>
+            <p class="team-card__role">Krachttraining</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__image">
+            <img src="./assets/images/werknemers/IMG_9301-1536x1536.webp" alt="Daar" loading="lazy">
+          </div>
+          <div class="team-card__content">
+            <h3 class="team-card__name">Daar</h3>
+            <p class="team-card__role">Krachttraining</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__image">
+            <img src="./assets/images/werknemers/IMG_9305-1536x1536.webp" alt="Florence" loading="lazy">
+          </div>
+          <div class="team-card__content">
+            <h3 class="team-card__name">Florence</h3>
+            <p class="team-card__role">Pilates, Hatha yoga</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__image">
+            <img src="./assets/images/werknemers/IMG_9324-1536x1536.webp" alt="Tim" loading="lazy">
+          </div>
+          <div class="team-card__content">
+            <h3 class="team-card__name">Tim</h3>
+            <p class="team-card__role">Mindfull, Hatha yoga</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__image">
+            <img src="./assets/images/werknemers/IMG_9351-1536x1536.webp" alt="Olga" loading="lazy">
+          </div>
+          <div class="team-card__content">
+            <h3 class="team-card__name">Olga</h3>
+            <p class="team-card__role">Pilates, Yin yoga</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__image">
+            <img src="./assets/images/werknemers/IMG_9409-1536x1536.webp" alt="Sophie" loading="lazy">
+          </div>
+          <div class="team-card__content">
+            <h3 class="team-card__name">Sophie</h3>
+            <p class="team-card__role">Docent</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__image">
+            <img src="./assets/images/werknemers/IMG_9419-1536x1536.webp" alt="Dorine" loading="lazy">
+          </div>
+          <div class="team-card__content">
+            <h3 class="team-card__name">Dorine</h3>
+            <p class="team-card__role">Docent</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__image">
+            <img src="./assets/images/werknemers/IMG_9603-1536x1536.webp" alt="Mariehe" loading="lazy">
+          </div>
+          <div class="team-card__content">
+            <h3 class="team-card__name">Mariehe</h3>
+            <p class="team-card__role">Docent</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THERAPEUTEN -->
+  <section class="team-section">
+    <div class="container">
+      <div class="team-section-header">
+        <h2>Therapeuten</h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-card__image">
+            <img src="./assets/images/werknemers/49f23a36-8f81-4b91-97cc-1252d77d150f.webp" alt="Behnam" loading="lazy">
+          </div>
+          <div class="team-card__content">
+            <h3 class="team-card__name">Behnam</h3>
+            <p class="team-card__role">Fysiotherapeut</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__image">
+            <img src="./assets/images/werknemers/dfab0721-98e1-4dff-9244-665bc517a257.webp" alt="Petra" loading="lazy">
+          </div>
+          <div class="team-card__content">
+            <h3 class="team-card__name">Petra</h3>
+            <p class="team-card__role">Fysiotherapeut</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__image">
+            <img src="./assets/images/werknemers/IMG_9114-2-1-1536x1536.webp" alt="Julia" loading="lazy">
+          </div>
+          <div class="team-card__content">
+            <h3 class="team-card__name">Julia</h3>
+            <p class="team-card__role">Podotherapeut</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p><strong>Healthy Habits Eindhoven</strong></p>
+        <p>Willemstraat 22<br>Eindhoven</p>
+        <p><a href="mailto:info@healthy-habits.nl">info@healthy-habits.nl</a></p>
+        <p><a href="privacy.html">Privacyverklaring</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- COOKIE BANNER -->
+  <div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-banner-content">
+      <div class="cookie-banner-text">
+        <p>Deze website gebruikt cookies. Functionele cookies zijn noodzakelijk voor de werking van de website. Marketing cookies (voor video's) worden alleen geplaatst met je toestemming. <a href="privacy.html">Meer informatie</a></p>
+      </div>
+      <div class="cookie-banner-buttons">
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accepteren</button>
+        <button class="cookie-btn cookie-btn-reject" id="cookieReject">Weigeren</button>
+        <button class="cookie-btn cookie-btn-settings" id="cookieSettings">Instellen</button>
+      </div>
+      <div class="cookie-settings" id="cookieSettingsPanel">
+        <div class="cookie-setting-item">
+          <label>
+            <span>
+              <strong>Functionele cookies</strong>
+              <p>Noodzakelijk voor het functioneren van de website. Deze kunnen niet worden uitgeschakeld.</p>
+            </span>
+            <input type="checkbox" checked disabled>
+          </label>
+        </div>
+        <div class="cookie-setting-item">
+          <label>
+            <span>
+              <strong>Marketing cookies</strong>
+              <p>Voor embedded video's (YouTube/Vimeo). Deze worden alleen geplaatst met je toestemming.</p>
+            </span>
+            <input type="checkbox" id="cookieMarketing">
+          </label>
+        </div>
+        <div class="cookie-banner-buttons" style="margin-top:16px;">
+          <button class="cookie-btn cookie-btn-accept" id="cookieSave">Opslaan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    (function(){
+      const menuToggle = document.getElementById('menuToggle');
+      const topbarNav = document.getElementById('topbarNav');
+      const topbarLang = document.getElementById('topbarLang');
+      const topbarCta = document.getElementById('topbarCta');
+      
+      if(menuToggle && topbarNav){
+        menuToggle.addEventListener('click', function(){
+          const isOpen = menuToggle.classList.contains('active');
+          
+          if(isOpen){
+            menuToggle.classList.remove('active');
+            topbarNav.classList.remove('mobile-open');
+            topbarLang.classList.remove('mobile-open');
+            topbarCta.classList.remove('mobile-open');
+            document.body.style.overflow = '';
+          } else {
+            menuToggle.classList.add('active');
+            topbarNav.classList.add('mobile-open');
+            topbarLang.classList.add('mobile-open');
+            topbarCta.classList.add('mobile-open');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = topbarNav.querySelectorAll('a');
+        navLinks.forEach(function(link){
+          link.addEventListener('click', function(){
+            menuToggle.classList.remove('active');
+            topbarNav.classList.remove('mobile-open');
+            topbarLang.classList.remove('mobile-open');
+            topbarCta.classList.remove('mobile-open');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+    })();
+
+    // Cookie banner
+    (function(){
+      const cookieBanner = document.getElementById('cookieBanner');
+      const cookieAccept = document.getElementById('cookieAccept');
+      const cookieReject = document.getElementById('cookieReject');
+      const cookieSettings = document.getElementById('cookieSettings');
+      const cookieSettingsPanel = document.getElementById('cookieSettingsPanel');
+      const cookieSave = document.getElementById('cookieSave');
+      const cookieMarketing = document.getElementById('cookieMarketing');
+      
+      function saveCookiePreferences(marketing){
+        localStorage.setItem('cookieConsent', 'true');
+        localStorage.setItem('cookieMarketing', marketing ? 'true' : 'false');
+        if(cookieBanner) cookieBanner.classList.remove('show');
+      }
+      
+      function loadCookiePreferences(){
+        const consent = localStorage.getItem('cookieConsent');
+        if(!consent && cookieBanner){
+          cookieBanner.classList.add('show');
+        }
+      }
+      
+      loadCookiePreferences();
+      
+      if(cookieAccept){
+        cookieAccept.addEventListener('click', function(){
+          saveCookiePreferences(true);
+        });
+      }
+      
+      if(cookieReject){
+        cookieReject.addEventListener('click', function(){
+          saveCookiePreferences(false);
+        });
+      }
+      
+      if(cookieSettings){
+        cookieSettings.addEventListener('click', function(){
+          if(cookieSettingsPanel) cookieSettingsPanel.classList.toggle('show');
+        });
+      }
+      
+      if(cookieSave){
+        cookieSave.addEventListener('click', function(){
+          const marketing = cookieMarketing ? cookieMarketing.checked : false;
+          saveCookiePreferences(marketing);
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
