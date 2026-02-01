@@ -197,15 +197,6 @@
       margin-right:auto;
       line-height:1.5;
     }
-    .hero-explanation{
-      font-size:15px;
-      color:rgba(203,213,225,0.7);
-      margin:0 auto 32px;
-      max-width:600px;
-      line-height:1.6;
-      text-align:left;
-      font-weight:normal;
-    }
     .hero-form-wrapper{
       max-width:600px;
       margin:0 auto;
@@ -274,6 +265,13 @@
     }
     .form-group:last-child{
       margin-bottom:0;
+    }
+    .form-explanation{
+      font-size:13px;
+      color:rgba(203,213,225,0.7);
+      line-height:1.6;
+      margin:0 0 24px;
+      font-weight:normal;
     }
     .form-group label{
       display:block;
@@ -786,11 +784,11 @@
   <section class="hero-section">
     <div class="container">
       <h1>4 weken proberen</h1>
-      <p class="hero-explanation">Let op: Aanmelden voor 4 weken proberen betekent nog niet automatisch dat je kunt starten. We werken met een beperkt aantal startplekken per maand, zodat we iedereen persoonlijk en goed kunnen begeleiden.</p>
       <p class="hero-intro">Waarom alleen horen wat we te bieden hebben, als je het ook zelf kunt ervaren?</p>
       <div class="hero-form-wrapper">
         <form class="form" id="proberenForm">
           <input type="hidden" name="page_name" value="4-weken-proberen">
+          <p class="form-explanation">Let op: Aanmelden voor 4 weken proberen betekent nog niet automatisch dat je kunt starten. We werken met een beperkt aantal startplekken per maand, zodat we iedereen persoonlijk en goed kunnen begeleiden.</p>
           <div class="form-group">
             <label for="voornaam">Voornaam *</label>
             <input type="text" id="voornaam" name="voornaam" placeholder="Je voornaam" required>
