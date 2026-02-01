@@ -318,8 +318,22 @@
     .tariefcheck-section h2{
       font-size:28px;
       text-align:center;
-      margin:0 0 40px;
+      margin:0 0 24px;
       color:var(--text);
+    }
+    .tariefcheck-explanation{
+      max-width:600px;
+      margin:0 auto 32px;
+      font-size:14px;
+      color:rgba(203,213,225,0.7);
+      line-height:1.6;
+      text-align:left;
+    }
+    @media(max-width:600px){
+      .tariefcheck-explanation{
+        text-align:left;
+        font-size:13px;
+      }
     }
     .form{
       background:rgba(255,255,255,.04);
@@ -1019,6 +1033,7 @@
   <section class="tariefcheck-section" id="tariefcheck">
     <div class="container">
       <h2>Ontdek jouw tarief</h2>
+      <p class="tariefcheck-explanation">Let op: Informatie aanvragen betekent nog niet automatisch dat er plek is. We werken met een beperkt aantal starters, zodat we iedereen ook écht kunnen helpen en het niet te druk wordt.</p>
       <form class="form" id="leadFormTarieven" action="https://hooks.zapier.com/hooks/catch/16872475/uqae6wf/" method="POST" target="zapierSubmitFrame">
         <input type="hidden" name="page_name" value="tarieven">
         <input type="hidden" name="source" value="tarieven">
