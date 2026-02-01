@@ -197,6 +197,14 @@
       margin-right:auto;
       line-height:1.5;
     }
+    .hero-explanation{
+      font-size:16px;
+      color:rgba(203,213,225,0.7);
+      margin:0 auto 40px;
+      max-width:600px;
+      line-height:1.6;
+      text-align:left;
+    }
     .hero-form-wrapper{
       max-width:600px;
       margin:0 auto;
@@ -319,18 +327,10 @@
       color:var(--muted);
       margin-top:12px;
     }
-    .form-explanation{
-      max-width:600px;
-      margin:32px auto 0;
-      font-size:12px;
-      color:rgba(203,213,225,0.6);
-      line-height:1.5;
-      text-align:left;
-    }
     @media(max-width:600px){
-      .form-explanation{
+      .hero-explanation{
         text-align:left;
-        margin:24px auto 0;
+        font-size:15px;
       }
     }
 
@@ -786,6 +786,7 @@
     <div class="container">
       <h1>4 weken proberen</h1>
       <p class="hero-intro">Waarom alleen horen wat we te bieden hebben, als je het ook zelf kunt ervaren?</p>
+      <p class="hero-explanation">Het invullen van dit formulier betekent nog geen automatische start. We hebben per maand een beperkt aantal startplekken, zodat we iedereen persoonlijk en goed kunnen begeleiden.</p>
       <div class="hero-form-wrapper">
         <form class="form" id="proberenForm">
           <input type="hidden" name="page_name" value="4-weken-proberen">
@@ -816,7 +817,6 @@
           <p class="form-note">Vrijblijvend · geen automatische inschrijving · persoonlijk contact</p>
           <p class="form-privacy">Door dit formulier te versturen ga je akkoord met onze <a href="privacy.html">privacyverklaring</a>.</p>
         </form>
-        <p class="form-explanation">Het invullen van dit formulier betekent nog geen automatische start. We hebben per maand een beperkt aantal startplekken, zodat we iedereen persoonlijk en goed kunnen begeleiden.</p>
       </div>
     </div>
   </section>
