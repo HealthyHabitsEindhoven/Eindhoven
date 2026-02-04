@@ -4383,6 +4383,32 @@ zelfs leuk.</p>
         display: block !important; 
       }
     }
+    /* Utility classes voor split layouts en grids */
+    @media (min-width: 769px) {
+      .split-layout {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 48px !important;
+        align-items: center !important;
+      }
+    }
+    @media (max-width: 768px) {
+      .split-layout {
+        display: block !important;
+      }
+    }
+    @media (min-width: 769px) {
+      .grid-3 {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 24px !important;
+      }
+    }
+    @media (max-width: 768px) {
+      .grid-3 {
+        display: block !important;
+      }
+    }
   </style>
 
 </body>
