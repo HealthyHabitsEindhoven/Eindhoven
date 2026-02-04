@@ -1996,12 +1996,12 @@
         display:none !important;
       }
       .reviews-section .reviews-carousel-track{
-        height:initial !important;
+        height:auto !important;
         align-items:center !important;
       }
       .reviews-section .reviews-carousel-slides{
-        height:initial !important;
-        align-items:initial !important;
+        height:auto !important;
+        align-items:flex-start !important;
       }
     }
     .reviews-nav{
@@ -2627,15 +2627,15 @@
       .review-card__content-mobile{
         display:none !important;
       }
-      /* Zorg dat desktop review-card styling niet wordt overschreven */
+      /* Zorg dat desktop review-card styling niet wordt overschreven - alleen height/overflow resetten */
       .review-card{
-        height:initial !important;
-        min-height:initial !important;
-        max-height:initial !important;
+        height:auto !important;
+        min-height:0 !important;
+        max-height:none !important;
       }
       .review-card__image{
-        height:initial !important;
-        aspect-ratio:initial !important;
+        height:auto !important;
+        aspect-ratio:auto !important;
         max-height:280px !important;
       }
       .review-card__content{
