@@ -3087,7 +3087,7 @@ zelfs leuk.</p>
     </section>
 
   </main>
-    <section class="section">
+    <section class="section" id="onze-aanpak">
       <div class="container">
         <h2>Onze aanpak</h2>
         <p class="section-subtitle">Drie stappen naar een gezond ritme, met persoonlijke begeleiding wanneer jij die nodig hebt.</p>
@@ -4355,7 +4355,21 @@ zelfs leuk.</p>
   /* Als de container geen vaste hoogte heeft */
   .hh-hero-video {
     aspect-ratio: 16 / 9;
-  }
+    }
+    /* Onze aanpak sectie specifieke grid styling */
+    @media (min-width: 769px) {
+      #onze-aanpak .grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 24px !important;
+        align-items: stretch;
+      }
+    }
+    @media (max-width: 768px) {
+      #onze-aanpak .grid { 
+        display: block !important; 
+      }
+    }
   </style>
 
 </body>
