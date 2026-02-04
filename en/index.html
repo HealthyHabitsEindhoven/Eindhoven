@@ -2682,7 +2682,7 @@ and who knows, just like many others, you might even start enjoying it.</p>
       // Als URL /en bevat, markeer English als actief, anders Nederlands (standaard)
       if(currentPath.includes('/en') || currentHref.includes('/en/') || currentPath.includes('en/index.html')){
         langLinks.forEach(link => {
-          if(link.getAttribute('href').includes('index.html') || link.textContent.trim() === 'Engels'){
+          if(link.getAttribute('href').includes('index.html') || link.textContent.trim() === 'English'){
             link.classList.add('active');
           }
         });
