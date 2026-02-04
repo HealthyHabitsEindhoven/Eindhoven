@@ -8,6 +8,11 @@
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://healthyhabitseindhoven.github.io/over-ons.html">
   
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/logo/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/logo/favicon.png">
+  <link rel="apple-touch-icon" href="/logo/favicon.png">
+  
   <!-- Preload hero image for iOS Safari -->
   <link rel="preload" as="image" href="/assets/images/werknemers/hoofdfoto.jpg" imagesrcset="/assets/images/werknemers/hoofdfoto.jpg 1920w">
 
@@ -123,24 +128,32 @@
     }
     .topbar__menu-toggle{
       display:none;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      width:32px;
-      height:32px;
-      background:transparent;
+      background:none;
       border:none;
       cursor:pointer;
-      gap:5px;
-      padding:0;
+      padding:8px;
+      flex-shrink:0;
+      z-index:10001;
     }
     .topbar__menu-toggle span{
+      display:block;
       width:24px;
-      height:3px;
-      background:var(--text);
-      border-radius:2px;
+      height:2px;
+      background:var(--accent);
+      margin:5px 0;
       transition:all 0.3s ease;
+      border-radius:2px;
     }
+    .topbar__menu-toggle.active span:nth-child(1){
+      transform:rotate(45deg) translate(7px, 7px);
+    }
+    .topbar__menu-toggle.active span:nth-child(2){
+      opacity:0;
+    }
+    .topbar__menu-toggle.active span:nth-child(3){
+      transform:rotate(-45deg) translate(7px, -7px);
+    }
+    body{ padding-top:77px; }
 
     /* =========================
        HERO
@@ -576,6 +589,9 @@
       }
       .topbar__menu-toggle{
         display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
       }
       .topbar__nav,
       .topbar__cta{
@@ -590,19 +606,27 @@
         background:#000;
         flex-direction:column;
         padding:24px;
-        gap:16px;
-        border-bottom:1px solid var(--line);
+        gap:20px;
+        border-top:1px solid rgba(255,255,255,.08);
+        z-index:10000;
+        box-shadow:0 4px 12px rgba(0,0,0,.3);
+      }
+      .topbar__nav.mobile-open a{
+        font-size:16px;
+        padding:12px 0;
+        border-bottom:1px solid rgba(255,255,255,.08);
+      }
+      .topbar__nav.mobile-open a:last-child{
+        border-bottom:none;
       }
       .topbar__cta.mobile-open{
-        display:flex;
-        position:fixed;
-        top:77px;
-        left:0;
-        right:0;
-        background:#000;
-        padding:24px;
-        gap:16px;
-        border-bottom:1px solid var(--line);
+        top:calc(77px + 280px + 50px);
+        justify-content:center;
+      }
+      .topbar__cta.mobile-open button{
+        width:100%;
+        padding:12px 20px;
+        font-size:15px;
       }
       .team-grid{
         grid-template-columns:repeat(2,1fr);
@@ -620,7 +644,7 @@
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- TOPBAR -->
   <div class="topbar">
     <div class="container">
       <div class="topbar__logo">
@@ -1009,9 +1033,9 @@
           }
         });
         
-        // Close menu when clicking on a link
+        // Sluit menu bij klik op link
         const navLinks = topbarNav.querySelectorAll('a');
-        navLinks.forEach(function(link){
+        navLinks.forEach(link => {
           link.addEventListener('click', function(){
             menuToggle.classList.remove('active');
             topbarNav.classList.remove('mobile-open');

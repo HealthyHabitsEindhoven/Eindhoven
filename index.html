@@ -8,6 +8,11 @@
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://healthyhabitseindhoven.github.io/index.html">
   
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/logo/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/logo/favicon.png">
+  <link rel="apple-touch-icon" href="/logo/favicon.png">
+  
   <!-- Preload hero image for iOS Safari -->
   <link rel="preload" as="image" href="/assets/images/home/intake.jpg" imagesrcset="/assets/images/home/intake.jpg 1920w">
 
@@ -277,11 +282,16 @@
       margin:12px 0 0;
       padding:0;
       line-height:1.4;
-      text-align:left;
+      text-align:center;
       opacity:0.7;
       background:none;
       border:none;
       border-radius:0;
+      width:100%;
+      display:block;
+    }
+    .split-video .hero-tags{
+      margin-top:12px;
     }
     @media(max-width:768px){
       .hero-tags{
@@ -427,12 +437,15 @@
     .split-video{
       position:relative;
       border-radius:var(--radius);
-      overflow:hidden;
       background:rgba(255,255,255,.03);
-      aspect-ratio:4/3;
       border:1px solid var(--line);
       cursor:pointer;
       transition:all 300ms ease;
+    }
+    .split-video .video-wrapper{
+      overflow:hidden;
+      border-radius:var(--radius);
+      aspect-ratio:4/3;
     }
     .split-video:hover{
       border-color:var(--line);
@@ -2909,7 +2922,6 @@
         <a href="/4-weken-proberen.html" class="hero-btn hero-btn-primary">4 weken proberen</a>
         <a href="/lidmaatschapstest.html" class="hero-btn hero-btn-secondary">Online lidmaatschapstest</a>
       </div>
-      <p class="hero-tags">Milon • Fitness • Yoga</p>
     </div>
   </header>
 
@@ -2948,6 +2960,7 @@ zelfs leuk.</p>
             title="Healthy Habits video">
           </iframe>
         </div>
+        <p class="hero-tags">Milon • Fitness • Yoga</p>
       </div>
     </div>
   </section>

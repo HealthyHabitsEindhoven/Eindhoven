@@ -7,6 +7,11 @@
   <meta name="description" content="Ontdek ons complete aanbod: begeleid sporten, fitness, groepslessen, yoga, voeding en meer. Kleinschalige sportschool in Eindhoven centrum met persoonlijke begeleiding.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://healthyhabitseindhoven.github.io/aanbod.html">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/logo/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/logo/favicon.png">
+  <link rel="apple-touch-icon" href="/logo/favicon.png">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TL31XLWFEF"></script>
@@ -146,6 +151,54 @@
       transform:rotate(-45deg) translate(7px, -7px);
     }
     body{ padding-top:77px; }
+
+    /* =========================
+       HERO
+    ========================== */
+    .hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      background:var(--bg-main);
+      background-color:#000;
+    }
+    .hero img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center center;
+      filter:brightness(.6);
+    }
+    .hero__overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 9%, rgba(0,0,0,0.3) 18%, rgba(0,0,0,0.1) 24%, rgba(0,0,0,0) 30%),
+                  linear-gradient(to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0) 100%);
+      background-blend-mode:multiply;
+      z-index:1;
+    }
+    .hero-content{
+      position:relative;
+      z-index:2;
+      padding:48px 0;
+      text-align:center;
+    }
+    .hero h1{
+      font-size:clamp(32px,5vw,56px);
+      margin:0 0 12px;
+    }
+    .hero p{
+      max-width:55ch;
+      color:var(--muted);
+      font-size:18px;
+      margin:0 0 32px;
+      margin-left:auto;
+      margin-right:auto;
+    }
 
     /* =========================
        AANBOD SECTIE
@@ -675,13 +728,19 @@
     </div>
   </div>
 
+  <!-- HERO -->
+  <section class="hero">
+    <img src="/assets/images/home/intake.jpg" alt="Healthy Habits aanbod" width="1920" height="1080" decoding="async" loading="eager">
+    <div class="hero__overlay"></div>
+    <div class="container hero-content">
+      <h1>Ons aanbod</h1>
+      <p>Ontdek wat Healthy Habits voor jou kan betekenen</p>
+    </div>
+  </section>
+
   <!-- AANBOD SECTIE -->
   <section class="aanbod-section">
     <div class="container">
-      <div class="aanbod-header">
-        <h1>Ons aanbod</h1>
-        <p>Ontdek wat Healthy Habits voor jou kan betekenen</p>
-      </div>
       <div class="aanbod-grid">
         <div class="succes-card">
           <h3 class="succes-card__title-header card-top-title">Milon</h3>
