@@ -1,0 +1,6 @@
+# Netlify-style redirects (for Netlify hosting)
+# For GitHub Pages, use Cloudflare redirect rules instead (see instructions below)
+
+# HTTP to HTTPS redirect
+http://healthyhabits-eindhoven.nl/* https://healthyhabits-eindhoven.nl/:splat 301!
+http://www.healthyhabits-eindhoven.nl/* https://healthyhabits-eindhoven.nl/:splat 301!
