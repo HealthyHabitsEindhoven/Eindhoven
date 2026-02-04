@@ -604,59 +604,32 @@
     }
 
     /* =========================
-       ONS AANBOD SECTIE - MARQUEE
+       ONS AANBOD SECTIE
     ========================== */
     .aanbod-section{
       background:var(--bg-warm);
       padding:80px 0;
       border-bottom:1px solid rgba(255,255,255,.08);
     }
-    .aanbod-marquee-wrapper{
+    .aanbod-carousel-wrapper{
       position:relative;
       width:100%;
       max-width:100%;
       overflow:hidden;
     }
-    .aanbod-marquee-track{
-      overflow:hidden;
-      width:100%;
+    .aanbod-carousel-track{
+      overflow-x:auto;
+      overflow-y:hidden;
+      max-width:100%;
       position:relative;
+      scroll-behavior:smooth;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
     }
-    .aanbod-marquee-slides{
+    .aanbod-carousel-slides{
       display:flex;
       gap:20px;
-      width:fit-content;
-      animation:aanbod-marquee 90s linear infinite;
-    }
-    /* Pause on hover (desktop) */
-    @media (hover: hover) {
-      .aanbod-marquee-wrapper:hover .aanbod-marquee-slides{
-        animation-play-state:paused;
-      }
-    }
-    /* Respect prefers-reduced-motion */
-    @media (prefers-reduced-motion: reduce) {
-      .aanbod-marquee-slides{
-        animation:none;
-      }
-      .aanbod-marquee-track{
-        overflow-x:auto;
-        overflow-y:hidden;
-        scroll-behavior:smooth;
-        scroll-snap-type:x mandatory;
-        -webkit-overflow-scrolling:touch;
-      }
-      .aanbod-marquee-slides{
-        scroll-snap-align:start;
-      }
-    }
-    @keyframes aanbod-marquee{
-      0%{
-        transform:translateX(0);
-      }
-      100%{
-        transform:translateX(-50%);
-      }
+      max-width:100%;
     }
     .aanbod-card{
       flex:0 0 calc(33.333% - 14px);
@@ -668,6 +641,7 @@
       background:rgba(255,255,255,.03);
       border:1px solid var(--line);
       flex-shrink:0;
+      scroll-snap-align:start;
     }
     @media(max-width:900px){
       .aanbod-card{
@@ -686,29 +660,49 @@
       object-fit:cover;
       display:block;
     }
-    /* Fade overlays aan de randen */
-    .aanbod-marquee-fade-left,
-    .aanbod-marquee-fade-right{
+    .aanbod-carousel-nav{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:16px;
+      margin-top:32px;
+    }
+    .aanbod-carousel-btn{
+      width:44px;
+      height:44px;
+      min-width:44px;
+      min-height:44px;
+      border-radius:50%;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      font-size:24px;
+      line-height:1;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:all 300ms ease;
+      padding:0;
+      position:relative;
+    }
+    .aanbod-carousel-btn:hover,
+    .aanbod-carousel-btn:focus{
+      border-color:var(--accent);
+      outline:none;
+    }
+    .aanbod-carousel-btn:hover::before,
+    .aanbod-carousel-btn:focus::before,
+    .aanbod-carousel-btn:active::before{
+      content:'';
       position:absolute;
-      top:0;
-      bottom:0;
-      width:120px;
+      inset:-2px;
+      border-radius:50%;
+      border:2px solid var(--accent);
       pointer-events:none;
-      z-index:10;
     }
-    .aanbod-marquee-fade-left{
-      left:0;
-      background:linear-gradient(to right, var(--bg-warm) 0%, transparent 100%);
-    }
-    .aanbod-marquee-fade-right{
-      right:0;
-      background:linear-gradient(to left, var(--bg-warm) 0%, transparent 100%);
-    }
-    @media(max-width:768px){
-      .aanbod-marquee-fade-left,
-      .aanbod-marquee-fade-right{
-        width:60px;
-      }
+    .aanbod-carousel-btn:active{
+      transform:scale(0.95);
     }
     .reviews-carousel-nav{
       display:none;
@@ -2988,62 +2982,9 @@ zelfs leuk.</p>
   <!-- ONS AANBOD -->
   <section class="aanbod-section">
       <div class="container">
-      <div class="aanbod-marquee-wrapper">
-        <div class="aanbod-marquee-fade-left"></div>
-        <div class="aanbod-marquee-track" id="aanbodMarquee">
-          <div class="aanbod-marquee-slides">
-            <!-- First set of images -->
-            <div class="aanbod-card">
-              <div class="aanbod-card__image">
-                <img src="/assets/images/aanbod-home/2.jpeg" alt="" loading="lazy">
-              </div>
-            </div>
-            <div class="aanbod-card">
-              <div class="aanbod-card__image">
-                <img src="/assets/images/aanbod-home/3.jpeg" alt="" loading="lazy" width="400" height="300" decoding="async">
-              </div>
-            </div>
-            <div class="aanbod-card">
-              <div class="aanbod-card__image">
-                <img src="/assets/images/aanbod-home/fitness.jpg" alt="" loading="lazy" width="400" height="300" decoding="async">
-              </div>
-            </div>
-            <div class="aanbod-card">
-              <div class="aanbod-card__image">
-                <img src="/assets/images/aanbod-home/groepsles.jpg" alt="" loading="lazy" width="400" height="300" decoding="async">
-              </div>
-            </div>
-            <div class="aanbod-card">
-              <div class="aanbod-card__image">
-                <img src="/assets/images/aanbod-home/milon.jpg" alt="" loading="lazy" width="400" height="300" decoding="async">
-              </div>
-            </div>
-            <div class="aanbod-card">
-              <div class="aanbod-card__image">
-                <img src="/assets/images/aanbod-home/sauna.jpg" alt="" loading="lazy" width="400" height="300" decoding="async">
-              </div>
-            </div>
-            <div class="aanbod-card">
-              <div class="aanbod-card__image">
-                <img src="/assets/images/aanbod-home/julia.jpeg" alt="" loading="lazy" width="400" height="300" decoding="async">
-              </div>
-            </div>
-            <div class="aanbod-card">
-              <div class="aanbod-card__image">
-                <img src="/assets/images/aanbod-home/miloncros.jpeg" alt="" loading="lazy" width="400" height="300" decoding="async">
-              </div>
-            </div>
-            <div class="aanbod-card">
-              <div class="aanbod-card__image">
-                <img src="/assets/images/aanbod-home/buiten.jpeg" alt="" loading="lazy" width="400" height="300" decoding="async">
-              </div>
-            </div>
-            <div class="aanbod-card">
-              <div class="aanbod-card__image">
-                <img src="/assets/images/aanbod-home/yoga.jpeg" alt="" loading="lazy" width="400" height="300" decoding="async">
-              </div>
-            </div>
-            <!-- Duplicate set for seamless loop -->
+      <div class="aanbod-carousel-wrapper">
+        <div class="aanbod-carousel-track">
+          <div class="aanbod-carousel-slides" id="aanbodSlides">
             <div class="aanbod-card">
               <div class="aanbod-card__image">
                 <img src="/assets/images/aanbod-home/2.jpeg" alt="" loading="lazy">
@@ -3096,8 +3037,11 @@ zelfs leuk.</p>
             </div>
           </div>
         </div>
-        <div class="aanbod-marquee-fade-right"></div>
-      </div>
+        <div class="aanbod-carousel-nav">
+          <button class="aanbod-carousel-btn" id="aanbodPrev" aria-label="Vorige">‹</button>
+          <button class="aanbod-carousel-btn" id="aanbodNext" aria-label="Volgende">›</button>
+        </div>
+        </div>
       </div>
     </section>
 
@@ -3758,117 +3702,142 @@ zelfs leuk.</p>
       });
     })();
 
-    // Aanbod marquee - pause bij touch/drag
+    // Aanbod carousel - simpele scroll-gebaseerde navigatie met automatische scroll
     (function(){
-      const marqueeTrack = document.getElementById('aanbodMarquee');
-      const marqueeSlides = marqueeTrack?.querySelector('.aanbod-marquee-slides');
+      const slidesContainer = document.getElementById('aanbodSlides');
+      const trackContainer = slidesContainer?.parentElement;
+      const prevBtn = document.getElementById('aanbodPrev');
+      const nextBtn = document.getElementById('aanbodNext');
       
-      if(!marqueeTrack || !marqueeSlides) return;
+      if(!slidesContainer || !trackContainer) return;
       
-      // Check voor prefers-reduced-motion
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if(prefersReducedMotion) return; // Geen JS nodig als reduced motion actief is
-      
-      let isPaused = false;
-      let touchStartX = 0;
-      let touchStartY = 0;
-      let isDragging = false;
-      
-      // Pause bij touch start
-      function handleTouchStart(e){
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-        isDragging = false;
-        marqueeSlides.style.animationPlayState = 'paused';
-        isPaused = true;
-      }
-      
-      // Check of user aan het draggen is
-      function handleTouchMove(e){
-        if(!isPaused) return;
-        const touchX = e.touches[0].clientX;
-        const touchY = e.touches[0].clientY;
-        const deltaX = Math.abs(touchX - touchStartX);
-        const deltaY = Math.abs(touchY - touchStartY);
+      // Selecteer alle cards binnen de container
+      const cards = Array.from(slidesContainer.querySelectorAll('.aanbod-card'));
+      if(cards.length === 0) return;
+
+      let autoScrollInterval = null;
+      let isUserInteracting = false;
+
+      // Functie om naar volgende card te scrollen
+      function scrollToNext(){
+        const firstCard = cards[0];
+        if(!firstCard) return;
+        const cardWidth = firstCard.offsetWidth;
+        const gap = 20;
+        const scrollAmount = cardWidth + gap;
         
-        // Als horizontale beweging groter is dan verticale, is het een drag
-        if(deltaX > deltaY && deltaX > 10){
-          isDragging = true;
+        // Check if we're at the end, then loop back to start
+        const maxScroll = trackContainer.scrollWidth - trackContainer.clientWidth;
+        if(trackContainer.scrollLeft >= maxScroll - 10){
+          // Smooth scroll back to start
+          trackContainer.scrollTo({
+            left: 0,
+            behavior: 'smooth'
+          });
+        } else {
+          trackContainer.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+          });
         }
       }
-      
-      // Resume na touch end (met kleine delay)
-      function handleTouchEnd(){
-        if(isPaused && !isDragging){
-          // Korte pause voor tap (niet drag)
-          setTimeout(() => {
-            if(!isDragging){
-              marqueeSlides.style.animationPlayState = 'running';
-              isPaused = false;
-            }
-          }, 500);
-        } else if(isDragging){
-          // Na drag, resume na langere tijd
-          setTimeout(() => {
-            marqueeSlides.style.animationPlayState = 'running';
-            isPaused = false;
-            isDragging = false;
-          }, 2000);
+
+      // Functie om naar vorige card te scrollen
+      function scrollToPrev(){
+        const firstCard = cards[0];
+        if(!firstCard) return;
+        const cardWidth = firstCard.offsetWidth;
+        const gap = 20;
+        const scrollAmount = cardWidth + gap;
+        trackContainer.scrollBy({
+          left: -scrollAmount,
+          behavior: 'smooth'
+        });
+      }
+
+      // Start automatische scroll (elke 4 seconden)
+      function startAutoScroll(){
+        if(autoScrollInterval) return; // Al actief
+        autoScrollInterval = setInterval(() => {
+          if(!isUserInteracting){
+            scrollToNext();
+          }
+        }, 4000); // 4 seconden tussen elke scroll
+      }
+
+      // Stop automatische scroll
+      function stopAutoScroll(){
+        if(autoScrollInterval){
+          clearInterval(autoScrollInterval);
+          autoScrollInterval = null;
         }
       }
+
+      // Pause on user interaction
+      function pauseOnInteraction(){
+        isUserInteracting = true;
+        stopAutoScroll();
+        setTimeout(() => {
+          isUserInteracting = false;
+          startAutoScroll();
+        }, 10000); // Herstart na 10 seconden
+      }
+
+      // Navigatieknoppen handlers
+      if(nextBtn){
+        nextBtn.addEventListener('click', () => {
+          scrollToNext();
+          pauseOnInteraction();
+        });
+      }
+
+      if(prevBtn){
+        prevBtn.addEventListener('click', () => {
+          scrollToPrev();
+          pauseOnInteraction();
+        });
+      }
+
+      // Debounce voor scroll event om niet te vaak te pauzeren
+      let scrollTimeout = null;
+      trackContainer.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          // Alleen pauzeren als gebruiker echt scrollt (niet door auto-scroll)
+          if(!isUserInteracting){
+            pauseOnInteraction();
+          }
+        }, 100);
+      });
       
-      // Event listeners voor touch
-      marqueeTrack.addEventListener('touchstart', handleTouchStart, { passive: true });
-      marqueeTrack.addEventListener('touchmove', handleTouchMove, { passive: true });
-      marqueeTrack.addEventListener('touchend', handleTouchEnd, { passive: true });
-      marqueeTrack.addEventListener('touchcancel', handleTouchEnd, { passive: true });
+      trackContainer.addEventListener('touchstart', pauseOnInteraction);
+      trackContainer.addEventListener('mousedown', pauseOnInteraction);
+
+      // Start automatische scroll na korte delay
+      setTimeout(() => {
+        startAutoScroll();
+      }, 2000); // Start na 2 seconden
+
+      // Pause on hover
+      trackContainer.addEventListener('mouseenter', stopAutoScroll);
+      trackContainer.addEventListener('mouseleave', () => {
+        if(!isUserInteracting){
+          startAutoScroll();
+        }
+      });
     })();
 
-    // Splash screen - FAIL-SAFE: Verwijder altijd, nooit blijven hangen
+    // Splash screen - verberg na 1 seconde
     (function(){
       const splashScreen = document.getElementById('splashScreen');
-      if(!splashScreen) return;
-      
-      let isRemoved = false;
-      
-      // Functie om preloader te verwijderen
-      function removeSplashScreen(){
-        if(isRemoved) return;
-        isRemoved = true;
-        
-        // Fade out
-        splashScreen.classList.add('hidden');
-        
-        // Verwijder uit DOM na fade-out
+      if(splashScreen){
         setTimeout(function(){
-          if(splashScreen && splashScreen.parentNode){
-            splashScreen.remove();
-          }
-        }, 300);
+          splashScreen.classList.add('hidden');
+          setTimeout(function(){
+            splashScreen.style.display = 'none';
+          }, 300);
+        }, 1000);
       }
-      
-      // Verwijder op DOMContentLoaded
-      if(document.readyState === 'loading'){
-        document.addEventListener('DOMContentLoaded', removeSplashScreen);
-      } else {
-        removeSplashScreen();
-      }
-      
-      // Verwijder op window.load (backup)
-      window.addEventListener('load', removeSplashScreen);
-      
-      // HARD TIMEOUT: Verwijder na max 3 seconden (fail-safe)
-      setTimeout(removeSplashScreen, 3000);
-      
-      // Verwijder bij JS errors (fail-safe)
-      window.addEventListener('error', function(e){
-        removeSplashScreen();
-      }, true);
-      
-      // Verwijder bij unhandled promise rejections (fail-safe)
-      window.addEventListener('unhandledrejection', function(e){
-        removeSplashScreen();
-      });
     })();
 
     // Mobile menu toggle
