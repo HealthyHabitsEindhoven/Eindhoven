@@ -604,32 +604,59 @@
     }
 
     /* =========================
-       ONS AANBOD SECTIE
+       ONS AANBOD SECTIE - MARQUEE
     ========================== */
     .aanbod-section{
       background:var(--bg-warm);
       padding:80px 0;
       border-bottom:1px solid rgba(255,255,255,.08);
     }
-    .aanbod-carousel-wrapper{
+    .aanbod-marquee-wrapper{
       position:relative;
       width:100%;
       max-width:100%;
       overflow:hidden;
     }
-    .aanbod-carousel-track{
-      overflow-x:auto;
-      overflow-y:hidden;
-      max-width:100%;
+    .aanbod-marquee-track{
+      overflow:hidden;
+      width:100%;
       position:relative;
-      scroll-behavior:smooth;
-      scroll-snap-type:x mandatory;
-      -webkit-overflow-scrolling:touch;
     }
-    .aanbod-carousel-slides{
+    .aanbod-marquee-slides{
       display:flex;
       gap:20px;
-      max-width:100%;
+      width:fit-content;
+      animation:aanbod-marquee 90s linear infinite;
+    }
+    /* Pause on hover (desktop) */
+    @media (hover: hover) {
+      .aanbod-marquee-wrapper:hover .aanbod-marquee-slides{
+        animation-play-state:paused;
+      }
+    }
+    /* Respect prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      .aanbod-marquee-slides{
+        animation:none;
+      }
+      .aanbod-marquee-track{
+        overflow-x:auto;
+        overflow-y:hidden;
+        scroll-behavior:smooth;
+        scroll-snap-type:x mandatory;
+        -webkit-overflow-scrolling:touch;
+      }
+      .aanbod-marquee-slides{
+        scroll-snap-align:start;
+      }
+    }
+    @keyframes aanbod-marquee{
+      0%{
+        transform:translateX(0);
+      }
+      100%{
+        transform:translateX(-50%);
+      }
     }
     .aanbod-card{
       flex:0 0 calc(33.333% - 14px);
@@ -641,7 +668,6 @@
       background:rgba(255,255,255,.03);
       border:1px solid var(--line);
       flex-shrink:0;
-      scroll-snap-align:start;
     }
     @media(max-width:900px){
       .aanbod-card{
@@ -660,49 +686,29 @@
       object-fit:cover;
       display:block;
     }
-    .aanbod-carousel-nav{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:16px;
-      margin-top:32px;
-    }
-    .aanbod-carousel-btn{
-      width:44px;
-      height:44px;
-      min-width:44px;
-      min-height:44px;
-      border-radius:50%;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-      font-size:24px;
-      line-height:1;
-      cursor:pointer;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      transition:all 300ms ease;
-      padding:0;
-      position:relative;
-    }
-    .aanbod-carousel-btn:hover,
-    .aanbod-carousel-btn:focus{
-      border-color:var(--accent);
-      outline:none;
-    }
-    .aanbod-carousel-btn:hover::before,
-    .aanbod-carousel-btn:focus::before,
-    .aanbod-carousel-btn:active::before{
-      content:'';
+    /* Fade overlays aan de randen */
+    .aanbod-marquee-fade-left,
+    .aanbod-marquee-fade-right{
       position:absolute;
-      inset:-2px;
-      border-radius:50%;
-      border:2px solid var(--accent);
+      top:0;
+      bottom:0;
+      width:120px;
       pointer-events:none;
+      z-index:10;
     }
-    .aanbod-carousel-btn:active{
-      transform:scale(0.95);
+    .aanbod-marquee-fade-left{
+      left:0;
+      background:linear-gradient(to right, var(--bg-warm) 0%, transparent 100%);
+    }
+    .aanbod-marquee-fade-right{
+      right:0;
+      background:linear-gradient(to left, var(--bg-warm) 0%, transparent 100%);
+    }
+    @media(max-width:768px){
+      .aanbod-marquee-fade-left,
+      .aanbod-marquee-fade-right{
+        width:60px;
+      }
     }
     .reviews-carousel-nav{
       display:none;
@@ -2982,9 +2988,62 @@ zelfs leuk.</p>
   <!-- ONS AANBOD -->
   <section class="aanbod-section">
       <div class="container">
-      <div class="aanbod-carousel-wrapper">
-        <div class="aanbod-carousel-track">
-          <div class="aanbod-carousel-slides" id="aanbodSlides">
+      <div class="aanbod-marquee-wrapper">
+        <div class="aanbod-marquee-fade-left"></div>
+        <div class="aanbod-marquee-track" id="aanbodMarquee">
+          <div class="aanbod-marquee-slides">
+            <!-- First set of images -->
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="/assets/images/aanbod-home/2.jpeg" alt="" loading="lazy">
+              </div>
+            </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="/assets/images/aanbod-home/3.jpeg" alt="" loading="lazy" width="400" height="300" decoding="async">
+              </div>
+            </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="/assets/images/aanbod-home/fitness.jpg" alt="" loading="lazy" width="400" height="300" decoding="async">
+              </div>
+            </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="/assets/images/aanbod-home/groepsles.jpg" alt="" loading="lazy" width="400" height="300" decoding="async">
+              </div>
+            </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="/assets/images/aanbod-home/milon.jpg" alt="" loading="lazy" width="400" height="300" decoding="async">
+              </div>
+            </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="/assets/images/aanbod-home/sauna.jpg" alt="" loading="lazy" width="400" height="300" decoding="async">
+              </div>
+            </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="/assets/images/aanbod-home/julia.jpeg" alt="" loading="lazy" width="400" height="300" decoding="async">
+              </div>
+            </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="/assets/images/aanbod-home/miloncros.jpeg" alt="" loading="lazy" width="400" height="300" decoding="async">
+              </div>
+            </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="/assets/images/aanbod-home/buiten.jpeg" alt="" loading="lazy" width="400" height="300" decoding="async">
+              </div>
+            </div>
+            <div class="aanbod-card">
+              <div class="aanbod-card__image">
+                <img src="/assets/images/aanbod-home/yoga.jpeg" alt="" loading="lazy" width="400" height="300" decoding="async">
+              </div>
+            </div>
+            <!-- Duplicate set for seamless loop -->
             <div class="aanbod-card">
               <div class="aanbod-card__image">
                 <img src="/assets/images/aanbod-home/2.jpeg" alt="" loading="lazy">
@@ -3037,11 +3096,8 @@ zelfs leuk.</p>
             </div>
           </div>
         </div>
-        <div class="aanbod-carousel-nav">
-          <button class="aanbod-carousel-btn" id="aanbodPrev" aria-label="Vorige">‹</button>
-          <button class="aanbod-carousel-btn" id="aanbodNext" aria-label="Volgende">›</button>
-        </div>
-        </div>
+        <div class="aanbod-marquee-fade-right"></div>
+      </div>
       </div>
     </section>
 
