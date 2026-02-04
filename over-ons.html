@@ -598,7 +598,6 @@
         display:flex;
       }
       .topbar__nav,
-      .topbar__lang,
       .topbar__cta{
         display:none;
       }
@@ -614,7 +613,6 @@
         gap:16px;
         border-bottom:1px solid var(--line);
       }
-      .topbar__lang.mobile-open,
       .topbar__cta.mobile-open{
         display:flex;
         position:fixed;
@@ -625,10 +623,6 @@
         padding:24px;
         gap:16px;
         border-bottom:1px solid var(--line);
-      }
-      .topbar__lang.mobile-open{
-        top:auto;
-        bottom:77px;
       }
       .team-grid{
         grid-template-columns:repeat(2,1fr);
@@ -664,11 +658,6 @@
         <a href="/lidmaatschapstest.html">Online-lidmaatschapstest</a>
         <a href="/over-ons.html">Ons team</a>
       </nav>
-      <div class="topbar__lang" id="topbarLang">
-        <a href="/index.html" class="active">Nederlands</a>
-        <span>/</span>
-        <a href="/en/index.html">Engels</a>
-      </div>
       <div class="topbar__cta" id="topbarCta">
         <a href="/4-weken-proberen.html"><button>4 weken proberen</button></a>
       </div>
@@ -1021,7 +1010,6 @@
     (function(){
       const menuToggle = document.getElementById('menuToggle');
       const topbarNav = document.getElementById('topbarNav');
-      const topbarLang = document.getElementById('topbarLang');
       const topbarCta = document.getElementById('topbarCta');
       
       if(menuToggle && topbarNav){
@@ -1031,13 +1019,11 @@
           if(isOpen){
             menuToggle.classList.remove('active');
             topbarNav.classList.remove('mobile-open');
-            topbarLang.classList.remove('mobile-open');
             topbarCta.classList.remove('mobile-open');
             document.body.style.overflow = '';
           } else {
             menuToggle.classList.add('active');
             topbarNav.classList.add('mobile-open');
-            topbarLang.classList.add('mobile-open');
             topbarCta.classList.add('mobile-open');
             document.body.style.overflow = 'hidden';
           }
@@ -1049,7 +1035,6 @@
           link.addEventListener('click', function(){
             menuToggle.classList.remove('active');
             topbarNav.classList.remove('mobile-open');
-            topbarLang.classList.remove('mobile-open');
             topbarCta.classList.remove('mobile-open');
             document.body.style.overflow = '';
           });

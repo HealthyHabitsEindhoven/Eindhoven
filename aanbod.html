@@ -276,7 +276,6 @@
         justify-content:center;
       }
       .topbar__nav,
-      .topbar__lang,
       .topbar__cta{
         display:none;
       }
@@ -301,21 +300,6 @@
       }
       .topbar__nav.mobile-open a:last-child{
         border-bottom:none;
-      }
-      .topbar__lang.mobile-open,
-      .topbar__cta.mobile-open{
-        display:flex;
-        position:fixed;
-        left:0;
-        right:0;
-        background:#000;
-        padding:16px 24px;
-        border-top:1px solid rgba(255,255,255,.08);
-        z-index:10000;
-      }
-      .topbar__lang.mobile-open{
-        top:calc(77px + 280px);
-        justify-content:center;
       }
       .topbar__cta.mobile-open{
         top:calc(77px + 280px + 50px);
@@ -685,11 +669,6 @@
         <a href="/lidmaatschapstest.html">Online-lidmaatschapstest</a>
         <a href="/over-ons.html">Ons team</a>
       </nav>
-      <div class="topbar__lang" id="topbarLang">
-        <a href="/index.html" class="active">Nederlands</a>
-        <span>/</span>
-        <a href="/en/index.html">Engels</a>
-      </div>
       <div class="topbar__cta" id="topbarCta">
         <a href="/4-weken-proberen.html"><button>4 weken proberen</button></a>
       </div>
