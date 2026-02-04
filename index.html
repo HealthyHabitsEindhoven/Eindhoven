@@ -2453,7 +2453,8 @@
       }
       .review-card__image{
         width:100% !important;
-        aspect-ratio:1/1;
+        height:180px !important;
+        aspect-ratio:auto !important;
         overflow:hidden;
         background:rgba(255,255,255,.03);
         flex-shrink:0;
@@ -2467,17 +2468,40 @@
         object-position:center center;
         display:block;
       }
+      /* Verberg desktop content op mobiel */
       .review-card__content{
-        padding:18px;
-        flex:1 1 auto;
-        display:flex;
-        flex-direction:column;
-        align-items:flex-start;
-        justify-content:flex-start;
+        display:none !important;
+      }
+      /* Toon mobile header en content */
+      .review-card__header-mobile{
+        display:block;
+        width:100%;
         background:rgba(255,255,255,.04);
-        overflow:visible;
-        min-height:auto;
-        flex-shrink:0;
+        border-bottom:1px solid var(--line);
+        color:var(--text);
+        padding:12px 18px;
+        font-size:14px;
+        font-weight:600;
+        letter-spacing:0.5px;
+        border-radius:var(--radius) var(--radius) 0 0;
+        margin:0;
+      }
+      .review-card__content-mobile{
+        display:block;
+        padding:18px;
+        flex:1;
+      }
+      .review-card__content-mobile .card__title{
+        margin:0 0 6px;
+        font-size:inherit;
+        font-weight:600;
+        color:var(--text);
+      }
+      .review-card__content-mobile .card__text{
+        margin:0;
+        color:var(--muted);
+        line-height:1.45;
+        font-size:inherit;
       }
       .review-card__name{
         font-size:20px;
