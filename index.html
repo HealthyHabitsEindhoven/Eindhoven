@@ -4424,16 +4424,16 @@ zelfs leuk.</p>
         order: 2;
         justify-self: end;
       }
-      /* video mag niet full-width buiten kolom */
+      /* video vult volledige rechterkolom */
       .hero-media video,
-      .hero-media iframe,
-      .hero-media img,
+      .hero-media iframe {
+        width: 100% !important;
+        max-width: none !important;
+        display: block !important;
+      }
       .hero-media .video-wrapper {
         width: 100% !important;
-        max-width: 560px !important;
-        height: auto !important;
-        display: block !important;
-        border-radius: 16px !important;
+        max-width: none !important;
       }
     }
     @media (max-width: 768px) {
