@@ -2931,7 +2931,7 @@
     <img src="/assets/images/home/intake.jpg" alt="Healthy Habits sfeer" width="1920" height="1080" decoding="async" loading="eager">
     <div class="hero__overlay"></div>
     <div class="container hero-content">
-      <h1>De sportschool waar je niet<br>aan je lot wordt overgelaten.</h1>
+      <h1>De sportschool waar je<br>niet aan je lot wordt<br>overgelaten.</h1>
       <p class="subtitle">Gefeliciteerd! Je hebt het gevonden, een stukje geluk in Eindhoven.</p>
       <div class="hero-buttons">
         <a href="/4-weken-proberen.html" class="hero-btn hero-btn-primary">4 weken proberen</a>
@@ -4482,6 +4482,24 @@ zelfs leuk.</p>
       }
       .hero-btn {
         width: auto !important;
+      }
+    }
+    /* Mobiele hero polish */
+    @media (max-width: 768px) {
+      /* Hero buttons: beide even breed, onder elkaar, strak uitgelijnd */
+      .hero-buttons {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 12px !important;
+      }
+      .hero-btn {
+        width: 100% !important;
+        text-align: center !important;
+      }
+      /* Hero headline: 3 regels, "niet" niet los op eigen regel */
+      .hero h1 {
+        line-height: 1.15 !important;
       }
     }
   </style>
