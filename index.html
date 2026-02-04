@@ -3758,47 +3758,51 @@ zelfs leuk.</p>
       });
     })();
 
-
-      // Debounce voor scroll event om niet te vaak te pauzeren
-      let scrollTimeout = null;
-      trackContainer.addEventListener('scroll', () => {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          // Alleen pauzeren als gebruiker echt scrollt (niet door auto-scroll)
-          if(!isUserInteracting){
-            pauseOnInteraction();
-          }
-        }, 100);
-      });
-      
-      trackContainer.addEventListener('touchstart', pauseOnInteraction);
-      trackContainer.addEventListener('mousedown', pauseOnInteraction);
-
-      // Start automatische scroll na korte delay
-      setTimeout(() => {
-        startAutoScroll();
-      }, 2000); // Start na 2 seconden
-
-      // Pause on hover
-      trackContainer.addEventListener('mouseenter', stopAutoScroll);
-      trackContainer.addEventListener('mouseleave', () => {
-        if(!isUserInteracting){
-          startAutoScroll();
-        }
-      });
-    })();
-
-    // Splash screen - verberg na 1 seconde
+    // Splash screen - FAIL-SAFE: Verwijder altijd, nooit blijven hangen
     (function(){
       const splashScreen = document.getElementById('splashScreen');
-      if(splashScreen){
+      if(!splashScreen) return;
+      
+      let isRemoved = false;
+      
+      // Functie om preloader te verwijderen
+      function removeSplashScreen(){
+        if(isRemoved) return;
+        isRemoved = true;
+        
+        // Fade out
+        splashScreen.classList.add('hidden');
+        
+        // Verwijder uit DOM na fade-out
         setTimeout(function(){
-          splashScreen.classList.add('hidden');
-          setTimeout(function(){
-            splashScreen.style.display = 'none';
-          }, 300);
-        }, 1000);
+          if(splashScreen && splashScreen.parentNode){
+            splashScreen.remove();
+          }
+        }, 300);
       }
+      
+      // Verwijder op DOMContentLoaded
+      if(document.readyState === 'loading'){
+        document.addEventListener('DOMContentLoaded', removeSplashScreen);
+      } else {
+        removeSplashScreen();
+      }
+      
+      // Verwijder op window.load (backup)
+      window.addEventListener('load', removeSplashScreen);
+      
+      // HARD TIMEOUT: Verwijder na max 3 seconden (fail-safe)
+      setTimeout(removeSplashScreen, 3000);
+      
+      // Verwijder bij JS errors (fail-safe)
+      window.addEventListener('error', function(e){
+        removeSplashScreen();
+      }, true);
+      
+      // Verwijder bij unhandled promise rejections (fail-safe)
+      window.addEventListener('unhandledrejection', function(e){
+        removeSplashScreen();
+      });
     })();
 
     // Mobile menu toggle
