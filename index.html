@@ -304,55 +304,77 @@
     }
 
     /* =========================
-       SPOTS AVAILABLE (IN HERO)
+       SPOTS AVAILABLE BLOCK
     ========================== */
-    .spots-text{
-      font-size:14px;
-      color:var(--muted);
-      margin-top:14px;
-      margin-bottom:16px;
+    .spots-notice{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:var(--radius);
+      padding:24px;
+      margin:32px auto 0;
+      max-width:600px;
       text-align:center;
-      line-height:1.6;
     }
-    .spots-row{
+    .spots-notice h3{
+      font-size:18px;
+      font-weight:700;
+      color:var(--text);
+      margin:0 0 16px;
+    }
+    .spots-notice p{
+      font-size:15px;
+      color:var(--muted);
+      line-height:1.6;
+      margin:0 0 12px;
+    }
+    .spots-notice p:last-of-type{
+      margin-bottom:20px;
+    }
+    .spots-bar-wrapper{
       display:flex;
       align-items:center;
-      gap:16px;
-      justify-content:center;
-      flex-wrap:wrap;
-      margin-top:12px;
+      gap:12px;
+      margin-top:16px;
     }
     .spots-bar{
-      width:min(720px, 70vw);
+      flex:1;
       height:8px;
-      background:rgba(255,255,255,.14);
-      border-radius:999px;
+      background:rgba(255,255,255,.1);
+      border-radius:4px;
       overflow:hidden;
+      position:relative;
     }
     .spots-bar__fill{
       height:100%;
-      border-radius:999px;
       background:var(--accent);
+      border-radius:4px;
       transition:width 0.3s ease;
       width:0%;
     }
-    .spots-meta{
+    .spots-label{
       font-size:13px;
       color:var(--muted);
+      white-space:nowrap;
+      flex-shrink:0;
     }
     @media(max-width:768px){
-      .spots-text{
-        font-size:13px;
-        margin-top:12px;
+      .spots-notice{
+        padding:20px;
+        margin:24px auto 0;
       }
-      .spots-row{
+      .spots-notice h3{
+        font-size:16px;
+        margin-bottom:12px;
+      }
+      .spots-notice p{
+        font-size:14px;
+      }
+      .spots-bar-wrapper{
         flex-direction:column;
-        gap:10px;
+        align-items:stretch;
+        gap:8px;
       }
-      .spots-bar{
-        width:80vw;
-      }
-      .spots-meta{
+      .spots-label{
         text-align:center;
         font-size:12px;
       }
@@ -2979,15 +3001,24 @@
         <a href="/4-weken-proberen.html" class="hero-btn hero-btn-primary">4 weken proberen</a>
         <a href="/lidmaatschapstest.html" class="hero-btn hero-btn-secondary">Online lidmaatschapstest</a>
       </div>
-      <p class="spots-text">Let op: Healthy Habits zit vol.<br>Iedere maand komen er daarom maar beperkt plekken beschikbaar.<br>Nu nog <span id="spots-count"></span> plekken deze maand.</p>
-      <div class="spots-row">
+    </div>
+  </header>
+
+  <!-- PLEKKEN BESCHIKBAAR -->
+  <div class="container">
+    <div class="spots-notice">
+      <h3>Let op</h3>
+      <p>Healthy Habits zit vaak vol.</p>
+      <p>Daarom komen er elke maand maar beperkt plekken beschikbaar.</p>
+      <p>Deze maand zijn er nog <span id="spots-count"></span> plekken beschikbaar.</p>
+      <div class="spots-bar-wrapper">
         <div class="spots-bar">
           <div class="spots-bar__fill" id="spots-bar-fill"></div>
         </div>
-        <div class="spots-meta"><span id="spots-label"></span></div>
+        <span class="spots-label" id="spots-label"></span>
       </div>
     </div>
-  </header>
+  </div>
 
   <!-- ZWARTE CONTAINER ONDER HERO -->
   <section class="split-block">
