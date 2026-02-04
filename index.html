@@ -269,6 +269,24 @@
       background:rgba(255,255,255,.12);
       border-color:rgba(255,255,255,.25);
     }
+    .hero-tags{
+      font-size:13px;
+      color:var(--muted);
+      margin:12px 0 0;
+      line-height:1.3;
+      opacity:0.65;
+      white-space:nowrap;
+    }
+    @media(max-width:768px){
+      .hero-tags{
+        font-size:12px;
+        margin:10px 0 0;
+        line-height:1.2;
+        white-space:normal;
+        max-height:1.2em;
+        overflow:hidden;
+      }
+    }
 
     /* =========================
        SPLIT CONTENT BLOCK
@@ -2888,6 +2906,7 @@
         <a href="/4-weken-proberen.html" class="hero-btn hero-btn-primary">4 weken proberen</a>
         <a href="/lidmaatschapstest.html" class="hero-btn hero-btn-secondary">Online lidmaatschapstest</a>
       </div>
+      <p class="hero-tags">Milon • Fitness • Yoga</p>
     </div>
   </header>
 
