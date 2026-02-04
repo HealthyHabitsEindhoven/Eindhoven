@@ -1632,6 +1632,15 @@
       }
     }
     @media(max-width:768px){
+      /* Slider track en slides: auto height voor flexibele kaarten */
+      .reviews-section .reviews-carousel-track{
+        height:auto !important;
+        align-items:stretch !important;
+      }
+      .reviews-section .reviews-carousel-slides{
+        height:auto !important;
+        align-items:stretch !important;
+      }
       /* Testimonial cards krijgen exact dezelfde styling als aanpak cards op mobiel */
       .reviews-section .review-card{
         flex:0 0 calc(100% - 40px) !important;
@@ -1639,6 +1648,9 @@
         min-width:calc(100% - 40px);
         max-width:calc(100% - 40px);
         width:calc(100% - 40px);
+        height:auto !important;
+        min-height:0 !important;
+        max-height:none !important;
         border-radius:var(--radius);
         flex-shrink:0;
         scroll-snap-align:start;
@@ -1654,6 +1666,7 @@
       .reviews-section .review-card.active{
         flex:0 0 calc(100% - 40px) !important;
         transform:none !important;
+        height:auto !important;
       }
       /* Header met naam+leeftijd (zoals "Stap 1" in aanpak) */
       .reviews-section .review-card__header-mobile{
@@ -1668,12 +1681,13 @@
         letter-spacing:0.5px;
         border-radius:var(--radius) var(--radius) 0 0;
         margin:0;
+        flex-shrink:0;
       }
-      /* Image wrapper (zoals card__media in aanpak) */
+      /* Image wrapper met aspect-ratio voor mooie foto verhouding */
       .reviews-section .review-card__image{
         width:100% !important;
-        height:180px !important;
-        aspect-ratio:auto !important;
+        height:auto !important;
+        aspect-ratio:4/3 !important;
         overflow:hidden;
         background:rgba(255,255,255,.03);
         flex-shrink:0;
@@ -1692,23 +1706,31 @@
       .reviews-section .review-card__content{
         display:none !important;
       }
-      /* Mobile content (zoals card__body in aanpak) */
+      /* Mobile content (zoals card__body in aanpak) - kan volledig doorlopen */
       .reviews-section .review-card__content-mobile{
         display:block;
         padding:18px;
         flex:1;
+        overflow:visible;
+        max-height:none !important;
+        -webkit-line-clamp:unset !important;
       }
       .reviews-section .review-card__content-mobile .card__title{
         margin:0 0 6px;
         font-size:inherit;
         font-weight:600;
         color:var(--text);
+        overflow:visible;
+        max-height:none !important;
       }
       .reviews-section .review-card__content-mobile .card__text{
         margin:0;
         color:var(--muted);
         line-height:1.45;
         font-size:inherit;
+        overflow:visible;
+        max-height:none !important;
+        -webkit-line-clamp:unset !important;
       }
     }
     @media(max-width:560px){
@@ -2450,6 +2472,7 @@
       .review-card.active{
         flex:0 0 calc(100% - 40px) !important;
         transform:none !important;
+        height:auto !important;
       }
       .review-card__image{
         width:100% !important;
@@ -2485,23 +2508,32 @@
         letter-spacing:0.5px;
         border-radius:var(--radius) var(--radius) 0 0;
         margin:0;
+        flex-shrink:0;
       }
       .review-card__content-mobile{
         display:block;
         padding:18px;
         flex:1;
+        overflow:visible;
+        max-height:none !important;
+        -webkit-line-clamp:unset !important;
       }
       .review-card__content-mobile .card__title{
         margin:0 0 6px;
         font-size:inherit;
         font-weight:600;
         color:var(--text);
+        overflow:visible;
+        max-height:none !important;
       }
       .review-card__content-mobile .card__text{
         margin:0;
         color:var(--muted);
         line-height:1.45;
         font-size:inherit;
+        overflow:visible;
+        max-height:none !important;
+        -webkit-line-clamp:unset !important;
       }
       .review-card__name{
         font-size:20px;
