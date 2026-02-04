@@ -3167,7 +3167,6 @@ zelfs leuk.</p>
               </div>
             </div>
             <div class="card__body">
-              <div class="card__header">Verhaal</div>
               <h3 class="card__title">Monique</h3>
               <p class="card__text">Persoonlijk verhaal over de reis bij Healthy Habits</p>
             </div>
@@ -3186,7 +3185,6 @@ zelfs leuk.</p>
               </div>
             </div>
             <div class="card__body">
-              <div class="card__header">Verhaal</div>
               <h3 class="card__title">Ton & René</h3>
               <p class="card__text">Persoonlijk verhaal over de reis bij Healthy Habits</p>
             </div>
@@ -4540,10 +4538,12 @@ zelfs leuk.</p>
     .review-video-item.card .card__media {
       width: 100%;
       overflow: hidden;
-      border-radius: var(--radius) var(--radius) 0 0;
+      border-radius: var(--radius);
+      flex: 1;
     }
     .review-video-item.card .card__media .video-wrapper {
       width: 100%;
+      height: 100%;
       aspect-ratio: 16 / 9;
       border-radius: 0;
       overflow: hidden;
@@ -4559,18 +4559,6 @@ zelfs leuk.</p>
       padding: 20px;
       display: flex;
       flex-direction: column;
-      flex: 1;
-    }
-    .review-video-item.card .card__header {
-      width: 100%;
-      background: rgba(255,255,255,.04);
-      border-bottom: 1px solid var(--line);
-      color: var(--text);
-      padding: 12px 18px;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      margin: 0 0 12px;
     }
     .review-video-item.card .card__title {
       font-size: 20px;
