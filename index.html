@@ -2018,6 +2018,19 @@
       display: block;
       object-fit: cover;
     }
+    /* Hide Vimeo native controls completely */
+    .split-video .video-wrapper::before,
+    .review-video-item .video-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      pointer-events: none;
+      background: transparent;
+    }
 
     /* Individuele video scaling voor gelijke weergave zonder zwarte balken */
     .review-video-item:first-child .video-wrapper iframe {
@@ -2708,7 +2721,7 @@ zelfs leuk.</p>
       <div class="split-video hh-hero-video">
         <div class="video-wrapper">
           <iframe
-            src="https://player.vimeo.com/video/884819743?autoplay=1&muted=1&controls=0&background=1&title=0&byline=0&portrait=0&badge=0&sidedock=0&pip=0&dnt=1&transparent=1"
+            src="https://player.vimeo.com/video/884819743?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&sidedock=0&pip=0&dnt=1"
             allow="autoplay; fullscreen; picture-in-picture"
             allowfullscreen
             loading="lazy"
@@ -2897,7 +2910,7 @@ zelfs leuk.</p>
           <div class="review-video-item">
             <div class="video-wrapper">
               <iframe
-                src="https://player.vimeo.com/video/1157995417?h=clean&dnt=1&title=0&byline=0&portrait=0&badge=0&controls=0&background=1&transparent=1"
+                src="https://player.vimeo.com/video/1157995417?h=clean&dnt=1&title=0&byline=0&portrait=0&badge=0&background=1&autoplay=1&loop=1&muted=1"
                 allow="autoplay; fullscreen; picture-in-picture"
                 allowfullscreen
                 loading="lazy"
@@ -2913,7 +2926,7 @@ zelfs leuk.</p>
           <div class="review-video-item">
             <div class="video-wrapper">
               <iframe
-                src="https://player.vimeo.com/video/1157996124?h=clean&dnt=1&title=0&byline=0&portrait=0&badge=0&controls=0&background=1&transparent=1"
+                src="https://player.vimeo.com/video/1157996124?h=clean&dnt=1&title=0&byline=0&portrait=0&badge=0&background=1&autoplay=1&loop=1&muted=1"
                 allow="autoplay; fullscreen; picture-in-picture"
                 allowfullscreen
                 loading="lazy"
