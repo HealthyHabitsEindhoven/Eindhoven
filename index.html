@@ -815,6 +815,33 @@
       grid-template-columns:repeat(3,1fr);
       gap:18px;
     }
+    /* Desktop: herstel grid layouts */
+    @media(min-width:769px){
+      .grid{
+        display:grid !important;
+        grid-template-columns:repeat(3,1fr) !important;
+        gap:18px !important;
+      }
+      .vision-grid{
+        display:grid !important;
+        grid-template-columns:1.1fr .9fr !important;
+        gap:60px !important;
+      }
+      .review-videos-grid{
+        display:grid !important;
+        grid-template-columns:repeat(2,1fr) !important;
+        gap:28px !important;
+      }
+      .aanbod-grid{
+        display:grid !important;
+        grid-template-columns:repeat(4,1fr) !important;
+        gap:20px !important;
+      }
+      .coaches-grid{
+        display:grid !important;
+        grid-template-columns:repeat(3,1fr) !important;
+      }
+    }
     .card{
       background:rgba(255,255,255,.04);
       border:1px solid var(--line);
