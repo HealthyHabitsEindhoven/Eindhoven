@@ -93,32 +93,6 @@
     .topbar__nav a:hover{
       color:var(--accent);
     }
-    .topbar__lang{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      flex-shrink:0;
-      margin-right:16px;
-    }
-    .topbar__lang a{
-      color:var(--muted);
-      text-decoration:none;
-      font-size:13px;
-      font-weight:400;
-      transition:color 0.2s ease;
-      padding:4px 0;
-    }
-    .topbar__lang a:hover{
-      color:var(--text);
-    }
-    .topbar__lang a.active{
-      color:var(--text);
-      font-weight:500;
-    }
-    .topbar__lang span{
-      color:var(--muted);
-      font-size:13px;
-    }
     .topbar__cta{
       flex-shrink:0;
     }
@@ -1347,7 +1321,6 @@
         justify-content:center;
       }
       .topbar__nav,
-      .topbar__lang,
       .topbar__cta{
         display:none;
       }
@@ -1372,21 +1345,6 @@
       }
       .topbar__nav.mobile-open a:last-child{
         border-bottom:none;
-      }
-      .topbar__lang.mobile-open,
-      .topbar__cta.mobile-open{
-        display:flex;
-        position:fixed;
-        left:0;
-        right:0;
-        background:#000;
-        padding:16px 24px;
-        border-top:1px solid rgba(255,255,255,.08);
-        z-index:10000;
-      }
-      .topbar__lang.mobile-open{
-        top:calc(77px + 280px);
-        justify-content:center;
       }
       .topbar__cta.mobile-open{
         top:calc(77px + 280px + 50px);
@@ -1509,14 +1467,6 @@
       }
       .topbar__nav a{
         font-size:13px;
-      }
-      .topbar__lang{
-        margin-right:8px;
-        gap:4px;
-      }
-      .topbar__lang a,
-      .topbar__lang span{
-        font-size:11px;
       }
       .topbar__cta button{
         padding:8px 12px;
@@ -1875,11 +1825,6 @@
         <a href="../lidmaatschapstest.html">Online membership test</a>
         <a href="../over-ons.html">Our team</a>
       </nav>
-      <div class="topbar__lang" id="topbarLang">
-        <a href="../index.html">Nederlands</a>
-        <span>/</span>
-        <a href="index.html" class="active">English</a>
-      </div>
       <div class="topbar__cta" id="topbarCta">
         <a href="../4-weken-proberen.html"><button>Try 4 weeks</button></a>
       </div>
@@ -2667,34 +2612,6 @@ and who knows, just like many others, you might even start enjoying it.</p>
       }
     })();
 
-    // Taal-switch - markeer actieve taal op basis van URL
-    (function(){
-      const langLinks = document.querySelectorAll('.topbar__lang a');
-      const currentPath = window.location.pathname;
-      const currentHref = window.location.href;
-      
-      // Reset alle actieve states
-      langLinks.forEach(link => {
-        link.classList.remove('active');
-      });
-
-      // Bepaal actieve taal op basis van URL
-      // Als URL /en bevat, markeer English als actief, anders Nederlands (standaard)
-      if(currentPath.includes('/en') || currentHref.includes('/en/') || currentPath.includes('en/index.html')){
-        langLinks.forEach(link => {
-          if(link.getAttribute('href').includes('index.html') || link.textContent.trim() === 'English'){
-            link.classList.add('active');
-          }
-        });
-      } else {
-        // Standaard: Nederlands is actief
-        langLinks.forEach(link => {
-          if(link.getAttribute('href').includes('nieuw-2025.html') || link.textContent.trim() === 'Nederlands'){
-            link.classList.add('active');
-          }
-        });
-      }
-    })();
   </script>
   
   <script>
@@ -2702,7 +2619,6 @@ and who knows, just like many others, you might even start enjoying it.</p>
     (function(){
       const menuToggle = document.getElementById('menuToggle');
       const topbarNav = document.getElementById('topbarNav');
-      const topbarLang = document.getElementById('topbarLang');
       const topbarCta = document.getElementById('topbarCta');
       
       if(menuToggle && topbarNav){
@@ -2712,13 +2628,11 @@ and who knows, just like many others, you might even start enjoying it.</p>
           if(isOpen){
             menuToggle.classList.remove('active');
             topbarNav.classList.remove('mobile-open');
-            topbarLang.classList.remove('mobile-open');
             topbarCta.classList.remove('mobile-open');
             document.body.style.overflow = '';
           } else {
             menuToggle.classList.add('active');
             topbarNav.classList.add('mobile-open');
-            topbarLang.classList.add('mobile-open');
             topbarCta.classList.add('mobile-open');
             document.body.style.overflow = 'hidden';
           }
@@ -2730,7 +2644,6 @@ and who knows, just like many others, you might even start enjoying it.</p>
           link.addEventListener('click', function(){
             menuToggle.classList.remove('active');
             topbarNav.classList.remove('mobile-open');
-            topbarLang.classList.remove('mobile-open');
             topbarCta.classList.remove('mobile-open');
             document.body.style.overflow = '';
           });
