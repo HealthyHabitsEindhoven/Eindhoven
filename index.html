@@ -1919,6 +1919,43 @@
       color:var(--text);
       font-style:normal;
     }
+    /* Desktop: verberg mobile header en content, herstel originele styling */
+    @media(min-width:769px){
+      .review-card__header-mobile,
+      .review-card__content-mobile{
+        display:none !important;
+      }
+      /* Zorg dat desktop review-card styling niet wordt overschreven */
+      .reviews-section .review-card{
+        height:initial !important;
+        min-height:initial !important;
+        max-height:initial !important;
+      }
+      .reviews-section .review-card__image{
+        height:initial !important;
+        aspect-ratio:initial !important;
+        max-height:280px !important;
+        flex:0 0 48% !important;
+        width:48% !important;
+      }
+      .reviews-section .review-card__content{
+        display:flex !important;
+        flex:1 !important;
+        padding:20px !important;
+        flex-direction:column !important;
+      }
+      .reviews-section .review-card__content-mobile{
+        display:none !important;
+      }
+      .reviews-section .reviews-carousel-track{
+        height:initial !important;
+        align-items:center !important;
+      }
+      .reviews-section .reviews-carousel-slides{
+        height:initial !important;
+        align-items:initial !important;
+      }
+    }
     .reviews-nav{
       position:absolute;
       top:50%;
@@ -2534,6 +2571,30 @@
         overflow:visible;
         max-height:none !important;
         -webkit-line-clamp:unset !important;
+      }
+    }
+    /* Desktop: verberg mobile header en content, herstel originele styling */
+    @media(min-width:769px){
+      .review-card__header-mobile,
+      .review-card__content-mobile{
+        display:none !important;
+      }
+      /* Zorg dat desktop review-card styling niet wordt overschreven */
+      .review-card{
+        height:initial !important;
+        min-height:initial !important;
+        max-height:initial !important;
+      }
+      .review-card__image{
+        height:initial !important;
+        aspect-ratio:initial !important;
+        max-height:280px !important;
+      }
+      .review-card__content{
+        display:flex !important;
+      }
+      .review-card__content-mobile{
+        display:none !important;
       }
       .review-card__name{
         font-size:20px;
