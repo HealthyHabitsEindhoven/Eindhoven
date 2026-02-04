@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <base href="/Eindhoven/">
   <title>Succesverhalen | Sportschool Eindhoven Centrum | Healthy Habits</title>
   <meta name="description" content="Lees de succesverhalen van onze leden. Echte resultaten met begeleid sporten in Eindhoven centrum. Kleinschalige sportschool, warm en persoonlijk.">
   <meta name="robots" content="index,follow">
@@ -1215,7 +1214,13 @@
         const storyContent = successStoriesContent[normalizedName];
         
         const img = image.querySelector('img');
-        const imgSrcAttr = img ? img.getAttribute('src') : '';
+        let imgSrcAttr = img ? img.getAttribute('src') : '';
+        // Ensure root-absolute path for GitHub Pages
+        if(imgSrcAttr && !imgSrcAttr.startsWith('http') && !imgSrcAttr.startsWith('/')){
+          imgSrcAttr = '/Eindhoven/' + imgSrcAttr.replace(/^\.\//, '');
+        } else if(imgSrcAttr && imgSrcAttr.startsWith('./')){
+          imgSrcAttr = '/Eindhoven/' + imgSrcAttr.replace(/^\.\//, '');
+        }
         const imgAltAttr = img ? (img.getAttribute('alt') || 'Succesverhaal') : 'Succesverhaal';
         
         // Gebruik content uit object als beschikbaar, anders fallback
