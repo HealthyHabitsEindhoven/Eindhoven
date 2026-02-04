@@ -1632,6 +1632,7 @@
       }
     }
     @media(max-width:768px){
+      /* Testimonial cards krijgen exact dezelfde styling als aanpak cards op mobiel */
       .reviews-section .review-card{
         flex:0 0 calc(100% - 40px) !important;
         flex-direction:column !important;
@@ -1648,19 +1649,37 @@
         align-items:stretch;
         margin:0 auto;
         transform:none !important;
+        gap:0;
       }
       .reviews-section .review-card.active{
         flex:0 0 calc(100% - 40px) !important;
         transform:none !important;
       }
+      /* Header met naam+leeftijd (zoals "Stap 1" in aanpak) */
+      .reviews-section .review-card__header-mobile{
+        display:block;
+        width:100%;
+        background:rgba(255,255,255,.04);
+        border-bottom:1px solid var(--line);
+        color:var(--text);
+        padding:12px 18px;
+        font-size:14px;
+        font-weight:600;
+        letter-spacing:0.5px;
+        border-radius:var(--radius) var(--radius) 0 0;
+        margin:0;
+      }
+      /* Image wrapper (zoals card__media in aanpak) */
       .reviews-section .review-card__image{
         width:100% !important;
-        aspect-ratio:1/1;
+        height:180px !important;
+        aspect-ratio:auto !important;
         overflow:hidden;
         background:rgba(255,255,255,.03);
         flex-shrink:0;
         position:relative;
-        border-radius:var(--radius);
+        border-radius:0;
+        display:block;
       }
       .reviews-section .review-card__image img{
         width:100%;
@@ -1669,8 +1688,27 @@
         object-position:center center;
         display:block;
       }
+      /* Desktop content verbergen */
       .reviews-section .review-card__content{
         display:none !important;
+      }
+      /* Mobile content (zoals card__body in aanpak) */
+      .reviews-section .review-card__content-mobile{
+        display:block;
+        padding:18px;
+        flex:1;
+      }
+      .reviews-section .review-card__content-mobile .card__title{
+        margin:0 0 6px;
+        font-size:inherit;
+        font-weight:600;
+        color:var(--text);
+      }
+      .reviews-section .review-card__content-mobile .card__text{
+        margin:0;
+        color:var(--muted);
+        line-height:1.45;
+        font-size:inherit;
       }
     }
     @media(max-width:560px){
@@ -2970,8 +3008,9 @@ zelfs leuk.</p>
           <button class="reviews-nav prev" id="prevReview" aria-label="Vorige review">‹</button>
           <div class="reviews-carousel-track" id="reviewsTrack">
             <div class="reviews-carousel-slides" id="reviewsSlides">
-              <article class="review-card active exp-card">
-                <div class="review-card__image exp-media hh-testi-media">
+              <article class="review-card active exp-card" data-name="Madelon" data-age="52" data-goal="Fitter worden en meer energie krijgen" data-result="Doel gehaald! Persoonlijke begeleiding heeft geholpen om fitter te worden en meer energie te krijgen.">
+                <div class="review-card__header-mobile card__header">Madelon, 52</div>
+                <div class="review-card__image exp-media hh-testi-media card__media">
                   <img class="hh-testi-img" src="/assets/images/Succesverhalen-pagina/madelon.jpeg" alt="Madelon" loading="lazy" decoding="async">
                 </div>
                 <div class="review-card__content exp-body">
@@ -2979,10 +3018,15 @@ zelfs leuk.</p>
                   <p class="review-card__age">52 jaar</p>
                   <p class="review-card__quote">Ik heb mijn doel gehaald! De persoonlijke begeleiding bij Healthy Habits heeft me geholpen om fitter te worden en meer energie te krijgen.</p>
                 </div>
+                <div class="review-card__content-mobile card__body">
+                  <h3 class="card__title">Doel: Fitter worden en meer energie krijgen</h3>
+                  <p class="card__text">Resultaat: Doel gehaald! Persoonlijke begeleiding heeft geholpen om fitter te worden en meer energie te krijgen.</p>
+                </div>
               </article>
 
-              <article class="review-card exp-card">
-                <div class="review-card__image exp-media hh-testi-media">
+              <article class="review-card exp-card" data-name="Ronald" data-age="54" data-goal="Fitter worden en vooruitgang zien" data-result="Combinatie van training, voeding en begeleiding werkt perfect. Echte vooruitgang en fitter gevoel.">
+                <div class="review-card__header-mobile card__header">Ronald, 54</div>
+                <div class="review-card__image exp-media hh-testi-media card__media">
                   <img class="hh-testi-img" src="/assets/images/Succesverhalen-pagina/Ronald.jpeg" alt="Ronald" loading="lazy" decoding="async">
                 </div>
                 <div class="review-card__content exp-body">
@@ -2990,10 +3034,15 @@ zelfs leuk.</p>
                   <p class="review-card__age">54 jaar</p>
                   <p class="review-card__quote">De combinatie van training, voeding en begeleiding werkt perfect. Ik zie echte vooruitgang en voel me fitter.</p>
                 </div>
+                <div class="review-card__content-mobile card__body">
+                  <h3 class="card__title">Doel: Fitter worden en vooruitgang zien</h3>
+                  <p class="card__text">Resultaat: Combinatie van training, voeding en begeleiding werkt perfect. Echte vooruitgang en fitter gevoel.</p>
+                </div>
               </article>
 
-              <article class="review-card exp-card">
-                <div class="review-card__image exp-media hh-testi-media">
+              <article class="review-card exp-card" data-name="Ingrid" data-age="47" data-goal="Fitter worden en meer energie krijgen" data-result="Doel behaald! Echte vooruitgang zichtbaar.">
+                <div class="review-card__header-mobile card__header">Ingrid, 47</div>
+                <div class="review-card__image exp-media hh-testi-media card__media">
                   <img class="hh-testi-img" src="/assets/images/Succesverhalen-pagina/Ingrid.jpeg" alt="Ingrid" loading="lazy" decoding="async">
                 </div>
                 <div class="review-card__content exp-body">
@@ -3001,10 +3050,15 @@ zelfs leuk.</p>
                   <p class="review-card__age">47 jaar</p>
                   <p class="review-card__quote">Fitter worden en meer energie krijgen was mijn doel. Dat is gelukt! Ik zie nu echte vooruitgang.</p>
                 </div>
+                <div class="review-card__content-mobile card__body">
+                  <h3 class="card__title">Doel: Fitter worden en meer energie krijgen</h3>
+                  <p class="card__text">Resultaat: Doel behaald! Echte vooruitgang zichtbaar.</p>
+                </div>
               </article>
 
-              <article class="review-card exp-card">
-                <div class="review-card__image exp-media hh-testi-media">
+              <article class="review-card exp-card" data-name="Esther" data-age="38" data-goal="Vooruitgang boeken met training en voeding" data-result="Combinatie van training, voeding en begeleiding werkt perfect. Echte vooruitgang zichtbaar.">
+                <div class="review-card__header-mobile card__header">Esther, 38</div>
+                <div class="review-card__image exp-media hh-testi-media card__media">
                   <img class="hh-testi-img" src="/assets/images/Succesverhalen-pagina/Esther.jpeg" alt="Esther" loading="lazy" decoding="async">
                 </div>
                 <div class="review-card__content exp-body">
@@ -3012,10 +3066,15 @@ zelfs leuk.</p>
                   <p class="review-card__age">38 jaar</p>
                   <p class="review-card__quote">De combinatie van training, voeding en begeleiding werkt perfect. Ik zie echte vooruitgang.</p>
                 </div>
+                <div class="review-card__content-mobile card__body">
+                  <h3 class="card__title">Doel: Vooruitgang boeken met training en voeding</h3>
+                  <p class="card__text">Resultaat: Combinatie van training, voeding en begeleiding werkt perfect. Echte vooruitgang zichtbaar.</p>
+                </div>
               </article>
 
-              <article class="review-card exp-card">
-                <div class="review-card__image exp-media hh-testi-media">
+              <article class="review-card exp-card" data-name="Harry" data-age="52" data-goal="Gezond ouder worden met meer kracht" data-result="Doel bereikt met begeleiding van Healthy Habits.">
+                <div class="review-card__header-mobile card__header">Harry, 52</div>
+                <div class="review-card__image exp-media hh-testi-media card__media">
                   <img class="hh-testi-img" src="/assets/images/Succesverhalen-pagina/Harry.jpeg" alt="Harry" loading="lazy" decoding="async">
                 </div>
                 <div class="review-card__content exp-body">
@@ -3023,16 +3082,25 @@ zelfs leuk.</p>
                   <p class="review-card__age">52 jaar</p>
                   <p class="review-card__quote">Gezond ouder worden met meer kracht. Dat doel heb ik bereikt met de begeleiding van Healthy Habits.</p>
                 </div>
+                <div class="review-card__content-mobile card__body">
+                  <h3 class="card__title">Doel: Gezond ouder worden met meer kracht</h3>
+                  <p class="card__text">Resultaat: Doel bereikt met begeleiding van Healthy Habits.</p>
+                </div>
               </article>
 
-              <article class="review-card exp-card">
-                <div class="review-card__image exp-media hh-testi-media">
+              <article class="review-card exp-card" data-name="Laura" data-age="36" data-goal="Werken aan gezondheid op eigen tempo" data-result="Eindelijk een plek gevonden waar dit perfect mogelijk is.">
+                <div class="review-card__header-mobile card__header">Laura, 36</div>
+                <div class="review-card__image exp-media hh-testi-media card__media">
                   <img class="hh-testi-img" src="/assets/images/Succesverhalen-pagina/Laura.jpeg" alt="Laura" loading="lazy" decoding="async">
                 </div>
                 <div class="review-card__content exp-body">
                   <h3 class="review-card__name">Laura</h3>
                   <p class="review-card__age">36 jaar</p>
                   <p class="review-card__quote">Eindelijk een plek waar ik op mijn eigen tempo kan werken aan mijn gezondheid. Perfect!</p>
+                </div>
+                <div class="review-card__content-mobile card__body">
+                  <h3 class="card__title">Doel: Werken aan gezondheid op eigen tempo</h3>
+                  <p class="card__text">Resultaat: Eindelijk een plek gevonden waar dit perfect mogelijk is.</p>
                 </div>
               </article>
             </div>
