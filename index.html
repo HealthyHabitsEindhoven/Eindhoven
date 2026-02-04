@@ -583,18 +583,7 @@
       outline:none;
     }
     .split-video-progress{
-      position:absolute;
-      bottom:0;
-      left:0;
-      right:0;
-      height:10px;
-      z-index:5;
-      cursor:pointer;
-      transition:height 150ms ease;
-      pointer-events:auto;
-    }
-    .split-video:hover .split-video-progress{
-      height:12px;
+      display:none !important;
     }
     .split-video-progress-bg{
       position:absolute;
@@ -2242,27 +2231,13 @@
       opacity:1;
     }
     .review-video-progress{
-      position:absolute;
-      bottom:0;
-      left:0;
-      right:0;
-      height:3px;
-      z-index:3;
-      cursor:pointer;
+      display:none !important;
     }
     .review-video-progress-bg{
-      position:absolute;
-      inset:0;
-      background:rgba(0,0,0,.3);
+      display:none !important;
     }
     .review-video-progress-bar{
-      position:absolute;
-      left:0;
-      top:0;
-      bottom:0;
-      width:0%;
-      background:var(--accent);
-      transition:width 100ms linear;
+      display:none !important;
     }
     .video-info{
       margin-top:16px;
@@ -2772,7 +2747,7 @@ zelfs leuk.</p>
       <div class="split-video hh-hero-video">
         <div class="video-wrapper">
           <iframe
-            src="https://player.vimeo.com/video/884819743?autoplay=1&muted=1&controls=1&title=0&byline=0&portrait=0&badge=0&sidedock=0&pip=0&dnt=1"
+            src="https://player.vimeo.com/video/884819743?autoplay=1&muted=1&controls=0&background=1&title=0&byline=0&portrait=0&badge=0&sidedock=0&pip=0&dnt=1"
             allow="autoplay; fullscreen; picture-in-picture"
             allowfullscreen
             loading="lazy"
@@ -2961,7 +2936,7 @@ zelfs leuk.</p>
           <div class="review-video-item">
             <div class="video-wrapper">
               <iframe
-                src="https://player.vimeo.com/video/1157995417?h=clean&dnt=1&title=0&byline=0&portrait=0&badge=0&controls=1"
+                src="https://player.vimeo.com/video/1157995417?h=clean&dnt=1&title=0&byline=0&portrait=0&badge=0&controls=0&background=1"
                 allow="autoplay; fullscreen; picture-in-picture"
                 allowfullscreen
                 loading="lazy"
@@ -2977,7 +2952,7 @@ zelfs leuk.</p>
           <div class="review-video-item">
             <div class="video-wrapper">
               <iframe
-                src="https://player.vimeo.com/video/1157996124?h=clean&dnt=1&title=0&byline=0&portrait=0&badge=0&controls=1"
+                src="https://player.vimeo.com/video/1157996124?h=clean&dnt=1&title=0&byline=0&portrait=0&badge=0&controls=0&background=1"
                 allow="autoplay; fullscreen; picture-in-picture"
                 allowfullscreen
                 loading="lazy"
