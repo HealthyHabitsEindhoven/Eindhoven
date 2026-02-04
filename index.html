@@ -238,9 +238,15 @@
     }
     .hero-buttons{
       display:flex;
+      flex-direction:column;
+      align-items:center;
+      margin-top:24px;
+    }
+    .hero-buttons-row{
+      display:flex;
       gap:16px;
       flex-wrap:wrap;
-      margin-top:24px;
+      justify-content:center;
     }
     .hero-btn{
       display:inline-block;
@@ -281,6 +287,7 @@
       background:none;
       border:none;
       border-radius:0;
+      max-width:fit-content;
     }
     @media(max-width:768px){
       .hero-tags{
@@ -2905,10 +2912,12 @@
       <h1>De sportschool waar je<br>niet aan je lot wordt<br>overgelaten.</h1>
       <p class="subtitle">Gefeliciteerd! Je hebt het gevonden, een stukje geluk in Eindhoven.</p>
       <div class="hero-buttons">
-        <a href="/4-weken-proberen.html" class="hero-btn hero-btn-primary">4 weken proberen</a>
-        <a href="/lidmaatschapstest.html" class="hero-btn hero-btn-secondary">Online lidmaatschapstest</a>
+        <div class="hero-buttons-row">
+          <a href="/4-weken-proberen.html" class="hero-btn hero-btn-primary">4 weken proberen</a>
+          <a href="/lidmaatschapstest.html" class="hero-btn hero-btn-secondary">Online lidmaatschapstest</a>
+        </div>
+        <p class="hero-tags">Milon • Fitness • Yoga</p>
       </div>
-      <p class="hero-tags">Milon • Fitness • Yoga</p>
     </div>
   </header>
 
