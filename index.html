@@ -2653,8 +2653,16 @@
       }
       .grid{grid-template-columns:1fr}
       .split-grid{
-        grid-template-columns:1fr;
-        display:block;
+        grid-template-columns:1fr !important;
+        display:block !important;
+      }
+      .split-text{
+        order:initial;
+      }
+      .split-video{
+        order:initial;
+        max-width:100%;
+        width:100%;
       }
       .vision-grid{grid-template-columns:1fr; gap:40px}
       .vision-left{width:420px;height:420px;margin:0 auto;position:relative;display:flex;justify-content:center;align-items:center}
