@@ -912,7 +912,6 @@
     (function(){
       const menuToggle = document.getElementById('menuToggle');
       const topbarNav = document.getElementById('topbarNav');
-      const topbarLang = document.getElementById('topbarLang');
       const topbarCta = document.getElementById('topbarCta');
       
       if(menuToggle && topbarNav){
@@ -922,13 +921,11 @@
           if(isOpen){
             menuToggle.classList.remove('active');
             topbarNav.classList.remove('mobile-open');
-            topbarLang.classList.remove('mobile-open');
             topbarCta.classList.remove('mobile-open');
             document.body.style.overflow = '';
           } else {
             menuToggle.classList.add('active');
             topbarNav.classList.add('mobile-open');
-            topbarLang.classList.add('mobile-open');
             topbarCta.classList.add('mobile-open');
             document.body.style.overflow = 'hidden';
           }
@@ -940,7 +937,6 @@
           link.addEventListener('click', function(){
             menuToggle.classList.remove('active');
             topbarNav.classList.remove('mobile-open');
-            topbarLang.classList.remove('mobile-open');
             topbarCta.classList.remove('mobile-open');
             document.body.style.overflow = '';
           });
