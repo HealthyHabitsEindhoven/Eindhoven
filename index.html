@@ -842,6 +842,19 @@
         grid-template-columns:repeat(3,1fr) !important;
       }
     }
+    /* Override mobiele grid regels op desktop - zorg dat grids niet kapot gaan */
+    @media(min-width:769px){
+      .grid{
+        display:grid !important;
+        grid-template-columns:repeat(3,1fr) !important;
+        gap:18px !important;
+      }
+      .review-videos-grid{
+        display:grid !important;
+        grid-template-columns:repeat(2,1fr) !important;
+        gap:28px !important;
+      }
+    }
     .card{
       background:rgba(255,255,255,.04);
       border:1px solid var(--line);
