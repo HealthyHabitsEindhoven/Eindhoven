@@ -634,7 +634,7 @@
     .aanbod-card{
       flex:0 0 calc(33.333% - 14px);
       min-width:320px;
-      aspect-ratio:4/3;
+      height:340px;
       border-radius:var(--radius);
       overflow:hidden;
       position:relative;
@@ -647,6 +647,12 @@
       .aanbod-card{
         flex:0 0 calc(100% / 1.2);
         min-width:280px;
+        height:280px;
+      }
+    }
+    @media(min-width:1200px){
+      .aanbod-card{
+        height:420px;
       }
     }
     .aanbod-card__image{
