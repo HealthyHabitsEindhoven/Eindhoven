@@ -3758,6 +3758,72 @@ zelfs leuk.</p>
       });
     })();
 
+    // Aanbod marquee - pause bij touch/drag
+    (function(){
+      const marqueeTrack = document.getElementById('aanbodMarquee');
+      const marqueeSlides = marqueeTrack?.querySelector('.aanbod-marquee-slides');
+      
+      if(!marqueeTrack || !marqueeSlides) return;
+      
+      // Check voor prefers-reduced-motion
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(prefersReducedMotion) return; // Geen JS nodig als reduced motion actief is
+      
+      let isPaused = false;
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let isDragging = false;
+      
+      // Pause bij touch start
+      function handleTouchStart(e){
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        isDragging = false;
+        marqueeSlides.style.animationPlayState = 'paused';
+        isPaused = true;
+      }
+      
+      // Check of user aan het draggen is
+      function handleTouchMove(e){
+        if(!isPaused) return;
+        const touchX = e.touches[0].clientX;
+        const touchY = e.touches[0].clientY;
+        const deltaX = Math.abs(touchX - touchStartX);
+        const deltaY = Math.abs(touchY - touchStartY);
+        
+        // Als horizontale beweging groter is dan verticale, is het een drag
+        if(deltaX > deltaY && deltaX > 10){
+          isDragging = true;
+        }
+      }
+      
+      // Resume na touch end (met kleine delay)
+      function handleTouchEnd(){
+        if(isPaused && !isDragging){
+          // Korte pause voor tap (niet drag)
+          setTimeout(() => {
+            if(!isDragging){
+              marqueeSlides.style.animationPlayState = 'running';
+              isPaused = false;
+            }
+          }, 500);
+        } else if(isDragging){
+          // Na drag, resume na langere tijd
+          setTimeout(() => {
+            marqueeSlides.style.animationPlayState = 'running';
+            isPaused = false;
+            isDragging = false;
+          }, 2000);
+        }
+      }
+      
+      // Event listeners voor touch
+      marqueeTrack.addEventListener('touchstart', handleTouchStart, { passive: true });
+      marqueeTrack.addEventListener('touchmove', handleTouchMove, { passive: true });
+      marqueeTrack.addEventListener('touchend', handleTouchEnd, { passive: true });
+      marqueeTrack.addEventListener('touchcancel', handleTouchEnd, { passive: true });
+    })();
+
     // Splash screen - FAIL-SAFE: Verwijder altijd, nooit blijven hangen
     (function(){
       const splashScreen = document.getElementById('splashScreen');
