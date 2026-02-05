@@ -304,83 +304,6 @@
     }
 
     /* =========================
-       SPOTS AVAILABLE BLOCK
-    ========================== */
-    .spots-notice{
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.1);
-      border-radius:var(--radius);
-      padding:24px;
-      margin:32px auto 0;
-      max-width:600px;
-      text-align:center;
-    }
-    .spots-notice h3{
-      font-size:18px;
-      font-weight:700;
-      color:var(--text);
-      margin:0 0 16px;
-    }
-    .spots-notice p{
-      font-size:15px;
-      color:var(--muted);
-      line-height:1.6;
-      margin:0 0 12px;
-    }
-    .spots-notice p:last-of-type{
-      margin-bottom:20px;
-    }
-    .spots-bar-wrapper{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-top:16px;
-    }
-    .spots-bar{
-      flex:1;
-      height:8px;
-      background:rgba(255,255,255,.1);
-      border-radius:4px;
-      overflow:hidden;
-      position:relative;
-    }
-    .spots-bar__fill{
-      height:100%;
-      background:var(--accent);
-      border-radius:4px;
-      transition:width 0.3s ease;
-      width:0%;
-    }
-    .spots-label{
-      font-size:13px;
-      color:var(--muted);
-      white-space:nowrap;
-      flex-shrink:0;
-    }
-    @media(max-width:768px){
-      .spots-notice{
-        padding:20px;
-        margin:24px auto 0;
-      }
-      .spots-notice h3{
-        font-size:16px;
-        margin-bottom:12px;
-      }
-      .spots-notice p{
-        font-size:14px;
-      }
-      .spots-bar-wrapper{
-        flex-direction:column;
-        align-items:stretch;
-        gap:8px;
-      }
-      .spots-label{
-        text-align:center;
-        font-size:12px;
-      }
-    }
-
-    /* =========================
        SPLIT CONTENT BLOCK
     ========================== */
     .split-block{
@@ -3004,22 +2927,6 @@
     </div>
   </header>
 
-  <!-- PLEKKEN BESCHIKBAAR -->
-  <div class="container">
-    <div class="spots-notice">
-      <h3>Let op</h3>
-      <p>Healthy Habits zit vaak vol.</p>
-      <p>Daarom komen er elke maand maar beperkt plekken beschikbaar.</p>
-      <p>Deze maand zijn er nog <span id="spots-count"></span> plekken beschikbaar.</p>
-      <div class="spots-bar-wrapper">
-        <div class="spots-bar">
-          <div class="spots-bar__fill" id="spots-bar-fill"></div>
-        </div>
-        <span class="spots-label" id="spots-label"></span>
-      </div>
-    </div>
-  </div>
-
   <!-- ZWARTE CONTAINER ONDER HERO -->
   <section class="split-block">
     <div class="container split-grid split-layout hero-split">
@@ -4618,54 +4525,6 @@ zelfs leuk.</p>
       margin: 0;
     }
   </style>
-
-  <!-- Spots Available Counter -->
-  <script>
-    (function(){
-      function updateSpotsCounter(){
-        const today = new Date();
-        const dayOfMonth = today.getDate();
-        let spotsAvailable = 8;
-        
-        // Bepaal aantal plekken op basis van dag van de maand
-        if(dayOfMonth >= 20){
-          spotsAvailable = 2;
-        } else if(dayOfMonth >= 16){
-          spotsAvailable = 4;
-        } else {
-          // dag 1 t/m 15: 8 plekken
-          spotsAvailable = 8;
-        }
-        
-        const maxSpots = 8;
-        const fillPercentage = (spotsAvailable / maxSpots) * 100;
-        
-        // Update tekst
-        const spotsCountEl = document.getElementById('spots-count');
-        const spotsLabelEl = document.getElementById('spots-label');
-        const spotsBarFillEl = document.getElementById('spots-bar-fill');
-        
-        if(spotsCountEl){
-          spotsCountEl.textContent = spotsAvailable;
-        }
-        
-        if(spotsLabelEl){
-          spotsLabelEl.textContent = spotsAvailable + ' van ' + maxSpots + ' plekken beschikbaar';
-        }
-        
-        if(spotsBarFillEl){
-          spotsBarFillEl.style.width = fillPercentage + '%';
-        }
-      }
-      
-      // Update bij page load
-      if(document.readyState === 'loading'){
-        document.addEventListener('DOMContentLoaded', updateSpotsCounter);
-      } else {
-        updateSpotsCounter();
-      }
-    })();
-  </script>
 
 </body>
 </html>
