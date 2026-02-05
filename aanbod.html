@@ -159,6 +159,18 @@
       position:relative;
       min-height:100vh;
       display:flex;
+    }
+    .hero--simple{
+      min-height:auto;
+      padding-top:120px;
+      padding-bottom:48px;
+      background:var(--bg-main);
+    }
+    .hero--simple img,
+    .hero--simple .hero__overlay{
+      display:none;
+    }
+    .hero:not(.hero--simple){
       align-items:center;
       overflow:hidden;
       background:var(--bg-main);
@@ -810,9 +822,7 @@
   </div>
 
   <!-- HERO -->
-  <section class="hero">
-    <img src="/assets/images/home/intake.jpg" alt="Healthy Habits aanbod" width="1920" height="1080" decoding="async" loading="eager">
-    <div class="hero__overlay"></div>
+  <section class="hero hero--simple">
     <div class="container hero-content">
       <h1>Ons aanbod</h1>
       <p>Ontdek wat Healthy Habits voor jou kan betekenen</p>
