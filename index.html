@@ -278,17 +278,26 @@
       border-color:rgba(255,255,255,.25);
     }
     .hero-bullets{
-      margin-top:12px;
-      text-align:center;
-      font-size:14px;
-      letter-spacing:0.5px;
-      color:rgba(255,255,255,0.85);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
+      margin:12px 0 0;
+      padding:0 16px 8px;
       width:100%;
+      font-size:14px;
+      line-height:1.2;
+      letter-spacing:.4px;
+      color:rgba(255,255,255,.9);
+      position:relative;
+      z-index:10;
     }
+    .hero-bullets .dot{opacity:.85}
     @media(max-width:768px){
       .hero-bullets{
         margin-top:10px;
         font-size:13px;
+        gap:8px;
       }
     }
 
@@ -2951,7 +2960,10 @@ zelfs leuk.</p>
             title="Healthy Habits video">
           </iframe>
         </div>
-        <div class="hero-bullets">Milon • Fitness • Yoga</div>
+        <!-- BULLETS-ANCHOR-HEALTHYHABITS -->
+        <div class="hero-bullets" aria-label="Aanbod">
+          Milon <span class="dot">•</span> Fitness <span class="dot">•</span> Yoga
+        </div>
       </div>
     </div>
   </section>
@@ -4296,8 +4308,13 @@ zelfs leuk.</p>
 
   /* Fix lijn onder hero video */
   .hh-hero-video {
-    overflow: hidden;
+    overflow: visible;
     line-height: 0;
+  }
+
+  .hh-hero-video .video-wrapper {
+    overflow: hidden;
+    border-radius: var(--radius);
   }
 
   .hh-hero-video video,
@@ -4310,11 +4327,6 @@ zelfs leuk.</p>
   .hh-hero-video video {
     object-fit: cover;
   }
-
-  /* Als de container geen vaste hoogte heeft */
-  .hh-hero-video {
-    aspect-ratio: 16 / 9;
-    }
     /* Onze aanpak sectie specifieke grid styling */
     @media (min-width: 769px) {
       #onze-aanpak .grid {
