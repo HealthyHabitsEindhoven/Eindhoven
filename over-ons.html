@@ -13,9 +13,6 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/logo/favicon.png">
   <link rel="apple-touch-icon" href="/logo/favicon.png">
   
-  <!-- Preload hero image for iOS Safari -->
-  <link rel="preload" as="image" href="/assets/images/home/hoofdfoto.jpg" imagesrcset="/assets/images/home/hoofdfoto.jpg 1920w">
-
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TL31XLWFEF"></script>
   <script>
@@ -156,56 +153,25 @@
     body{ padding-top:77px; }
 
     /* =========================
-       HERO
+       TEAM HEADER SECTIE
     ========================== */
-    .hero{
-      position:relative;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      overflow:hidden;
-      background:var(--bg-main);
+    .team-header-section{
+      padding:80px 0;
+      background:var(--bg-warm);
     }
-    .hero--team{
-      background-image:url('/assets/images/home/hoofdfoto.jpg');
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
-    }
-    .hero img{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:center center;
-      filter:brightness(.6);
-    }
-    .hero__overlay{
-      position:absolute;
-      inset:0;
-      background:linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 9%, rgba(0,0,0,0.3) 18%, rgba(0,0,0,0.1) 24%, rgba(0,0,0,0) 30%),
-                  linear-gradient(to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0) 100%);
-      background-blend-mode:multiply;
-      z-index:1;
-    }
-    .hero-content{
-      position:relative;
-      z-index:2;
-      padding:48px 0;
+    .team-header{
       text-align:center;
+      margin-bottom:48px;
     }
-    .hero h1{
-      font-size:clamp(32px,5vw,56px);
+    .team-header h1{
+      font-size:32px;
       margin:0 0 12px;
+      color:var(--text);
     }
-    .hero p{
-      max-width:55ch;
+    .team-header p{
       color:var(--muted);
       font-size:18px;
-      margin:0 0 32px;
-      margin-left:auto;
-      margin-right:auto;
+      margin:0;
     }
 
     /* =========================
@@ -589,6 +555,12 @@
        RESPONSIVE
     ========================== */
     @media(max-width:900px){
+      .team-header h1{
+        font-size:28px;
+      }
+      .team-header p{
+        font-size:16px;
+      }
       .team-grid{
         grid-template-columns:repeat(2,1fr);
         gap:20px;
@@ -674,13 +646,13 @@
     </div>
   </div>
 
-  <!-- HERO -->
-  <section class="hero hero--team">
-    <div class="hero__overlay"></div>
-    <div class="container hero-content">
-      <h1>Ons team</h1>
-      <p>Het écht en persoonlijk helpen.</p>
-      <p>Bij Healthy Habits werken we met een deskundig en betrokken team. Zo is er altijd een coach die perfect bij jou past.</p>
+  <!-- TEAM HEADER SECTIE -->
+  <section class="team-header-section">
+    <div class="container">
+      <div class="team-header">
+        <h1>Ons team</h1>
+        <p>Maak kennis met ons deskundige en betrokken team</p>
+      </div>
     </div>
   </section>
 
