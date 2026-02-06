@@ -1804,6 +1804,12 @@
         line-height:1.45;
         font-size:inherit;
         overflow:visible;
+      }
+      .reviews-section .review-card__content-mobile .card__text::before{
+        content:""";
+      }
+      .reviews-section .review-card__content-mobile .card__text::after{
+        content:""";
         max-height:none !important;
         -webkit-line-clamp:unset !important;
       }
@@ -1993,6 +1999,12 @@
       line-height:1.6;
       color:var(--text);
       font-style:normal;
+    }
+    .review-card__quote::before{
+      content:""";
+    }
+    .review-card__quote::after{
+      content:""";
     }
     /* Desktop: verberg mobile header en content, herstel originele styling */
     @media(min-width:769px){
