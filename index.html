@@ -2952,6 +2952,7 @@ zelfs leuk.</p>
       <div class="split-video hh-hero-video hero-media">
         <div class="video-wrapper">
           <iframe
+            id="heroVimeoIframe"
             src="https://player.vimeo.com/video/884819743?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&sidedock=0&pip=0&dnt=1"
             allow="autoplay; fullscreen; picture-in-picture"
             allowfullscreen
@@ -2959,6 +2960,9 @@ zelfs leuk.</p>
             referrerpolicy="strict-origin-when-cross-origin"
             title="Healthy Habits video">
           </iframe>
+          <button class="hero-video-play-btn" id="heroPlayBtn" aria-label="Video afspelen met geluid">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </button>
         </div>
         <!-- BULLETS-ANCHOR-HEALTHYHABITS -->
         <div class="hero-bullets" aria-label="Aanbod">
@@ -4068,6 +4072,21 @@ zelfs leuk.</p>
   <!-- Vimeo Player API -->
   <script src="https://player.vimeo.com/api/player.js">  </script>
 
+  <script>
+    // Hero video play button - unmute and play with sound
+    (function(){
+      const playBtn = document.getElementById('heroPlayBtn');
+      const iframe = document.getElementById('heroVimeoIframe');
+      if(!playBtn || !iframe) return;
+      
+      playBtn.addEventListener('click', function(){
+        // Switch to video with sound
+        const newSrc = 'https://player.vimeo.com/video/884819743?autoplay=1&loop=1&muted=0&title=0&byline=0&portrait=0&badge=0';
+        iframe.src = newSrc;
+        playBtn.classList.add('hidden');
+      });
+    })();
+  </script>
 
   <style>
   @media (max-width: 768px) {
@@ -4299,6 +4318,50 @@ zelfs leuk.</p>
   .hh-hero-video .video-wrapper {
     overflow: hidden;
     border-radius: 16px 16px 0 0 !important;
+    position: relative;
+  }
+
+  /* Hero video play button */
+  .hero-video-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.55);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+  }
+  .hero-video-play-btn:hover {
+    background: rgba(0, 0, 0, 0.7);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+  .hero-video-play-btn svg {
+    margin-left: 3px;
+  }
+  .hero-video-play-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  @media (max-width: 768px) {
+    .hero-video-play-btn {
+      width: 60px;
+      height: 60px;
+    }
+    .hero-video-play-btn svg {
+      width: 20px;
+      height: 20px;
+    }
   }
 
   .hh-hero-video video,
