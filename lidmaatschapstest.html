@@ -389,8 +389,58 @@
     }
 
     /* =========================
-       REVIEWS
+       REVIEWS CAROUSEL
     ========================== */
+    .reviews-carousel-nav{
+      display:none;
+    }
+    @media(max-width:900px){
+      .reviews-carousel-nav{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:16px;
+        margin-top:32px;
+      }
+    }
+    .reviews-carousel-btn{
+      width:44px;
+      height:44px;
+      min-width:44px;
+      min-height:44px;
+      border-radius:50%;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      font-size:24px;
+      line-height:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:all 0.3s ease;
+      position:relative;
+    }
+    .reviews-carousel-btn:hover,
+    .reviews-carousel-btn:focus{
+      border-color:var(--accent);
+      background:rgba(255,255,255,.08);
+      outline:none;
+    }
+    .reviews-carousel-btn:hover::before,
+    .reviews-carousel-btn:focus::before,
+    .reviews-carousel-btn:active::before{
+      content:'';
+      position:absolute;
+      inset:-2px;
+      border-radius:50%;
+      border:2px solid var(--accent);
+      pointer-events:none;
+    }
+    .reviews-carousel-btn:active{
+      transform:scale(0.95);
+    }
+
     .reviews-section{
       padding:80px 0;
       background:var(--bg-warm);
@@ -404,11 +454,21 @@
       margin:0 0 8px;
       color:var(--text);
     }
+    .reviews-header p{
+      color:var(--muted);
+      font-size:16px;
+      margin:0;
+    }
     .reviews-carousel-wrapper{
       position:relative;
       max-width:1200px;
       margin:0 auto;
       padding:0 60px;
+    }
+    @media(max-width:900px){
+      .reviews-carousel-wrapper{
+        padding:0 20px;
+      }
     }
     .reviews-carousel-track{
       display:flex;
@@ -416,11 +476,147 @@
       gap:24px;
       overflow:hidden;
     }
+    @media(max-width:900px){
+      .reviews-carousel-track{
+        overflow-x:auto;
+        overflow-y:hidden;
+        scroll-behavior:smooth;
+        scroll-snap-type:x mandatory;
+        -webkit-overflow-scrolling:touch;
+        max-width:100%;
+      }
+    }
     .reviews-carousel-slides{
       display:flex;
       gap:24px;
       transition:transform 0.6s ease;
+      max-width:100%;
     }
+    @media(max-width:900px){
+      .reviews-carousel-slides{
+        gap:20px;
+        transition:none;
+      }
+    }
+    @media(max-width:768px){
+      /* Slider track en slides: auto height voor flexibele kaarten */
+      .reviews-section .reviews-carousel-track{
+        height:auto !important;
+        align-items:stretch !important;
+      }
+      .reviews-section .reviews-carousel-slides{
+        height:auto !important;
+        align-items:stretch !important;
+      }
+      /* Testimonial cards krijgen exact dezelfde styling als aanpak cards op mobiel */
+      .reviews-section .review-card{
+        flex:0 0 calc(100% - 40px) !important;
+        flex-direction:column !important;
+        min-width:calc(100% - 40px);
+        max-width:calc(100% - 40px);
+        width:calc(100% - 40px);
+        height:auto !important;
+        min-height:0 !important;
+        max-height:none !important;
+        border-radius:var(--radius);
+        flex-shrink:0;
+        scroll-snap-align:start;
+        overflow:hidden;
+        background:rgba(255,255,255,.04);
+        border:1px solid var(--line);
+        display:flex;
+        align-items:stretch;
+        margin:0 auto;
+        transform:none !important;
+        gap:0;
+      }
+      .reviews-section .review-card.active{
+        flex:0 0 calc(100% - 40px) !important;
+        transform:none !important;
+        height:auto !important;
+      }
+      /* Header met naam+leeftijd */
+      .reviews-section .review-card__header-mobile{
+        display:block;
+        width:100%;
+        background:rgba(255,255,255,.04);
+        border-bottom:1px solid var(--line);
+        color:var(--text);
+        padding:12px 18px;
+        font-size:14px;
+        font-weight:600;
+        letter-spacing:0.5px;
+        border-radius:var(--radius) var(--radius) 0 0;
+        margin:0;
+        flex-shrink:0;
+      }
+      /* Image wrapper met aspect-ratio voor mooie foto verhouding */
+      .reviews-section .review-card__image{
+        width:100% !important;
+        height:auto !important;
+        aspect-ratio:4/3 !important;
+        overflow:hidden;
+        background:rgba(255,255,255,.03);
+        flex-shrink:0;
+        position:relative;
+        border-radius:0;
+        display:block;
+      }
+      .reviews-section .review-card__image img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        object-position:center center;
+        display:block;
+      }
+      /* Desktop content verbergen */
+      .reviews-section .review-card__content{
+        display:none !important;
+      }
+      /* Mobile content */
+      .reviews-section .review-card__content-mobile{
+        display:block;
+        padding:18px;
+        flex:1;
+        overflow:visible;
+        max-height:none !important;
+        -webkit-line-clamp:unset !important;
+      }
+      .reviews-section .review-card__content-mobile .card__title{
+        margin:0 0 6px;
+        font-size:inherit;
+        font-weight:600;
+        color:var(--text);
+        overflow:visible;
+        max-height:none !important;
+      }
+      .reviews-section .review-card__content-mobile .card__text{
+        margin:0;
+        color:var(--muted);
+        line-height:1.45;
+        font-size:inherit;
+        overflow:visible;
+      }
+      .reviews-section .review-card__content-mobile .card__text::before{
+        content:"\201C";
+      }
+      .reviews-section .review-card__content-mobile .card__text::after{
+        content:"\201D";
+        max-height:none !important;
+        -webkit-line-clamp:unset !important;
+      }
+    }
+    @media(max-width:560px){
+      .review-card{
+        flex:0 0 calc(100% - 40px) !important;
+        min-width:calc(100% - 40px);
+        max-width:calc(100% - 40px);
+      }
+      .review-card.active{
+        flex:0 0 calc(100% - 40px) !important;
+      }
+    }
+
     .review-card{
       flex:0 0 calc(26% - 16px);
       background:rgba(255,255,255,.04);
@@ -443,6 +639,7 @@
     .review-card__image{
       flex:0 0 48%;
       width:48%;
+      max-height:280px;
       overflow:hidden;
       background:rgba(255,255,255,.03);
       border-radius:var(--radius);
@@ -453,10 +650,11 @@
     }
     .review-card__image img{
       width:100%;
-      height:110%;
+      height:100%;
+      max-height:280px;
       display:block;
       object-fit:cover;
-      object-position:center 10%;
+      object-position:center center;
     }
     .review-card__content{
       flex:1;
@@ -482,6 +680,49 @@
       line-height:1.6;
       color:var(--text);
       font-style:normal;
+    }
+    .review-card__quote::before{
+      content:"\201C";
+    }
+    .review-card__quote::after{
+      content:"\201D";
+    }
+    /* Desktop: verberg mobile header en content, herstel originele styling */
+    @media(min-width:769px){
+      .review-card__header-mobile,
+      .review-card__content-mobile{
+        display:none !important;
+      }
+      /* Zorg dat desktop review-card styling niet wordt overschreven */
+      .reviews-section .review-card{
+        height:initial !important;
+        min-height:initial !important;
+        max-height:initial !important;
+      }
+      .reviews-section .review-card__image{
+        height:initial !important;
+        aspect-ratio:initial !important;
+        max-height:280px !important;
+        flex:0 0 48% !important;
+        width:48% !important;
+      }
+      .reviews-section .review-card__content{
+        display:flex !important;
+        flex:1 !important;
+        padding:20px !important;
+        flex-direction:column !important;
+      }
+      .reviews-section .review-card__content-mobile{
+        display:none !important;
+      }
+      .reviews-section .reviews-carousel-track{
+        height:auto !important;
+        align-items:center !important;
+      }
+      .reviews-section .reviews-carousel-slides{
+        height:auto !important;
+        align-items:flex-start !important;
+      }
     }
     .reviews-nav{
       position:absolute;
@@ -729,18 +970,132 @@
         padding:0 20px;
       }
       .reviews-nav{
-        width:36px;
-        height:36px;
-        font-size:20px;
+        display:none;
       }
       .review-card{
-        flex:0 0 85% !important;
+        flex:0 0 calc(100% - 40px) !important;
+        flex-direction:column !important;
+        min-width:calc(100% - 40px);
+        max-width:calc(100% - 40px);
+        width:calc(100% - 40px);
+        border-radius:var(--radius);
+        flex-shrink:0;
+        scroll-snap-align:start;
+        overflow:hidden;
+        background:rgba(255,255,255,.04);
+        border:1px solid var(--line);
+        display:flex;
+        align-items:stretch;
+        margin:0 auto;
+        transform:none !important;
       }
       .review-card.active{
-        flex:0 0 85% !important;
+        flex:0 0 calc(100% - 40px) !important;
+        transform:none !important;
+        height:auto !important;
+      }
+      .review-card__image{
+        width:100% !important;
+        height:auto !important;
+        aspect-ratio:4/3 !important;
+        overflow:hidden;
+        background:rgba(255,255,255,.03);
+        flex-shrink:0;
+        position:relative;
+        border-radius:0;
+      }
+      .review-card__image img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        object-position:center center;
+        display:block;
+      }
+      /* Verberg desktop content op mobiel */
+      .review-card__content{
+        display:none !important;
+      }
+      /* Toon mobile header en content */
+      .review-card__header-mobile{
+        display:block;
+        width:100%;
+        background:rgba(255,255,255,.04);
+        border-bottom:1px solid var(--line);
+        color:var(--text);
+        padding:12px 18px;
+        font-size:14px;
+        font-weight:600;
+        letter-spacing:0.5px;
+        border-radius:var(--radius) var(--radius) 0 0;
+        margin:0;
+        flex-shrink:0;
+      }
+      .review-card__content-mobile{
+        display:block;
+        padding:18px;
+        flex:1;
+        overflow:visible;
+        max-height:none !important;
+        -webkit-line-clamp:unset !important;
+      }
+      .review-card__content-mobile .card__title{
+        margin:0 0 6px;
+        font-size:inherit;
+        font-weight:600;
+        color:var(--text);
+        overflow:visible;
+        max-height:none !important;
+      }
+      .review-card__content-mobile .card__text{
+        margin:0;
+        color:var(--muted);
+        line-height:1.45;
+        font-size:inherit;
+        overflow:visible;
+        max-height:none !important;
+        -webkit-line-clamp:unset !important;
+      }
+    }
+    /* Desktop: verberg mobile header en content */
+    @media(min-width:769px){
+      .review-card__header-mobile,
+      .review-card__content-mobile{
+        display:none !important;
+      }
+      .review-card{
+        height:auto !important;
+        min-height:0 !important;
+        max-height:none !important;
+      }
+      .review-card__image{
+        height:auto !important;
+        aspect-ratio:auto !important;
+        max-height:280px !important;
       }
       .review-card__content{
-        padding:24px;
+        display:flex !important;
+      }
+      .review-card__content-mobile{
+        display:none !important;
+      }
+      .review-card__name{
+        font-size:20px;
+        font-weight:700;
+        color:var(--text);
+        margin:0 0 4px;
+      }
+      .review-card__age{
+        font-size:16px;
+        font-weight:400;
+        opacity:0.8;
+        margin:0 0 8px;
+      }
+      .review-card__quote{
+        font-size:14px;
+        line-height:1.5;
+        margin:7px 0 0 0;
+        color:var(--muted);
+        font-weight:400;
       }
     }
 
@@ -1566,72 +1921,118 @@
   </section>
 
   <!-- 4. WAT ONZE LEDEN ZEGGEN -->
-  <section class="reviews-section">
+  <section class="reviews-section experience-section hh-testimonials">
     <div class="container">
       <div class="reviews-header">
         <h2>Wat onze leden zeggen</h2>
+        <p>Echte verhalen van mensen die hun doelen bereiken</p>
       </div>
       <div class="reviews-carousel-wrapper">
         <button class="reviews-nav prev" id="prevReview" aria-label="Vorige review">‹</button>
-        <div class="reviews-carousel-track">
+        <div class="reviews-carousel-track" id="reviewsTrack">
           <div class="reviews-carousel-slides" id="reviewsSlides">
-            <div class="review-card active">
-              <div class="review-card__image">
-                <img src="/assets/images/succesverhalen/Bas.jpeg" alt="Review" loading="lazy">
+            <article class="review-card active exp-card" data-name="Madelon" data-age="52" data-goal="–10 kg" data-result="Ik wilde zo fit mogelijk zijn voor de bruiloft van mijn zoon, en dat is dubbel en dwars gelukt!">
+              <div class="review-card__header-mobile card__header">Madelon, 52</div>
+              <div class="review-card__image exp-media hh-testi-media card__media">
+                <img class="hh-testi-img" src="/assets/images/Succesverhalen-pagina/madelon.jpeg" alt="Madelon" loading="lazy" decoding="async">
               </div>
-              <div class="review-card__content">
-                <h3 class="review-card__name">Bas</h3>
-                <p class="review-card__age">45 jaar</p>
-                <p class="review-card__quote">"Sporten is nodig, maar hier voelt het gewoon fijn en makkelijk vol te houden."</p>
-              </div>
-            </div>
-
-            <div class="review-card">
-              <div class="review-card__image">
-                <img src="/assets/images/succesverhalen/Esther.jpeg" alt="Review" loading="lazy">
-              </div>
-              <div class="review-card__content">
-                <h3 class="review-card__name">Esther</h3>
+              <div class="review-card__content exp-body">
+                <h3 class="review-card__name">Madelon</h3>
                 <p class="review-card__age">52 jaar</p>
-                <p class="review-card__quote">"Goede begeleiding en een gezellige sfeer. Je voelt je geen nummer."</p>
+                <p class="review-card__quote">Ik wilde zo fit mogelijk zijn voor de bruiloft van mijn zoon, en dat is dubbel en dwars gelukt!</p>
               </div>
-            </div>
+              <div class="review-card__content-mobile card__body">
+                <h3 class="card__title">Doel: –10 kg</h3>
+                <p class="card__text">Ik wilde zo fit mogelijk zijn voor de bruiloft van mijn zoon, en dat is dubbel en dwars gelukt!</p>
+              </div>
+            </article>
 
-            <div class="review-card">
-              <div class="review-card__image">
-                <img src="/assets/images/succesverhalen/Franceska.jpeg" alt="Review" loading="lazy">
+            <article class="review-card exp-card" data-name="Ronald" data-age="54" data-goal="Fitter en gezonder" data-result="Wat een fijne en gezellige plek. Sporten zonder dat je tussen bodybuilders staat, hoe fijn is dat!">
+              <div class="review-card__header-mobile card__header">Ronald, 54</div>
+              <div class="review-card__image exp-media hh-testi-media card__media">
+                <img class="hh-testi-img" src="/assets/images/Succesverhalen-pagina/Ronald.jpeg" alt="Ronald" loading="lazy" decoding="async">
               </div>
-              <div class="review-card__content">
-                <h3 class="review-card__name">Franceska</h3>
-                <p class="review-card__age">38 jaar</p>
-                <p class="review-card__quote">"Ik merk dat ik me fitter voel en ik blijf komen omdat het hier prettig is."</p>
+              <div class="review-card__content exp-body">
+                <h3 class="review-card__name">Ronald</h3>
+                <p class="review-card__age">54 jaar</p>
+                <p class="review-card__quote">Wat een fijne en gezellige plek. Sporten zonder dat je tussen bodybuilders staat, hoe fijn is dat!</p>
               </div>
-            </div>
+              <div class="review-card__content-mobile card__body">
+                <h3 class="card__title">Doel: Fitter en gezonder</h3>
+                <p class="card__text">Wat een fijne en gezellige plek. Sporten zonder dat je tussen bodybuilders staat, hoe fijn is dat!</p>
+              </div>
+            </article>
 
-            <div class="review-card">
-              <div class="review-card__image">
-                <img src="/assets/images/succesverhalen/Harry.jpeg" alt="Review" loading="lazy">
+            <article class="review-card exp-card" data-name="Ingrid" data-age="47" data-goal="–20 kg" data-result="De combinatie van voeding en sporten heeft voor mij echt een nieuw leven gegeven. Echt, wauw! Complimenten aan deze sportschool!">
+              <div class="review-card__header-mobile card__header">Ingrid, 47</div>
+              <div class="review-card__image exp-media hh-testi-media card__media">
+                <img class="hh-testi-img" src="/assets/images/Succesverhalen-pagina/Ingrid.jpeg" alt="Ingrid" loading="lazy" decoding="async">
               </div>
-              <div class="review-card__content">
-                <h3 class="review-card__name">Harry</h3>
-                <p class="review-card__age">60 jaar</p>
-                <p class="review-card__quote">"Ik voel me weer mezelf. Fitter, lichter en met meer vertrouwen in mijn lichaam."</p>
-              </div>
-            </div>
-
-            <div class="review-card">
-              <div class="review-card__image">
-                <img src="/assets/images/succesverhalen/Ingrid.jpeg" alt="Review" loading="lazy">
-              </div>
-              <div class="review-card__content">
+              <div class="review-card__content exp-body">
                 <h3 class="review-card__name">Ingrid</h3>
-                <p class="review-card__age">55 jaar</p>
-                <p class="review-card__quote">"Mijn energie is terug en ik zit weer lekker in mijn vel."</p>
+                <p class="review-card__age">47 jaar</p>
+                <p class="review-card__quote">De combinatie van voeding en sporten heeft voor mij echt een nieuw leven gegeven. Echt, wauw! Complimenten aan deze sportschool!</p>
               </div>
-            </div>
+              <div class="review-card__content-mobile card__body">
+                <h3 class="card__title">Doel: –20 kg</h3>
+                <p class="card__text">De combinatie van voeding en sporten heeft voor mij echt een nieuw leven gegeven. Echt, wauw! Complimenten aan deze sportschool!</p>
+              </div>
+            </article>
+
+            <article class="review-card exp-card" data-name="Esther" data-age="38" data-goal="Geen schouderklachten meer" data-result="Ik heb enorm lang last gehad van een frozen shoulder. Door de opbouwende oefeningen van Joris heb ik mijn bewegelijkheid en kracht weer terug, en geen pijn meer!">
+              <div class="review-card__header-mobile card__header">Esther, 38</div>
+              <div class="review-card__image exp-media hh-testi-media card__media">
+                <img class="hh-testi-img" src="/assets/images/Succesverhalen-pagina/Esther.jpeg" alt="Esther" loading="lazy" decoding="async">
+              </div>
+              <div class="review-card__content exp-body">
+                <h3 class="review-card__name">Esther</h3>
+                <p class="review-card__age">38 jaar</p>
+                <p class="review-card__quote">Ik heb enorm lang last gehad van een frozen shoulder. Door de opbouwende oefeningen van Joris heb ik mijn bewegelijkheid en kracht weer terug, en geen pijn meer!</p>
+              </div>
+              <div class="review-card__content-mobile card__body">
+                <h3 class="card__title">Doel: Geen schouderklachten meer</h3>
+                <p class="card__text">Ik heb enorm lang last gehad van een frozen shoulder. Door de opbouwende oefeningen van Joris heb ik mijn bewegelijkheid en kracht weer terug, en geen pijn meer!</p>
+              </div>
+            </article>
+
+            <article class="review-card exp-card" data-name="Harry" data-age="52" data-goal="–7,3 kg in 2 maanden" data-result="Ik wilde zo snel mogelijk zoveel mogelijk afvallen, en dat is gelukt dankzij het fijne Healthy Habits-team.">
+              <div class="review-card__header-mobile card__header">Harry, 52</div>
+              <div class="review-card__image exp-media hh-testi-media card__media">
+                <img class="hh-testi-img" src="/assets/images/Succesverhalen-pagina/Harry.jpeg" alt="Harry" loading="lazy" decoding="async">
+              </div>
+              <div class="review-card__content exp-body">
+                <h3 class="review-card__name">Harry</h3>
+                <p class="review-card__age">52 jaar</p>
+                <p class="review-card__quote">Ik wilde zo snel mogelijk zoveel mogelijk afvallen, en dat is gelukt dankzij het fijne Healthy Habits-team.</p>
+              </div>
+              <div class="review-card__content-mobile card__body">
+                <h3 class="card__title">Doel: –7,3 kg in 2 maanden</h3>
+                <p class="card__text">Ik wilde zo snel mogelijk zoveel mogelijk afvallen, en dat is gelukt dankzij het fijne Healthy Habits-team.</p>
+              </div>
+            </article>
+
+            <article class="review-card exp-card" data-name="Laura" data-age="36" data-goal="Fijn sporten" data-result="Langzaam, maar op een fijne en leuke manier, al 6,4 kg kwijtgeraakt. Enorm blij!">
+              <div class="review-card__header-mobile card__header">Laura, 36</div>
+              <div class="review-card__image exp-media hh-testi-media card__media">
+                <img class="hh-testi-img" src="/assets/images/Succesverhalen-pagina/Laura.jpeg" alt="Laura" loading="lazy" decoding="async">
+              </div>
+              <div class="review-card__content exp-body">
+                <h3 class="review-card__name">Laura</h3>
+                <p class="review-card__age">36 jaar</p>
+                <p class="review-card__quote">Langzaam, maar op een fijne en leuke manier, al 6,4 kg kwijtgeraakt. Enorm blij!</p>
+              </div>
+              <div class="review-card__content-mobile card__body">
+                <h3 class="card__title">Doel: Fijn sporten</h3>
+                <p class="card__text">Langzaam, maar op een fijne en leuke manier, al 6,4 kg kwijtgeraakt. Enorm blij!</p>
+              </div>
+            </article>
           </div>
         </div>
         <button class="reviews-nav next" id="nextReview" aria-label="Volgende review">›</button>
+        <div class="reviews-carousel-nav">
+          <button class="reviews-carousel-btn" id="reviewsPrev" aria-label="Vorige">‹</button>
+          <button class="reviews-carousel-btn" id="reviewsNext" aria-label="Volgende">›</button>
+        </div>
       </div>
     </div>
   </section>
@@ -2091,13 +2492,57 @@
     }
     window.addEventListener('resize', setUnderlineWidths);
 
-    // Reviews Carousel
+    // Reviews Carousel - 3 kaarten tegelijk, middelste prominent, vloeiende oneindige loop
     (function(){
       const slidesContainer = document.getElementById('reviewsSlides');
+      const trackContainer = document.getElementById('reviewsTrack');
       const prevBtn = document.getElementById('prevReview');
       const nextBtn = document.getElementById('nextReview');
+      const mobilePrevBtn = document.getElementById('reviewsPrev');
+      const mobileNextBtn = document.getElementById('reviewsNext');
       
       if(!slidesContainer) return;
+      
+      // Check if mobile (max-width: 900px)
+      const isMobile = () => window.innerWidth <= 900;
+      
+      // Mobile scroll functionality
+      if(trackContainer && isMobile()){
+        const cards = Array.from(slidesContainer.querySelectorAll('.review-card'));
+        
+        function scrollToNext(){
+          if(cards.length === 0) return;
+          const firstCard = cards[0];
+          const cardWidth = firstCard.offsetWidth;
+          const gap = 20;
+          const scrollAmount = cardWidth + gap;
+          trackContainer.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+          });
+        }
+        
+        function scrollToPrev(){
+          if(cards.length === 0) return;
+          const firstCard = cards[0];
+          const cardWidth = firstCard.offsetWidth;
+          const gap = 20;
+          const scrollAmount = cardWidth + gap;
+          trackContainer.scrollBy({
+            left: -scrollAmount,
+            behavior: 'smooth'
+          });
+        }
+        
+        if(mobileNextBtn) mobileNextBtn.addEventListener('click', scrollToNext);
+        if(mobilePrevBtn) mobilePrevBtn.addEventListener('click', scrollToPrev);
+        
+        // Hide side navigation buttons on mobile
+        if(prevBtn) prevBtn.style.display = 'none';
+        if(nextBtn) nextBtn.style.display = 'none';
+        
+        return; // Exit early for mobile
+      }
       
       // Selecteer originele kaarten voordat we klonen
       const originalCards = Array.from(slidesContainer.children);
@@ -2194,8 +2639,8 @@
         // Reset naar originele kaarten wanneer aan begin
         setTimeout(() => {
           if(currentIndex < offset){
-            const newIndex = originalCards.length - 1 - ((offset - currentIndex - 1) % originalCards.length);
-            resetToOriginalCards(newIndex, true);
+            const originalIndex = (currentIndex - offset + originalCards.length) % originalCards.length;
+            resetToOriginalCards(originalIndex, true);
           }
           isTransitioning = false;
         }, 650);
@@ -2204,15 +2649,24 @@
       if(prevBtn) prevBtn.addEventListener('click', prevSlide);
       if(nextBtn) nextBtn.addEventListener('click', nextSlide);
 
-      // Initial setup
-      updateCarousel(true);
-      
+      // Initialize
+      setTimeout(() => {
+        updateCarousel(true);
+        currentIndex = offset + 1;
+        setTimeout(() => {
+          updateCarousel();
+        }, 50);
+      }, 100);
+
       // Update on resize
-      let resizeTimeout;
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
+      let resizeTimer;
+      window.addEventListener('resize', function(){
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
           updateCarousel(true);
+          setTimeout(() => {
+            isTransitioning = false;
+          }, 100);
         }, 250);
       });
     })();
