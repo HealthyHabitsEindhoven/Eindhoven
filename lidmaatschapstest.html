@@ -394,7 +394,7 @@
     .reviews-carousel-nav{
       display:none;
     }
-    @media(max-width:900px){
+    @media(max-width:767px){
       .reviews-carousel-nav{
         display:flex;
         justify-content:center;
@@ -465,7 +465,12 @@
       margin:0 auto;
       padding:0 60px;
     }
-    @media(max-width:900px){
+    @media(max-width:1023px){
+      .reviews-carousel-wrapper{
+        padding:0 40px;
+      }
+    }
+    @media(max-width:767px){
       .reviews-carousel-wrapper{
         padding:0 20px;
       }
@@ -476,29 +481,27 @@
       gap:24px;
       overflow:hidden;
     }
-    @media(max-width:900px){
+    @media(max-width:767px){
       .reviews-carousel-track{
         overflow-x:auto;
         overflow-y:hidden;
         scroll-behavior:smooth;
         scroll-snap-type:x mandatory;
         -webkit-overflow-scrolling:touch;
-        max-width:100%;
       }
     }
     .reviews-carousel-slides{
       display:flex;
       gap:24px;
       transition:transform 0.6s ease;
-      max-width:100%;
     }
-    @media(max-width:900px){
+    @media(max-width:767px){
       .reviews-carousel-slides{
-        gap:20px;
+        gap:16px;
         transition:none;
       }
     }
-    @media(max-width:768px){
+    @media(max-width:767px){
       /* Slider track en slides: auto height voor flexibele kaarten */
       .reviews-section .reviews-carousel-track{
         height:auto !important;
@@ -508,7 +511,7 @@
         height:auto !important;
         align-items:stretch !important;
       }
-      /* Testimonial cards krijgen exact dezelfde styling als aanpak cards op mobiel */
+      /* Testimonial cards op mobiel: 1 card zichtbaar, verticaal gestapeld */
       .reviews-section .review-card{
         flex:0 0 calc(100% - 40px) !important;
         flex-direction:column !important;
@@ -550,7 +553,7 @@
         margin:0;
         flex-shrink:0;
       }
-      /* Image wrapper met aspect-ratio voor mooie foto verhouding */
+      /* Image wrapper met aspect-ratio */
       .reviews-section .review-card__image{
         width:100% !important;
         height:auto !important;
@@ -606,19 +609,10 @@
         -webkit-line-clamp:unset !important;
       }
     }
-    @media(max-width:560px){
-      .review-card{
-        flex:0 0 calc(100% - 40px) !important;
-        min-width:calc(100% - 40px);
-        max-width:calc(100% - 40px);
-      }
-      .review-card.active{
-        flex:0 0 calc(100% - 40px) !important;
-      }
-    }
 
+    /* Card basis styling — breedte wordt door JS gezet */
     .review-card{
-      flex:0 0 calc(26% - 16px);
+      flex:0 0 auto;
       background:rgba(255,255,255,.04);
       border:1px solid var(--line);
       border-radius:24px;
@@ -627,13 +621,10 @@
       gap:16px;
       transition:all 0.4s ease;
       opacity:1;
-      transform:scale(0.9);
       align-items:stretch;
     }
     .review-card.active{
       opacity:1;
-      transform:scale(0.9);
-      flex:0 0 calc(26% - 16px);
       border-color:rgba(255,255,255,.25);
     }
     .review-card__image{
@@ -688,20 +679,20 @@
       content:"\201D";
     }
     /* Desktop: verberg mobile header en content, herstel originele styling */
-    @media(min-width:769px){
+    @media(min-width:768px){
       .review-card__header-mobile,
       .review-card__content-mobile{
         display:none !important;
       }
-      /* Zorg dat desktop review-card styling niet wordt overschreven */
       .reviews-section .review-card{
-        height:initial !important;
-        min-height:initial !important;
-        max-height:initial !important;
+        height:auto !important;
+        min-height:0 !important;
+        max-height:none !important;
+        flex-direction:row !important;
       }
       .reviews-section .review-card__image{
-        height:initial !important;
-        aspect-ratio:initial !important;
+        height:auto !important;
+        aspect-ratio:auto !important;
         max-height:280px !important;
         flex:0 0 48% !important;
         width:48% !important;
@@ -965,7 +956,7 @@
       line-height:1.6;
     }
 
-    @media(max-width:900px){
+    @media(max-width:767px){
       .reviews-carousel-wrapper{
         padding:0 20px;
       }
@@ -1056,8 +1047,8 @@
         -webkit-line-clamp:unset !important;
       }
     }
-    /* Desktop: verberg mobile header en content */
-    @media(min-width:769px){
+    /* Desktop/tablet: verberg mobile header en content */
+    @media(min-width:768px){
       .review-card__header-mobile,
       .review-card__content-mobile{
         display:none !important;
@@ -2492,7 +2483,7 @@
     }
     window.addEventListener('resize', setUnderlineWidths);
 
-    // Reviews Carousel - 3 kaarten tegelijk, middelste prominent, vloeiende oneindige loop
+    // Reviews Carousel - responsive: 3 cards desktop, 2 tablet, 1 mobiel
     (function(){
       const slidesContainer = document.getElementById('reviewsSlides');
       const trackContainer = document.getElementById('reviewsTrack');
@@ -2503,53 +2494,39 @@
       
       if(!slidesContainer) return;
       
-      // Check if mobile (max-width: 900px)
-      const isMobile = () => window.innerWidth <= 900;
+      // Responsive breakpoints
+      const isMobile = () => window.innerWidth < 768;
+      const getVisibleCards = () => window.innerWidth >= 1024 ? 3 : 2; // tablet=2, desktop=3
       
-      // Mobile scroll functionality
+      // Mobile: scroll-snap, 1 card zichtbaar
       if(trackContainer && isMobile()){
         const cards = Array.from(slidesContainer.querySelectorAll('.review-card'));
         
         function scrollToNext(){
           if(cards.length === 0) return;
-          const firstCard = cards[0];
-          const cardWidth = firstCard.offsetWidth;
-          const gap = 20;
-          const scrollAmount = cardWidth + gap;
-          trackContainer.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
-          });
+          const cardWidth = cards[0].offsetWidth;
+          const gap = 16;
+          trackContainer.scrollBy({ left: cardWidth + gap, behavior: 'smooth' });
         }
-        
         function scrollToPrev(){
           if(cards.length === 0) return;
-          const firstCard = cards[0];
-          const cardWidth = firstCard.offsetWidth;
-          const gap = 20;
-          const scrollAmount = cardWidth + gap;
-          trackContainer.scrollBy({
-            left: -scrollAmount,
-            behavior: 'smooth'
-          });
+          const cardWidth = cards[0].offsetWidth;
+          const gap = 16;
+          trackContainer.scrollBy({ left: -(cardWidth + gap), behavior: 'smooth' });
         }
         
         if(mobileNextBtn) mobileNextBtn.addEventListener('click', scrollToNext);
         if(mobilePrevBtn) mobilePrevBtn.addEventListener('click', scrollToPrev);
-        
-        // Hide side navigation buttons on mobile
         if(prevBtn) prevBtn.style.display = 'none';
         if(nextBtn) nextBtn.style.display = 'none';
-        
-        return; // Exit early for mobile
+        return;
       }
       
-      // Selecteer originele kaarten voordat we klonen
+      // Desktop / Tablet: translateX carousel
       const originalCards = Array.from(slidesContainer.children);
-      
       if(originalCards.length === 0) return;
 
-      // Clone laatste 3 kaarten aan begin en eerste 3 aan einde voor vloeiende loop
+      // Clone voor oneindige loop
       const cardsToCloneAtStart = originalCards.slice(-3);
       const cardsToCloneAtEnd = originalCards.slice(0, 3);
       
@@ -2558,7 +2535,6 @@
         clone.classList.remove('active');
         slidesContainer.insertBefore(clone, originalCards[0]);
       });
-      
       cardsToCloneAtEnd.forEach(card => {
         const clone = card.cloneNode(true);
         clone.classList.remove('active');
@@ -2566,44 +2542,45 @@
       });
 
       const allCards = Array.from(slidesContainer.children);
-      const offset = cardsToCloneAtStart.length; // Offset voor originele kaarten
-      let currentIndex = offset + 1; // Start met tweede originele kaart
+      const offset = cardsToCloneAtStart.length;
+      let currentIndex = offset;
       let isTransitioning = false;
 
-      function updateCarousel(disableTransition = false){
+      function sizeCards(){
+        const viewportWidth = trackContainer.offsetWidth;
+        const visible = getVisibleCards();
+        const gap = 24;
+        const cardWidth = (viewportWidth - (visible - 1) * gap) / visible;
+        allCards.forEach(card => {
+          card.style.flex = '0 0 ' + cardWidth + 'px';
+          card.style.maxWidth = cardWidth + 'px';
+          card.style.minWidth = cardWidth + 'px';
+        });
+        return cardWidth;
+      }
+
+      function updateCarousel(disableTransition){
         if(disableTransition){
           slidesContainer.style.transition = 'none';
         } else {
           slidesContainer.style.transition = 'transform 0.6s ease';
         }
 
-        // Update active class
-        allCards.forEach((card, index) => {
-          card.classList.toggle('active', index === currentIndex);
+        allCards.forEach((card, i) => {
+          card.classList.toggle('active', i === currentIndex);
         });
 
-        // Calculate transform to center de middelste van 3 zichtbare kaarten
-        const activeCard = allCards[currentIndex];
-        if(!activeCard) return;
-        
-        const cardWidth = activeCard.offsetWidth;
+        const cardWidth = sizeCards();
         const gap = 24;
-        const containerWidth = slidesContainer.parentElement.offsetWidth;
-        // Centreer de middelste kaart van de 3 zichtbare
-        const translateOffset = currentIndex * (cardWidth + gap);
-        const centerOffset = (containerWidth / 2) - (cardWidth / 2);
-        
-        slidesContainer.style.transform = `translateX(calc(-${translateOffset}px + ${centerOffset}px))`;
+        // Schuif zodat currentIndex de eerste zichtbare kaart is
+        const translateX = currentIndex * (cardWidth + gap);
+        slidesContainer.style.transform = 'translateX(-' + translateX + 'px)';
       }
 
       function resetToOriginalCards(newIndex, withoutAnimation){
-        if(withoutAnimation){
-          slidesContainer.style.transition = 'none';
-        }
-        
+        if(withoutAnimation) slidesContainer.style.transition = 'none';
         currentIndex = offset + newIndex;
         updateCarousel(withoutAnimation);
-        
         if(withoutAnimation){
           requestAnimationFrame(() => {
             requestAnimationFrame(() => {
@@ -2616,11 +2593,8 @@
       function nextSlide(){
         if(isTransitioning) return;
         isTransitioning = true;
-        
         currentIndex++;
         updateCarousel();
-        
-        // Reset naar originele kaarten wanneer aan einde
         setTimeout(() => {
           if(currentIndex >= offset + originalCards.length){
             resetToOriginalCards((currentIndex - offset) % originalCards.length, true);
@@ -2632,15 +2606,12 @@
       function prevSlide(){
         if(isTransitioning) return;
         isTransitioning = true;
-        
         currentIndex--;
         updateCarousel();
-        
-        // Reset naar originele kaarten wanneer aan begin
         setTimeout(() => {
           if(currentIndex < offset){
-            const originalIndex = (currentIndex - offset + originalCards.length) % originalCards.length;
-            resetToOriginalCards(originalIndex, true);
+            const idx = (currentIndex - offset + originalCards.length) % originalCards.length;
+            resetToOriginalCards(idx, true);
           }
           isTransitioning = false;
         }, 650);
@@ -2652,7 +2623,6 @@
       // Initialize
       setTimeout(() => {
         updateCarousel(true);
-        currentIndex = offset + 1;
         setTimeout(() => {
           updateCarousel();
         }, 50);
@@ -2664,9 +2634,7 @@
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
           updateCarousel(true);
-          setTimeout(() => {
-            isTransitioning = false;
-          }, 100);
+          isTransitioning = false;
         }, 250);
       });
     })();
