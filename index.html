@@ -2963,16 +2963,16 @@ zelfs leuk.</p>
       </div>
       <div class="split-video hh-hero-video hero-media">
         <div class="video-wrapper">
-          <iframe
-            src="https://player.vimeo.com/video/884819743?autoplay=1&loop=1&muted=1&playsinline=1&controls=1&title=0&byline=0&portrait=0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowfullscreen
-            playsinline
-            webkit-playsinline
-            loading="eager"
-            referrerpolicy="strict-origin-when-cross-origin"
-            title="Healthy Habits video">
-          </iframe>
+          <video 
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;"
+          >
+            <source src="/assets/video/hero-web.mp4" type="video/mp4">
+          </video>
         </div>
         <!-- BULLETS-ANCHOR-HEALTHYHABITS -->
         <div class="hero-bullets" aria-label="Aanbod">
@@ -2991,17 +2991,17 @@ zelfs leuk.</p>
             <div class="aanbod-card">
               <div class="aanbod-card__image">
                 <img src="/assets/images/aanbod-home/2.jpeg" alt="" loading="lazy">
-              </div>
-            </div>
+          </div>
+          </div>
             <div class="aanbod-card">
               <div class="aanbod-card__image">
                 <img src="/assets/images/aanbod-home/3.jpeg" alt="" loading="lazy" width="400" height="300" decoding="async">
-              </div>
-            </div>
+          </div>
+          </div>
             <div class="aanbod-card">
               <div class="aanbod-card__image">
                 <img src="/assets/images/aanbod-home/fitness.jpg" alt="" loading="lazy" width="400" height="300" decoding="async">
-              </div>
+        </div>
             </div>
             <div class="aanbod-card">
               <div class="aanbod-card__image">
@@ -3172,7 +3172,7 @@ zelfs leuk.</p>
                 <div class="review-card__content-mobile card__body">
                   <h3 class="card__title">Doel: –10 kg</h3>
                   <p class="card__text">Ik wilde zo fit mogelijk zijn voor de bruiloft van mijn zoon, en dat is dubbel en dwars gelukt!</p>
-                </div>
+              </div>
               </article>
 
               <article class="review-card exp-card" data-name="Ronald" data-age="54" data-goal="Fitter en gezonder" data-result="Wat een fijne en gezellige plek. Sporten zonder dat je tussen bodybuilders staat, hoe fijn is dat!">
@@ -3188,7 +3188,7 @@ zelfs leuk.</p>
                 <div class="review-card__content-mobile card__body">
                   <h3 class="card__title">Doel: Fitter en gezonder</h3>
                   <p class="card__text">Wat een fijne en gezellige plek. Sporten zonder dat je tussen bodybuilders staat, hoe fijn is dat!</p>
-                </div>
+              </div>
               </article>
 
               <article class="review-card exp-card" data-name="Ingrid" data-age="47" data-goal="–20 kg" data-result="De combinatie van voeding en sporten heeft voor mij echt een nieuw leven gegeven. Echt, wauw! Complimenten aan deze sportschool!">
@@ -3204,7 +3204,7 @@ zelfs leuk.</p>
                 <div class="review-card__content-mobile card__body">
                   <h3 class="card__title">Doel: –20 kg</h3>
                   <p class="card__text">De combinatie van voeding en sporten heeft voor mij echt een nieuw leven gegeven. Echt, wauw! Complimenten aan deze sportschool!</p>
-                </div>
+              </div>
               </article>
 
               <article class="review-card exp-card" data-name="Esther" data-age="38" data-goal="Geen schouderklachten meer" data-result="Ik heb enorm lang last gehad van een frozen shoulder. Door de opbouwende oefeningen van Joris heb ik mijn bewegelijkheid en kracht weer terug, en geen pijn meer!">
@@ -3220,7 +3220,7 @@ zelfs leuk.</p>
                 <div class="review-card__content-mobile card__body">
                   <h3 class="card__title">Doel: Geen schouderklachten meer</h3>
                   <p class="card__text">Ik heb enorm lang last gehad van een frozen shoulder. Door de opbouwende oefeningen van Joris heb ik mijn bewegelijkheid en kracht weer terug, en geen pijn meer!</p>
-                </div>
+              </div>
               </article>
 
               <article class="review-card exp-card" data-name="Harry" data-age="52" data-goal="–7,3 kg in 2 maanden" data-result="Ik wilde zo snel mogelijk zoveel mogelijk afvallen, en dat is gelukt dankzij het fijne Healthy Habits-team.">
@@ -3236,7 +3236,7 @@ zelfs leuk.</p>
                 <div class="review-card__content-mobile card__body">
                   <h3 class="card__title">Doel: –7,3 kg in 2 maanden</h3>
                   <p class="card__text">Ik wilde zo snel mogelijk zoveel mogelijk afvallen, en dat is gelukt dankzij het fijne Healthy Habits-team.</p>
-                </div>
+              </div>
               </article>
 
               <article class="review-card exp-card" data-name="Laura" data-age="36" data-goal="Fijn sporten" data-result="Langzaam, maar op een fijne en leuke manier, al 6,4 kg kwijtgeraakt. Enorm blij!">
@@ -3252,7 +3252,7 @@ zelfs leuk.</p>
                 <div class="review-card__content-mobile card__body">
                   <h3 class="card__title">Doel: Fijn sporten</h3>
                   <p class="card__text">Langzaam, maar op een fijne en leuke manier, al 6,4 kg kwijtgeraakt. Enorm blij!</p>
-                </div>
+              </div>
               </article>
             </div>
           </div>
@@ -3801,8 +3801,8 @@ zelfs leuk.</p>
       trackContainer.addEventListener('mousedown', pauseOnInteraction);
 
       // Start automatische scroll na korte delay
-      setTimeout(() => {
-        startAutoScroll();
+          setTimeout(() => {
+            startAutoScroll();
       }, 2000); // Start na 2 seconden
 
       // Pause on hover
@@ -3842,7 +3842,7 @@ zelfs leuk.</p>
             topbarNav.classList.remove('mobile-open');
             topbarCta.classList.remove('mobile-open');
             document.body.style.overflow = '';
-          } else {
+      } else {
             menuToggle.classList.add('active');
             topbarNav.classList.add('mobile-open');
             topbarCta.classList.add('mobile-open');
