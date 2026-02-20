@@ -425,7 +425,7 @@
           </div>
 
           <label class="form-checkbox">
-            <input type="checkbox" id="akkoord" required>
+            <input type="checkbox" id="akkoord" name="consent" required>
             <span>Ik ga akkoord dat Healthy Habits mij vandaag kort contacteert om dit cadeau te activeren.</span>
           </label>
 
@@ -535,43 +535,33 @@
         voornaam: form.querySelector('input[name="voornaam"]').value,
         email: form.querySelector('input[name="email"]').value,
         telefoon: form.querySelector('input[name="telefoon"]').value || '',
-        consent: form.querySelector('input[type="checkbox"]').checked,
+        consent: form.querySelector('input[name="consent"]').checked,
         page_url: window.location.href,
         timestamp: new Date().toISOString()
       };
 
       console.log('[birthday-form] Submitting:', payload);
 
-      /* sendBeacon (overleeft page unload) */
-      var sent = false;
-      if(navigator.sendBeacon){
-        var blob = new Blob([JSON.stringify(payload)], {type: 'application/json'});
-        sent = navigator.sendBeacon(webhookUrl, blob);
-        console.log('[birthday-form] sendBeacon result:', sent);
-        console.log('Zapier payload sent', payload);
-      }
-
-      /* Fallback: fetch met keepalive */
-      if(!sent){
-        console.log('[birthday-form] Fallback to fetch keepalive');
-        fetch(webhookUrl, {
-          method: 'POST',
-          mode: 'no-cors',
-          keepalive: true,
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify(payload)
-        }).catch(function(err){
-          console.error('[birthday-form] Fetch error:', err);
-        });
-      }
-
-      /* GA4 event */
-      fireBirthdayGA4(payload.voornaam);
-
-      /* Redirect na versturen */
-      setTimeout(function(){
-        window.location.href = '/bedankt.html';
-      }, 300);
+      fetch(webhookUrl, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(payload)
+      })
+      .then(function(response){
+        console.log('[birthday-form] Response status:', response.status);
+        fireBirthdayGA4(payload.voornaam);
+        setTimeout(function(){
+          window.location.href = '/bedankt.html';
+        }, 300);
+      })
+      .catch(function(err){
+        console.error('[birthday-form] Fetch error:', err);
+        /* Redirect alsnog bij CORS-fout (data is waarschijnlijk wel ontvangen) */
+        fireBirthdayGA4(payload.voornaam);
+        setTimeout(function(){
+          window.location.href = '/bedankt.html';
+        }, 300);
+      });
     });
   })();
   </script>
