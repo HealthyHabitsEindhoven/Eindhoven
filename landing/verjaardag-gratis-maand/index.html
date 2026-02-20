@@ -526,6 +526,8 @@
     var form = document.getElementById('birthday-form');
     if(!form) return;
 
+    var webhookUrl = 'https://hooks.zapier.com/hooks/catch/16872475/ucwttvv/';
+
     form.addEventListener('submit', function(e){
       e.preventDefault();
 
@@ -540,19 +542,33 @@
 
       console.log('[birthday-form] Submitting:', payload);
 
-      fetch('https://hooks.zapier.com/hooks/catch/16872475/ucwttvv/', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(payload)
-      }).catch(function(err){
-        console.error('[birthday-form] Fetch error:', err);
-      });
+      /* sendBeacon (overleeft page unload) */
+      var sent = false;
+      if(navigator.sendBeacon){
+        var blob = new Blob([JSON.stringify(payload)], {type: 'application/json'});
+        sent = navigator.sendBeacon(webhookUrl, blob);
+        console.log('[birthday-form] sendBeacon result:', sent);
+        console.log('Zapier payload sent', payload);
+      }
+
+      /* Fallback: fetch met keepalive */
+      if(!sent){
+        console.log('[birthday-form] Fallback to fetch keepalive');
+        fetch(webhookUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          keepalive: true,
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(payload)
+        }).catch(function(err){
+          console.error('[birthday-form] Fetch error:', err);
+        });
+      }
 
       /* GA4 event */
       fireBirthdayGA4(payload.voornaam);
 
-      /* Direct redirect — niet wachten op opaque response */
+      /* Redirect na versturen */
       setTimeout(function(){
         window.location.href = '/bedankt.html';
       }, 300);
