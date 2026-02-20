@@ -371,15 +371,17 @@
         gap:24px;
       }
       .welkom-photo{
+        order:2;
         margin:0 -18px;
         border-radius:0;
+      }
+      .welkom-text{
+        order:1;
+        padding:0 6px;
       }
       .welkom-photo img{
         height:240px;
         border-radius:0;
-      }
-      .welkom-text{
-        padding:0 6px;
       }
     }
   </style>
@@ -517,31 +519,42 @@
     }
   </script>
   <script>
-document.getElementById("birthday-form").addEventListener("submit", function(e) {
-    e.preventDefault();
+  (function(){
+    var form = document.getElementById('birthday-form');
+    if(!form) return;
 
-    const formData = {
-        voornaam: this.querySelector('input[name="voornaam"]').value,
-        email: this.querySelector('input[name="email"]').value,
-        telefoon: this.querySelector('input[name="telefoon"]').value,
-        pagina: "verjaardag-gratis-maand"
-    };
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
 
-    fetch("https://hooks.zapier.com/hooks/catch/16872475/ucwttvv/", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
-    })
-    .then(response => {
-        fireBirthdayGA4(formData.voornaam);
-        this.innerHTML = "<p style='color:#fff;font-weight:600;'>Gelukt! We nemen vandaag contact met je op 🎉</p>";
-    })
-    .catch(error => {
-        console.error("Zapier error:", error);
+      var payload = {
+        voornaam: form.querySelector('input[name="voornaam"]').value,
+        email: form.querySelector('input[name="email"]').value,
+        telefoon: form.querySelector('input[name="telefoon"]').value || '',
+        consent: form.querySelector('input[type="checkbox"]').checked,
+        page_url: window.location.href,
+        timestamp: new Date().toISOString()
+      };
+
+      console.log('[birthday-form] Submitting:', payload);
+
+      fetch('https://hooks.zapier.com/hooks/catch/16872475/ucwttvv/', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(payload)
+      }).catch(function(err){
+        console.error('[birthday-form] Fetch error:', err);
+      });
+
+      /* GA4 event */
+      fireBirthdayGA4(payload.voornaam);
+
+      /* Direct redirect — niet wachten op opaque response */
+      setTimeout(function(){
+        window.location.href = '/bedankt.html';
+      }, 300);
     });
-});
+  })();
   </script>
 </body>
 </html>
