@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LPZ4B3M8KX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LPZ4B3M8KX');
+  </script>
+
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Gefeliciteerd! Claim jouw gratis maand | Healthy Habits Eindhoven</title>
+  <meta name="description" content="Van harte gefeliciteerd! Claim jouw maand gratis sporten cadeau bij Healthy Habits Eindhoven.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/logo/favicon.png">
+  <link rel="apple-touch-icon" href="/logo/favicon.png">
+
+  <style>
+    :root{
+      --accent:#C3A300;
+      --bg:#0b0c10;
+      --bg-main:#0b0c10;
+      --bg-warm:#0f1115;
+      --bg-accent:#121418;
+      --text:#f3f4f6;
+      --muted:#cbd5e1;
+      --line:rgba(255,255,255,.15);
+      --radius:18px;
+      --max:1100px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg-main);
+      color:var(--text);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+    }
+    img{max-width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 36px));margin:0 auto}
+
+    /* ===== HERO ===== */
+    .hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+    }
+    .hero-bg{
+      position:absolute;
+      inset:0;
+      z-index:0;
+    }
+    .hero-bg img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .hero-bg::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg,rgba(11,12,16,.62) 30%,rgba(11,12,16,.30) 100%);
+    }
+    .hero .container{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:48px;
+      align-items:center;
+      padding:120px 0 80px;
+    }
+    .hero-text{
+      max-width:520px;
+    }
+    .hero-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:rgba(195,163,0,.12);
+      border:1px solid rgba(195,163,0,.25);
+      border-radius:100px;
+      padding:6px 16px;
+      font-size:13px;
+      font-weight:600;
+      color:var(--accent);
+      margin-bottom:20px;
+    }
+    .hero-badge span{font-size:16px}
+    .hero h1{
+      font-size:clamp(28px,4.5vw,44px);
+      font-weight:800;
+      line-height:1.15;
+      margin-bottom:16px;
+      letter-spacing:-.01em;
+    }
+    .hero h1 .name{
+      color:var(--accent);
+    }
+    .hero-sub{
+      font-size:18px;
+      color:var(--muted);
+      margin-bottom:8px;
+      font-weight:500;
+    }
+    .hero-urgency{
+      font-size:13px;
+      color:var(--muted);
+      opacity:.7;
+      margin-bottom:24px;
+    }
+    .hero-arrow{
+      display:none;
+    }
+
+    /* ===== FORM CARD ===== */
+    .form-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:32px 28px;
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+    }
+    .form-card h2{
+      font-size:20px;
+      font-weight:700;
+      margin-bottom:4px;
+    }
+    .form-card .form-lead{
+      font-size:14px;
+      color:var(--muted);
+      margin-bottom:24px;
+    }
+    .form-group{
+      margin-bottom:18px;
+    }
+    .form-group label{
+      display:block;
+      margin-bottom:6px;
+      font-weight:600;
+      font-size:14px;
+    }
+    .form-group input{
+      width:100%;
+      padding:12px 16px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      border-radius:12px;
+      color:var(--text);
+      font-size:16px;
+      font-family:inherit;
+      transition:border-color .2s ease,background .2s ease;
+    }
+    .form-group input:focus{
+      outline:none;
+      border-color:var(--accent);
+      background:rgba(255,255,255,.08);
+    }
+    .form-group input::placeholder{
+      color:rgba(255,255,255,.35);
+    }
+    .form-checkbox{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      margin-bottom:20px;
+      cursor:pointer;
+    }
+    .form-checkbox input[type="checkbox"]{
+      width:18px;
+      height:18px;
+      min-width:18px;
+      margin-top:2px;
+      accent-color:var(--accent);
+      cursor:pointer;
+    }
+    .form-checkbox span{
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.45;
+    }
+    .form-submit{
+      width:100%;
+      padding:14px 24px;
+      background:var(--accent);
+      color:#000;
+      border:none;
+      border-radius:12px;
+      font-size:17px;
+      font-weight:800;
+      cursor:pointer;
+      transition:filter .2s ease,transform .1s ease;
+      letter-spacing:.01em;
+    }
+    .form-submit:hover{
+      filter:brightness(1.1);
+    }
+    .form-submit:active{
+      filter:brightness(.95);
+      transform:scale(.98);
+    }
+    .form-success{
+      display:none;
+      text-align:center;
+      padding:32px 16px;
+    }
+    .form-success.show{
+      display:block;
+    }
+    .form-success .check{
+      font-size:48px;
+      margin-bottom:12px;
+    }
+    .form-success h3{
+      font-size:20px;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+    .form-success p{
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    /* ===== TRUST SECTION ===== */
+    .trust{
+      padding:64px 0 48px;
+    }
+    .trust .container{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+      align-items:center;
+    }
+    .trust-bullets{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    .trust-bullet{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-size:16px;
+      font-weight:500;
+    }
+    .trust-bullet .icon{
+      width:44px;
+      height:44px;
+      min-width:44px;
+      border-radius:12px;
+      background:rgba(195,163,0,.1);
+      border:1px solid rgba(195,163,0,.18);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:20px;
+    }
+    .trust-coaching{
+      border-radius:var(--radius);
+      overflow:hidden;
+      border:1px solid var(--line);
+    }
+    .trust-coaching img{
+      width:100%;
+      height:280px;
+      object-fit:cover;
+    }
+
+    /* ===== WELKOM TERUG ===== */
+    .welkom-section{
+      padding:72px 0 80px;
+      text-align:center;
+      animation:fadeInUp .8s ease both;
+      animation-delay:.2s;
+    }
+    @keyframes fadeInUp{
+      from{opacity:0;transform:translateY(20px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+    .welkom-section h2{
+      font-size:clamp(22px,3vw,30px);
+      font-weight:700;
+      line-height:1.35;
+      margin-bottom:16px;
+      color:var(--text);
+    }
+    .welkom-section p{
+      font-size:17px;
+      line-height:1.65;
+      color:var(--muted);
+      max-width:520px;
+      margin:0 auto;
+    }
+
+    /* ===== FOOTER ===== */
+    .lp-footer{
+      text-align:center;
+      padding:32px 0;
+      font-size:13px;
+      color:var(--muted);
+      opacity:.5;
+      border-top:1px solid var(--line);
+    }
+    .lp-footer a{
+      color:var(--muted);
+      text-decoration:underline;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:768px){
+      .hero .container{
+        grid-template-columns:1fr;
+        gap:32px;
+        padding:100px 0 48px;
+      }
+      .hero-text{
+        text-align:center;
+        max-width:100%;
+      }
+      .hero-badge{
+        margin:0 auto 16px;
+      }
+      .hero-arrow{
+        display:block;
+        text-align:center;
+        margin-top:4px;
+        font-size:24px;
+        color:var(--accent);
+        animation:bounce 2s infinite;
+      }
+      @keyframes bounce{
+        0%,100%{transform:translateY(0)}
+        50%{transform:translateY(6px)}
+      }
+      .trust .container{
+        grid-template-columns:1fr;
+        gap:28px;
+      }
+      .trust-coaching img{
+        height:200px;
+      }
+      .welkom-section{
+        text-align:left;
+        padding:48px 0 56px;
+      }
+      .welkom-section p{
+        margin:0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="landing/foto/hero.jpeg" alt="Healthy Habits Eindhoven" width="1920" height="1080">
+    </div>
+    <div class="container">
+      <div class="hero-text">
+        <div class="hero-badge"><span>🎂</span> Speciaal voor jou</div>
+        <h1 id="heroTitle">Hoi, van harte gefeliciteerd!</h1>
+        <p class="hero-sub">Claim jouw maand <strong>GRATIS</strong> sporten cadeau.</p>
+        <p class="hero-urgency">Alleen vandaag geldig · geen verplichting</p>
+        <div class="hero-arrow">↓</div>
+      </div>
+
+      <!-- FORM -->
+      <div class="form-card" id="claim">
+        <form id="claimForm" autocomplete="on">
+          <h2>Claim je cadeau</h2>
+          <p class="form-lead">Vul je gegevens in, wij regelen de rest.</p>
+
+          <div class="form-group">
+            <label for="voornaam">Voornaam *</label>
+            <input type="text" id="voornaam" name="voornaam" placeholder="Je voornaam" required autocomplete="given-name">
+          </div>
+          <div class="form-group">
+            <label for="email">E-mailadres *</label>
+            <input type="email" id="email" name="email" placeholder="naam@voorbeeld.nl" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="telefoon">Telefoon <span style="font-weight:400;color:var(--muted)">(optioneel)</span></label>
+            <input type="tel" id="telefoon" name="telefoon" placeholder="06 1234 5678" autocomplete="tel">
+          </div>
+
+          <label class="form-checkbox">
+            <input type="checkbox" id="akkoord" required>
+            <span>Ik ga akkoord dat Healthy Habits mij vandaag kort contacteert om dit cadeau te activeren.</span>
+          </label>
+
+          <button type="submit" class="form-submit">Claim mijn gratis maand</button>
+        </form>
+
+        <div class="form-success" id="formSuccess">
+          <div class="check">🎉</div>
+          <h3>Gelukt!</h3>
+          <p>We nemen vandaag contact op om je cadeau te activeren.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="trust">
+    <div class="container">
+      <div class="trust-bullets">
+        <div class="trust-bullet">
+          <div class="icon">🏠</div>
+          <span>Huiskamergevoel</span>
+        </div>
+        <div class="trust-bullet">
+          <div class="icon">🤝</div>
+          <span>Persoonlijke begeleiding</span>
+        </div>
+        <div class="trust-bullet">
+          <div class="icon">🌱</div>
+          <span>Rustig en veilig instappen</span>
+        </div>
+      </div>
+      <div class="trust-coaching">
+        <img src="landing/foto/coaching.jpg" alt="Persoonlijke begeleiding bij Healthy Habits" width="600" height="400">
+      </div>
+    </div>
+  </section>
+
+  <!-- WELKOM TERUG -->
+  <section class="welkom-section">
+    <div class="container">
+      <h2>We vinden het leuk als je weer even binnenloopt.</h2>
+      <p>Gewoon om te ervaren wat we hebben verbeterd. Geen druk. Geen verplichting. Gewoon welkom.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="lp-footer">
+    <div class="container">
+      &copy; 2026 Healthy Habits Eindhoven · <a href="/">Terug naar home</a>
+    </div>
+  </footer>
+
+  <script>
+    /* Personalisatie: ?name=Jan → "Hoi Jan, ..." */
+    (function(){
+      var params = new URLSearchParams(window.location.search);
+      var name = params.get('name') || params.get('naam');
+      if(name){
+        name = decodeURIComponent(name).trim();
+        /* Capitalize first letter */
+        name = name.charAt(0).toUpperCase() + name.slice(1);
+        var h1 = document.getElementById('heroTitle');
+        if(h1) h1.innerHTML = 'Hoi <span class="name">' + name + '</span>, van harte gefeliciteerd!';
+        /* Pre-fill voornaam */
+        var vnInput = document.getElementById('voornaam');
+        if(vnInput && !vnInput.value) vnInput.value = name;
+      }
+    })();
+
+    /* Form submit → Zapier + GA4 event */
+    (function(){
+      var form = document.getElementById('claimForm');
+      if(!form) return;
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+
+        var data = {
+          voornaam: form.voornaam.value,
+          email: form.email.value,
+          telefoon: form.telefoon.value || '',
+          page_name: 'verjaardag-gratis-maand',
+          source: 'birthday_landing'
+        };
+
+        /* Send to Zapier */
+        fetch('https://hooks.zapier.com/hooks/catch/16872475/uqaepel/', {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: {'Content-Type': 'application/json'}
+        }).catch(function(){/* silent */});
+
+        /* GA4 event */
+        if(typeof gtag === 'function'){
+          gtag('event', 'birthday_free_month_claim', {
+            event_category: 'landing',
+            event_label: data.voornaam
+          });
+        } else if(window.dataLayer){
+          window.dataLayer.push({
+            event: 'birthday_free_month_claim',
+            event_category: 'landing',
+            event_label: data.voornaam
+          });
+        }
+
+        /* Show success */
+        form.style.display = 'none';
+        document.getElementById('formSuccess').classList.add('show');
+      });
+    })();
+  </script>
+</body>
+</html>
