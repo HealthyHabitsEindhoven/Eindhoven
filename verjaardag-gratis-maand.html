@@ -541,24 +541,19 @@
 
       fetch(webhookUrl, {
         method: 'POST',
+        mode: 'no-cors',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(payload)
-      })
-      .then(function(response){
-        console.log('[birthday-form] Response status:', response.status);
-        fireBirthdayGA4(payload.voornaam);
-        setTimeout(function(){
-          window.location.href = '/bedankt.html';
-        }, 300);
-      })
-      .catch(function(err){
-        console.error('[birthday-form] Fetch error:', err);
-        /* Redirect alsnog bij CORS-fout (data is waarschijnlijk wel ontvangen) */
-        fireBirthdayGA4(payload.voornaam);
-        setTimeout(function(){
-          window.location.href = '/bedankt.html';
-        }, 300);
+        body: JSON.stringify(payload),
+        keepalive: true
       });
+
+      /* GA4 event */
+      fireBirthdayGA4(payload.voornaam);
+
+      /* Redirect (no-cors response is opaque, treat as success) */
+      setTimeout(function(){
+        window.location.href = '/bedankt.html';
+      }, 300);
     });
   })();
   </script>
