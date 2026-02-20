@@ -277,28 +277,43 @@
 
     /* ===== WELKOM TERUG ===== */
     .welkom-section{
-      padding:72px 0 80px;
-      text-align:center;
+      padding:80px 0 88px;
+    }
+    .welkom-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:48px;
+      align-items:center;
+    }
+    .welkom-photo{
+      border-radius:var(--radius);
+      overflow:hidden;
+    }
+    .welkom-photo img{
+      width:100%;
+      height:340px;
+      object-fit:cover;
+      display:block;
+    }
+    .welkom-text{
       animation:fadeInUp .8s ease both;
-      animation-delay:.2s;
+      animation-delay:.15s;
     }
     @keyframes fadeInUp{
       from{opacity:0;transform:translateY(20px)}
       to{opacity:1;transform:translateY(0)}
     }
-    .welkom-section h2{
-      font-size:clamp(22px,3vw,30px);
+    .welkom-text h2{
+      font-size:clamp(22px,3vw,28px);
       font-weight:700;
       line-height:1.35;
-      margin-bottom:16px;
+      margin-bottom:20px;
       color:var(--text);
     }
-    .welkom-section p{
+    .welkom-text p{
       font-size:17px;
-      line-height:1.65;
+      line-height:1.75;
       color:var(--muted);
-      max-width:520px;
-      margin:0 auto;
     }
 
     /* ===== FOOTER ===== */
@@ -349,11 +364,22 @@
         height:200px;
       }
       .welkom-section{
-        text-align:left;
         padding:48px 0 56px;
       }
-      .welkom-section p{
-        margin:0;
+      .welkom-grid{
+        grid-template-columns:1fr;
+        gap:24px;
+      }
+      .welkom-photo{
+        margin:0 -18px;
+        border-radius:0;
+      }
+      .welkom-photo img{
+        height:240px;
+        border-radius:0;
+      }
+      .welkom-text{
+        padding:0 6px;
       }
     }
   </style>
@@ -376,7 +402,7 @@
 
       <!-- FORM -->
       <div class="form-card" id="claim">
-        <form id="claimForm" autocomplete="on">
+        <form id="birthday-form" autocomplete="on">
           <h2>Claim je cadeau</h2>
           <p class="form-lead">Vul je gegevens in, wij regelen de rest.</p>
 
@@ -436,8 +462,17 @@
   <!-- WELKOM TERUG -->
   <section class="welkom-section">
     <div class="container">
-      <h2>We vinden het leuk als je weer even binnenloopt.</h2>
-      <p>Gewoon om te ervaren wat we hebben verbeterd. Geen druk. Geen verplichting. Gewoon welkom.</p>
+      <div class="welkom-grid">
+        <div class="welkom-photo">
+          <img src="landing/foto/leden.jpeg" alt="Sfeerbeeld Healthy Habits" width="600" height="400">
+        </div>
+        <div class="welkom-text">
+          <h2>We vinden het leuk als je weer even binnenloopt.</h2>
+          <p>Gewoon voor een bakje koffie.<br>
+          En om te ervaren wat we hebben verbeterd.<br>
+          Geen druk. Geen verplichting. Gewoon welkom.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -465,48 +500,48 @@
       }
     })();
 
-    /* Form submit → Zapier + GA4 event */
-    (function(){
-      var form = document.getElementById('claimForm');
-      if(!form) return;
+    /* GA4 event helper */
+    function fireBirthdayGA4(name){
+      if(typeof gtag === 'function'){
+        gtag('event', 'birthday_free_month_claim', {
+          event_category: 'landing',
+          event_label: name
+        });
+      } else if(window.dataLayer){
+        window.dataLayer.push({
+          event: 'birthday_free_month_claim',
+          event_category: 'landing',
+          event_label: name
+        });
+      }
+    }
+  </script>
+  <script>
+document.getElementById("birthday-form").addEventListener("submit", function(e) {
+    e.preventDefault();
 
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
+    const formData = {
+        voornaam: this.querySelector('input[name="voornaam"]').value,
+        email: this.querySelector('input[name="email"]').value,
+        telefoon: this.querySelector('input[name="telefoon"]').value,
+        pagina: "verjaardag-gratis-maand"
+    };
 
-        var data = {
-          voornaam: form.voornaam.value,
-          email: form.email.value,
-          telefoon: form.telefoon.value || '',
-          page_name: 'verjaardag-gratis-maand',
-          source: 'birthday_landing'
-        };
-
-        /* Send to Zapier */
-        fetch('https://hooks.zapier.com/hooks/catch/16872475/uqaepel/', {
-          method: 'POST',
-          body: JSON.stringify(data),
-          headers: {'Content-Type': 'application/json'}
-        }).catch(function(){/* silent */});
-
-        /* GA4 event */
-        if(typeof gtag === 'function'){
-          gtag('event', 'birthday_free_month_claim', {
-            event_category: 'landing',
-            event_label: data.voornaam
-          });
-        } else if(window.dataLayer){
-          window.dataLayer.push({
-            event: 'birthday_free_month_claim',
-            event_category: 'landing',
-            event_label: data.voornaam
-          });
-        }
-
-        /* Show success */
-        form.style.display = 'none';
-        document.getElementById('formSuccess').classList.add('show');
-      });
-    })();
+    fetch("https://hooks.zapier.com/hooks/catch/16872475/ucwttvv/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => {
+        fireBirthdayGA4(formData.voornaam);
+        this.innerHTML = "<p style='color:#fff;font-weight:600;'>Gelukt! We nemen vandaag contact met je op 🎉</p>";
+    })
+    .catch(error => {
+        console.error("Zapier error:", error);
+    });
+});
   </script>
 </body>
 </html>
