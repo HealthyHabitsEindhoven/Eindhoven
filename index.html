@@ -38,6 +38,28 @@
       --line:rgba(255,255,255,.15);
       --radius:18px;
       --max:1100px;
+
+      /* Typografie tokens */
+      --hh-title-size:28px;
+      --hh-title-lh:1.15;
+      --hh-title-weight:800;
+
+      --hh-subtitle-size:22px;
+      --hh-subtitle-lh:1.6;
+      --hh-subtitle-weight:400;
+      --hh-subtitle-opacity:0.85;
+    }
+
+    .hh-section-title{
+      font-size:var(--hh-title-size);
+      line-height:var(--hh-title-lh);
+      font-weight:var(--hh-title-weight);
+    }
+    .hh-section-subtitle{
+      font-size:var(--hh-subtitle-size);
+      line-height:var(--hh-subtitle-lh);
+      font-weight:var(--hh-subtitle-weight);
+      opacity:var(--hh-subtitle-opacity);
     }
 
     *{box-sizing:border-box}
@@ -340,7 +362,6 @@
       }
     }
     .split-text h2{
-      font-size:32px;
       margin:0 0 0;
       padding-bottom:0;
       line-height:1.05;
@@ -818,13 +839,9 @@
         stroke-dashoffset:0;
       }
     }
-    .section h2{margin:0 0 6px;font-size:28px}
+    .section h2{margin:0 0 6px}
     .section p{margin:0;color:var(--muted)}
     .section-subtitle{
-      font-size:22px;
-      line-height:1.6;
-      font-weight:400;
-      opacity:0.85;
       color:var(--muted);
     }
 
@@ -986,7 +1003,6 @@
       border-top:1px solid rgba(255,255,255,.08);
     }
     .aanbod-section h2{
-      font-size:28px;
       margin:0 0 6px;
       text-align:center;
     }
@@ -1042,7 +1058,6 @@
       border-bottom:1px solid rgba(255,255,255,.08);
     }
     .vision-title{
-      font-size:32px;
       margin:0 0 8px;
       text-align:center;
       color:var(--text);
@@ -1264,7 +1279,6 @@
       margin-bottom:40px;
     }
     .form-header h2{
-      font-size:32px;
       margin:0 0 0;
       padding-bottom:0;
       line-height:1.05;
@@ -1662,7 +1676,6 @@
       margin-bottom:48px;
     }
     .reviews-header h2{
-      font-size:28px;
       margin:0 0 8px;
       color:var(--text);
     }
@@ -2091,7 +2104,6 @@
       margin-bottom:40px;
     }
     .review-videos-header h2{
-      font-size:24px;
       margin:0 0 8px;
       color:var(--text);
     }
@@ -2406,7 +2418,6 @@
       margin-bottom:32px;
     }
     .coaches-header h2{
-      font-size:22px;
       margin:0 0 6px;
       color:var(--text);
     }
@@ -2764,7 +2775,6 @@
         flex:0 0 85%;
         min-width:280px;
       }
-      .form-header h2{font-size:28px}
       .form-header p{font-size:16px}
       .reviews-carousel-wrapper{
         padding:0 16px;
@@ -2915,7 +2925,7 @@
   <section class="split-block">
     <div class="container split-grid split-layout hero-split">
       <div class="split-text hero-text">
-        <h2>
+        <h2 class="hh-section-title">
           <span class="h2-wrapper">
             Niet zomaar een sportschool
             <div class="title-underline-wrapper">
@@ -3025,8 +3035,8 @@ zelfs leuk.</p>
   <!-- VISIE / JIJ-CIRKEL -->
     <section class="vision-block">
       <div class="container">
-        <h2 class="vision-title">Waar kunnen we jou mee helpen?</h2>
-        <p class="vision-subtitle section-subtitle">Healthy Habits heeft alles onder een dak</p>
+        <h2 class="vision-title hh-section-title">Waar kunnen we jou mee helpen?</h2>
+        <p class="vision-subtitle hh-section-subtitle">Healthy Habits heeft alles onder een dak</p>
         <div class="vision-grid split-layout">
 
         <div class="vision-left">
@@ -3079,8 +3089,8 @@ zelfs leuk.</p>
   </main>
     <section class="section" id="onze-aanpak">
       <div class="container">
-        <h2>Onze aanpak</h2>
-        <p class="section-subtitle">In 3 stappen naar een gezond ritme</p>
+        <h2 class="hh-section-title">Onze aanpak</h2>
+        <p class="section-subtitle hh-section-subtitle">In 3 stappen naar een gezond ritme</p>
 
         <div class="grid grid-3">
           <div class="card">
@@ -3126,8 +3136,8 @@ zelfs leuk.</p>
     <section class="reviews-section experience-section hh-testimonials">
       <div class="container">
         <div class="reviews-header">
-          <h2>Zo ervaren onze leden Healthy Habits</h2>
-          <p class="section-subtitle">Echte verhalen van mensen die hun doelen bereiken</p>
+          <h2 class="hh-section-title">Zo ervaren onze leden Healthy Habits</h2>
+          <p class="hh-section-subtitle">Echte verhalen van mensen die hun doelen bereiken</p>
         </div>
         <div class="reviews-carousel-wrapper">
           <button class="reviews-nav prev" id="prevReview" aria-label="Vorige review">‹</button>
@@ -3243,8 +3253,8 @@ zelfs leuk.</p>
     <section class="review-videos-section">
       <div class="container">
         <div class="review-videos-header">
-          <h2>Luister naar onze leden</h2>
-          <p class="section-subtitle">Persoonlijke verhalen over hun reis bij Healthy Habits</p>
+          <h2 class="hh-section-title">Luister naar onze leden</h2>
+          <p class="hh-section-subtitle">Persoonlijke verhalen over hun reis bij Healthy Habits</p>
         </div>
         <div class="review-videos-grid">
           <div class="review-video-item card">
@@ -3275,7 +3285,7 @@ zelfs leuk.</p>
       <div class="container">
         <div class="form-container">
           <div class="form-header">
-            <h2>
+            <h2 class="hh-section-title">
               <span class="h2-wrapper">
                 Laten we kennis maken
                 <div class="title-underline-wrapper">
@@ -4184,7 +4194,6 @@ zelfs leuk.</p>
     }
 
     .hh-testimonials h2 {
-      font-size: 26px;
       line-height: 1.15;
     }
 
