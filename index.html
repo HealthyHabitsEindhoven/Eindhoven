@@ -2384,16 +2384,18 @@
     ========================== */
     .review-video-play{
       position:relative;
-      aspect-ratio:4 / 3;
+      height:260px;
       overflow:hidden;
+      border-radius:20px;
     }
     .review-video-play video{
       position:relative;
       z-index:1;
-      display:block;
       width:100%;
       height:100%;
       object-fit:cover;
+      object-position:top center;
+      display:block;
     }
     .review-video-play::before{
       content:"";
@@ -2562,6 +2564,9 @@
       }
       .review-videos-grid{
         grid-template-columns:1fr;
+      }
+      .review-video-play{
+        height:220px;
       }
       .review-video-play-btn{
         font-size:40px;
@@ -3309,9 +3314,8 @@ zelfs leuk.</p>
           </div>
           <div class="review-video-item card">
             <div class="card__media review-video-play">
-              <video playsinline preload="metadata" controls>
+              <video playsinline preload="metadata">
                 <source src="/assets/video/ton-rene.mp4" type="video/mp4">
-                Your browser does not support the video tag.
               </video>
             </div>
             <div class="card__body">
@@ -4504,6 +4508,8 @@ zelfs leuk.</p>
     }
     .review-video-item.card .card__media {
       width: 100%;
+      height: auto;
+      max-height: none;
       overflow: hidden;
       border-radius: var(--radius);
     }
