@@ -2380,43 +2380,49 @@
     }
 
     /* =========================
-       PLAY OVERLAY – REVIEW VIDEOS
+       PLAY OVERLAY – REVIEW VIDEOS (pseudo-element)
     ========================== */
-    .review-video-wrapper{
+    .review-video-play{
       position:relative;
-      overflow:hidden;
-      border-radius:20px;
-      cursor:pointer;
     }
-    .review-video-wrapper video{
-      width:100%;
+    .review-video-play video{
+      position:relative;
+      z-index:1;
       display:block;
+      width:100%;
     }
-    .review-video-wrapper .play-overlay{
+    .review-video-play::before{
+      content:"";
       position:absolute;
-      inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:rgba(0,0,0,0.25);
-      z-index:2;
-    }
-    .review-video-wrapper .play-button{
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
       width:70px;
       height:70px;
       border-radius:50%;
-      background:rgba(0,0,0,0.7);
+      background:rgba(0,0,0,0.65);
       border:2px solid #d4af37;
-      position:relative;
+      z-index:5;
+      pointer-events:none;
     }
-    .review-video-wrapper .play-button::after{
+    .review-video-play::after{
       content:"";
       position:absolute;
-      left:28px;
-      top:20px;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      margin-left:6px;
+      width:0;
+      height:0;
       border-left:22px solid #d4af37;
       border-top:14px solid transparent;
       border-bottom:14px solid transparent;
+      z-index:6;
+      pointer-events:none;
+    }
+    .review-video-play.is-playing::before,
+    .review-video-play.is-playing::after{
+      display:none;
     }
 
     .video-info{
@@ -3289,13 +3295,8 @@ zelfs leuk.</p>
         </div>
         <div class="review-videos-grid">
           <div class="review-video-item card">
-            <div class="card__media">
-              <div class="review-video-wrapper">
-                <video src="/assets/video/monique.mp4" playsinline preload="metadata"></video>
-                <div class="play-overlay">
-                  <div class="play-button"></div>
-                </div>
-              </div>
+            <div class="card__media review-video-play">
+              <video src="/assets/video/monique.mp4" playsinline preload="metadata"></video>
             </div>
             <div class="card__body">
               <h3 class="card__title">Monique</h3>
@@ -3303,13 +3304,8 @@ zelfs leuk.</p>
             </div>
           </div>
           <div class="review-video-item card">
-            <div class="card__media">
-              <div class="review-video-wrapper">
-                <video src="/assets/video/IMG_8922 4.mov" playsinline preload="metadata"></video>
-                <div class="play-overlay">
-                  <div class="play-button"></div>
-                </div>
-              </div>
+            <div class="card__media review-video-play">
+              <video src="/assets/video/IMG_8922 4.mov" playsinline preload="metadata"></video>
             </div>
             <div class="card__body">
               <h3 class="card__title">Ton & René</h3>
@@ -4542,26 +4538,26 @@ zelfs leuk.</p>
 
   <!-- Review video play/pause logic -->
   <script>
-  document.querySelectorAll('.review-video-wrapper').forEach(function(wrapper){
-    var video = wrapper.querySelector('video');
-    var overlay = wrapper.querySelector('.play-overlay');
+  document.querySelectorAll('.review-video-play').forEach(function(container){
+    var video = container.querySelector('video');
+    if(!video) return;
 
-    wrapper.addEventListener('click', function(){
-      document.querySelectorAll('.review-video-wrapper video').forEach(function(v){
-        if(v !== video) v.pause();
+    container.addEventListener('click', function(){
+      document.querySelectorAll('.review-video-play video').forEach(function(v){
+        if(v !== video){ v.pause(); v.parentElement.classList.remove('is-playing'); }
       });
 
       if(video.paused){
         video.play();
-        overlay.style.display = 'none';
+        container.classList.add('is-playing');
       } else {
         video.pause();
-        overlay.style.display = 'flex';
+        container.classList.remove('is-playing');
       }
     });
 
     video.addEventListener('ended', function(){
-      overlay.style.display = 'flex';
+      container.classList.remove('is-playing');
     });
   });
   </script>
