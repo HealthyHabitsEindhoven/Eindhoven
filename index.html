@@ -2378,6 +2378,47 @@
     .review-video-progress-bar{
       display:none !important;
     }
+
+    /* =========================
+       PLAY OVERLAY – REVIEW VIDEOS
+    ========================== */
+    .review-video-wrapper{
+      position:relative;
+      overflow:hidden;
+      border-radius:20px;
+      cursor:pointer;
+    }
+    .review-video-wrapper video{
+      width:100%;
+      display:block;
+    }
+    .review-video-wrapper .play-overlay{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(0,0,0,0.25);
+      z-index:2;
+    }
+    .review-video-wrapper .play-button{
+      width:70px;
+      height:70px;
+      border-radius:50%;
+      background:rgba(0,0,0,0.7);
+      border:2px solid #d4af37;
+      position:relative;
+    }
+    .review-video-wrapper .play-button::after{
+      content:"";
+      position:absolute;
+      left:28px;
+      top:20px;
+      border-left:22px solid #d4af37;
+      border-top:14px solid transparent;
+      border-bottom:14px solid transparent;
+    }
+
     .video-info{
       margin-top:16px;
     }
@@ -3249,10 +3290,11 @@ zelfs leuk.</p>
         <div class="review-videos-grid">
           <div class="review-video-item card">
             <div class="card__media">
-              <div class="video-wrapper">
-                <video autoplay muted loop playsinline preload="auto">
-                  <source src="/assets/video/monique.mp4" type="video/mp4">
-                </video>
+              <div class="review-video-wrapper">
+                <video src="/assets/video/monique.mp4" playsinline preload="metadata"></video>
+                <div class="play-overlay">
+                  <div class="play-button"></div>
+                </div>
               </div>
             </div>
             <div class="card__body">
@@ -3262,10 +3304,11 @@ zelfs leuk.</p>
           </div>
           <div class="review-video-item card">
             <div class="card__media">
-              <div class="video-wrapper">
-                <video autoplay muted loop playsinline preload="auto">
-                  <source src="/assets/video/ton-en-rene.mp4" type="video/mp4">
-                </video>
+              <div class="review-video-wrapper">
+                <video src="/assets/video/IMG_8922 4.mov" playsinline preload="metadata"></video>
+                <div class="play-overlay">
+                  <div class="play-button"></div>
+                </div>
               </div>
             </div>
             <div class="card__body">
@@ -4496,6 +4539,32 @@ zelfs leuk.</p>
       margin: 0;
     }
   </style>
+
+  <!-- Review video play/pause logic -->
+  <script>
+  document.querySelectorAll('.review-video-wrapper').forEach(function(wrapper){
+    var video = wrapper.querySelector('video');
+    var overlay = wrapper.querySelector('.play-overlay');
+
+    wrapper.addEventListener('click', function(){
+      document.querySelectorAll('.review-video-wrapper video').forEach(function(v){
+        if(v !== video) v.pause();
+      });
+
+      if(video.paused){
+        video.play();
+        overlay.style.display = 'none';
+      } else {
+        video.pause();
+        overlay.style.display = 'flex';
+      }
+    });
+
+    video.addEventListener('ended', function(){
+      overlay.style.display = 'flex';
+    });
+  });
+  </script>
 
 </body>
 </html>
