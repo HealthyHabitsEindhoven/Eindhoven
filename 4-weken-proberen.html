@@ -123,6 +123,9 @@
     .topbar__cta button:hover{
       filter:brightness(1.1);
     }
+    .mobile-nav-cta{
+      display:none !important;
+    }
     .topbar__menu-toggle{
       display:none;
       background:none;
@@ -353,14 +356,21 @@
       .topbar__nav.mobile-open a:last-child{
         border-bottom:none;
       }
-      .topbar__cta.mobile-open{
-        top:calc(77px + 280px + 50px);
-        justify-content:center;
-      }
-      .topbar__cta.mobile-open button{
-        width:100%;
-        padding:12px 20px;
+      .topbar__nav.mobile-open .mobile-nav-cta{
+        display:block !important;
+        background:var(--accent);
+        color:#000;
+        text-align:center;
+        font-weight:800;
         font-size:15px;
+        padding:14px 20px;
+        border-radius:12px;
+        border-bottom:none;
+        margin-top:8px;
+        text-decoration:none;
+      }
+      .topbar__cta{
+        display:none !important;
       }
       .topbar__nav{
         gap:20px;
@@ -731,6 +741,7 @@
         <a href="/tarieven.html">Prijzen</a>
         <a href="/lidmaatschapstest.html">Online-lidmaatschapstest</a>
         <a href="/over-ons.html">Ons team</a>
+        <a href="/4-weken-proberen.html" class="mobile-nav-cta">4 weken proberen</a>
       </nav>
       <div class="topbar__cta" id="topbarCta">
         <a href="/4-weken-proberen.html"><button>4 weken proberen</button></a>
