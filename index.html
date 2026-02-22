@@ -1808,14 +1808,7 @@
         font-size:inherit;
         overflow:visible;
       }
-      .reviews-section .review-card__content-mobile .card__text::before{
-        content:""";
-      }
-      .reviews-section .review-card__content-mobile .card__text::after{
-        content:""";
-        max-height:none !important;
-        -webkit-line-clamp:unset !important;
-      }
+      /* result-subtitle quotes now handle this globally */
     }
     @media(max-width:560px){
       .review-card{
@@ -2008,6 +2001,13 @@
     }
     .review-card__quote::after{
       content:""";
+    }
+        /* Quotes op resultaatkaartjes - exact zoals bij Luister sectie */
+    .reviews-section .result-subtitle::before{
+      content:"“";
+    }
+    .reviews-section .result-subtitle::after{
+      content:"”";
     }
     /* Desktop: verberg mobile header en content, herstel originele styling */
     @media(min-width:769px){
@@ -3146,7 +3146,7 @@ zelfs leuk.</p>
                 </div>
                 <div class="review-card__content-mobile card__body">
                   <h3 class="card__title">Doel: –10 kg</h3>
-                  <p class="card__text">Ik wilde zo fit mogelijk zijn voor de bruiloft van mijn zoon, en dat is dubbel en dwars gelukt!</p>
+                  <p class="card__text result-subtitle">Ik wilde zo fit mogelijk zijn voor de bruiloft van mijn zoon, en dat is dubbel en dwars gelukt!</p>
               </div>
               </article>
 
@@ -3162,7 +3162,7 @@ zelfs leuk.</p>
                 </div>
                 <div class="review-card__content-mobile card__body">
                   <h3 class="card__title">Doel: Fitter en gezonder</h3>
-                  <p class="card__text">Wat een fijne en gezellige plek. Sporten zonder dat je tussen bodybuilders staat, hoe fijn is dat!</p>
+                  <p class="card__text result-subtitle">Wat een fijne en gezellige plek. Sporten zonder dat je tussen bodybuilders staat, hoe fijn is dat!</p>
               </div>
               </article>
 
@@ -3178,7 +3178,7 @@ zelfs leuk.</p>
                 </div>
                 <div class="review-card__content-mobile card__body">
                   <h3 class="card__title">Doel: –20 kg</h3>
-                  <p class="card__text">De combinatie van voeding en sporten heeft voor mij echt een nieuw leven gegeven. Echt, wauw! Complimenten aan deze sportschool!</p>
+                  <p class="card__text result-subtitle">De combinatie van voeding en sporten heeft voor mij echt een nieuw leven gegeven. Echt, wauw! Complimenten aan deze sportschool!</p>
               </div>
               </article>
 
@@ -3194,7 +3194,7 @@ zelfs leuk.</p>
                 </div>
                 <div class="review-card__content-mobile card__body">
                   <h3 class="card__title">Doel: Geen schouderklachten meer</h3>
-                  <p class="card__text">Ik heb enorm lang last gehad van een frozen shoulder. Door de opbouwende oefeningen van Joris heb ik mijn bewegelijkheid en kracht weer terug, en geen pijn meer!</p>
+                  <p class="card__text result-subtitle">Ik heb enorm lang last gehad van een frozen shoulder. Door de opbouwende oefeningen van Joris heb ik mijn bewegelijkheid en kracht weer terug, en geen pijn meer!</p>
               </div>
               </article>
 
@@ -3210,7 +3210,7 @@ zelfs leuk.</p>
                 </div>
                 <div class="review-card__content-mobile card__body">
                   <h3 class="card__title">Doel: –7,3 kg in 2 maanden</h3>
-                  <p class="card__text">Ik wilde zo snel mogelijk zoveel mogelijk afvallen, en dat is gelukt dankzij het fijne Healthy Habits-team.</p>
+                  <p class="card__text result-subtitle">Ik wilde zo snel mogelijk zoveel mogelijk afvallen, en dat is gelukt dankzij het fijne Healthy Habits-team.</p>
               </div>
               </article>
 
@@ -3226,7 +3226,7 @@ zelfs leuk.</p>
                 </div>
                 <div class="review-card__content-mobile card__body">
                   <h3 class="card__title">Doel: Fijn sporten</h3>
-                  <p class="card__text">Langzaam, maar op een fijne en leuke manier, al 6,4 kg kwijtgeraakt. Enorm blij!</p>
+                  <p class="card__text result-subtitle">Langzaam, maar op een fijne en leuke manier, al 6,4 kg kwijtgeraakt. Enorm blij!</p>
               </div>
               </article>
             </div>
