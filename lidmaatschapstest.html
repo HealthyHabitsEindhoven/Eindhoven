@@ -190,17 +190,19 @@
       position:relative;
       z-index:2;
       padding:48px 0;
+      text-align:center;
     }
     .hero h1{
       font-size:clamp(32px,5vw,56px);
       margin:0 0 12px;
     }
-    .hero .subtitle{
+    .hero p{
       max-width:55ch;
       color:var(--muted);
       font-size:18px;
       margin:0 0 32px;
-      line-height:1.5;
+      margin-left:auto;
+      margin-right:auto;
     }
     .hero-buttons{
       display:flex;
@@ -1263,6 +1265,12 @@
       .hero{
         min-height:80vh;
       }
+      .hero h1{
+        font-size:28px;
+      }
+      .hero p{
+        font-size:16px;
+      }
       .test-intro-section,
       .waarom-section,
       .reviews-section,
@@ -1611,6 +1619,7 @@
     <div class="hero__overlay"></div>
     <div class="container hero-content">
       <h1>Ontdek welk lidmaatschap bij jou past</h1>
+      <p>We bieden verschillende lidmaatschappen aan, met of zonder yoga en maandelijks of jaarlijks.<br>Met 7 korte vragen in onze online lidmaatschapstest helpen we je ontdekken wat het beste bij je past.</p>
     </div>
   </section>
 
