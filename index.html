@@ -2396,6 +2396,13 @@
       object-fit:cover;
       object-position:top center;
       display:block;
+      -webkit-appearance:none;
+    }
+    .review-video-play video::-webkit-media-controls{
+      display:none !important;
+    }
+    .review-video-play video::-webkit-media-controls-enclosure{
+      display:none !important;
     }
     .review-video-play::before{
       content:"";
