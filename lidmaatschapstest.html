@@ -224,9 +224,7 @@
     .hero__overlay{
       position:absolute;
       inset:0;
-      background:linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 9%, rgba(0,0,0,0.3) 18%, rgba(0,0,0,0.1) 24%, rgba(0,0,0,0) 30%),
-                  linear-gradient(to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0) 100%);
-      background-blend-mode:multiply;
+      background:linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,.72) 18%, rgba(0,0,0,.18) 55%, rgba(0,0,0,.05) 100%);
       z-index:1;
     }
     .hero-content{
@@ -492,7 +490,7 @@
 
     .reviews-section{
       padding:80px 0;
-      background:var(--bg-warm);
+      background:#000000;
     }
     .reviews-header{
       text-align:center;
@@ -1152,7 +1150,7 @@
     ========================== */
     .faq-section{
       padding:80px 0;
-      background:var(--bg-warm);
+      background:#000000;
     }
     .faq-section h2{
       font-size:28px;
@@ -1672,7 +1670,7 @@
                 <path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </button>
-          </div>
+      </div>
           <div class="topbar__submenu accordion-panel" id="aanbodAccordionPanel">
             <a class="accordion-link" href="/milon.html">Milon</a>
             <a class="accordion-link" href="/fitness.html">Fitness</a>
@@ -2042,7 +2040,7 @@
               <div class="review-card__content-mobile card__body">
                 <h3 class="card__title">Doel: –10 kg</h3>
                 <p class="card__text">Ik wilde zo fit mogelijk zijn voor de bruiloft van mijn zoon, en dat is dubbel en dwars gelukt!</p>
-              </div>
+            </div>
             </article>
 
             <article class="review-card exp-card" data-name="Ronald" data-age="54" data-goal="Fitter en gezonder" data-result="Wat een fijne en gezellige plek. Sporten zonder dat je tussen bodybuilders staat, hoe fijn is dat!">
@@ -2058,7 +2056,7 @@
               <div class="review-card__content-mobile card__body">
                 <h3 class="card__title">Doel: Fitter en gezonder</h3>
                 <p class="card__text">Wat een fijne en gezellige plek. Sporten zonder dat je tussen bodybuilders staat, hoe fijn is dat!</p>
-              </div>
+            </div>
             </article>
 
             <article class="review-card exp-card" data-name="Ingrid" data-age="47" data-goal="–20 kg" data-result="De combinatie van voeding en sporten heeft voor mij echt een nieuw leven gegeven. Echt, wauw! Complimenten aan deze sportschool!">
@@ -2090,7 +2088,7 @@
               <div class="review-card__content-mobile card__body">
                 <h3 class="card__title">Doel: Geen schouderklachten meer</h3>
                 <p class="card__text">Ik heb enorm lang last gehad van een frozen shoulder. Door de opbouwende oefeningen van Joris heb ik mijn bewegelijkheid en kracht weer terug, en geen pijn meer!</p>
-              </div>
+            </div>
             </article>
 
             <article class="review-card exp-card" data-name="Harry" data-age="52" data-goal="–7,3 kg in 2 maanden" data-result="Ik wilde zo snel mogelijk zoveel mogelijk afvallen, en dat is gelukt dankzij het fijne Healthy Habits-team.">
@@ -2106,7 +2104,7 @@
               <div class="review-card__content-mobile card__body">
                 <h3 class="card__title">Doel: –7,3 kg in 2 maanden</h3>
                 <p class="card__text">Ik wilde zo snel mogelijk zoveel mogelijk afvallen, en dat is gelukt dankzij het fijne Healthy Habits-team.</p>
-              </div>
+            </div>
             </article>
 
             <article class="review-card exp-card" data-name="Laura" data-age="36" data-goal="Fijn sporten" data-result="Langzaam, maar op een fijne en leuke manier, al 6,4 kg kwijtgeraakt. Enorm blij!">
@@ -2122,7 +2120,7 @@
               <div class="review-card__content-mobile card__body">
                 <h3 class="card__title">Doel: Fijn sporten</h3>
                 <p class="card__text">Langzaam, maar op een fijne en leuke manier, al 6,4 kg kwijtgeraakt. Enorm blij!</p>
-              </div>
+            </div>
             </article>
           </div>
         </div>
@@ -2488,7 +2486,7 @@
         alert('Vul alle velden correct in.');
         return false;
       }
-      
+
       // Honeypot check
       const honeypot = document.querySelector('input[name="website"]').value;
       if(honeypot){
@@ -2527,7 +2525,7 @@
         if(e.target.closest('.test-option')){
           // Update after a tiny delay to let checkbox state update
           setTimeout(() => {
-            updateButtons();
+          updateButtons();
           }, 50);
         }
       });
@@ -2729,12 +2727,12 @@
 
       // Initialize
       setTimeout(() => {
-        updateCarousel(true);
+      updateCarousel(true);
         setTimeout(() => {
           updateCarousel();
         }, 50);
       }, 100);
-
+      
       // Update on resize
       let resizeTimer;
       window.addEventListener('resize', function(){
@@ -2746,7 +2744,7 @@
       });
     })();
   </script>
-  
+
   <script>
     // Mobile menu toggle
     (function(){
