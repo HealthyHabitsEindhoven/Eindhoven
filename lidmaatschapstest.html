@@ -194,13 +194,23 @@
     /* =========================
        HERO
     ========================== */
+    .section-black{
+      background:#000 !important;
+    }
+    .section-black,
+    .section-black .container,
+    .section-black .inner,
+    .section-black .content{
+      background:transparent !important;
+    }
     .hero{
       position:relative;
       min-height:100vh;
       display:flex;
       align-items:center;
       overflow:hidden;
-      background:var(--bg-main);
+      background:#000;
+      margin-bottom:0 !important;
     }
     .hero img{
       position:absolute;
@@ -299,7 +309,8 @@
     ========================== */
     .test-intro-section{
       padding:80px 0;
-      background:var(--bg-warm);
+      background:#000;
+      margin-top:0 !important;
     }
     .test-intro-section > .container{
       text-align:center;
@@ -1683,7 +1694,7 @@
   </header>
 
   <!-- 1. HERO -->
-  <section class="hero">
+  <section class="hero section-black">
     <img src="/assets/images/home/lidmaatschapstest.jpeg" alt="Healthy Habits sfeer" width="1920" height="1080" decoding="async" loading="eager">
     <div class="hero__overlay"></div>
     <div class="container hero-content">
@@ -1692,7 +1703,7 @@
   </section>
 
   <!-- 2. TEST INTRO + WIZARD -->
-  <section class="test-intro-section" id="test">
+  <section class="test-intro-section section-black" id="test">
     <div class="container">
       <p>We bieden verschillende lidmaatschappen aan, met of zonder yoga en maandelijks of jaarlijks.<br>Met 7 korte vragen in onze online lidmaatschapstest helpen we je ontdekken wat het beste bij je past.</p>
       
