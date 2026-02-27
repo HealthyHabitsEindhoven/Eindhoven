@@ -650,6 +650,7 @@
     }
 
   </style>
+  <link rel="stylesheet" href="/assets/css/nav-dropdown.css">
 </head>
 <body>
 
@@ -665,12 +666,19 @@
         <span></span>
       </button>
       <nav class="topbar__nav" id="topbarNav">
-        <div class="topbar__nav-item">
-          <a href="/aanbod.html">Ons aanbod</a>
-          <div class="topbar__submenu">
-            <a href="/milon.html">Milon</a>
-            <a href="/fitness.html">Fitness</a>
-            <a href="/yoga.html">Yoga</a>
+        <div class="topbar__nav-item mobile-accordion">
+          <div class="mobile-accordion__row">
+            <a href="/aanbod.html" class="mobile-accordion__label" id="aanbodAccordionLabel">Ons aanbod</a>
+            <button class="accordion-toggle" type="button" aria-expanded="false" aria-controls="aanbodAccordionPanel" aria-label="Toon sublinks Ons aanbod">
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="topbar__submenu accordion-panel" id="aanbodAccordionPanel">
+            <a class="accordion-link" href="/milon.html">Milon</a>
+            <a class="accordion-link" href="/fitness.html">Fitness</a>
+            <a class="accordion-link" href="/yoga.html">Yoga</a>
           </div>
         </div>
         <a href="/succesverhalen.html">Succesverhalen</a>
@@ -927,5 +935,6 @@
     });
   </script>
 
+  <script src="/assets/js/nav-dropdown.js"></script>
 </body>
 </html>
