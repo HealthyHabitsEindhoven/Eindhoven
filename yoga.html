@@ -1,0 +1,1754 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <!-- Google tag (gtag.js) - MUST BE FIRST -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LPZ4B3M8KX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LPZ4B3M8KX');
+  </script>
+
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Yoga & Groepslessen | Healthy Habits Eindhoven</title>
+  <meta name="description" content="Ontdek yoga en groepslessen bij Healthy Habits Eindhoven. Kleine groepen, persoonlijke aandacht en een rustig lesrooster.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://healthyhabitseindhoven.github.io/yoga.html">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/logo/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/logo/favicon.png">
+  <link rel="apple-touch-icon" href="/logo/favicon.png">
+
+  <style>
+    :root{
+      --accent:#C3A300;
+      --bg:#0b0c10;
+      --bg-main:#0b0c10;
+      --bg-warm:#0f1115;
+      --bg-accent:#121418;
+      --text:#f3f4f6;
+      --muted:#cbd5e1;
+      --line:rgba(255,255,255,.15);
+      --radius:18px;
+      --max:1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      max-width:100%;
+      overflow-x:hidden;
+      margin:0;
+      padding:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:var(--bg-main);
+      color:var(--text);
+    }
+
+    img{width:100%;max-width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 36px));max-width:100%;margin:0 auto;box-sizing:border-box}
+
+    /* =========================
+       TOP MENU BAR
+    ========================== */
+    .topbar{
+      right:0;
+      max-width:100%;
+      box-sizing:border-box;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:90px;
+      background:#000;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .container{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:32px;
+    }
+    .topbar__logo{
+      font-weight:800;
+      letter-spacing:.04em;
+      font-size:18px;
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+    }
+    .topbar__logo img{
+      height:54px;
+      width:auto;
+      display:block;
+    }
+    .topbar__nav{
+      display:flex;
+      align-items:center;
+      gap:32px;
+      flex:1;
+      justify-content:center;
+    }
+    .topbar__nav a{
+      color:var(--text);
+      text-decoration:none;
+      font-size:17px;
+      font-weight:500;
+      transition:color 0.2s ease;
+    }
+    .topbar__nav a:hover{
+      color:var(--accent);
+    }
+    .topbar__cta{
+      flex-shrink:0;
+    }
+    .topbar__cta a{
+      text-decoration:none;
+    }
+    .topbar__cta button{
+      background:var(--accent);
+      color:#000;
+      border:none;
+      padding:12px 22px;
+      border-radius:8px;
+      font-weight:700;
+      font-size:16px;
+      cursor:pointer;
+      transition:filter 0.2s ease;
+    }
+    .topbar__cta button:hover{
+      filter:brightness(1.1);
+    }
+    .mobile-nav-cta{
+      display:none !important;
+    }
+    .topbar__menu-toggle{
+      display:none;
+      background:none;
+      border:none;
+      cursor:pointer;
+      padding:8px;
+      flex-shrink:0;
+      z-index:10001;
+    }
+    .topbar__menu-toggle span{
+      display:block;
+      width:24px;
+      height:2px;
+      background:var(--accent);
+      margin:5px 0;
+      transition:all 0.3s ease;
+      border-radius:2px;
+    }
+    .topbar__menu-toggle.active span:nth-child(1){
+      transform:rotate(45deg) translate(7px, 7px);
+    }
+    .topbar__menu-toggle.active span:nth-child(2){
+      opacity:0;
+    }
+    .topbar__menu-toggle.active span:nth-child(3){
+      transform:rotate(-45deg) translate(7px, -7px);
+    }
+    body{ padding-top:90px; }
+
+    /* =========================
+       SUCCESVERHALEN SECTIE (HEADER)
+    ========================== */
+    .succesverhalen-section{
+      padding:80px 0 0;
+      background:var(--bg-warm);
+    }
+    .succesverhalen-header{
+      text-align:center;
+      margin-bottom:0;
+    }
+    .succesverhalen-header h1{
+      font-size:32px;
+      margin:0 0 12px;
+      color:var(--text);
+    }
+    .succesverhalen-header p{
+      color:var(--muted);
+      font-size:18px;
+      margin:0;
+    }
+    .hero-tags{
+      font-size:14px;
+      color:var(--text);
+      margin:0;
+      padding:12px 16px;
+      line-height:1.4;
+      text-align:center;
+      background:rgba(255,255,255,.05);
+      border-top:3px solid var(--accent);
+      border-radius:0;
+      width:100%;
+      display:block;
+      font-weight:500;
+      letter-spacing:0.02em;
+    }
+    .split-video .hero-tags{
+      margin-top:0;
+      border-top-left-radius:0;
+      border-top-right-radius:0;
+    }
+    @media(max-width:768px){
+      .hero-tags{
+        padding:10px 12px;
+        font-size:13px;
+        line-height:1.3;
+      }
+    }
+
+    /* =========================
+       SPLIT CONTENT BLOCK
+    ========================== */
+    .split-block{
+      background:#000;
+      padding:56px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .split-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:40px;
+      align-items:center;
+    }
+    .split-video{
+      position:relative;
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.03);
+      border:1px solid var(--line);
+      cursor:pointer;
+      transition:all 300ms ease;
+    }
+    .split-video .video-wrapper{
+      overflow:hidden;
+      border-radius:var(--radius);
+      aspect-ratio:16/9;
+      position:relative;
+      width:100%;
+      background:#000;
+    }
+    .split-video .video-wrapper iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+    }
+    @media(max-width:900px){
+      .split-grid{
+        grid-template-columns:1fr;
+        gap:40px;
+      }
+      .split-video{
+        order:2;
+        max-width:100%;
+        width:100%;
+      }
+      .split-video .video-wrapper{
+        max-width:100%;
+        width:100%;
+      }
+    }
+
+    /* =========================
+       MILON LANDING
+    ========================== */
+    .milon-hero{
+      position:relative;
+      min-height:72vh;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      background:#000;
+      border-bottom:none;
+    }
+    .milon-hero img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center center;
+      display:block;
+      filter:brightness(.55);
+    }
+    .milon-hero__overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,.72) 18%, rgba(0,0,0,.18) 55%, rgba(0,0,0,.05) 100%);
+      z-index:1;
+    }
+    .milon-hero__content{
+      position:relative;
+      z-index:2;
+      text-align:center;
+      max-width:860px;
+      margin:0 auto;
+      padding:48px 0;
+    }
+    .milon-hero h1{
+      margin:0 0 10px;
+      font-size:clamp(34px,5vw,56px);
+      line-height:1.08;
+    }
+    .milon-hero .hero-sub{
+      margin:0 0 22px;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.5;
+    }
+    .milon-hero .hero-line{
+      width:150px;
+      height:3px;
+      background:var(--accent);
+      margin:0 auto 26px;
+      border-radius:2px;
+    }
+    .milon-cta-row{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin:0 0 16px;
+    }
+    .milon-btn{
+      display:inline-block;
+      text-decoration:none;
+      border-radius:10px;
+      padding:12px 20px;
+      font-weight:700;
+      font-size:15px;
+      transition:filter .2s ease, background .2s ease, border-color .2s ease;
+      border:1px solid transparent;
+    }
+    .milon-btn--primary{
+      background:var(--accent);
+      color:#000;
+    }
+    .milon-btn--primary:hover{
+      filter:brightness(1.08);
+    }
+    .milon-btn--secondary{
+      background:rgba(255,255,255,.08);
+      color:var(--text);
+      border-color:var(--line);
+    }
+    .milon-btn--secondary:hover{
+      background:rgba(255,255,255,.14);
+      border-color:rgba(255,255,255,.3);
+    }
+    .milon-trust{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.45;
+    }
+
+    .section-black{
+      background-color:#000000;
+    }
+    .milon-benefits{
+      background:#000000;
+      padding:0 0 72px;
+      border-bottom:none;
+      margin-top:0;
+    }
+    .milon-benefits h2,
+    .milon-how h2,
+    .milon-mini-cta h2{
+      margin:0 0 10px;
+      font-size:32px;
+      color:var(--text);
+    }
+    .milon-benefits .lead,
+    .milon-mini-cta p{
+      margin:0 0 18px;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:17px;
+    }
+    .milon-bullets{
+      margin:0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+    .milon-bullets li{
+      position:relative;
+      padding-left:18px;
+      color:var(--text);
+      line-height:1.5;
+      font-size:15px;
+    }
+    .milon-bullets li::before{
+      content:"•";
+      position:absolute;
+      left:0;
+      color:var(--accent);
+      font-weight:700;
+    }
+    .milon-media{
+      border-radius:var(--radius);
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+    }
+    .milon-media img{
+      width:100%;
+      height:100%;
+      min-height:280px;
+      object-fit:cover;
+      object-position:center;
+      display:block;
+    }
+
+    .milon-how{
+      background:var(--bg-main);
+      padding:72px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .milon-how .intro{
+      margin:0 0 24px;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:17px;
+    }
+    .milon-steps{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin-bottom:20px;
+    }
+    .milon-step{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:20px 18px;
+    }
+    .milon-step .num{
+      color:var(--accent);
+      font-weight:800;
+      font-size:13px;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      margin:0 0 6px;
+      display:block;
+    }
+    .milon-step p{
+      margin:0;
+      color:var(--text);
+      line-height:1.5;
+      font-size:15px;
+    }
+    .yoga-lessons{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:12px;
+      margin-top:18px;
+    }
+    .yoga-lessons .milon-step .num{
+      margin-bottom:4px;
+      font-size:12px;
+    }
+    .yoga-lessons .milon-step p{
+      color:var(--muted);
+      font-size:14px;
+    }
+    .yoga-rooster{
+      background:var(--bg-main);
+      padding:72px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .rooster-media{
+      max-width:460px;
+      margin:0 auto 22px;
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      overflow:hidden;
+      background:rgba(255,255,255,.03);
+    }
+    .rooster-media img{
+      display:block;
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      object-position:center;
+    }
+    .rooster-panel{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:14px;
+      background:rgba(255,255,255,.03);
+      overflow:hidden;
+    }
+    .rooster-day{
+      display:grid;
+      grid-template-columns:210px 1fr;
+      border-top:1px solid rgba(255,255,255,.1);
+    }
+    .rooster-day:first-child{
+      border-top:none;
+    }
+    .rooster-day__name{
+      padding:20px 22px;
+      font-weight:700;
+      color:var(--text);
+      background:rgba(255,255,255,.02);
+      border-right:1px solid rgba(255,255,255,.1);
+    }
+    .rooster-day__slots{
+      padding:14px 18px;
+      display:grid;
+      gap:8px;
+    }
+    .rooster-slot{
+      display:grid;
+      grid-template-columns:140px 1fr;
+      gap:12px;
+      align-items:start;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.45;
+    }
+    .rooster-slot strong{
+      color:var(--text);
+      font-weight:600;
+    }
+
+    .milon-mini-cta{
+      background:var(--bg-warm);
+      padding:56px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      text-align:center;
+    }
+
+    /* =========================
+       FORMULIER (1-op-1 4-weken-proberen)
+    ========================== */
+    .hero-section{
+      padding:80px 0 60px;
+      background:#000000;
+      text-align:center;
+    }
+    .hero-intro{
+      font-size:18px;
+      color:var(--muted);
+      margin:0 0 16px;
+      text-align:center;
+      font-weight:normal;
+    }
+    .hero-section h1{
+      font-size:clamp(32px,5vw,48px);
+      margin:0 0 16px;
+      color:var(--text);
+    }
+    .h2-wrapper{
+      position:relative;
+      display:inline-block;
+    }
+    .title-underline-wrapper{
+      position:absolute;
+      top:calc(100% - 1px);
+      left:0;
+      width:100%;
+    }
+    .title-underline-svg{
+      display:block;
+      width:100%;
+      height:10px;
+      overflow:visible;
+    }
+    .title-underline-svg svg{
+      width:100%;
+      height:10px;
+      display:block;
+    }
+    .title-underline-path{
+      stroke:#C3A300;
+      stroke-width:3;
+      fill:none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+    .hero-section .hero-subtitle{
+      font-size:18px;
+      color:var(--muted);
+      margin:0 0 40px;
+      max-width:600px;
+      margin-left:auto;
+      margin-right:auto;
+      line-height:1.5;
+    }
+    .hero-form-wrapper{
+      max-width:600px;
+      margin:0 auto;
+    }
+    .hero-section .form{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:32px;
+      text-align:left;
+    }
+    .hero-note{
+      font-size:14px;
+      color:var(--muted);
+      margin:20px 0 0;
+      text-align:center;
+    }
+    .form{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:32px;
+      max-width:600px;
+      margin:0 auto;
+    }
+    .form-group{
+      margin-bottom:20px;
+    }
+    .form-group:last-child{
+      margin-bottom:0;
+    }
+    .form-explanation{
+      font-size:13px;
+      color:rgba(203,213,225,0.7);
+      line-height:1.6;
+      margin:0 0 24px;
+      font-weight:normal;
+    }
+    .form-group label{
+      display:block;
+      margin-bottom:8px;
+      color:var(--text);
+      font-size:14px;
+      font-weight:500;
+    }
+    .form-group input,
+    .form-group select{
+      width:100%;
+      padding:12px 16px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      border-radius:12px;
+      color:var(--text);
+      font-size:16px;
+      font-family:inherit;
+      transition:background 0.2s ease, border-color 0.2s ease;
+    }
+    .form-group input[type="text"]{
+      width:100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus{
+      outline:none;
+      background:rgba(255,255,255,.08);
+      border-color:var(--accent);
+    }
+    .form-group input::placeholder{
+      color:rgba(255,255,255,.4);
+    }
+    .form-submit{
+      width:100%;
+      padding:14px 24px;
+      background:var(--accent);
+      color:#000;
+      border:none;
+      border-radius:8px;
+      font-weight:700;
+      font-size:16px;
+      cursor:pointer;
+      transition:filter 0.2s ease;
+      margin-top:8px;
+    }
+    .form-submit:hover{
+      filter:brightness(1.1);
+    }
+    .form-note{
+      text-align:center;
+      font-size:12px;
+      color:var(--muted);
+      margin-top:12px;
+    }
+    .form-privacy{
+      font-size:13px;
+      color:var(--muted);
+      margin-top:16px;
+      text-align:center;
+      line-height:1.5;
+    }
+    .form-privacy a{
+      color:var(--accent);
+      text-decoration:underline;
+    }
+    .form-privacy a:hover{
+      color:var(--text);
+    }
+
+    .milon-bottom-photo{
+      padding:24px 0 64px;
+      background:var(--bg-accent);
+    }
+    .milon-bottom-photo .milon-media img{
+      min-height:220px;
+      max-height:420px;
+      object-position:center;
+    }
+    @media(max-width:900px){
+      .milon-hero{
+        min-height:64vh;
+      }
+      .milon-benefits,
+      .yoga-rooster{
+        padding:56px 0;
+      }
+      .milon-benefits h2,
+      .yoga-rooster h2,
+      .milon-mini-cta h2{
+        font-size:28px;
+      }
+      .yoga-lessons{
+        grid-template-columns:1fr;
+      }
+      .rooster-day{
+        grid-template-columns:1fr;
+      }
+      .rooster-day__name{
+        border-right:none;
+        border-bottom:1px solid rgba(255,255,255,.1);
+        padding:14px 16px;
+      }
+      .rooster-day__slots{
+        padding:12px 14px;
+      }
+    }
+    @media(max-width:560px){
+      .milon-hero .hero-sub,
+      .milon-benefits .lead,
+      .yoga-rooster .intro,
+      .milon-mini-cta p{
+        font-size:16px;
+      }
+      .milon-btn{
+        width:100%;
+        text-align:center;
+      }
+      .milon-cta-row{
+        align-items:stretch;
+      }
+      .rooster-slot{
+        grid-template-columns:1fr;
+        gap:2px;
+        font-size:14px;
+      }
+    }
+
+    /* =========================
+       AANBOD SECTIE
+    ========================== */
+    .aanbod-section{
+      padding:48px 0 80px;
+      background:var(--bg-warm);
+    }
+    .aanbod-header{
+      text-align:center;
+      margin-bottom:48px;
+    }
+    .aanbod-header h1{
+      font-size:32px;
+      margin:0 0 12px;
+      color:var(--text);
+    }
+    .aanbod-header p{
+      color:var(--muted);
+      font-size:18px;
+      margin:0;
+    }
+    .aanbod-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+      max-width:1400px;
+      margin:0 auto;
+      align-items:stretch;
+    }
+    .succes-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      height:100%;
+      min-height:550px;
+      align-items:stretch;
+      transition:box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .succes-card:hover{
+      box-shadow:0 8px 24px rgba(0,0,0,0.3);
+      border-color:rgba(255,255,255,.25);
+    }
+    .succes-card__title-header{
+      padding:24px 24px 12px 24px;
+      font-size:20px;
+      font-weight:700;
+      color:var(--text);
+      margin:0;
+      text-align:left;
+      flex-shrink:0;
+    }
+    .card-top-title{
+      font-size:20px !important;
+      font-weight:700 !important;
+    }
+    .card-subtitle{
+      font-size:16px !important;
+      font-weight:500 !important;
+    }
+    .card-desc{
+      font-size:14px !important;
+      font-weight:400 !important;
+      line-height:1.5 !important;
+      color:var(--muted) !important;
+    }
+    .succes-card__image{
+      width:100%;
+      aspect-ratio:1/1;
+      overflow:hidden;
+      background:rgba(255,255,255,.03);
+      flex-shrink:0;
+      position:relative;
+      border-radius:0;
+    }
+    .succes-card__image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .succes-card__content{
+      padding:18px;
+      flex:1 1 auto;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      justify-content:flex-start;
+      background:rgba(255,255,255,.04);
+      overflow:visible;
+      min-height:auto;
+      flex-shrink:0;
+    }
+    .succes-card__result{
+      margin:0 0 6px;
+      color:var(--text);
+      flex-shrink:0;
+      display:block;
+    }
+    .succes-card__result h2{
+      margin:0 0 0;
+      color:var(--text);
+      font-size:17px;
+      font-weight:500;
+    }
+    .succes-card__description{
+      margin:7px 0 0 0;
+      color:var(--muted);
+      line-height:1.5;
+      flex-shrink:0;
+      display:block;
+      font-size:14px;
+      font-weight:400;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media(max-width:900px){
+      .succesverhalen-header h1{
+        font-size:28px;
+      }
+      .succesverhalen-header p{
+        font-size:16px;
+      }
+      .topbar__menu-toggle{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+      }
+      .topbar__nav,
+      .topbar__cta{
+        display:none;
+      }
+      .topbar__nav.mobile-open{
+        display:flex;
+        position:fixed;
+        top:77px;
+        left:0;
+        right:0;
+        background:#000;
+        flex-direction:column;
+        padding:24px;
+        gap:20px;
+        border-top:1px solid rgba(255,255,255,.08);
+        z-index:10000;
+        box-shadow:0 4px 12px rgba(0,0,0,.3);
+      }
+      .topbar__nav.mobile-open a{
+        font-size:16px;
+        padding:12px 0;
+        border-bottom:1px solid rgba(255,255,255,.08);
+      }
+      .topbar__nav.mobile-open a:last-child{
+        border-bottom:none;
+      }
+      .topbar__nav.mobile-open .mobile-nav-cta{
+        display:block !important;
+        background:var(--accent);
+        color:#000;
+        text-align:center;
+        font-weight:800;
+        font-size:15px;
+        padding:14px 20px;
+        border-radius:12px;
+        border-bottom:none;
+        margin-top:8px;
+        text-decoration:none;
+      }
+      .topbar__cta{
+        display:none !important;
+      }
+      .aanbod-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:20px;
+      }
+    }
+    @media(max-width:560px){
+      .aanbod-grid{
+        grid-template-columns:1fr;
+        gap:20px;
+      }
+      .topbar .container{
+        gap:16px;
+      }
+      .topbar__nav{
+        gap:12px;
+      }
+      .topbar__nav a{
+        font-size:13px;
+      }
+      .topbar__cta button{
+        padding:8px 12px;
+        font-size:12px;
+      }
+      .aanbod-header h1{
+        font-size:28px;
+      }
+      .aanbod-header p{
+        font-size:16px;
+      }
+    }
+    /* =========================
+       COOKIE BANNER
+    ========================== */
+    .cookie-banner{
+      position:fixed;
+      bottom:0;
+      left:0;
+      right:0;
+      background:var(--bg-warm);
+      border-top:1px solid var(--line);
+      padding:24px;
+      z-index:10000;
+      transform:translateY(100%);
+      transition:transform 0.3s ease;
+      box-shadow:0 -4px 12px rgba(0,0,0,.3);
+    }
+    .cookie-banner.show{
+      transform:translateY(0);
+    }
+    .cookie-banner-content{
+      max-width:1100px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      flex-wrap:wrap;
+    }
+    .cookie-banner-text{
+      flex:1;
+      min-width:250px;
+      font-size:14px;
+      color:var(--text);
+      line-height:1.5;
+    }
+    .cookie-banner-text a{
+      color:var(--accent);
+      text-decoration:underline;
+    }
+    .cookie-banner-buttons{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .cookie-btn{
+      padding:10px 20px;
+      border-radius:8px;
+      font-size:14px;
+      font-weight:600;
+      cursor:pointer;
+      border:none;
+      transition:filter 0.2s ease;
+    }
+    .cookie-btn-accept{
+      background:var(--accent);
+      color:#000;
+    }
+    .cookie-btn-accept:hover{
+      filter:brightness(1.1);
+    }
+    .cookie-btn-reject{
+      background:rgba(255,255,255,.08);
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+    .cookie-btn-reject:hover{
+      background:rgba(255,255,255,.12);
+    }
+    .cookie-btn-settings{
+      background:transparent;
+      color:var(--muted);
+      border:1px solid var(--line);
+    }
+    .cookie-btn-settings:hover{
+      color:var(--text);
+      border-color:var(--accent);
+    }
+    .cookie-settings{
+      max-width:1100px;
+      margin:0 auto;
+      padding-top:24px;
+      border-top:1px solid var(--line);
+      margin-top:24px;
+      display:none;
+    }
+    .cookie-settings.show{
+      display:block;
+    }
+    .cookie-setting-item{
+      margin-bottom:20px;
+    }
+    .cookie-setting-item label{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      font-size:14px;
+      color:var(--text);
+      cursor:pointer;
+    }
+    .cookie-setting-item input[type="checkbox"]{
+      width:20px;
+      height:20px;
+      cursor:pointer;
+    }
+    .cookie-setting-item p{
+      font-size:12px;
+      color:var(--muted);
+      margin:4px 0 0 0;
+    }
+
+        /* =========================
+       FOOTER
+    ========================== */
+    .footer{
+      padding:64px 0 32px;
+      background:var(--bg-warm);
+      border-top:1px solid var(--line);
+      margin-top:80px;
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:48px;
+      max-width:1200px;
+      margin:0 auto;
+    }
+    .footer-col{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    .footer-col h3{
+      font-size:16px;
+      font-weight:700;
+      color:var(--text);
+      margin:0 0 8px;
+      letter-spacing:0.02em;
+    }
+    .footer-col p{
+      font-size:14px;
+      color:var(--muted);
+      margin:0;
+      line-height:1.6;
+    }
+    .footer-col a{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:14px;
+      transition:color 0.2s ease;
+      display:inline-block;
+    }
+    .footer-col a:hover{
+      color:var(--accent);
+    }
+    .footer-email,
+    .footer-phone{
+      color:var(--text);
+      font-size:14px;
+    }
+    .footer-direct-mail{
+      display:inline-block;
+      margin-top:8px;
+      padding:10px 20px;
+      background:var(--accent);
+      color:#000;
+      text-decoration:none;
+      border-radius:8px;
+      font-size:14px;
+      font-weight:600;
+      transition:filter 0.2s ease;
+    }
+    .footer-direct-mail:hover{
+      filter:brightness(1.1);
+      color:#000;
+    }
+    .footer-hours{
+      display:flex;
+      flex-direction:column;
+      gap:0;
+    }
+    .footer-hours-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      padding:10px 0;
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.6;
+      border-bottom:1px solid rgba(255,255,255,.05);
+      transition:color 0.2s ease;
+    }
+    .footer-hours-row:last-child{
+      border-bottom:none;
+    }
+    .footer-hours-row:hover{
+      color:var(--text);
+    }
+    .footer-hours-day{
+      min-width:90px;
+      flex-shrink:0;
+      font-weight:500;
+      color:var(--text);
+    }
+    .footer-hours-time{
+      text-align:right;
+      flex:1;
+      font-variant-numeric:tabular-nums;
+      letter-spacing:0.01em;
+    }
+    .footer-links{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .footer-social{
+      display:flex;
+      gap:12px;
+      margin-top:8px;
+    }
+    .footer-social a{
+      width:40px;
+      height:40px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(255,255,255,.08);
+      border:1px solid var(--line);
+      border-radius:8px;
+      transition:all 0.2s ease;
+      text-decoration:none;
+    }
+    .footer-social a:hover{
+      background:rgba(255,255,255,.12);
+      border-color:rgba(255,255,255,.2);
+      transform:translateY(-2px);
+    }
+    .footer-social svg{
+      width:20px;
+      height:20px;
+      fill:var(--text);
+    }
+    .footer-whatsapp{
+      margin-top:24px;
+      padding-top:24px;
+      border-top:1px solid var(--line);
+      text-align:center;
+    }
+    .footer-whatsapp-text{
+      font-size:14px;
+      color:var(--muted);
+      margin:0 0 12px;
+    }
+    .footer-whatsapp-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 24px;
+      background:rgba(255,255,255,.08);
+      border:1px solid var(--line);
+      border-radius:8px;
+      color:var(--text);
+      text-decoration:none;
+      font-size:14px;
+      font-weight:500;
+      transition:all 0.2s ease;
+    }
+    .footer-whatsapp-btn:hover{
+      background:rgba(255,255,255,.12);
+      border-color:var(--accent);
+      color:var(--accent);
+    }
+    .footer-whatsapp-btn svg{
+      width:20px;
+      height:20px;
+      fill:currentColor;
+    }
+    @media(max-width:900px){
+      .footer-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:32px;
+      }
+    }
+    @media(max-width:600px){
+      .footer{
+        padding:48px 0 24px;
+      }
+      .footer-grid{
+        grid-template-columns:1fr;
+        gap:32px;
+      }
+      .footer-hours-row{
+        font-size:13px;
+        padding:8px 0;
+      }
+      .footer-hours-day{
+        min-width:75px;
+        font-size:13px;
+      }
+      .footer-hours-time{
+        font-size:12px;
+      }
+      .footer-hours-day{
+        min-width:70px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar__logo">
+        <a href="/index.html"><img src="/assets/logo/HH logo.png" alt="Healthy Habits" width="48" height="48" decoding="async"></a>
+      </div>
+      <button class="topbar__menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="topbar__nav" id="topbarNav">
+        <a href="/aanbod.html">Ons aanbod</a>
+        <a href="/succesverhalen.html">Succesverhalen</a>
+        <a href="/tarieven.html">Prijzen</a>
+        <a href="/lidmaatschapstest.html">Online-lidmaatschapstest</a>
+        <a href="/over-ons.html">Ons team</a>
+        <a href="/4-weken-proberen.html" class="mobile-nav-cta">4 weken proberen</a>
+      </nav>
+      <div class="topbar__cta" id="topbarCta">
+        <a href="/4-weken-proberen.html"><button>4 weken proberen</button></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="milon-hero">
+    <img src="assets/images/yoga/yoga-1.jpeg" alt="Yoga en groepslessen bij Healthy Habits" loading="eager" decoding="async">
+    <div class="milon-hero__overlay"></div>
+    <div class="container milon-hero__content">
+      <h1>Yoga &amp; Groepslessen</h1>
+      <p class="hero-sub">Rust, kracht en soepelheid — in een warme, persoonlijke setting.</p>
+      <div class="hero-line"></div>
+      <div class="milon-cta-row">
+        <a class="milon-btn milon-btn--primary" href="#rooster">Bekijk het rooster</a>
+        <a class="milon-btn milon-btn--secondary" href="#proberen-form">Start 4 weken proberen</a>
+      </div>
+      <p class="milon-trust">Kleine groepen. Persoonlijke aandacht.</p>
+    </div>
+  </section>
+
+  <!-- SOORTEN LESSEN -->
+  <section class="milon-benefits section-black" id="voordelen">
+    <div class="container split-grid">
+      <div class="split-text">
+        <h2>Welke lessen kun je volgen?</h2>
+        <div class="yoga-lessons">
+          <article class="milon-step"><span class="num">Hatha Yoga</span><p>Rustige opbouw, ademhaling en houding.</p></article>
+          <article class="milon-step"><span class="num">Yin Yoga</span><p>Diepe ontspanning en langere stretches.</p></article>
+          <article class="milon-step"><span class="num">Mindful Yoga</span><p>Rust in je hoofd, soepelheid in je lijf.</p></article>
+          <article class="milon-step"><span class="num">Pilates</span><p>Core, houding en gecontroleerde kracht.</p></article>
+          <article class="milon-step"><span class="num">Barre Klassiek</span><p>Elegant, krachtig en stevig.</p></article>
+          <article class="milon-step"><span class="num">BBB</span><p>Benen, Billen, Buik — actief en energiek.</p></article>
+          <article class="milon-step"><span class="num">Dans</span><p>Bewegen met plezier en energie.</p></article>
+        </div>
+      </div>
+      <div class="milon-media">
+        <img src="assets/images/yoga/yoga-2.jpeg" alt="Yoga les bij Healthy Habits" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <!-- ROOSTER -->
+  <section class="yoga-rooster" id="rooster">
+    <div class="container">
+      <h2>Rooster</h2>
+      <p class="intro">Kies je moment en boek eenvoudig via de app.</p>
+      <div class="rooster-media">
+        <img src="assets/images/yoga/yoga-3.jpeg" alt="Sfeerbeeld yoga studio" loading="lazy" decoding="async">
+      </div>
+      <div class="rooster-panel">
+        <div class="rooster-day">
+          <div class="rooster-day__name">Maandag</div>
+          <div class="rooster-day__slots">
+            <div class="rooster-slot"><strong>08:30 - 09:15</strong><span>BBB</span></div>
+            <div class="rooster-slot"><strong>09:30 - 10:30</strong><span>Mindful Yoga</span></div>
+            <div class="rooster-slot"><strong>10:35 - 11:50</strong><span>Hatha Yoga</span></div>
+            <div class="rooster-slot"><strong>17:30 - 18:15</strong><span>BBB</span></div>
+            <div class="rooster-slot"><strong>18:30 - 19:45</strong><span>Hatha Yoga</span></div>
+            <div class="rooster-slot"><strong>19:45 - 21:00</strong><span>Yin Yoga</span></div>
+          </div>
+        </div>
+        <div class="rooster-day">
+          <div class="rooster-day__name">Dinsdag</div>
+          <div class="rooster-day__slots">
+            <div class="rooster-slot"><strong>08:00 - 08:50</strong><span>Pilates</span></div>
+            <div class="rooster-slot"><strong>09:30 - 10:45</strong><span>Yin Yoga</span></div>
+            <div class="rooster-slot"><strong>18:25 - 19:15</strong><span>Pilates</span></div>
+            <div class="rooster-slot"><strong>19:30 - 20:45</strong><span>Hatha Alignment</span></div>
+          </div>
+        </div>
+        <div class="rooster-day">
+          <div class="rooster-day__name">Woensdag</div>
+          <div class="rooster-day__slots">
+            <div class="rooster-slot"><strong>08:30 - 09:15</strong><span>BBB</span></div>
+            <div class="rooster-slot"><strong>09:30 - 10:45</strong><span>Yin Yoga</span></div>
+            <div class="rooster-slot"><strong>18:30 - 19:20</strong><span>Barre klassiek</span></div>
+            <div class="rooster-slot"><strong>19:30 - 20:30</strong><span>Pilates</span></div>
+          </div>
+        </div>
+        <div class="rooster-day">
+          <div class="rooster-day__name">Donderdag</div>
+          <div class="rooster-day__slots">
+            <div class="rooster-slot"><strong>08:00 - 09:00</strong><span>Pilates</span></div>
+            <div class="rooster-slot"><strong>09:15 - 10:30</strong><span>Yin Yoga</span></div>
+            <div class="rooster-slot"><strong>18:30 - 19:15</strong><span>BBB</span></div>
+            <div class="rooster-slot"><strong>19:30 - 20:45</strong><span>Yin Yoga</span></div>
+          </div>
+        </div>
+        <div class="rooster-day">
+          <div class="rooster-day__name">Vrijdag</div>
+          <div class="rooster-day__slots">
+            <div class="rooster-slot"><strong>08:30 - 09:30</strong><span>Pilates</span></div>
+            <div class="rooster-slot"><strong>09:30 - 10:15</strong><span>BBB</span></div>
+            <div class="rooster-slot"><strong>17:00 - 17:45</strong><span>BBB</span></div>
+          </div>
+        </div>
+        <div class="rooster-day">
+          <div class="rooster-day__name">Zaterdag</div>
+          <div class="rooster-day__slots">
+            <div class="rooster-slot"><strong>09:00 - 09:50</strong><span>Barre Klassiek</span></div>
+            <div class="rooster-slot"><strong>10:00 - 11:15</strong><span>Hatha Yoga</span></div>
+          </div>
+        </div>
+        <div class="rooster-day">
+          <div class="rooster-day__name">Zondag</div>
+          <div class="rooster-day__slots">
+            <div class="rooster-slot"><strong>08:30 - 09:15</strong><span>Dans</span></div>
+            <div class="rooster-slot"><strong>09:30 - 10:15</strong><span>BBB</span></div>
+            <div class="rooster-slot"><strong>10:30 - 11:15</strong><span>BBB</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULIER -->
+  <section class="hero-section" id="proberen-form">
+    <div class="container">
+      <h1>
+        <span class="h2-wrapper">
+          4 weken Yoga proberen
+          <span class="title-underline-wrapper">
+            <span class="title-underline-svg">
+              <svg viewBox="0 0 500 8" preserveAspectRatio="none" aria-hidden="true">
+                <path class="title-underline-path" d="M 0 4 Q 80 3.5, 160 4.5 T 320 4 Q 400 3.8, 480 4.5" vector-effect="non-scaling-stroke"></path>
+              </svg>
+            </span>
+          </span>
+        </span>
+      </h1>
+      <p class="hero-intro">Ontdek hoe fijn het is om in kleine groepen te trainen.</p>
+      <div class="hero-form-wrapper">
+        <form class="form" id="proberenForm">
+          <input type="hidden" name="page_name" value="4-weken-proberen">
+          <p class="form-explanation">We werken met een beperkt aantal startplekken per maand, zodat we iedereen persoonlijk kunnen begeleiden.</p>
+          <div class="form-group">
+            <label for="voornaam">Voornaam *</label>
+            <input type="text" id="voornaam" name="voornaam" placeholder="Je voornaam" required>
+          </div>
+          <div class="form-group">
+            <label for="achternaam">Achternaam *</label>
+            <input type="text" id="achternaam" name="achternaam" placeholder="Je achternaam" required>
+          </div>
+          <div class="form-group">
+            <label for="telefoon">Telefoon *</label>
+            <input 
+              type="tel"
+              id="telefoon"
+              name="telefoon"
+              placeholder="Telefoonnummer"
+              required
+              pattern="^(06[0-9]{8}|\\+[1-9][0-9]{7,14})$"
+              title="Vul een geldig telefoonnummer in (NL: 06xxxxxxxx of internationaal: +31612345678)">
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" name="email" placeholder="je@voorbeeld.nl" required>
+          </div>
+          <button type="submit" class="form-submit">Start mijn 4 weken (aanvraag)</button>
+          <p class="form-note">Vrijblijvend · geen automatische inschrijving · persoonlijk contact</p>
+          <p class="form-privacy">Door dit formulier te versturen ga je akkoord met onze <a href="/privacy.html">privacyverklaring</a>.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+    <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>Contact</h3>
+          <p class="footer-email">info@healthy-habits.nl</p>
+          <p class="footer-phone">(040) 843 01 37</p>
+          <a href="mailto:info@healthy-habits.nl?subject=Vraag via website" class="footer-direct-mail">Direct mailen &gt;</a>
+        </div>
+        <div class="footer-col">
+          <h3>Adres</h3>
+          <p>Willemstraat 22</p>
+          <p>5611HD Eindhoven</p>
+        </div>
+        <div class="footer-col">
+          <h3>Openingstijden</h3>
+          <div class="footer-hours">
+            <div class="footer-hours-row">
+              <span class="footer-hours-day">Maandag</span>
+              <span class="footer-hours-time">8:30 – 12:30 / 16:00 – 21:00</span>
+            </div>
+            <div class="footer-hours-row">
+              <span class="footer-hours-day">Dinsdag</span>
+              <span class="footer-hours-time">7:00 – 12:30 / 16:00 – 21:00</span>
+            </div>
+            <div class="footer-hours-row">
+              <span class="footer-hours-day">Woensdag</span>
+              <span class="footer-hours-time">8:30 – 12:30 / 16:00 – 21:00</span>
+            </div>
+            <div class="footer-hours-row">
+              <span class="footer-hours-day">Donderdag</span>
+              <span class="footer-hours-time">7:00 – 12:30 / 16:00 – 21:00</span>
+            </div>
+            <div class="footer-hours-row">
+              <span class="footer-hours-day">Vrijdag</span>
+              <span class="footer-hours-time">8:30 – 12:30 / 16:00 – 20:00</span>
+            </div>
+            <div class="footer-hours-row">
+              <span class="footer-hours-day">Za / zo</span>
+              <span class="footer-hours-time">8:30 – 13:00</span>
+            </div>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Over</h3>
+          <div class="footer-links">
+            <a href="/#">Algemene voorwaarden</a>
+            <a href="/privacy.html">Privacyverklaring</a>
+            <a href="/#" id="cookieSettingsFooter">Cookies</a>
+          </div>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/HealthyHabitsEindhoven" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/healthy_habits_eindhoven/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-whatsapp">
+        <p class="footer-whatsapp-text">Korte vraag?</p>
+        <a href="https://wa.me/31408430137" target="_blank" rel="noopener noreferrer" class="footer-whatsapp-btn">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Ik help je graag
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- COOKIE BANNER -->
+  <div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-banner-content">
+      <div class="cookie-banner-text">
+        <p>Deze website gebruikt cookies. Functionele cookies zijn noodzakelijk voor de werking van de website. Marketing cookies (voor video's) worden alleen geplaatst met je toestemming. <a href="/privacy.html">Meer informatie</a></p>
+      </div>
+      <div class="cookie-banner-buttons">
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accepteren</button>
+        <button class="cookie-btn cookie-btn-reject" id="cookieReject">Weigeren</button>
+        <button class="cookie-btn cookie-btn-settings" id="cookieSettings">Instellen</button>
+      </div>
+      <div class="cookie-settings" id="cookieSettingsPanel">
+        <div class="cookie-setting-item">
+          <label>
+            <span>
+              <strong>Functionele cookies</strong>
+              <p>Noodzakelijk voor het functioneren van de website. Deze kunnen niet worden uitgeschakeld.</p>
+            </span>
+            <input type="checkbox" checked disabled>
+          </label>
+        </div>
+        <div class="cookie-setting-item">
+          <label>
+            <span>
+              <strong>Marketing cookies</strong>
+              <p>Voor embedded video's (YouTube/Vimeo). Deze worden alleen geplaatst met je toestemming.</p>
+            </span>
+            <input type="checkbox" id="cookieMarketing">
+          </label>
+        </div>
+        <div class="cookie-banner-buttons" style="margin-top:16px;">
+          <button class="cookie-btn cookie-btn-accept" id="cookieSave">Opslaan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Kaarten worden automatisch even hoog gemaakt door grid align-items: stretch
+    
+    // Mobile menu toggle
+    (function(){
+      const menuToggle = document.getElementById('menuToggle');
+      const topbarNav = document.getElementById('topbarNav');
+      const topbarCta = document.getElementById('topbarCta');
+      
+      if(menuToggle && topbarNav){
+        menuToggle.addEventListener('click', function(){
+          const isOpen = menuToggle.classList.contains('active');
+          
+          if(isOpen){
+            menuToggle.classList.remove('active');
+            topbarNav.classList.remove('mobile-open');
+            topbarCta.classList.remove('mobile-open');
+            document.body.style.overflow = '';
+          } else {
+            menuToggle.classList.add('active');
+            topbarNav.classList.add('mobile-open');
+            topbarCta.classList.add('mobile-open');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+        
+        // Sluit menu bij klik op link
+        const navLinks = topbarNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+          link.addEventListener('click', function(){
+            menuToggle.classList.remove('active');
+            topbarNav.classList.remove('mobile-open');
+            topbarCta.classList.remove('mobile-open');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+    })();
+
+    // Cookie banner
+    (function(){
+      const cookieBanner = document.getElementById('cookieBanner');
+      const cookieAccept = document.getElementById('cookieAccept');
+      const cookieReject = document.getElementById('cookieReject');
+      const cookieSettings = document.getElementById('cookieSettings');
+      const cookieSettingsPanel = document.getElementById('cookieSettingsPanel');
+      const cookieMarketing = document.getElementById('cookieMarketing');
+      const cookieSave = document.getElementById('cookieSave');
+
+      if(!cookieBanner) return;
+
+      // Check if user has already made a choice
+      const cookieConsent = localStorage.getItem('cookieConsent');
+      if(!cookieConsent){
+        // Show banner after a short delay
+        setTimeout(() => {
+          cookieBanner.classList.add('show');
+        }, 1000);
+      }
+
+      function saveCookiePreferences(marketing){
+        localStorage.setItem('cookieConsent', 'true');
+        localStorage.setItem('cookieMarketing', marketing ? 'true' : 'false');
+        cookieBanner.classList.remove('show');
+        
+        // Load marketing content if accepted
+        if(marketing){
+          loadMarketingContent();
+        }
+      }
+
+      function loadMarketingContent(){
+        console.log('Marketing cookies accepted - video embeds can be loaded');
+      }
+
+      // Accept all
+      if(cookieAccept){
+        cookieAccept.addEventListener('click', function(){
+          saveCookiePreferences(true);
+        });
+      }
+
+      // Reject all (only functional)
+      if(cookieReject){
+        cookieReject.addEventListener('click', function(){
+          saveCookiePreferences(false);
+        });
+      }
+
+      // Show settings
+      if(cookieSettings){
+        cookieSettings.addEventListener('click', function(){
+          cookieSettingsPanel.classList.toggle('show');
+        });
+      }
+
+      // Save settings
+      if(cookieSave){
+        cookieSave.addEventListener('click', function(){
+          const marketing = cookieMarketing ? cookieMarketing.checked : false;
+          saveCookiePreferences(marketing);
+        });
+      }
+      
+      // Footer cookies link
+      const cookieSettingsFooter = document.getElementById('cookieSettingsFooter');
+      if(cookieSettingsFooter && cookieBanner){
+        cookieSettingsFooter.addEventListener('click', function(e){
+          e.preventDefault();
+          cookieBanner.classList.add('show');
+          if(cookieSettingsPanel) cookieSettingsPanel.classList.add('show');
+        });
+      }
+
+      // Load marketing content if previously accepted
+      if(cookieConsent === 'true' && localStorage.getItem('cookieMarketing') === 'true'){
+        loadMarketingContent();
+      }
+    })();
+  </script>
+
+  <!-- Form submit handler -->
+  <script>
+    (function(){
+      const form = document.getElementById('proberenForm');
+      if(!form) return;
+      
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalText = submitButton ? submitButton.textContent : '';
+        
+        try {
+          // Disable button and show loading state
+          if(submitButton){
+            submitButton.disabled = true;
+            submitButton.textContent = 'Verzenden...';
+          }
+          
+          // POST to Zapier with FormData directly
+          const formData = new FormData(form);
+          const response = await fetch('https://hooks.zapier.com/hooks/catch/16872475/uqalft8/', {
+            method: 'POST',
+            body: formData,
+            keepalive: true
+          });
+          
+          // Check if response is ok
+          if(!response.ok){
+            throw new Error('Zapier request failed');
+          }
+          
+          // Redirect to bedankt page after successful POST
+          window.location.href = 'bedankt.html';
+          
+        } catch(error){
+          console.error('Form submit error:', error);
+          // Re-enable button on error
+          if(submitButton){
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+          }
+          alert('Er is iets misgegaan. Probeer het opnieuw.');
+        }
+      });
+    })();
+  </script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "Healthy Habits Eindhoven",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Eindhoven",
+      "addressCountry": "NL"
+    },
+    "url": "https://healthyhabitseindhoven.github.io/Eindhoven/",
+    "description": "Kleinschalige sportschool in Eindhoven centrum met begeleid sporten. Warm, persoonlijk en gezond sporten."
+  }
+  </script>
+
+</body>
+</html>
+
