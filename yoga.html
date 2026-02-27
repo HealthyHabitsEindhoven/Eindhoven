@@ -104,6 +104,38 @@
     .topbar__nav a:hover{
       color:var(--accent);
     }
+    .topbar__nav-item{
+      position:relative;
+    }
+    .topbar__submenu{
+      position:absolute;
+      top:100%;
+      left:0;
+      min-width:170px;
+      padding-top:10px;
+      opacity:0;
+      visibility:hidden;
+      transform:translateY(6px);
+      transition:opacity .2s ease, transform .2s ease, visibility .2s ease;
+      pointer-events:none;
+      z-index:10001;
+    }
+    .topbar__submenu a{
+      display:block;
+      background:var(--bg-warm);
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:10px 14px;
+      font-size:15px;
+      white-space:nowrap;
+      box-shadow:0 8px 20px rgba(0,0,0,.35);
+    }
+    .topbar__nav-item:hover .topbar__submenu{
+      opacity:1;
+      visibility:visible;
+      transform:translateY(0);
+      pointer-events:auto;
+    }
     .topbar__cta{
       flex-shrink:0;
     }
@@ -482,6 +514,10 @@
         font-size: 24px;
         margin-bottom: 24px;
       }
+      .carousel-subtitle{
+        font-size:17px;
+        margin:10px auto 24px;
+      }
     }
     .yoga-rooster{
       background:var(--bg-main);
@@ -593,6 +629,14 @@
       font-size: 32px;
       font-weight: 700;
       margin-bottom: 32px;
+    }
+    .carousel-subtitle{
+      max-width:680px;
+      margin:12px auto 28px;
+      font-size:19px;
+      color:var(--muted);
+      text-align:center;
+      line-height:1.55;
     }
     .yoga-carousel{
       position:relative;
@@ -1144,6 +1188,27 @@
       .topbar__nav.mobile-open a:last-child{
         border-bottom:none;
       }
+      .topbar__nav.mobile-open .topbar__nav-item{
+        width:100%;
+      }
+      .topbar__nav.mobile-open .topbar__submenu{
+        position:static;
+        opacity:1;
+        visibility:visible;
+        transform:none;
+        pointer-events:auto;
+        padding-top:0;
+        min-width:0;
+      }
+      .topbar__nav.mobile-open .topbar__submenu a{
+        background:transparent;
+        border:none;
+        border-bottom:1px solid rgba(255,255,255,.08);
+        border-radius:0;
+        box-shadow:none;
+        font-size:16px;
+        padding:10px 0 10px 16px;
+      }
       .topbar__nav.mobile-open .mobile-nav-cta{
         display:block !important;
         background:var(--accent);
@@ -1513,7 +1578,14 @@
         <span></span>
       </button>
       <nav class="topbar__nav" id="topbarNav">
-        <a href="/aanbod.html">Ons aanbod</a>
+        <div class="topbar__nav-item">
+          <a href="/aanbod.html">Ons aanbod</a>
+          <div class="topbar__submenu">
+            <a href="/milon.html">Milon</a>
+            <a href="/fitness.html">Fitness</a>
+            <a href="/yoga.html">Yoga</a>
+          </div>
+        </div>
         <a href="/succesverhalen.html">Succesverhalen</a>
         <a href="/tarieven.html">Prijzen</a>
         <a href="/lidmaatschapstest.html">Online-lidmaatschapstest</a>
@@ -1565,6 +1637,7 @@
   <section class="yoga-carousel-section">
     <div class="container">
       <h2 class="carousel-title">Bekijk onze prachtige studio</h2>
+      <p class="carousel-subtitle">Vind jouw rust midden in het centrum van Eindhoven.</p>
       <div class="yoga-carousel" aria-label="Yoga sfeerfoto's">
         <button class="yoga-carousel-btn prev" type="button" aria-label="Vorige foto">‹</button>
 

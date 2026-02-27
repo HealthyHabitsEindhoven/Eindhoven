@@ -133,6 +133,28 @@
     .topbar__nav-item{
       position:relative;
     }
+    .mobile-accordion__row{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .accordion-toggle{
+      display:none;
+      background:transparent;
+      border:0;
+      color:var(--text);
+      padding:0;
+      margin:0;
+      cursor:pointer;
+    }
+    .accordion-toggle svg{
+      width:16px;
+      height:16px;
+      transition:transform .2s ease;
+    }
+    .accordion-toggle[aria-expanded="true"] svg{
+      transform:rotate(180deg);
+    }
     .topbar__submenu{
       position:absolute;
       top:100%;
@@ -2783,6 +2805,57 @@
       .form{padding:24px}
     }
     @media(max-width:768px){
+      .topbar__nav.mobile-open{
+        gap:0;
+      }
+      .topbar__nav.mobile-open > a{
+        font-size:18px;
+        padding:14px 0;
+        border-bottom:1px solid rgba(255,255,255,.08);
+      }
+      .topbar__nav.mobile-open .mobile-accordion{
+        border-bottom:1px solid rgba(255,255,255,.08);
+      }
+      .topbar__nav.mobile-open .mobile-accordion__row{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:12px;
+      }
+      .topbar__nav.mobile-open .mobile-accordion__label{
+        flex:1;
+        font-size:18px;
+        padding:14px 0;
+        border-bottom:none;
+      }
+      .topbar__nav.mobile-open .accordion-toggle{
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        width:28px;
+        height:28px;
+      }
+      .topbar__nav.mobile-open .accordion-panel{
+        max-height:0;
+        overflow:hidden;
+        opacity:1;
+        visibility:visible;
+        transform:none;
+        pointer-events:auto;
+        transition:max-height .25s ease;
+        padding-top:0;
+      }
+      .topbar__nav.mobile-open .accordion-panel.is-open{
+        max-height:220px;
+      }
+      .topbar__nav.mobile-open .accordion-panel .accordion-link{
+        font-size:16px;
+        padding:10px 0 10px 18px;
+        border-bottom:1px solid rgba(255,255,255,.06);
+      }
+      .topbar__nav.mobile-open .accordion-panel .accordion-link:last-child{
+        border-bottom:none;
+      }
       /* Perfect horizontale centrering JIJ cirkel op mobiel - exact op schermmidden */
       .vision-grid{
         justify-items:center;
@@ -2948,12 +3021,19 @@
         <span></span>
       </button>
       <nav class="topbar__nav" id="topbarNav">
-        <div class="topbar__nav-item">
-          <a href="/aanbod.html">Ons aanbod</a>
-          <div class="topbar__submenu">
-            <a href="/milon.html">Milon</a>
-            <a href="/fitness.html">Fitness</a>
-            <a href="/yoga.html">Yoga</a>
+        <div class="topbar__nav-item mobile-accordion">
+          <div class="mobile-accordion__row">
+            <a href="/aanbod.html" class="mobile-accordion__label" id="aanbodAccordionLabel">Ons aanbod</a>
+            <button class="accordion-toggle" type="button" aria-expanded="false" aria-controls="aanbodAccordionPanel" aria-label="Toon sublinks Ons aanbod">
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="topbar__submenu accordion-panel" id="aanbodAccordionPanel">
+            <a class="accordion-link" href="/milon.html">Milon</a>
+            <a class="accordion-link" href="/fitness.html">Fitness</a>
+            <a class="accordion-link" href="/yoga.html">Yoga</a>
           </div>
         </div>
         <a href="/succesverhalen.html">Succesverhalen</a>
@@ -3859,32 +3939,72 @@ zelfs leuk.</p>
       const menuToggle = document.getElementById('menuToggle');
       const topbarNav = document.getElementById('topbarNav');
       const topbarCta = document.getElementById('topbarCta');
+      const accordionToggle = document.querySelector('.accordion-toggle');
+      const accordionPanel = document.getElementById('aanbodAccordionPanel');
+      const accordionLabel = document.getElementById('aanbodAccordionLabel');
+      const MOBILE_BREAKPOINT = 768;
+
+      function setAccordionState(isOpen){
+        if(!accordionToggle || !accordionPanel) return;
+        accordionToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        accordionPanel.classList.toggle('is-open', isOpen);
+      }
+
+      function toggleAccordion(){
+        if(!accordionToggle) return;
+        const isOpen = accordionToggle.getAttribute('aria-expanded') === 'true';
+        setAccordionState(!isOpen);
+      }
+
+      function closeMobileMenu(){
+        menuToggle.classList.remove('active');
+        topbarNav.classList.remove('mobile-open');
+        topbarCta.classList.remove('mobile-open');
+        document.body.style.overflow = '';
+        setAccordionState(false);
+      }
       
       if(menuToggle && topbarNav){
         menuToggle.addEventListener('click', function(){
           const isOpen = menuToggle.classList.contains('active');
           
           if(isOpen){
-            menuToggle.classList.remove('active');
-            topbarNav.classList.remove('mobile-open');
-            topbarCta.classList.remove('mobile-open');
-            document.body.style.overflow = '';
-      } else {
+            closeMobileMenu();
+          } else {
             menuToggle.classList.add('active');
             topbarNav.classList.add('mobile-open');
             topbarCta.classList.add('mobile-open');
             document.body.style.overflow = 'hidden';
+            setAccordionState(false);
           }
         });
+
+        if(accordionToggle){
+          accordionToggle.addEventListener('click', function(e){
+            if(window.innerWidth > MOBILE_BREAKPOINT) return;
+            e.preventDefault();
+            e.stopPropagation();
+            toggleAccordion();
+          });
+        }
+
+        if(accordionLabel){
+          accordionLabel.addEventListener('click', function(e){
+            if(window.innerWidth > MOBILE_BREAKPOINT) return;
+            e.preventDefault();
+            toggleAccordion();
+          });
+        }
         
         // Sluit menu bij klik op link
         const navLinks = topbarNav.querySelectorAll('a');
         navLinks.forEach(link => {
-          link.addEventListener('click', function(){
-            menuToggle.classList.remove('active');
-            topbarNav.classList.remove('mobile-open');
-            topbarCta.classList.remove('mobile-open');
-            document.body.style.overflow = '';
+          link.addEventListener('click', function(e){
+            if(window.innerWidth <= MOBILE_BREAKPOINT && link.classList.contains('mobile-accordion__label')){
+              e.preventDefault();
+              return;
+            }
+            closeMobileMenu();
           });
         });
       }
