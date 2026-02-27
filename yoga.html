@@ -47,7 +47,7 @@
       color:var(--text);
     }
 
-    img{width:100%;max-width:100%;display:block}
+    img{width:100%;max-width:100%;height:auto;display:block}
     .container{width:min(var(--max),calc(100% - 36px));max-width:100%;margin:0 auto;box-sizing:border-box}
 
     /* =========================
@@ -450,19 +450,38 @@
       line-height:1.5;
       font-size:15px;
     }
-    .yoga-lessons{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:12px;
-      margin-top:18px;
+    .lessen-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 18px;
     }
-    .yoga-lessons .milon-step .num{
+    .lessen-grid .milon-step{
+      height:100%;
+    }
+    .lessen-grid .milon-step .num{
       margin-bottom:4px;
       font-size:12px;
     }
-    .yoga-lessons .milon-step p{
+    .lessen-grid .milon-step p{
       color:var(--muted);
       font-size:14px;
+    }
+    @media (max-width: 1024px) {
+      .lessen-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .lessen-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 768px) {
+      .carousel-title {
+        font-size: 24px;
+        margin-bottom: 24px;
+      }
     }
     .yoga-rooster{
       background:var(--bg-main);
@@ -484,44 +503,233 @@
       object-fit:cover;
       object-position:center;
     }
+    .section-title{
+      margin:0 0 18px;
+      font-size:32px;
+      color:var(--text);
+    }
     .rooster-panel{
       border:1px solid rgba(255,255,255,.12);
       border-radius:14px;
       background:rgba(255,255,255,.03);
       overflow:hidden;
     }
-    .rooster-day{
-      display:grid;
-      grid-template-columns:210px 1fr;
-      border-top:1px solid rgba(255,255,255,.1);
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
     }
-    .rooster-day:first-child{
+    .schedule-table th,
+    .schedule-table td {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 18px 22px;
+      vertical-align: top;
+    }
+    .schedule-table thead th {
+      font-weight: 700;
+      opacity: 0.95;
       border-top:none;
     }
-    .rooster-day__name{
-      padding:20px 22px;
+    .day-col {
+      width: 180px;
+      font-weight: 700;
+    }
+    .part-col {
+      text-align: left;
+    }
+    .slot {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 16px;
+      padding: 6px 0;
+    }
+    .slot .time {
+      font-weight: 700;
+      opacity: 0.95;
+      color:var(--text);
+    }
+    .slot .name {
+      opacity: 0.95;
+      color:var(--muted);
+    }
+    .lessen-section{
+      background:#000000;
+      padding:72px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .lessen-intro{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      max-width:720px;
+      margin-bottom:18px;
+    }
+    .lessen-intro h2{
+      margin:0;
+      font-size:32px;
+      color:var(--text);
+    }
+    .lessen-intro p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:17px;
+    }
+    .lessen-layout{
+      display:block !important;
+    }
+    .lessen-left{
+      width:100% !important;
+      max-width:100% !important;
+    }
+    .lessen-layout.grid,
+    .lessen-layout.grid-2,
+    .lessen-layout.two-col{
+      grid-template-columns:1fr !important;
+    }
+
+    .yoga-carousel-section{ margin-top:18px; }
+    .carousel-title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 32px;
+    }
+    .yoga-carousel{
+      position:relative;
+      width:100%;
+      border-radius:18px;
+      overflow:hidden;
+      background:rgba(255,255,255,0.03);
+    }
+    .yoga-carousel-viewport{ overflow:hidden; width:100%; }
+    .yoga-carousel-track{
+      display:flex;
+      transition:transform 350ms ease;
+      will-change:transform;
+    }
+    .yoga-carousel-track img{
+      width:100%;
+      height:clamp(220px, 35vw, 420px);
+      object-fit:cover;
+      flex:0 0 100%;
+      display:block;
+    }
+    .yoga-carousel-btn{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      border:0;
+      width:44px;
+      height:44px;
+      border-radius:999px;
+      background:rgba(0,0,0,0.45);
+      color:#fff;
+      font-size:28px;
+      line-height:44px;
+      cursor:pointer;
+      z-index:2;
+      backdrop-filter:blur(6px);
+    }
+    .yoga-carousel-btn.prev { left:12px; }
+    .yoga-carousel-btn.next { right:12px; }
+    .yoga-carousel-dots{
+      display:flex;
+      gap:8px;
+      justify-content:center;
+      margin-top:12px;
+      margin-bottom:14px;
+    }
+    .yoga-carousel-dot{
+      width:9px;
+      height:9px;
+      border-radius:999px;
+      border:0;
+      background:rgba(255,255,255,0.25);
+      cursor:pointer;
+    }
+    .yoga-carousel-dot.is-active{
+      background:rgba(255,255,255,0.85);
+    }
+    .docenten-section {
+      padding: 80px 0 60px;
+      text-align: center;
+      background:#000000;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .docenten-sub {
+      max-width: 600px;
+      margin: 16px auto 48px;
+      font-size: 18px;
+      opacity: 0.85;
+      color:var(--muted);
+    }
+    .docenten-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      align-items:stretch;
+    }
+    .team-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      height:100%;
+      min-height:420px;
+      align-items:stretch;
+      transition:box-shadow 0.3s ease, border-color 0.3s ease;
+      text-align:left;
+    }
+    .team-card:hover{
+      box-shadow:0 8px 24px rgba(0,0,0,0.3);
+      border-color:rgba(255,255,255,.25);
+    }
+    .team-card__name{
+      padding:24px 24px 12px 24px;
+      font-size:20px;
       font-weight:700;
       color:var(--text);
-      background:rgba(255,255,255,.02);
-      border-right:1px solid rgba(255,255,255,.1);
+      margin:0;
+      flex-shrink:0;
     }
-    .rooster-day__slots{
-      padding:14px 18px;
-      display:grid;
-      gap:8px;
+    .team-card__image{
+      width:100%;
+      aspect-ratio:1/1;
+      overflow:hidden;
+      background:rgba(255,255,255,.03);
+      flex-shrink:0;
+      position:relative;
+      border-radius:0;
+      background-size:cover;
+      background-position:center center;
+      background-repeat:no-repeat;
     }
-    .rooster-slot{
-      display:grid;
-      grid-template-columns:140px 1fr;
-      gap:12px;
-      align-items:start;
+    .team-card__image img{
+      display:none;
+    }
+    .team-card__content{
+      padding:18px;
+      flex:1 1 auto;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      justify-content:flex-start;
+      background:rgba(255,255,255,.04);
+      overflow:visible;
+      min-height:auto;
+      flex-shrink:0;
+    }
+    .team-card__type{
+      margin:0;
       color:var(--muted);
-      font-size:15px;
-      line-height:1.45;
-    }
-    .rooster-slot strong{
-      color:var(--text);
-      font-weight:600;
+      line-height:1.5;
+      flex-shrink:0;
+      display:block;
+      font-size:14px;
+      font-weight:400;
     }
 
     .milon-mini-cta{
@@ -716,20 +924,8 @@
       .milon-mini-cta h2{
         font-size:28px;
       }
-      .yoga-lessons{
-        grid-template-columns:1fr;
-      }
-      .rooster-day{
-        grid-template-columns:1fr;
-      }
-      .rooster-day__name{
-        border-right:none;
-        border-bottom:1px solid rgba(255,255,255,.1);
-        padding:14px 16px;
-      }
-      .rooster-day__slots{
-        padding:12px 14px;
-      }
+      .day-col { width: 140px; }
+      .slot { grid-template-columns: 120px 1fr; }
     }
     @media(max-width:560px){
       .milon-hero .hero-sub,
@@ -745,10 +941,46 @@
       .milon-cta-row{
         align-items:stretch;
       }
-      .rooster-slot{
+    }
+    @media (max-width: 680px) {
+      .schedule-table thead { display: none; }
+      .schedule-table tr { display: block; padding: 12px 0; }
+      .schedule-table td { display: block; }
+      .day-col { width: auto; }
+      .schedule-table td.part {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255,255,255,0.08);
+      }
+      .schedule-table td.part::before {
+        display: block;
+        font-weight: 700;
+        margin-bottom: 8px;
+        opacity: 0.9;
+      }
+      .schedule-table td.part.morning::before { content: "Ochtend"; }
+      .schedule-table td.part.evening::before { content: "Avond"; }
+      .slot{
         grid-template-columns:1fr;
         gap:2px;
-        font-size:14px;
+      }
+    }
+    @media (max-width: 1024px) {
+      .docenten-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .docenten-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px){
+      .yoga-carousel-btn{
+        width:40px;
+        height:40px;
+        font-size:26px;
+        line-height:40px;
       }
     }
 
@@ -1303,104 +1535,209 @@
       <p class="hero-sub">Rust, kracht en soepelheid — in een warme, persoonlijke setting.</p>
       <div class="hero-line"></div>
       <div class="milon-cta-row">
-        <a class="milon-btn milon-btn--primary" href="#rooster">Bekijk het rooster</a>
-        <a class="milon-btn milon-btn--secondary" href="#proberen-form">Start 4 weken proberen</a>
+        <a class="milon-btn milon-btn--secondary" href="#rooster">Bekijk het rooster</a>
+        <a class="milon-btn milon-btn--primary" href="#proberen-form">Start 4 weken proberen</a>
       </div>
       <p class="milon-trust">Kleine groepen. Persoonlijke aandacht.</p>
     </div>
   </section>
 
-  <!-- SOORTEN LESSEN -->
-  <section class="milon-benefits section-black" id="voordelen">
-    <div class="container split-grid">
-      <div class="split-text">
+  <section class="lessen-section">
+    <div class="container">
+      <div class="lessen-intro">
         <h2>Welke lessen kun je volgen?</h2>
-        <div class="yoga-lessons">
-          <article class="milon-step"><span class="num">Hatha Yoga</span><p>Rustige opbouw, ademhaling en houding.</p></article>
-          <article class="milon-step"><span class="num">Yin Yoga</span><p>Diepe ontspanning en langere stretches.</p></article>
-          <article class="milon-step"><span class="num">Mindful Yoga</span><p>Rust in je hoofd, soepelheid in je lijf.</p></article>
-          <article class="milon-step"><span class="num">Pilates</span><p>Core, houding en gecontroleerde kracht.</p></article>
-          <article class="milon-step"><span class="num">Barre Klassiek</span><p>Elegant, krachtig en stevig.</p></article>
-          <article class="milon-step"><span class="num">BBB</span><p>Benen, Billen, Buik — actief en energiek.</p></article>
-          <article class="milon-step"><span class="num">Dans</span><p>Bewegen met plezier en energie.</p></article>
-        </div>
       </div>
-      <div class="milon-media">
-        <img src="assets/images/yoga/yoga-2.jpeg" alt="Yoga les bij Healthy Habits" loading="lazy" decoding="async">
+      <div class="lessen-layout">
+        <div class="lessen-left">
+          <div class="lessen-grid">
+            <article class="milon-step"><span class="num">Hatha Yoga</span><p>Rustige opbouw, ademhaling en houding.</p></article>
+            <article class="milon-step"><span class="num">Yin Yoga</span><p>Diepe ontspanning en langere stretches.</p></article>
+            <article class="milon-step"><span class="num">Mindful Yoga</span><p>Rust in je hoofd, soepelheid in je lijf.</p></article>
+            <article class="milon-step"><span class="num">Pilates</span><p>Core, houding en gecontroleerde kracht.</p></article>
+            <article class="milon-step"><span class="num">Barre Klassiek</span><p>Elegant, krachtig en stevig.</p></article>
+            <article class="milon-step"><span class="num">BBB</span><p>Benen, Billen, Buik — actief en energiek.</p></article>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ROOSTER -->
+  <section class="yoga-carousel-section">
+    <div class="container">
+      <h2 class="carousel-title">Bekijk onze prachtige studio</h2>
+      <div class="yoga-carousel" aria-label="Yoga sfeerfoto's">
+        <button class="yoga-carousel-btn prev" type="button" aria-label="Vorige foto">‹</button>
+
+        <div class="yoga-carousel-viewport">
+          <div class="yoga-carousel-track">
+            <img src="assets/images/yoga/yoga-1.jpeg" alt="Yoga sfeerfoto 1" loading="lazy" />
+            <img src="assets/images/yoga/yoga-2.jpeg" alt="Yoga sfeerfoto 2" loading="lazy" />
+            <img src="assets/images/yoga/yoga-3.jpeg" alt="Yoga sfeerfoto 3" loading="lazy" />
+            <img src="assets/images/yoga/yoga-4.jpeg" alt="Yoga sfeerfoto 4" loading="lazy" />
+            <img src="assets/images/yoga/yoga-5.jpeg" alt="Yoga sfeerfoto 5" loading="lazy" />
+          </div>
+        </div>
+
+        <button class="yoga-carousel-btn next" type="button" aria-label="Volgende foto">›</button>
+      </div>
+      <div class="yoga-carousel-dots" aria-label="Carousel navigatie"></div>
+    </div>
+  </section>
+
+  <section class="docenten-section">
+    <div class="container">
+      <h2 class="section-title">Altijd een docent die bij je past</h2>
+      <p class="docenten-sub">
+        Rustig, energiek of technisch sterk — er is altijd een docent die bij jou past.
+      </p>
+
+      <div class="docenten-grid">
+        <div class="team-card">
+          <h3 class="team-card__name">Florence</h3>
+          <div class="team-card__image" style="background-image:url('assets/images/yoga/florence.jpeg');">
+            <img src="assets/images/yoga/florence.jpeg" alt="Florence – team Healthy Habits Eindhoven" loading="lazy" style="display:none;">
+          </div>
+          <div class="team-card__content">
+            <p class="team-card__type">Pilates, Hatha yoga</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <h3 class="team-card__name">Tim</h3>
+          <div class="team-card__image" style="background-image:url('assets/images/yoga/tim.jpeg');">
+            <img src="assets/images/yoga/tim.jpeg" alt="Tim – team Healthy Habits Eindhoven" loading="lazy" style="display:none;">
+          </div>
+          <div class="team-card__content">
+            <p class="team-card__type">Mindfull, Hatha yoga</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <h3 class="team-card__name">Olga</h3>
+          <div class="team-card__image" style="background-image:url('assets/images/yoga/olga.jpeg');">
+            <img src="assets/images/yoga/olga.jpeg" alt="Olga – team Healthy Habits Eindhoven" loading="lazy" style="display:none;">
+          </div>
+          <div class="team-card__content">
+            <p class="team-card__type">Pilates, Yin yoga</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <h3 class="team-card__name">Sophie</h3>
+          <div class="team-card__image" style="background-image:url('assets/images/yoga/sophie.jpeg');">
+            <img src="assets/images/yoga/sophie.jpeg" alt="Sophie – team Healthy Habits Eindhoven" loading="lazy" style="display:none;">
+          </div>
+          <div class="team-card__content">
+            <p class="team-card__type">Barre-docent</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <h3 class="team-card__name">Dorine</h3>
+          <div class="team-card__image" style="background-image:url('assets/images/yoga/dorine.jpeg');">
+            <img src="assets/images/yoga/dorine.jpeg" alt="Dorine – team Healthy Habits Eindhoven" loading="lazy" style="display:none;">
+          </div>
+          <div class="team-card__content">
+            <p class="team-card__type">Yin yoga</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <h3 class="team-card__name">Marielle</h3>
+          <div class="team-card__image" style="background-image:url('assets/images/yoga/marielle.jpeg');">
+            <img src="assets/images/yoga/marielle.jpeg" alt="Marielle – team Healthy Habits Eindhoven" loading="lazy" style="display:none;">
+          </div>
+          <div class="team-card__content">
+            <p class="team-card__type">Yin yoga</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="yoga-rooster" id="rooster">
     <div class="container">
-      <h2>Rooster</h2>
-      <p class="intro">Kies je moment en boek eenvoudig via de app.</p>
-      <div class="rooster-media">
-        <img src="assets/images/yoga/yoga-3.jpeg" alt="Sfeerbeeld yoga studio" loading="lazy" decoding="async">
-      </div>
+      <h2 class="section-title">Rooster</h2>
       <div class="rooster-panel">
-        <div class="rooster-day">
-          <div class="rooster-day__name">Maandag</div>
-          <div class="rooster-day__slots">
-            <div class="rooster-slot"><strong>08:30 - 09:15</strong><span>BBB</span></div>
-            <div class="rooster-slot"><strong>09:30 - 10:30</strong><span>Mindful Yoga</span></div>
-            <div class="rooster-slot"><strong>10:35 - 11:50</strong><span>Hatha Yoga</span></div>
-            <div class="rooster-slot"><strong>17:30 - 18:15</strong><span>BBB</span></div>
-            <div class="rooster-slot"><strong>18:30 - 19:45</strong><span>Hatha Yoga</span></div>
-            <div class="rooster-slot"><strong>19:45 - 21:00</strong><span>Yin Yoga</span></div>
-          </div>
-        </div>
-        <div class="rooster-day">
-          <div class="rooster-day__name">Dinsdag</div>
-          <div class="rooster-day__slots">
-            <div class="rooster-slot"><strong>08:00 - 08:50</strong><span>Pilates</span></div>
-            <div class="rooster-slot"><strong>09:30 - 10:45</strong><span>Yin Yoga</span></div>
-            <div class="rooster-slot"><strong>18:25 - 19:15</strong><span>Pilates</span></div>
-            <div class="rooster-slot"><strong>19:30 - 20:45</strong><span>Hatha Alignment</span></div>
-          </div>
-        </div>
-        <div class="rooster-day">
-          <div class="rooster-day__name">Woensdag</div>
-          <div class="rooster-day__slots">
-            <div class="rooster-slot"><strong>08:30 - 09:15</strong><span>BBB</span></div>
-            <div class="rooster-slot"><strong>09:30 - 10:45</strong><span>Yin Yoga</span></div>
-            <div class="rooster-slot"><strong>18:30 - 19:20</strong><span>Barre klassiek</span></div>
-            <div class="rooster-slot"><strong>19:30 - 20:30</strong><span>Pilates</span></div>
-          </div>
-        </div>
-        <div class="rooster-day">
-          <div class="rooster-day__name">Donderdag</div>
-          <div class="rooster-day__slots">
-            <div class="rooster-slot"><strong>08:00 - 09:00</strong><span>Pilates</span></div>
-            <div class="rooster-slot"><strong>09:15 - 10:30</strong><span>Yin Yoga</span></div>
-            <div class="rooster-slot"><strong>18:30 - 19:15</strong><span>BBB</span></div>
-            <div class="rooster-slot"><strong>19:30 - 20:45</strong><span>Yin Yoga</span></div>
-          </div>
-        </div>
-        <div class="rooster-day">
-          <div class="rooster-day__name">Vrijdag</div>
-          <div class="rooster-day__slots">
-            <div class="rooster-slot"><strong>08:30 - 09:30</strong><span>Pilates</span></div>
-            <div class="rooster-slot"><strong>09:30 - 10:15</strong><span>BBB</span></div>
-            <div class="rooster-slot"><strong>17:00 - 17:45</strong><span>BBB</span></div>
-          </div>
-        </div>
-        <div class="rooster-day">
-          <div class="rooster-day__name">Zaterdag</div>
-          <div class="rooster-day__slots">
-            <div class="rooster-slot"><strong>09:00 - 09:50</strong><span>Barre Klassiek</span></div>
-            <div class="rooster-slot"><strong>10:00 - 11:15</strong><span>Hatha Yoga</span></div>
-          </div>
-        </div>
-        <div class="rooster-day">
-          <div class="rooster-day__name">Zondag</div>
-          <div class="rooster-day__slots">
-            <div class="rooster-slot"><strong>08:30 - 09:15</strong><span>Dans</span></div>
-            <div class="rooster-slot"><strong>09:30 - 10:15</strong><span>BBB</span></div>
-            <div class="rooster-slot"><strong>10:30 - 11:15</strong><span>BBB</span></div>
-          </div>
-        </div>
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th class="day-col"></th>
+              <th class="part-col">Ochtend</th>
+              <th class="part-col">Avond</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="day-col">Maandag</td>
+              <td class="part morning">
+                <div class="slot"><span class="time">08:30 - 09:15</span><span class="name">BBB</span></div>
+                <div class="slot"><span class="time">09:30 - 10:30</span><span class="name">Mindful Yoga</span></div>
+                <div class="slot"><span class="time">10:35 - 11:50</span><span class="name">Hatha Yoga</span></div>
+              </td>
+              <td class="part evening">
+                <div class="slot"><span class="time">17:30 - 18:15</span><span class="name">BBB</span></div>
+                <div class="slot"><span class="time">18:30 - 19:45</span><span class="name">Hatha Yoga</span></div>
+                <div class="slot"><span class="time">19:45 - 21:00</span><span class="name">Yin Yoga</span></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="day-col">Dinsdag</td>
+              <td class="part morning">
+                <div class="slot"><span class="time">08:00 - 08:50</span><span class="name">Pilates</span></div>
+                <div class="slot"><span class="time">09:30 - 10:45</span><span class="name">Yin Yoga</span></div>
+              </td>
+              <td class="part evening">
+                <div class="slot"><span class="time">18:25 - 19:15</span><span class="name">Pilates</span></div>
+                <div class="slot"><span class="time">19:30 - 20:45</span><span class="name">Hatha Alignment</span></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="day-col">Woensdag</td>
+              <td class="part morning">
+                <div class="slot"><span class="time">08:30 - 09:15</span><span class="name">BBB</span></div>
+                <div class="slot"><span class="time">09:30 - 10:45</span><span class="name">Yin Yoga</span></div>
+              </td>
+              <td class="part evening">
+                <div class="slot"><span class="time">18:30 - 19:20</span><span class="name">Barre klassiek</span></div>
+                <div class="slot"><span class="time">19:30 - 20:30</span><span class="name">Pilates</span></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="day-col">Donderdag</td>
+              <td class="part morning">
+                <div class="slot"><span class="time">08:00 - 09:00</span><span class="name">Pilates</span></div>
+                <div class="slot"><span class="time">09:15 - 10:30</span><span class="name">Yin Yoga</span></div>
+              </td>
+              <td class="part evening">
+                <div class="slot"><span class="time">18:30 - 19:15</span><span class="name">BBB</span></div>
+                <div class="slot"><span class="time">19:30 - 20:45</span><span class="name">Yin Yoga</span></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="day-col">Vrijdag</td>
+              <td class="part morning">
+                <div class="slot"><span class="time">08:30 - 09:30</span><span class="name">Pilates</span></div>
+                <div class="slot"><span class="time">09:30 - 10:15</span><span class="name">BBB</span></div>
+              </td>
+              <td class="part evening">
+                <div class="slot"><span class="time">17:00 - 17:45</span><span class="name">BBB</span></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="day-col">Zaterdag</td>
+              <td class="part morning">
+                <div class="slot"><span class="time">09:00 - 09:50</span><span class="name">Barre Klassiek</span></div>
+                <div class="slot"><span class="time">10:00 - 11:15</span><span class="name">Hatha Yoga</span></div>
+              </td>
+              <td class="part evening"></td>
+            </tr>
+            <tr>
+              <td class="day-col">Zondag</td>
+              <td class="part morning">
+                <div class="slot"><span class="time">08:30 - 09:15</span><span class="name">Dans</span></div>
+                <div class="slot"><span class="time">09:30 - 10:15</span><span class="name">BBB</span></div>
+                <div class="slot"><span class="time">10:30 - 11:15</span><span class="name">BBB</span></div>
+              </td>
+              <td class="part evening"></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -1682,6 +2019,77 @@
       if(cookieConsent === 'true' && localStorage.getItem('cookieMarketing') === 'true'){
         loadMarketingContent();
       }
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const carousel = document.querySelector(".yoga-carousel");
+      if (!carousel) return;
+
+      const track = carousel.querySelector(".yoga-carousel-track");
+      const slides = Array.from(track.querySelectorAll("img"));
+      const prevBtn = carousel.querySelector(".yoga-carousel-btn.prev");
+      const nextBtn = carousel.querySelector(".yoga-carousel-btn.next");
+      const dotsWrap = carousel.closest(".yoga-carousel-section")?.querySelector(".yoga-carousel-dots")
+        || document.querySelector(".yoga-carousel-dots");
+
+      let index = 0;
+
+      function renderDots() {
+        if (!dotsWrap) return;
+        dotsWrap.innerHTML = "";
+        slides.forEach((_, i) => {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "yoga-carousel-dot" + (i === index ? " is-active" : "");
+          b.setAttribute("aria-label", `Ga naar foto ${i + 1}`);
+          b.addEventListener("click", () => {
+            index = i;
+            update();
+          });
+          dotsWrap.appendChild(b);
+        });
+      }
+
+      function update() {
+        track.style.transform = `translateX(${-index * 100}%)`;
+        const dots = dotsWrap ? dotsWrap.querySelectorAll(".yoga-carousel-dot") : [];
+        dots.forEach((d, i) => d.classList.toggle("is-active", i === index));
+      }
+
+      prevBtn?.addEventListener("click", () => {
+        index = (index - 1 + slides.length) % slides.length;
+        update();
+      });
+
+      nextBtn?.addEventListener("click", () => {
+        index = (index + 1) % slides.length;
+        update();
+      });
+
+      // Swipe mobiel
+      let startX = null;
+      track.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+
+      track.addEventListener("touchend", (e) => {
+        if (startX == null) return;
+        const endX = e.changedTouches[0].clientX;
+        const dx = endX - startX;
+        startX = null;
+
+        if (Math.abs(dx) > 40) {
+          index = dx > 0
+            ? (index - 1 + slides.length) % slides.length
+            : (index + 1) % slides.length;
+          update();
+        }
+      }, { passive: true });
+
+      renderDots();
+      update();
     })();
   </script>
 
