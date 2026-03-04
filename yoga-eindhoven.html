@@ -94,7 +94,7 @@
       place-items:center;
       text-align:center;
       overflow:hidden;
-      background:#000;
+      background:#000 url('assets/images/landing-yoga/yoga-1.jpeg') center/cover no-repeat;
       padding-top:90px;
     }
     .hero video{
@@ -113,6 +113,7 @@
       background:linear-gradient(to bottom, rgba(0,0,0,.55) 0%, rgba(0,0,0,.55) 60%, rgba(0,0,0,.85) 100%);
     }
     .hero-content{position:relative;z-index:2;max-width:860px}
+    .hero--fallback video{display:none}
     .hero h1{font-size:clamp(34px,6vw,64px);line-height:1.08;margin-bottom:16px}
     .hero .sub{font-size:clamp(18px,2.2vw,24px);margin:0 auto 24px;max-width:760px}
     .hero-points{
@@ -475,7 +476,7 @@
   <header class="minimal-header">
     <div class="container">
       <div class="topbar__logo">
-        <a href="index.html" class="logo"><img src="assets/logo/HH logo.png" alt="Healthy Habits Eindhoven" width="48" height="48" decoding="async"></a>
+        <div class="logo"><img src="assets/logo/HH logo.png" alt="Healthy Habits Eindhoven" width="48" height="48" decoding="async"></div>
       </div>
       <nav class="header-nav" aria-label="Pagina navigatie">
         <a href="#rooster">Rooster</a>
@@ -487,8 +488,8 @@
   </header>
 
   <section class="hero section--black">
-    <video autoplay muted loop playsinline preload="metadata">
-      <source src="assets/images/landing-yoga/filmpje.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline preload="auto" poster="assets/images/landing-yoga/yoga-1.jpeg">
+      <source src="assets/video/hero-web.mp4" type="video/mp4">
     </video>
     <div class="container hero-content">
       <h1>Yoga in het centrum van Eindhoven</h1>
@@ -711,6 +712,27 @@
       </p>
     </div>
   </footer>
+
+  <script>
+    (function(){
+      const hero = document.querySelector('.hero');
+      const video = hero ? hero.querySelector('video') : null;
+      if(!hero || !video) return;
+
+      const showFallback = () => hero.classList.add('hero--fallback');
+      const hideFallback = () => hero.classList.remove('hero--fallback');
+
+      video.addEventListener('canplay', hideFallback);
+      video.addEventListener('error', showFallback);
+      const sources = video.querySelectorAll('source');
+      sources.forEach((source) => source.addEventListener('error', showFallback));
+
+      const playPromise = video.play();
+      if(playPromise && typeof playPromise.catch === 'function'){
+        playPromise.catch(showFallback);
+      }
+    })();
+  </script>
 
   <script>
     (function(){
