@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yoga Eindhoven | Kleine groepen | Healthy Habits</title>
+  <meta name="description" content="Yoga in het centrum van Eindhoven. Kleine groepen, persoonlijke begeleiding en warme sfeer. Start met 4 weken yoga bij Healthy Habits.">
+  <link rel="canonical" href="https://healthyhabits-eindhoven.nl/yoga-eindhoven.html">
+  <style>
+    :root{
+      --bg-main:#090f1b;
+      --bg-accent:#0b1222;
+      --text:#f3f4f6;
+      --muted:#c8cbd4;
+      --accent:#d4a636;
+      --line:rgba(255,255,255,.12);
+      --radius:18px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:#000;
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    img{max-width:100%;height:auto;display:block}
+
+    .container{width:min(1140px,92vw);margin:0 auto}
+    .section{padding:84px 0}
+    .section--black{background:#000}
+    .section--dark{background:var(--bg-main)}
+
+    h1,h2,h3{margin:0 0 14px}
+    h2{font-size:clamp(30px,4.2vw,42px)}
+    .sub{margin:0;color:var(--muted)}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      border:none;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:800;
+      font-size:17px;
+      padding:14px 24px;
+      transition:filter .2s ease;
+    }
+    .btn:hover{filter:brightness(1.08)}
+    .btn--gold{background:var(--accent);color:#000}
+
+    .minimal-header{
+      position:fixed;
+      inset:0 0 auto 0;
+      z-index:60;
+      height:90px;
+      background:rgba(0,0,0,.9);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      backdrop-filter:blur(8px);
+    }
+    .minimal-header .container{
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .logo img{height:54px;width:auto}
+    .header-phone{
+      color:var(--text);
+      text-decoration:none;
+      font-weight:700;
+      font-size:17px;
+    }
+    .header-phone:hover{color:var(--accent)}
+
+    .hero{
+      position:relative;
+      min-height:100svh;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      overflow:hidden;
+      background:#000;
+      padding-top:90px;
+    }
+    .hero video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:0;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:1;
+      background:rgba(0,0,0,.6);
+    }
+    .hero-content{position:relative;z-index:2;max-width:860px}
+    .hero h1{font-size:clamp(34px,6vw,64px);line-height:1.08;margin-bottom:16px}
+    .hero .sub{font-size:clamp(18px,2.2vw,24px);margin:0 auto 24px;max-width:760px}
+    .hero-points{
+      list-style:none;
+      margin:0 0 30px;
+      padding:0;
+      display:grid;
+      gap:10px;
+      justify-content:center;
+    }
+    .hero-points li{color:#f0d692;font-weight:600}
+    .hero-points li::before{content:"•";margin-right:10px;color:var(--accent);font-weight:800}
+    .hero-extra{
+      list-style:none;
+      margin:18px 0 30px;
+      padding:0;
+      display:grid;
+      gap:8px;
+      justify-content:center;
+    }
+    .hero-extra li{
+      color:rgba(240,214,146,.86);
+      font-size:15px;
+      font-weight:400;
+      letter-spacing:0;
+      text-transform:none;
+    }
+    .hero-extra li::before{
+      content:"•";
+      margin-right:10px;
+      color:rgba(240,214,146,.72);
+      font-weight:500;
+    }
+    .yoga-highlights{
+      background:#000;
+      border-top:1px solid rgba(212,166,54,.55);
+      border-bottom:1px solid #ffffff;
+      padding:22px 0;
+    }
+    .yoga-highlights-inner{
+      max-width:1200px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:28px;
+      align-items:center;
+    }
+    .yoga-highlight-item{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      color:var(--text);
+      font-size:17px;
+      line-height:1.45;
+      text-align:center;
+      padding:4px 10px;
+    }
+    .yoga-highlight-item svg{
+      width:22px;
+      height:22px;
+      flex-shrink:0;
+      color:var(--muted);
+      opacity:.9;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+      margin-top:28px;
+    }
+    .card{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:16px;
+      overflow:hidden;
+    }
+    .card img{
+      width:100%;
+      height:210px;
+      object-fit:cover;
+    }
+    .card-body{padding:22px}
+    .card h3{
+      font-size:24px;
+      margin-bottom:8px;
+      position:relative;
+      padding-bottom:8px;
+    }
+    .card h3::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:0;
+      width:46px;
+      height:2px;
+      background:var(--accent);
+      border-radius:1px;
+    }
+    .card p{margin:0;color:var(--muted)}
+    .lessons-section-title{
+      margin-bottom:22px;
+    }
+    .lesson-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+    .lesson-card{
+      background:rgba(255,255,255,.02);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:14px;
+      padding:18px 18px 20px;
+    }
+    .lesson-card h3{
+      margin:0 0 8px;
+      color:var(--accent);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+    .lesson-card p{
+      margin:0;
+      color:#d1d5de;
+      font-size:14px;
+      line-height:1.5;
+      font-weight:500;
+    }
+    .recognition-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:34px;
+      align-items:center;
+    }
+    .recognition-list{
+      list-style:none;
+      margin:18px 0 14px;
+      padding:0;
+      display:grid;
+      gap:10px;
+    }
+    .recognition-list li{
+      color:var(--muted);
+    }
+    .recognition-list li::before{
+      content:"•";
+      color:var(--accent);
+      margin-right:10px;
+      font-weight:800;
+    }
+    .recognition-media{
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+    }
+    .recognition-media img{
+      width:100%;
+      height:100%;
+      min-height:300px;
+      object-fit:cover;
+    }
+
+    .schedule-wrap{
+      background:rgba(255,255,255,.03);
+      border:1px solid var(--line);
+      border-radius:16px;
+      overflow:hidden;
+      margin-top:20px;
+    }
+    .schedule-table{width:100%;border-collapse:collapse}
+    .schedule-table th,.schedule-table td{padding:15px 16px;border-bottom:1px solid rgba(255,255,255,.08);vertical-align:top}
+    .schedule-table tr:last-child td{border-bottom:none}
+    .schedule-table th{text-align:left;font-size:14px;color:#f0d692}
+    .schedule-table td:first-child{font-weight:700;white-space:nowrap}
+    .schedule-line{display:block;color:var(--muted)}
+
+    .teachers-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:30px;
+      margin-top:28px;
+    }
+    .teacher-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:16px;
+      overflow:hidden;
+      transition:border-color .2s ease, box-shadow .2s ease;
+    }
+    .teacher-card:hover{border-color:rgba(255,255,255,.24);box-shadow:0 10px 24px rgba(0,0,0,.35)}
+    .teacher-card img{width:100%;height:300px;object-fit:cover;transition:transform .3s ease}
+    .teacher-card:hover img{transform:scale(1.04)}
+    .teacher-info{padding:18px}
+    .teacher-info h3{margin:0;color:var(--text);font-size:23px;font-weight:700;line-height:1.2;position:relative;padding-bottom:9px}
+    .teacher-info h3::after{content:"";position:absolute;left:0;bottom:0;width:52px;height:2px;background:var(--accent);border-radius:1px}
+    .teacher-info p{margin:10px 0 0;color:var(--muted);font-size:15px}
+    .testimonials-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:24px;
+      margin-top:24px;
+    }
+    .testimonial-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:22px;
+    }
+    .testimonial-text{
+      margin:0 0 14px;
+      color:var(--text);
+    }
+    .testimonial-author{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .testimonial-author img{
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      object-fit:cover;
+      border:1px solid rgba(255,255,255,.2);
+    }
+
+    .location-list{
+      list-style:none;
+      margin:18px 0 24px;
+      padding:0;
+      display:grid;
+      gap:10px;
+    }
+    .location-list li{color:var(--muted)}
+    .location-list li::before{content:"•";color:var(--accent);font-weight:800;margin-right:10px}
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+      margin-top:24px;
+    }
+    .step{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:24px;
+    }
+    .step-number{font-size:28px;color:var(--accent);font-weight:800;line-height:1;margin-bottom:10px}
+    .step p{margin:0;color:var(--text)}
+
+    .form-shell{
+      width:min(760px,100%);
+      margin:24px auto 0;
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:26px;
+    }
+    .form{display:grid;gap:14px}
+    .form-group{display:grid;gap:7px}
+    .form label{font-size:14px;color:var(--text)}
+    .form input{
+      width:100%;
+      background:#0e1526;
+      color:var(--text);
+      border:1px solid rgba(255,255,255,.2);
+      border-radius:10px;
+      padding:13px 14px;
+      font-size:16px;
+    }
+    .form input::placeholder{color:#97a0b2}
+    .form-submit{
+      margin-top:8px;
+      width:100%;
+      background:var(--accent);
+      color:#000;
+      border:none;
+      border-radius:12px;
+      padding:15px 18px;
+      font-size:17px;
+      font-weight:800;
+      cursor:pointer;
+    }
+    .form-note,.form-privacy{margin:2px 0 0;font-size:13px;color:var(--muted);text-align:center}
+    .form-privacy a{color:var(--accent)}
+    .form-explanation{margin:0 0 6px;color:var(--muted);font-size:14px;line-height:1.5}
+
+    .faq-wrap{margin-top:22px;display:grid;gap:10px}
+    .faq-item{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+    .faq-question{
+      width:100%;
+      text-align:left;
+      background:transparent;
+      border:none;
+      color:var(--text);
+      font-size:16px;
+      font-weight:700;
+      padding:16px 18px;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .faq-question span{transition:transform .2s ease;color:var(--accent)}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .24s ease;padding:0 18px;color:var(--muted)}
+    .faq-item.open .faq-answer{max-height:180px;padding-bottom:16px}
+    .faq-item.open .faq-question span{transform:rotate(45deg)}
+
+    @media (max-width: 980px){
+      .cards,.teachers-grid,.steps{grid-template-columns:repeat(2,1fr)}
+      .recognition-grid{grid-template-columns:1fr}
+      .lesson-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width: 768px){
+      .header-phone{font-size:15px}
+      .hero{min-height:92svh}
+      .section{padding:66px 0}
+      .cards,.teachers-grid,.steps,.testimonials-grid,.lesson-grid{grid-template-columns:1fr}
+      .yoga-highlights-inner{grid-template-columns:1fr;gap:14px}
+      .yoga-highlight-item{font-size:16px}
+      .schedule-table thead{display:none}
+      .schedule-table tr{display:block;padding:12px 0}
+      .schedule-table td{display:block;border-bottom:none;padding:6px 16px}
+      .schedule-table td:first-child{padding-top:14px}
+      .schedule-table td:last-child{padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.08)}
+      .form-shell{padding:20px}
+    }
+  </style>
+</head>
+<body>
+  <header class="minimal-header">
+    <div class="container">
+      <div class="topbar__logo logo">
+        <a href="/index.html"><img src="/assets/logo/HH logo.png" alt="Healthy Habits" width="48" height="48" decoding="async"></a>
+      </div>
+      <a class="header-phone" href="tel:+31408430137">(040) 843 01 37</a>
+    </div>
+  </header>
+
+  <section class="hero section--black">
+    <video autoplay muted loop playsinline preload="metadata">
+      <source src="assets/images/landing-yoga/filmpje.mp4" type="video/mp4">
+    </video>
+    <div class="container hero-content">
+      <h1>Yoga in het centrum van Eindhoven</h1>
+      <p class="sub">Rust, balans en persoonlijke aandacht in kleine groepen</p>
+      <ul class="hero-points">
+        <li>Kleine groepen (max 12)</li>
+        <li>Persoonlijke begeleiding</li>
+        <li>50+ zeer welkom</li>
+      </ul>
+      <a href="#start" class="btn btn--gold">4 weken proberen</a>
+    </div>
+  </section>
+
+  <section class="yoga-highlights">
+    <div class="container yoga-highlights-inner">
+      <div class="yoga-highlight-item">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s6-5.2 6-10a6 6 0 1 0-12 0c0 4.8 6 10 6 10Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="11" r="2.2" stroke="currentColor" stroke-width="1.8"/></svg>
+        <span>Midden in het centrum van Eindhoven</span>
+      </div>
+      <div class="yoga-highlight-item">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="6" width="16" height="14" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M8 4v4M16 4v4M4 10h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span>30+ lessen per week</span>
+      </div>
+      <div class="yoga-highlight-item">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M16.5 6.5A5.5 5.5 0 0 0 8.8 11v2a5.5 5.5 0 0 0 7.7 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M6 10h9M6 14h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <span>Vanaf €56,95 per maand toegang tot alle soorten yogalessen</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--black">
+    <div class="container">
+      <h2 class="lessons-section-title">Welke lessen kun je volgen?</h2>
+      <div class="lesson-grid">
+        <article class="lesson-card">
+          <h3>HATHA YOGA</h3>
+          <p>Rustige opbouw, ademhaling en houding.</p>
+        </article>
+        <article class="lesson-card">
+          <h3>YIN YOGA</h3>
+          <p>Diepe ontspanning en langere stretches.</p>
+        </article>
+        <article class="lesson-card">
+          <h3>MINDFUL YOGA</h3>
+          <p>Rust in je hoofd, soepelheid in je lijf.</p>
+        </article>
+        <article class="lesson-card">
+          <h3>PILATES</h3>
+          <p>Core, houding en gecontroleerde kracht.</p>
+        </article>
+        <article class="lesson-card">
+          <h3>BARRE KLASSIEK</h3>
+          <p>Elegant, krachtig en stevig.</p>
+        </article>
+        <article class="lesson-card">
+          <h3>BBB</h3>
+          <p>Benen, Billen, Buik — actief en energiek.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark">
+    <div class="container recognition-grid">
+      <div>
+        <h2>Zoek je rust zonder massale yogastudio?</h2>
+        <p class="sub">Voel je dat je:</p>
+        <ul class="recognition-list">
+          <li>stijver wordt?</li>
+          <li>meer ontspanning nodig hebt?</li>
+          <li>niet tussen jonge, drukke groepen wilt staan?</li>
+        </ul>
+        <p class="sub">Dan is dit precies wat je zoekt.</p>
+      </div>
+      <div class="recognition-media">
+        <img src="assets/images/landing-yoga/yoga-1.jpeg" alt="Rustige yogasfeer in de studio" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark">
+    <div class="container">
+      <h2>Wat maakt ons anders</h2>
+      <div class="cards">
+        <article class="card">
+          <img src="assets/images/landing-yoga/yoga-2.jpeg" alt="Kleine yogagroep met persoonlijke aandacht" loading="lazy">
+          <div class="card-body">
+            <h3>Kleine groepen</h3>
+            <p>Altijd persoonlijke aandacht.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="assets/images/landing-yoga/yoga-3.jpeg" alt="Warme sfeer in de yogastudio" loading="lazy">
+          <div class="card-body">
+            <h3>Warme sfeer</h3>
+            <p>Geen kille studio, maar een huiskamergevoel.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="assets/images/landing-yoga/yoga-4.jpeg" alt="Combinatie van yoga met andere trainingsvormen" loading="lazy">
+          <div class="card-body">
+            <h3>Combinatie mogelijk</h3>
+            <p>Combineer yoga met fitness of Milon.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--black" id="rooster">
+    <div class="container">
+      <h2>Bekijk het rooster</h2>
+      <div class="schedule-wrap">
+        <table class="schedule-table" aria-label="Yoga rooster Healthy Habits">
+          <thead>
+            <tr>
+              <th>Dag</th>
+              <th>Tijd - Les</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Maandag</td><td><span class="schedule-line">08:30 - 09:15 — BBB</span><span class="schedule-line">09:30 - 10:30 — Mindful Yoga</span><span class="schedule-line">10:35 - 11:50 — Hatha Yoga</span><span class="schedule-line">17:30 - 18:15 — BBB</span><span class="schedule-line">18:30 - 19:45 — Hatha Yoga</span><span class="schedule-line">19:45 - 21:00 — Yin Yoga</span></td></tr>
+            <tr><td>Dinsdag</td><td><span class="schedule-line">08:00 - 08:50 — Pilates</span><span class="schedule-line">09:30 - 10:45 — Yin Yoga</span><span class="schedule-line">18:25 - 19:15 — Pilates</span><span class="schedule-line">19:30 - 20:45 — Hatha Alignment</span></td></tr>
+            <tr><td>Woensdag</td><td><span class="schedule-line">08:30 - 09:15 — BBB</span><span class="schedule-line">09:30 - 10:45 — Yin Yoga</span><span class="schedule-line">18:30 - 19:20 — Barre klassiek</span><span class="schedule-line">19:30 - 20:30 — Pilates</span></td></tr>
+            <tr><td>Donderdag</td><td><span class="schedule-line">08:00 - 09:00 — Pilates</span><span class="schedule-line">09:15 - 10:30 — Yin Yoga</span><span class="schedule-line">18:30 - 19:15 — BBB</span><span class="schedule-line">19:30 - 20:45 — Yin Yoga</span></td></tr>
+            <tr><td>Vrijdag</td><td><span class="schedule-line">08:30 - 09:30 — Pilates</span><span class="schedule-line">09:30 - 10:15 — BBB</span><span class="schedule-line">17:00 - 17:45 — BBB</span></td></tr>
+            <tr><td>Zaterdag</td><td><span class="schedule-line">09:00 - 09:50 — Barre Klassiek</span><span class="schedule-line">10:00 - 11:15 — Hatha Yoga</span></td></tr>
+            <tr><td>Zondag</td><td><span class="schedule-line">08:30 - 09:15 — Dans</span><span class="schedule-line">09:30 - 10:15 — BBB</span><span class="schedule-line">10:30 - 11:15 — BBB</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark" id="docenten">
+    <div class="container">
+      <h2>Altijd een docent die bij je past</h2>
+      <p class="sub">Rustig, energiek of technisch sterk — er is altijd een docent die bij jou past.</p>
+      <div class="teachers-grid">
+        <div class="teacher-card"><img src="assets/images/landing-yoga/florence.jpeg" alt="Florence Yoga docent" loading="lazy"><div class="teacher-info"><h3>Florence</h3><p>Pilates, Hatha yoga</p></div></div>
+        <div class="teacher-card"><img src="assets/images/landing-yoga/tim.jpeg" alt="Tim Yoga docent" loading="lazy"><div class="teacher-info"><h3>Tim</h3><p>Pilates, Hatha yoga</p></div></div>
+        <div class="teacher-card"><img src="assets/images/landing-yoga/olga.jpeg" alt="Olga Yoga docent" loading="lazy"><div class="teacher-info"><h3>Olga</h3><p>Pilates, Hatha yoga</p></div></div>
+        <div class="teacher-card"><img src="assets/images/landing-yoga/sophie.jpeg" alt="Sophie Yoga docent" loading="lazy"><div class="teacher-info"><h3>Sophie</h3><p>Pilates, Hatha yoga</p></div></div>
+        <div class="teacher-card"><img src="assets/images/landing-yoga/dorine.jpeg" alt="Dorine Yoga docent" loading="lazy"><div class="teacher-info"><h3>Dorine</h3><p>Pilates, Hatha yoga</p></div></div>
+        <div class="teacher-card"><img src="assets/images/landing-yoga/marielle.jpeg" alt="Marielle Yoga docent" loading="lazy"><div class="teacher-info"><h3>Marielle</h3><p>Pilates, Hatha yoga</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--black">
+    <div class="container">
+      <h2>Wat onze leden zeggen</h2>
+      <div class="testimonials-grid">
+        <article class="testimonial-card">
+          <p class="testimonial-text">"Ik volg hier al 7 jaar lang lessen, fijn en kleinschalige groepen. De manier om yoga echt vol te houden!"</p>
+          <div class="testimonial-author">
+            <img src="assets/images/landing-yoga/hans.jpeg" alt="Florence testimonial foto" loading="lazy">
+            <span>Hans — lid bij Healthy Habits</span>
+          </div>
+        </article>
+        <article class="testimonial-card">
+          <p class="testimonial-text">\"De sfeer is warm en rustig. Je voelt je meteen op je gemak, ook als je wat ouder bent of opnieuw begint.\"</p>
+          <div class="testimonial-author">
+            <img src="assets/images/landing-yoga/Janneke.jpeg" alt="Olga testimonial foto" loading="lazy">
+            <span>Olga — lid bij Healthy Habits</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--black">
+    <div class="container">
+      <h2>Yoga in het centrum van Eindhoven</h2>
+      <ul class="location-list">
+        <li>Op loopafstand van station</li>
+        <li>Rustige studio midden in de stad</li>
+        <li>Parkeren in de buurt</li>
+      </ul>
+      <a class="btn btn--gold" href="https://www.google.com/maps/search/?api=1&query=Healthy+Habits+Eindhoven" target="_blank" rel="noopener noreferrer">Bekijk op Google Maps</a>
+    </div>
+  </section>
+
+  <section class="section section--dark">
+    <div class="container">
+      <h2>Zo start je</h2>
+      <div class="steps">
+        <article class="step"><div class="step-number">1</div><p>Laat je gegevens achter</p></article>
+        <article class="step"><div class="step-number">2</div><p>We nemen binnen 24 uur contact op</p></article>
+        <article class="step"><div class="step-number">3</div><p>Je start in een les die bij je past</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--black" id="start">
+    <div class="container">
+      <h2 style="text-align:center">Start met 4 weken yoga</h2>
+      <p class="sub" style="text-align:center">Beperkt aantal startplekken per maand.</p>
+      <div class="form-shell">
+        <form class="form" id="proberenForm">
+          <input type="hidden" name="page_name" value="yoga-eindhoven">
+          <p class="form-explanation">Let op: Aanmelden voor 4 weken proberen betekent nog niet automatisch dat je kunt starten. We werken met een beperkt aantal startplekken per maand, zodat we iedereen persoonlijk en goed kunnen begeleiden.</p>
+          <div class="form-group">
+            <label for="voornaam">Voornaam *</label>
+            <input type="text" id="voornaam" name="voornaam" placeholder="Je voornaam" required>
+          </div>
+          <div class="form-group">
+            <label for="achternaam">Achternaam *</label>
+            <input type="text" id="achternaam" name="achternaam" placeholder="Je achternaam" required>
+          </div>
+          <div class="form-group">
+            <label for="telefoon">Telefoon *</label>
+            <input type="tel" id="telefoon" name="telefoon" placeholder="Telefoonnummer" required pattern="^(06[0-9]{8}|\\+[1-9][0-9]{7,14})$" title="Vul een geldig telefoonnummer in (NL: 06xxxxxxxx of internationaal: +31612345678)">
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" name="email" placeholder="je@voorbeeld.nl" required>
+          </div>
+          <button type="submit" class="form-submit">Ik wil starten</button>
+          <p class="form-note">Vrijblijvend · geen automatische inschrijving · persoonlijk contact</p>
+          <p class="form-privacy">Door dit formulier te versturen ga je akkoord met onze <a href="/privacy.html">privacyverklaring</a>.</p>
+        </form>
+      </div>
+
+      <div class="faq-wrap">
+        <div class="faq-item">
+          <button class="faq-question" type="button">Moet ik lenig zijn?<span>+</span></button>
+          <div class="faq-answer"><p>Nee. Je hoeft niet lenig te zijn om te starten. We bouwen rustig op en passen oefeningen aan op jouw niveau.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">Is dit geschikt voor beginners of 50+?<span>+</span></button>
+          <div class="faq-answer"><p>Ja, absoluut. Onze lessen zijn laagdrempelig en juist bedoeld voor mensen die veilig en rustig willen opbouwen.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">Wat neem ik mee?<span>+</span></button>
+          <div class="faq-answer"><p>Draag comfortabele kleding en neem eventueel een flesje water mee. De rest is aanwezig in de studio.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">Kan ik direct instromen?<span>+</span></button>
+          <div class="faq-answer"><p>Meestal wel. We kijken samen naar een geschikt startmoment en plaatsen je in een les die bij je past.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">Kan ik eerst kennismaken?<span>+</span></button>
+          <div class="faq-answer"><p>Ja. Na je aanvraag nemen we contact op en kun je eerst kennismaken voordat je start.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function(){
+      const form = document.getElementById('proberenForm');
+      if(!form) return;
+
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalText = submitButton ? submitButton.textContent : '';
+
+        try {
+          if(submitButton){
+            submitButton.disabled = true;
+            submitButton.textContent = 'Verzenden...';
+          }
+
+          const formData = new FormData(form);
+          const response = await fetch('https://hooks.zapier.com/hooks/catch/16872475/uqalft8/', {
+            method: 'POST',
+            body: formData,
+            keepalive: true
+          });
+
+          if(!response.ok){
+            throw new Error('Zapier request failed');
+          }
+
+          window.location.href = 'bedankt.html';
+        } catch(error){
+          console.error('Form submit error:', error);
+          if(submitButton){
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+          }
+          alert('Er is iets misgegaan. Probeer het opnieuw.');
+        }
+      });
+    })();
+
+    (function(){
+      const items = document.querySelectorAll('.faq-item');
+      items.forEach((item) => {
+        const btn = item.querySelector('.faq-question');
+        if(!btn) return;
+        btn.addEventListener('click', () => {
+          item.classList.toggle('open');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

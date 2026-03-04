@@ -518,6 +518,18 @@
         font-size:17px;
         margin:10px auto 24px;
       }
+      /* Verberg alleen de labels 'Ochtend' en 'Avond' in het rooster op mobiel */
+      .schedule .timeblock-title,
+      .schedule .daypart-title,
+      .schedule .part-title,
+      .schedule h4.daypart,
+      .schedule h4.part,
+      .schedule .daypart,
+      .schedule .daypart-label,
+      .schedule-table td.part::before {
+        display: none !important;
+        content: none !important;
+      }
     }
     .yoga-rooster{
       background:var(--bg-main);

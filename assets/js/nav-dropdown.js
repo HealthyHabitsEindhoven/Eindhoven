@@ -10,8 +10,7 @@ document.addEventListener('DOMContentLoaded', function(){
   accordions.forEach(function(accordion){
     const toggle = accordion.querySelector('.accordion-toggle');
     const panel = accordion.querySelector('.accordion-panel');
-    const label = accordion.querySelector('.mobile-accordion__label');
-    if (!toggle || !panel || !label) return;
+    if (!toggle || !panel) return;
 
     function setState(open){
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -25,14 +24,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     toggle.addEventListener('click', function(e){
       if (window.innerWidth > MOBILE_BREAKPOINT) return;
-      e.preventDefault();
       e.stopPropagation();
-      toggleState();
-    });
-
-    label.addEventListener('click', function(e){
-      if (window.innerWidth > MOBILE_BREAKPOINT) return;
-      e.preventDefault();
       toggleState();
     });
 

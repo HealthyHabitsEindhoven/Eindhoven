@@ -3942,7 +3942,6 @@ zelfs leuk.</p>
       const topbarCta = document.getElementById('topbarCta');
       const accordionToggle = document.querySelector('.accordion-toggle');
       const accordionPanel = document.getElementById('aanbodAccordionPanel');
-      const accordionLabel = document.getElementById('aanbodAccordionLabel');
       const MOBILE_BREAKPOINT = 768;
 
       function setAccordionState(isOpen){
@@ -3983,16 +3982,7 @@ zelfs leuk.</p>
         if(accordionToggle){
           accordionToggle.addEventListener('click', function(e){
             if(window.innerWidth > MOBILE_BREAKPOINT) return;
-            e.preventDefault();
             e.stopPropagation();
-            toggleAccordion();
-          });
-        }
-
-        if(accordionLabel){
-          accordionLabel.addEventListener('click', function(e){
-            if(window.innerWidth > MOBILE_BREAKPOINT) return;
-            e.preventDefault();
             toggleAccordion();
           });
         }
@@ -4000,11 +3990,7 @@ zelfs leuk.</p>
         // Sluit menu bij klik op link
         const navLinks = topbarNav.querySelectorAll('a');
         navLinks.forEach(link => {
-          link.addEventListener('click', function(e){
-            if(window.innerWidth <= MOBILE_BREAKPOINT && link.classList.contains('mobile-accordion__label')){
-              e.preventDefault();
-              return;
-            }
+          link.addEventListener('click', function(){
             closeMobileMenu();
           });
         });
