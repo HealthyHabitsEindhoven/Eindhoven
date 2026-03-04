@@ -89,23 +89,21 @@
       padding:11px 20px;
       border-radius:10px;
     }
-    .mobile-menu-toggle{
+    .menu-toggle{
       display:none;
-      width:42px;
-      height:42px;
       background:transparent;
       border:none;
+      padding:10px;
+      cursor:pointer;
       align-items:center;
       justify-content:center;
-      cursor:pointer;
-      padding:0;
       z-index:72;
     }
-    .mobile-menu-toggle span{
+    .menu-toggle span{
       display:block;
-      width:24px;
-      height:2px;
-      background:var(--accent);
+      width:26px;
+      height:3px;
+      background:#caa030;
       margin:5px 0;
       border-radius:2px;
       transition:transform .2s ease, opacity .2s ease;
@@ -131,14 +129,7 @@
       padding:14px 0;
       border-bottom:1px solid rgba(255,255,255,.08);
     }
-    .mobile-nav .header-nav-mobile-cta{
-      display:block;
-      margin-top:16px;
-      border-bottom:none;
-      text-align:center;
-      padding:13px 16px;
-    }
-    .mobile-menu-overlay{
+    .mobile-overlay{
       position:fixed;
       inset:0;
       background:rgba(0,0,0,.6);
@@ -147,15 +138,15 @@
       pointer-events:none;
       transition:opacity .2s ease;
     }
-    body.mobile-menu-open .mobile-nav{
+    body.menu-open .mobile-nav{
       transform:translateX(0);
       pointer-events:auto;
     }
-    body.mobile-menu-open .mobile-menu-overlay{
+    body.menu-open .mobile-overlay{
       opacity:1;
       pointer-events:auto;
     }
-    body.mobile-menu-open{
+    body.menu-open{
       overflow:hidden;
     }
 
@@ -656,17 +647,19 @@
       .aida-media{justify-self:start;max-width:100%}
     }
     @media (max-width: 768px){
-      .mobile-menu-toggle{
+      .menu-toggle{
         display:inline-flex;
-      }
-      .header-cta{
-        display:none;
       }
       .header-nav{
         display:none;
       }
       .mobile-nav{
         display:block;
+      }
+      .header-cta{
+        display:inline-flex;
+        font-size:14px;
+        padding:10px 14px;
       }
       .hero{min-height:92svh}
       .section{padding:66px 0}
@@ -682,7 +675,7 @@
     }
     @media (min-width: 769px){
       .mobile-nav,
-      .mobile-menu-overlay{
+      .mobile-overlay{
         display:none;
       }
     }
@@ -701,19 +694,18 @@
         <a href="#start" class="header-nav-mobile-cta">4 weken proberen</a>
       </nav>
       <a class="btn btn--gold header-cta" href="#start">4 weken proberen</a>
-      <button class="mobile-menu-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileNav">
+      <button class="menu-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" type="button">
         <span></span>
         <span></span>
         <span></span>
       </button>
     </div>
   </header>
-  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
-  <nav class="mobile-nav" id="mobileNav" aria-label="Mobiele navigatie">
-    <a href="#rooster">Rooster</a>
-    <a href="#soorten-lessen">Soorten lessen</a>
-    <a href="#docenten">Docenten</a>
-    <a href="#start" class="btn btn--gold header-nav-mobile-cta">4 weken proberen</a>
+  <div class="mobile-overlay" id="mobileOverlay" hidden></div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobiele navigatie" aria-hidden="true">
+    <a href="#rooster" class="mobile-link">Rooster</a>
+    <a href="#soorten-lessen" class="mobile-link">Soorten lessen</a>
+    <a href="#docenten" class="mobile-link">Docenten</a>
   </nav>
 
   <section class="hero section--black">
@@ -1006,25 +998,37 @@
     (function(){
       const toggle = document.getElementById('navToggle');
       const nav = document.getElementById('mobileNav');
-      const overlay = document.getElementById('mobileMenuOverlay');
+      const overlay = document.getElementById('mobileOverlay');
       if(!toggle || !nav || !overlay) return;
+      const MOBILE_BREAKPOINT = 768;
 
       function closeMenu(){
-        document.body.classList.remove('mobile-menu-open');
+        document.body.classList.remove('menu-open');
         toggle.setAttribute('aria-expanded', 'false');
+        nav.setAttribute('aria-hidden', 'true');
+        overlay.hidden = true;
       }
 
       toggle.addEventListener('click', function(){
-        const isOpen = !document.body.classList.contains('mobile-menu-open');
-        document.body.classList.toggle('mobile-menu-open', isOpen);
+        if(window.innerWidth > MOBILE_BREAKPOINT) return;
+        const isOpen = !document.body.classList.contains('menu-open');
+        document.body.classList.toggle('menu-open', isOpen);
         toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        nav.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+        overlay.hidden = !isOpen;
       });
 
       overlay.addEventListener('click', closeMenu);
 
-      const links = nav.querySelectorAll('a');
+      const links = nav.querySelectorAll('.mobile-link');
       links.forEach((link) => {
         link.addEventListener('click', closeMenu);
+      });
+
+      window.addEventListener('resize', () => {
+        if(window.innerWidth > MOBILE_BREAKPOINT){
+          closeMenu();
+        }
       });
 
       document.addEventListener('keydown', (event) => {
