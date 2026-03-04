@@ -81,10 +81,35 @@
       font-size:17px;
     }
     .header-nav a:hover{color:var(--accent)}
+    .header-nav-mobile-cta{
+      display:none;
+    }
     .header-cta{
       font-size:16px;
       padding:11px 20px;
       border-radius:10px;
+    }
+    .nav-toggle{
+      display:none;
+      width:42px;
+      height:42px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:transparent;
+      color:var(--text);
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      padding:0;
+    }
+    .nav-toggle span{
+      display:block;
+      width:18px;
+      height:2px;
+      background:var(--text);
+      margin:3px 0;
+      border-radius:2px;
+      transition:transform .2s ease, opacity .2s ease;
     }
 
     .hero{
@@ -145,6 +170,55 @@
     }
     .hero-points li{color:#f0d692;font-weight:600}
     .hero-points li::before{content:"•";margin-right:10px;color:var(--accent);font-weight:800}
+    .h2-wrapper{
+      position:relative;
+      display:inline-block;
+    }
+    .title-underline-wrapper{
+      position:absolute;
+      top:calc(100% - 1px);
+      left:0;
+      width:100%;
+    }
+    .title-underline-svg{
+      display:block;
+      width:100%;
+      height:10px;
+      overflow:visible;
+    }
+    .title-underline-svg svg{
+      width:100%;
+      height:10px;
+      display:block;
+    }
+    .title-underline-path{
+      stroke:#C3A300;
+      stroke-width:3;
+      fill:none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      stroke-dasharray:1800;
+      stroke-dashoffset:1800;
+    }
+    #start.in-view .title-underline-path{
+      animation:draw-wavy-line 5s ease-in-out forwards;
+      animation-delay:0.3s;
+    }
+    #start:not(.in-view) .title-underline-path{
+      stroke-dashoffset:1800;
+      animation:none;
+    }
+    @keyframes draw-wavy-line{
+      0%{
+        stroke-dashoffset:1800;
+      }
+      60%{
+        stroke-dashoffset:0;
+      }
+      100%{
+        stroke-dashoffset:0;
+      }
+    }
     .hero-extra{
       list-style:none;
       margin:18px 0 30px;
@@ -167,7 +241,7 @@
       font-weight:500;
     }
     .yoga-highlights{
-      background-color:#000000;
+      background-color:#121418;
       border-top:none;
       border-bottom:none;
       padding:22px 0 40px;
@@ -527,9 +601,47 @@
       .aida-media{justify-self:start;max-width:100%}
     }
     @media (max-width: 768px){
-      .header-nav{gap:16px}
-      .header-nav a{font-size:15px}
-      .header-cta{font-size:14px;padding:10px 16px}
+      .nav-toggle{
+        display:inline-flex;
+      }
+      .header-cta{
+        display:none;
+      }
+      .header-nav{
+        display:none;
+      }
+      .header-nav.open{
+        display:flex;
+        position:fixed;
+        top:90px;
+        left:0;
+        right:0;
+        z-index:65;
+        background:#000000;
+        border-top:1px solid rgba(255,255,255,.08);
+        box-shadow:0 8px 20px rgba(0,0,0,.35);
+        flex-direction:column;
+        align-items:stretch;
+        gap:0;
+        padding:14px 24px 20px;
+      }
+      .header-nav a{
+        font-size:16px;
+        padding:13px 0;
+        border-bottom:1px solid rgba(255,255,255,.08);
+      }
+      .header-nav .header-nav-mobile-cta{
+        display:block;
+        margin-top:14px;
+        width:100%;
+        text-align:center;
+        background:var(--accent);
+        color:#000;
+        border-radius:12px;
+        border-bottom:none;
+        font-weight:800;
+        padding:13px 16px;
+      }
       .hero{min-height:92svh}
       .section{padding:66px 0}
       .cards,.teachers-grid,.steps,.testimonials-grid,.lesson-grid{grid-template-columns:1fr}
@@ -550,12 +662,18 @@
       <div class="topbar__logo">
         <div class="logo"><img src="assets/logo/HH logo.png" alt="Healthy Habits Eindhoven" width="48" height="48" decoding="async"></div>
       </div>
-      <nav class="header-nav" aria-label="Pagina navigatie">
+      <nav class="header-nav" id="headerNav" aria-label="Pagina navigatie">
         <a href="#rooster">Rooster</a>
         <a href="#soorten-lessen">Soorten lessen</a>
         <a href="#docenten">Docenten</a>
+        <a href="#start" class="header-nav-mobile-cta">4 weken proberen</a>
       </nav>
       <a class="btn btn--gold header-cta" href="#start">4 weken proberen</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="headerNav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
@@ -595,7 +713,7 @@
     </div>
   </section>
 
-<section class="section section--dark">
+<section class="section section--black">
     <div class="container aida-grid">
       <div class="aida-copy">
         <h2>Yoga zonder massale studio's</h2>
@@ -738,7 +856,18 @@
 
 <section class="section section--black" id="start">
     <div class="container">
-      <h2 style="text-align:center">Start met 4 weken yoga</h2>
+      <h2 style="text-align:center">
+        <span class="h2-wrapper">
+          Start met 4 weken yoga
+          <span class="title-underline-wrapper">
+            <span class="title-underline-svg">
+              <svg viewBox="0 0 500 10" preserveAspectRatio="none">
+                <path class="title-underline-path" d="M 0 4 Q 80 3.5, 160 4.5 T 320 4 Q 400 3.8, 480 4.5" vector-effect="non-scaling-stroke"></path>
+              </svg>
+            </span>
+          </span>
+        </span>
+      </h2>
       <p class="sub" style="text-align:center">Beperkt aantal startplekken per maand.</p>
       <div class="form-shell">
         <form class="form" id="proberenForm">
@@ -802,6 +931,55 @@
       </p>
     </div>
   </footer>
+
+  <script>
+    (function(){
+      const toggle = document.getElementById('navToggle');
+      const nav = document.getElementById('headerNav');
+      if(!toggle || !nav) return;
+
+      function closeMenu(){
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+
+      toggle.addEventListener('click', function(){
+        const isOpen = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      const links = nav.querySelectorAll('a');
+      links.forEach((link) => {
+        link.addEventListener('click', closeMenu);
+      });
+    })();
+  </script>
+
+  <script>
+    (function(){
+      const startSection = document.getElementById('start');
+      if(!startSection) return;
+
+      function setUnderlineWidths(){
+        const wrappers = startSection.querySelectorAll('.h2-wrapper');
+        wrappers.forEach((wrapper) => {
+          const underlineWrapper = wrapper.querySelector('.title-underline-wrapper');
+          if(!underlineWrapper) return;
+          underlineWrapper.style.width = wrapper.offsetWidth + 'px';
+        });
+      }
+
+      setUnderlineWidths();
+      window.addEventListener('resize', setUnderlineWidths);
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          startSection.classList.toggle('in-view', entry.isIntersecting);
+        });
+      }, { threshold: 0.15 });
+      observer.observe(startSection);
+    })();
+  </script>
 
   <script>
     (function(){
