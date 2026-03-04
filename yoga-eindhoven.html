@@ -68,14 +68,24 @@
       align-items:center;
       justify-content:space-between;
     }
-    .logo img{height:54px;width:auto}
-    .header-phone{
+    .topbar__logo img{height:54px;width:auto}
+    .header-nav{
+      display:flex;
+      align-items:center;
+      gap:28px;
+    }
+    .header-nav a{
       color:var(--text);
       text-decoration:none;
-      font-weight:700;
+      font-weight:500;
       font-size:17px;
     }
-    .header-phone:hover{color:var(--accent)}
+    .header-nav a:hover{color:var(--accent)}
+    .header-cta{
+      font-size:16px;
+      padding:11px 20px;
+      border-radius:10px;
+    }
 
     .hero{
       position:relative;
@@ -100,7 +110,7 @@
       position:absolute;
       inset:0;
       z-index:1;
-      background:rgba(0,0,0,.6);
+      background:linear-gradient(to bottom, rgba(0,0,0,.55) 0%, rgba(0,0,0,.55) 60%, rgba(0,0,0,.85) 100%);
     }
     .hero-content{position:relative;z-index:2;max-width:860px}
     .hero h1{font-size:clamp(34px,6vw,64px);line-height:1.08;margin-bottom:16px}
@@ -138,9 +148,9 @@
     }
     .yoga-highlights{
       background:#000;
-      border-top:1px solid rgba(212,166,54,.55);
-      border-bottom:1px solid #ffffff;
-      padding:22px 0;
+      border-top:none;
+      border-bottom:none;
+      padding:22px 0 40px;
     }
     .yoga-highlights-inner{
       max-width:1200px;
@@ -415,6 +425,28 @@
     .faq-answer{max-height:0;overflow:hidden;transition:max-height .24s ease;padding:0 18px;color:var(--muted)}
     .faq-item.open .faq-answer{max-height:180px;padding-bottom:16px}
     .faq-item.open .faq-question span{transform:rotate(45deg)}
+    .footer-contact{
+      background:#000;
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:34px 0 44px;
+    }
+    .footer-contact p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.7;
+    }
+    .footer-contact strong{
+      color:var(--text);
+      font-weight:700;
+    }
+    .footer-contact a{
+      color:var(--muted);
+      text-decoration:none;
+    }
+    .footer-contact a:hover{
+      color:var(--accent);
+    }
 
     @media (max-width: 980px){
       .cards,.teachers-grid,.steps{grid-template-columns:repeat(2,1fr)}
@@ -422,7 +454,9 @@
       .lesson-grid{grid-template-columns:repeat(2,1fr)}
     }
     @media (max-width: 768px){
-      .header-phone{font-size:15px}
+      .header-nav{gap:16px}
+      .header-nav a{font-size:15px}
+      .header-cta{font-size:14px;padding:10px 16px}
       .hero{min-height:92svh}
       .section{padding:66px 0}
       .cards,.teachers-grid,.steps,.testimonials-grid,.lesson-grid{grid-template-columns:1fr}
@@ -440,10 +474,15 @@
 <body>
   <header class="minimal-header">
     <div class="container">
-      <div class="topbar__logo logo">
-        <a href="/index.html"><img src="/assets/logo/HH logo.png" alt="Healthy Habits" width="48" height="48" decoding="async"></a>
+      <div class="topbar__logo">
+        <a href="index.html" class="logo"><img src="assets/logo/HH logo.png" alt="Healthy Habits Eindhoven" width="48" height="48" decoding="async"></a>
       </div>
-      <a class="header-phone" href="tel:+31408430137">(040) 843 01 37</a>
+      <nav class="header-nav" aria-label="Pagina navigatie">
+        <a href="#rooster">Rooster</a>
+        <a href="#soorten-lessen">Soorten lessen</a>
+        <a href="#docenten">Docenten</a>
+      </nav>
+      <a class="btn btn--gold header-cta" href="#start">4 weken proberen</a>
     </div>
   </header>
 
@@ -483,7 +522,36 @@
     </div>
   </section>
 
-  <section class="section section--black">
+<section class="section section--dark">
+    <div class="container">
+      <h2>Wat maakt ons anders</h2>
+      <div class="cards">
+        <article class="card">
+          <img src="assets/images/landing-yoga/yoga-2.jpeg" alt="Kleine yogagroep met persoonlijke aandacht" loading="lazy">
+          <div class="card-body">
+            <h3>Kleine groepen</h3>
+            <p>Altijd persoonlijke aandacht.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="assets/images/landing-yoga/yoga-3.jpeg" alt="Warme sfeer in de yogastudio" loading="lazy">
+          <div class="card-body">
+            <h3>Warme sfeer</h3>
+            <p>Geen kille studio, maar een huiskamergevoel.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="assets/images/landing-yoga/yoga-4.jpeg" alt="Combinatie van yoga met andere trainingsvormen" loading="lazy">
+          <div class="card-body">
+            <h3>Combinatie mogelijk</h3>
+            <p>Combineer yoga met fitness of Milon.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--black" id="soorten-lessen">
     <div class="container">
       <h2 class="lessons-section-title">Welke lessen kun je volgen?</h2>
       <div class="lesson-grid">
@@ -515,54 +583,7 @@
     </div>
   </section>
 
-  <section class="section section--dark">
-    <div class="container recognition-grid">
-      <div>
-        <h2>Zoek je rust zonder massale yogastudio?</h2>
-        <p class="sub">Voel je dat je:</p>
-        <ul class="recognition-list">
-          <li>stijver wordt?</li>
-          <li>meer ontspanning nodig hebt?</li>
-          <li>niet tussen jonge, drukke groepen wilt staan?</li>
-        </ul>
-        <p class="sub">Dan is dit precies wat je zoekt.</p>
-      </div>
-      <div class="recognition-media">
-        <img src="assets/images/landing-yoga/yoga-1.jpeg" alt="Rustige yogasfeer in de studio" loading="lazy">
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--dark">
-    <div class="container">
-      <h2>Wat maakt ons anders</h2>
-      <div class="cards">
-        <article class="card">
-          <img src="assets/images/landing-yoga/yoga-2.jpeg" alt="Kleine yogagroep met persoonlijke aandacht" loading="lazy">
-          <div class="card-body">
-            <h3>Kleine groepen</h3>
-            <p>Altijd persoonlijke aandacht.</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="assets/images/landing-yoga/yoga-3.jpeg" alt="Warme sfeer in de yogastudio" loading="lazy">
-          <div class="card-body">
-            <h3>Warme sfeer</h3>
-            <p>Geen kille studio, maar een huiskamergevoel.</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="assets/images/landing-yoga/yoga-4.jpeg" alt="Combinatie van yoga met andere trainingsvormen" loading="lazy">
-          <div class="card-body">
-            <h3>Combinatie mogelijk</h3>
-            <p>Combineer yoga met fitness of Milon.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--black" id="rooster">
+<section class="section section--black" id="rooster">
     <div class="container">
       <h2>Bekijk het rooster</h2>
       <div class="schedule-wrap">
@@ -587,7 +608,7 @@
     </div>
   </section>
 
-  <section class="section section--dark" id="docenten">
+<section class="section section--dark" id="docenten">
     <div class="container">
       <h2>Altijd een docent die bij je past</h2>
       <p class="sub">Rustig, energiek of technisch sterk — er is altijd een docent die bij jou past.</p>
@@ -602,7 +623,7 @@
     </div>
   </section>
 
-  <section class="section section--black">
+<section class="section section--black">
     <div class="container">
       <h2>Wat onze leden zeggen</h2>
       <div class="testimonials-grid">
@@ -624,30 +645,7 @@
     </div>
   </section>
 
-  <section class="section section--black">
-    <div class="container">
-      <h2>Yoga in het centrum van Eindhoven</h2>
-      <ul class="location-list">
-        <li>Op loopafstand van station</li>
-        <li>Rustige studio midden in de stad</li>
-        <li>Parkeren in de buurt</li>
-      </ul>
-      <a class="btn btn--gold" href="https://www.google.com/maps/search/?api=1&query=Healthy+Habits+Eindhoven" target="_blank" rel="noopener noreferrer">Bekijk op Google Maps</a>
-    </div>
-  </section>
-
-  <section class="section section--dark">
-    <div class="container">
-      <h2>Zo start je</h2>
-      <div class="steps">
-        <article class="step"><div class="step-number">1</div><p>Laat je gegevens achter</p></article>
-        <article class="step"><div class="step-number">2</div><p>We nemen binnen 24 uur contact op</p></article>
-        <article class="step"><div class="step-number">3</div><p>Je start in een les die bij je past</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--black" id="start">
+<section class="section section--black" id="start">
     <div class="container">
       <h2 style="text-align:center">Start met 4 weken yoga</h2>
       <p class="sub" style="text-align:center">Beperkt aantal startplekken per maand.</p>
@@ -701,6 +699,18 @@
       </div>
     </div>
   </section>
+
+  <footer class="footer-contact">
+    <div class="container">
+      <p>
+        <strong>Healthy Habits Eindhoven</strong><br>
+        Willemstraat 22<br>
+        5611 HE Eindhoven<br><br>
+        Tel: <a href="tel:0613218120">06 13 21 81 20</a><br>
+        Mail: <a href="mailto:info@healthy-habits.nl">info@healthy-habits.nl</a>
+      </p>
+    </div>
+  </footer>
 
   <script>
     (function(){
