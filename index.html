@@ -3942,6 +3942,7 @@ zelfs leuk.</p>
       const topbarCta = document.getElementById('topbarCta');
       const accordionToggle = document.querySelector('.accordion-toggle');
       const accordionPanel = document.getElementById('aanbodAccordionPanel');
+      const accordionLabel = document.getElementById('aanbodAccordionLabel');
       const MOBILE_BREAKPOINT = 768;
 
       function setAccordionState(isOpen){
@@ -3982,8 +3983,16 @@ zelfs leuk.</p>
         if(accordionToggle){
           accordionToggle.addEventListener('click', function(e){
             if(window.innerWidth > MOBILE_BREAKPOINT) return;
+            e.preventDefault();
             e.stopPropagation();
             toggleAccordion();
+          });
+        }
+
+        if(accordionLabel){
+          accordionLabel.addEventListener('click', function(){
+            if(window.innerWidth > MOBILE_BREAKPOINT) return;
+            closeMobileMenu();
           });
         }
         
