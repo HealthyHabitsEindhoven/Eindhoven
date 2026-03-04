@@ -482,6 +482,14 @@
       object-fit:cover;
       border:1px solid rgba(255,255,255,.2);
     }
+    .reviews-social-proof{
+      margin:40px auto 0;
+      max-width:600px;
+      text-align:center;
+      color:rgba(255,255,255,.78);
+      font-size:17px;
+      line-height:1.5;
+    }
 
     .location-list{
       list-style:none;
@@ -851,6 +859,7 @@
           </div>
         </article>
       </div>
+      <p class="reviews-social-proof">⭐ 4.8 / 5 beoordeling op Google<br>600+ leden bij Healthy Habits in Eindhoven</p>
     </div>
   </section>
 
@@ -916,6 +925,34 @@
           <button class="faq-question" type="button">Kan ik eerst kennismaken?<span>+</span></button>
           <div class="faq-answer"><p>Ja. Na je aanvraag nemen we contact op en kun je eerst kennismaken voordat je start.</p></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section section--black" id="proefles">
+    <div class="container">
+      <h2 style="text-align:center">Gratis proefles yoga</h2>
+      <p class="sub" style="text-align:center">Twijfel je of yoga iets voor je is? Kom eerst een keer vrijblijvend een yogales meedoen.</p>
+      <div class="form-shell">
+        <form class="form" id="proeflesForm">
+          <input type="hidden" name="page_name" value="yoga-eindhoven-gratis-proefles">
+          <input type="hidden" name="bron" value="yoga-proefles">
+          <div class="form-group">
+            <label for="proefles-voornaam">Voornaam *</label>
+            <input type="text" id="proefles-voornaam" name="voornaam" placeholder="Je voornaam" required>
+          </div>
+          <div class="form-group">
+            <label for="proefles-email">E-mail *</label>
+            <input type="email" id="proefles-email" name="email" placeholder="je@voorbeeld.nl" required>
+          </div>
+          <div class="form-group">
+            <label for="proefles-telefoon">Telefoon *</label>
+            <input type="tel" id="proefles-telefoon" name="telefoon" placeholder="Telefoonnummer" required pattern="^(06[0-9]{8}|\\+[1-9][0-9]{7,14})$" title="Vul een geldig telefoonnummer in (NL: 06xxxxxxxx of internationaal: +31612345678)">
+          </div>
+          <button type="submit" class="form-submit">Gratis proefles aanvragen</button>
+          <p class="form-note">Vrijblijvend • Geen automatische inschrijving • Persoonlijk contact</p>
+          <p class="form-privacy">Door dit formulier te versturen ga je akkoord met onze <a href="/privacy.html">privacyverklaring</a>.</p>
+        </form>
       </div>
     </div>
   </section>
@@ -1041,7 +1078,50 @@
         }
       });
     })();
+  </script>
 
+  <script>
+    (function(){
+      const form = document.getElementById('proeflesForm');
+      if(!form) return;
+
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalText = submitButton ? submitButton.textContent : '';
+
+        try {
+          if(submitButton){
+            submitButton.disabled = true;
+            submitButton.textContent = 'Verzenden...';
+          }
+
+          const formData = new FormData(form);
+          const response = await fetch('https://hooks.zapier.com/hooks/catch/16872475/u0pvqs3/', {
+            method: 'POST',
+            body: formData,
+            keepalive: true
+          });
+
+          if(!response.ok){
+            throw new Error('Zapier request failed');
+          }
+
+          window.location.href = 'bedankt.html';
+        } catch(error){
+          console.error('Form submit error:', error);
+          if(submitButton){
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+          }
+          alert('Er is iets misgegaan. Probeer het opnieuw.');
+        }
+      });
+    })();
+  </script>
+
+  <script>
     (function(){
       const items = document.querySelectorAll('.faq-item');
       items.forEach((item) => {
