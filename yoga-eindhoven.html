@@ -89,27 +89,74 @@
       padding:11px 20px;
       border-radius:10px;
     }
-    .nav-toggle{
+    .mobile-menu-toggle{
       display:none;
       width:42px;
       height:42px;
-      border:1px solid var(--line);
-      border-radius:10px;
       background:transparent;
-      color:var(--text);
+      border:none;
       align-items:center;
       justify-content:center;
       cursor:pointer;
       padding:0;
+      z-index:72;
     }
-    .nav-toggle span{
+    .mobile-menu-toggle span{
       display:block;
-      width:18px;
+      width:24px;
       height:2px;
-      background:var(--text);
-      margin:3px 0;
+      background:var(--accent);
+      margin:5px 0;
       border-radius:2px;
       transition:transform .2s ease, opacity .2s ease;
+    }
+    .mobile-nav{
+      position:fixed;
+      top:0;
+      right:0;
+      width:min(320px,85vw);
+      height:100vh;
+      background:#000000;
+      padding:90px 24px 24px;
+      z-index:71;
+      transform:translateX(100%);
+      transition:transform .25s ease;
+      pointer-events:none;
+    }
+    .mobile-nav a{
+      display:block;
+      color:#ffffff;
+      text-decoration:none;
+      font-size:18px;
+      padding:14px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .mobile-nav .header-nav-mobile-cta{
+      display:block;
+      margin-top:16px;
+      border-bottom:none;
+      text-align:center;
+      padding:13px 16px;
+    }
+    .mobile-menu-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.6);
+      z-index:70;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .2s ease;
+    }
+    body.mobile-menu-open .mobile-nav{
+      transform:translateX(0);
+      pointer-events:auto;
+    }
+    body.mobile-menu-open .mobile-menu-overlay{
+      opacity:1;
+      pointer-events:auto;
+    }
+    body.mobile-menu-open{
+      overflow:hidden;
     }
 
     .hero{
@@ -609,7 +656,7 @@
       .aida-media{justify-self:start;max-width:100%}
     }
     @media (max-width: 768px){
-      .nav-toggle{
+      .mobile-menu-toggle{
         display:inline-flex;
       }
       .header-cta{
@@ -618,37 +665,8 @@
       .header-nav{
         display:none;
       }
-      .header-nav.open{
-        display:flex;
-        position:fixed;
-        top:90px;
-        left:0;
-        right:0;
-        z-index:65;
-        background:#000000;
-        border-top:1px solid rgba(255,255,255,.08);
-        box-shadow:0 8px 20px rgba(0,0,0,.35);
-        flex-direction:column;
-        align-items:stretch;
-        gap:0;
-        padding:14px 24px 20px;
-      }
-      .header-nav a{
-        font-size:16px;
-        padding:13px 0;
-        border-bottom:1px solid rgba(255,255,255,.08);
-      }
-      .header-nav .header-nav-mobile-cta{
+      .mobile-nav{
         display:block;
-        margin-top:14px;
-        width:100%;
-        text-align:center;
-        background:var(--accent);
-        color:#000;
-        border-radius:12px;
-        border-bottom:none;
-        font-weight:800;
-        padding:13px 16px;
       }
       .hero{min-height:92svh}
       .section{padding:66px 0}
@@ -661,6 +679,12 @@
       .schedule-table td:first-child{padding-top:14px}
       .schedule-table td:last-child{padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.08)}
       .form-shell{padding:20px}
+    }
+    @media (min-width: 769px){
+      .mobile-nav,
+      .mobile-menu-overlay{
+        display:none;
+      }
     }
   </style>
 </head>
@@ -677,13 +701,20 @@
         <a href="#start" class="header-nav-mobile-cta">4 weken proberen</a>
       </nav>
       <a class="btn btn--gold header-cta" href="#start">4 weken proberen</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="headerNav">
+      <button class="mobile-menu-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileNav">
         <span></span>
         <span></span>
         <span></span>
       </button>
     </div>
   </header>
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobiele navigatie">
+    <a href="#rooster">Rooster</a>
+    <a href="#soorten-lessen">Soorten lessen</a>
+    <a href="#docenten">Docenten</a>
+    <a href="#start" class="btn btn--gold header-nav-mobile-cta">4 weken proberen</a>
+  </nav>
 
   <section class="hero section--black">
     <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/images/landing-yoga/yoga-14.jpeg">
@@ -973,22 +1004,32 @@
   <script>
     (function(){
       const toggle = document.getElementById('navToggle');
-      const nav = document.getElementById('headerNav');
-      if(!toggle || !nav) return;
+      const nav = document.getElementById('mobileNav');
+      const overlay = document.getElementById('mobileMenuOverlay');
+      if(!toggle || !nav || !overlay) return;
 
       function closeMenu(){
-        nav.classList.remove('open');
+        document.body.classList.remove('mobile-menu-open');
         toggle.setAttribute('aria-expanded', 'false');
       }
 
       toggle.addEventListener('click', function(){
-        const isOpen = nav.classList.toggle('open');
+        const isOpen = !document.body.classList.contains('mobile-menu-open');
+        document.body.classList.toggle('mobile-menu-open', isOpen);
         toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       });
+
+      overlay.addEventListener('click', closeMenu);
 
       const links = nav.querySelectorAll('a');
       links.forEach((link) => {
         link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if(event.key === 'Escape'){
+          closeMenu();
+        }
       });
     })();
   </script>
