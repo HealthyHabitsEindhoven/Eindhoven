@@ -716,10 +716,11 @@
       loop 
       playsinline 
       preload="auto"
+      poster="assets/images/landing-yoga/yoga-14.jpeg"
       style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;"
       class="hero-video"
     >
-      <source src="assets/video/yoga.mp4" type="video/mp4">
+      <source src="assets/images/landing-yoga/filmpje.mp4" type="video/mp4">
     </video>
     <div class="container hero-content">
       <h1>Yoga in het centrum van Eindhoven</h1>
@@ -1080,17 +1081,89 @@
       const video = hero ? hero.querySelector('video') : null;
       if(!hero || !video) return;
 
-      const showFallback = () => hero.classList.add('hero--fallback');
-      const hideFallback = () => hero.classList.remove('hero--fallback');
+      const fallbackDelayMs = 1500;
+      const startTime = Date.now();
+      let fallbackActivated = false;
 
-      video.addEventListener('canplay', hideFallback);
-      video.addEventListener('error', showFallback);
+      function logVideoState(label){
+        console.log('[hero-video]', label, {
+          currentSrc: video.currentSrc,
+          readyState: video.readyState,
+          networkState: video.networkState,
+          muted: video.muted,
+          playsInline: video.playsInline,
+          autoplay: video.autoplay
+        });
+      }
+
+      function hideFallback(){
+        hero.classList.remove('hero--fallback');
+      }
+
+      function showFallback(reason, err){
+        if(fallbackActivated) return;
+        fallbackActivated = true;
+        console.error('[hero-video] Fallback activated:', reason, err || null);
+        hero.classList.add('hero--fallback');
+      }
+
+      function scheduleFallback(reason, err){
+        const elapsed = Date.now() - startTime;
+        const waitMs = Math.max(0, fallbackDelayMs - elapsed);
+        console.warn('[hero-video] Scheduling fallback in', waitMs, 'ms. Reason:', reason);
+        setTimeout(() => showFallback(reason, err), waitMs);
+      }
+
+      function isFatalPlayError(err){
+        const fatalNames = ['NotSupportedError', 'AbortError', 'SecurityError', 'TypeError'];
+        return !!(err && fatalNames.includes(err.name));
+      }
+
+      const eventNames = ['loadedmetadata', 'canplay', 'canplaythrough', 'waiting', 'stalled', 'abort', 'error'];
+      eventNames.forEach((eventName) => {
+        video.addEventListener(eventName, () => {
+          if(eventName === 'error'){
+            const mediaError = video.error || null;
+            console.error('[hero-video] error event', {
+              code: mediaError ? mediaError.code : null,
+              message: mediaError && mediaError.message ? mediaError.message : null
+            });
+            logVideoState('error');
+            scheduleFallback('video error event', mediaError);
+            return;
+          }
+
+          if(eventName === 'canplay' || eventName === 'canplaythrough'){
+            hideFallback();
+          }
+
+          logVideoState(eventName);
+        });
+      });
+
       const sources = video.querySelectorAll('source');
-      sources.forEach((source) => source.addEventListener('error', showFallback));
+      sources.forEach((source) => {
+        source.addEventListener('error', () => {
+          console.error('[hero-video] source error event', source.getAttribute('src'));
+          scheduleFallback('source error event');
+        });
+      });
 
+      video.muted = true;
+      video.playsInline = true;
+      video.setAttribute('playsinline', '');
+      video.setAttribute('muted', '');
+
+      logVideoState('before-play');
       const playPromise = video.play();
       if(playPromise && typeof playPromise.catch === 'function'){
-        playPromise.catch(showFallback);
+        playPromise.catch((err) => {
+          console.error('play() failed', err && err.name, err && err.message);
+          logVideoState('play-rejected');
+          if(isFatalPlayError(err)){
+            scheduleFallback('play() fatal rejection', err);
+          }
+        });
       }
     })();
   </script>
