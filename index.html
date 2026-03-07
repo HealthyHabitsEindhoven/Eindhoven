@@ -282,6 +282,7 @@
       object-fit:cover;
       object-position:center center;
       filter:brightness(.6);
+      transform:scaleX(-1);
     }
     .hero__overlay{
       position:absolute;
@@ -346,7 +347,7 @@
       color:#000;
       padding:16px 32px;
       font-size:18px;
-      margin-bottom:14px;
+      margin-bottom:24px;
     }
     .hero-btn-primary:hover{
       filter:brightness(1.1);
@@ -4741,7 +4742,7 @@ zelfs leuk.</p>
         urgency.style.marginLeft = leftOffset + 'px';
         urgency.style.marginRight = '0';
         urgency.style.width = buttonRect.width + 'px';
-        urgencyBar.style.width = '100%';
+        urgencyBar.style.width = (buttonRect.width * 1.25) + 'px';
       }
 
       if(document.readyState === 'loading'){
