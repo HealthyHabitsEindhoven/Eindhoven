@@ -373,10 +373,18 @@
     }
     .tariefcheck-progress-fill{
       display:block;
-      width:45%;
+      width:66%;
       height:100%;
       background:var(--accent);
       border-radius:999px;
+      transform-origin:left center;
+      transform:scaleX(0);
+      animation:capacity-fill 1s ease-out forwards;
+    }
+    @keyframes capacity-fill{
+      to{
+        transform:scaleX(1);
+      }
     }
     @media(max-width:600px){
       .tariefcheck-explanation{
@@ -1095,9 +1103,9 @@
         <div class="tariefcheck-explanation">
           <p>Niet te druk sporten vinden wij belangrijk.</p>
           <p>Daarom werken we met een beperkt aantal startplekken.</p>
-          <p class="tariefcheck-availability">Nog 4 plekken beschikbaar</p>
+          <p class="tariefcheck-availability">Nog <span class="plekken-aantal">4</span> plekken beschikbaar</p>
           <div class="tariefcheck-progress" aria-hidden="true">
-            <span class="tariefcheck-progress-fill"></span>
+            <span class="tariefcheck-progress-fill plekken-progress-fill"></span>
           </div>
         </div>
         <div class="form-group">
@@ -1490,6 +1498,22 @@
       }
     })();
 
+  </script>
+
+  <script>
+    const plekken = 3 + (Math.floor(Date.now() / 86400000) % 4);
+
+    document.querySelectorAll('.plekken-aantal').forEach(el => {
+      el.textContent = plekken;
+    });
+
+    const totaalPlekken = 12;
+    const bezetting = ((totaalPlekken - plekken) / totaalPlekken) * 100;
+    const gevuldPercentage = Math.max(0, Math.min(100, bezetting));
+
+    document.querySelectorAll('.plekken-progress-fill').forEach(el => {
+      el.style.width = gevuldPercentage + '%';
+    });
   </script>
 
   <!-- JSON-LD Structured Data -->

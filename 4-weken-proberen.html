@@ -313,17 +313,25 @@
     .form-urgency-bar{
       margin-top:0;
       width:52%;
-      height:7px;
+      height:6px;
       border-radius:999px;
       background:rgba(255,255,255,.18);
       overflow:hidden;
     }
     .form-urgency-bar-fill{
       display:block;
-      width:82%;
+      width:66%;
       height:100%;
       background:var(--accent);
       border-radius:999px;
+      transform-origin:left center;
+      transform:scaleX(0);
+      animation:capacity-fill 1s ease-out forwards;
+    }
+    @keyframes capacity-fill{
+      to{
+        transform:scaleX(1);
+      }
     }
     .form-group label{
       display:block;
@@ -875,9 +883,9 @@
           <div class="form-urgency">
             <p>Niet te druk sporten vinden wij belangrijk.</p>
             <p>Daarom hebben we een beperkt aantal startplekken.</p>
-            <p class="form-urgency-availability">Nog 4 plekken beschikbaar</p>
+            <p class="form-urgency-availability">Nog <span class="plekken-aantal">4</span> plekken beschikbaar</p>
             <div class="form-urgency-bar" aria-hidden="true">
-              <span class="form-urgency-bar-fill"></span>
+              <span class="form-urgency-bar-fill plekken-progress-fill"></span>
             </div>
           </div>
           <div class="form-group">
@@ -1221,6 +1229,21 @@
         }
       });
     })();
+  </script>
+  <script>
+    const plekken = 3 + (Math.floor(Date.now() / 86400000) % 4);
+
+    document.querySelectorAll('.plekken-aantal').forEach(el => {
+      el.textContent = plekken;
+    });
+
+    const totaalPlekken = 12;
+    const bezetting = ((totaalPlekken - plekken) / totaalPlekken) * 100;
+    const gevuldPercentage = Math.max(0, Math.min(100, bezetting));
+
+    document.querySelectorAll('.plekken-progress-fill').forEach(el => {
+      el.style.width = gevuldPercentage + '%';
+    });
   </script>
   <script src="/assets/js/nav-dropdown.js"></script>
 </body>
