@@ -358,11 +358,11 @@
       border-color:rgba(255,255,255,.25);
     }
     .hero-urgency{
-      margin-top:18px;
+      margin-top:42px;
       display:flex;
       flex-direction:column;
       align-items:flex-start;
-      gap:7px;
+      gap:6px;
       text-align:left;
     }
     .hero-urgency-text{
@@ -373,10 +373,27 @@
       line-height:1.3;
     }
     .hero-urgency-bar{
-      width:min(180px,42vw);
+      width:200px;
       height:5px;
       border-radius:999px;
+      background:rgba(255,255,255,.2);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-urgency-bar-fill{
+      display:block;
+      width:66%;
+      height:100%;
+      border-radius:999px;
       background:var(--accent);
+      transform-origin:left center;
+      transform:scaleX(0);
+      animation:hero-urgency-fill 1s ease-out forwards;
+    }
+    @keyframes hero-urgency-fill{
+      to{
+        transform:scaleX(1);
+      }
     }
     .hero-bullets{
       display:flex;
@@ -3083,7 +3100,7 @@
       </div>
       <div class="hero-urgency" aria-label="Beschikbaarheid">
         <p class="hero-urgency-text">Nog 4 plekken beschikbaar</p>
-        <span class="hero-urgency-bar" aria-hidden="true"></span>
+        <span class="hero-urgency-bar" aria-hidden="true"><span class="hero-urgency-bar-fill"></span></span>
       </div>
     </div>
   </header>
@@ -4693,6 +4710,36 @@ zelfs leuk.</p>
       margin: 0;
     }
   </style>
+
+  <script>
+    (function(){
+      const heroContent = document.querySelector('.hero .hero-content');
+      const primaryBtn = document.querySelector('.hero .hero-btn-primary');
+      const urgency = document.querySelector('.hero-urgency');
+      const urgencyBar = document.querySelector('.hero-urgency-bar');
+      if(!heroContent || !primaryBtn || !urgency || !urgencyBar) return;
+
+      function alignUrgencyBlock(){
+        const contentRect = heroContent.getBoundingClientRect();
+        const buttonRect = primaryBtn.getBoundingClientRect();
+        const leftOffset = Math.max(0, buttonRect.left - contentRect.left);
+
+        urgency.style.marginLeft = leftOffset + 'px';
+        urgency.style.marginRight = '0';
+        urgency.style.width = buttonRect.width + 'px';
+        urgencyBar.style.width = '100%';
+      }
+
+      if(document.readyState === 'loading'){
+        document.addEventListener('DOMContentLoaded', alignUrgencyBlock);
+      } else {
+        alignUrgencyBlock();
+      }
+
+      window.addEventListener('resize', alignUrgencyBlock);
+      setTimeout(alignUrgencyBlock, 50);
+    })();
+  </script>
 
 
   <script src="/assets/js/nav-dropdown.js"></script>
