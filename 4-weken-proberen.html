@@ -293,6 +293,38 @@
       margin:0 0 24px;
       font-weight:normal;
     }
+    .form-urgency{
+      margin:0 0 24px;
+      color:rgba(203,213,225,0.9);
+      font-size:14px;
+      line-height:1.55;
+    }
+    .form-urgency p{
+      margin:0;
+    }
+    .form-urgency p + p{
+      margin-top:2px;
+    }
+    .form-urgency-availability{
+      margin-top:10px !important;
+      color:var(--text);
+      font-weight:600;
+    }
+    .form-urgency-bar{
+      margin-top:10px;
+      width:min(180px,46vw);
+      height:5px;
+      border-radius:999px;
+      background:rgba(255,255,255,.18);
+      overflow:hidden;
+    }
+    .form-urgency-bar-fill{
+      display:block;
+      width:82%;
+      height:100%;
+      background:var(--accent);
+      border-radius:999px;
+    }
     .form-group label{
       display:block;
       margin-bottom:8px;
@@ -840,7 +872,14 @@
       <div class="hero-form-wrapper">
         <form class="form" id="proberenForm">
           <input type="hidden" name="page_name" value="4-weken-proberen">
-          <p class="form-explanation">Let op: Aanmelden voor 4 weken proberen betekent nog niet automatisch dat je kunt starten. We werken met een beperkt aantal startplekken per maand, zodat we iedereen persoonlijk en goed kunnen begeleiden.</p>
+          <div class="form-urgency">
+            <p>Niet te druk sporten vinden wij belangrijk.</p>
+            <p>Daarom werken we met een beperkt aantal startplekken per maand.</p>
+            <p class="form-urgency-availability">Nog 4 plekken beschikbaar</p>
+            <div class="form-urgency-bar" aria-hidden="true">
+              <span class="form-urgency-bar-fill"></span>
+            </div>
+          </div>
           <div class="form-group">
             <label for="voornaam">Voornaam *</label>
             <input type="text" id="voornaam" name="voornaam" placeholder="Je voornaam" required>
