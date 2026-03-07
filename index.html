@@ -4640,13 +4640,16 @@ zelfs leuk.</p>
     }
     /* Mobiele hero polish */
     @media (max-width: 768px) {
+      .hero .hero-content{
+        text-align: left !important;
+      }
       /* Hero buttons: beide even breed, onder elkaar, strak uitgelijnd */
       .hero-buttons {
         display: flex !important;
         flex-direction: column !important;
-        align-items: center !important;
+        align-items: flex-start !important;
         gap: 10px !important;
-        margin-top: 20px !important;
+        margin-top: 0 !important;
       }
       .hero-btn {
         width: auto !important;
@@ -4655,10 +4658,16 @@ zelfs leuk.</p>
         text-align: center !important;
       }
       .hero-urgency{
-        margin-top: 18px !important;
+        margin-top: 10px !important;
+        margin-left: 0 !important;
+        width: 100% !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+        gap: 6px !important;
       }
       .hero-urgency-bar{
-        width: 120px !important;
+        width: 65% !important;
+        max-width: 65% !important;
       }
       .hero-social-proof{
         margin: 8px 0 6px !important;
@@ -4669,6 +4678,7 @@ zelfs leuk.</p>
       /* Hero headline: 3 regels, "niet" niet los op eigen regel */
       .hero h1 {
         line-height: 1.15 !important;
+        margin: 0 0 16px !important;
       }
       /* Extra verticale ruimte voor cirkels-sectie (vision-block) */
       .vision-block {
