@@ -617,6 +617,47 @@
     .faq-answer{max-height:0;overflow:hidden;transition:max-height .24s ease;padding:0 18px;color:var(--muted)}
     .faq-item.open .faq-answer{max-height:180px;padding-bottom:16px}
     .faq-item.open .faq-question span{transform:rotate(45deg)}
+    .form-urgency{
+      margin:0 0 14px;
+      text-align:center;
+      padding:14px 14px 12px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:rgba(255,255,255,.03);
+    }
+    .form-urgency-title{
+      margin:0 0 6px;
+      color:var(--text);
+      font-size:17px;
+      font-weight:700;
+      line-height:1.3;
+    }
+    .form-urgency-text{
+      margin:0 0 8px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.45;
+    }
+    .form-urgency-availability{
+      margin:0 0 8px;
+      color:var(--text);
+      font-size:14px;
+      font-weight:600;
+    }
+    .form-urgency-progress{
+      width:100%;
+      height:6px;
+      background:rgba(255,255,255,.14);
+      border-radius:999px;
+      overflow:hidden;
+    }
+    .form-urgency-progress-fill{
+      display:block;
+      width:40%;
+      height:100%;
+      background:var(--accent);
+      border-radius:999px;
+    }
     .footer-contact{
       background:#000;
       border-top:1px solid rgba(255,255,255,.08);
@@ -860,6 +901,7 @@
       <p style="text-align:center;margin:26px 0 0;">
         <a href="#proefles" class="btn btn--gold">Plan je gratis proefles</a>
       </p>
+      <p class="sub" style="text-align:center;margin:12px 0 0;">Nog <span class="plekken-aantal">6</span> plekken beschikbaar</p>
     </div>
   </section>
 
@@ -919,7 +961,14 @@
       <div class="form-shell">
         <form class="form" id="proberenForm">
           <input type="hidden" name="page_name" value="yoga-eindhoven">
-          <p class="form-explanation">We werken met kleine groepen, daarom zijn er elke maand maar een beperkt aantal startplekken. Zo kunnen we iedereen persoonlijk begeleiden.</p>
+          <div class="form-urgency">
+            <p class="form-urgency-title">Kleine groepen, rustige sfeer</p>
+            <p class="form-urgency-text">Daarom werken we met een beperkt aantal plekken.</p>
+            <p class="form-urgency-availability">Nog <span class="plekken-aantal">6</span> plekken beschikbaar</p>
+            <div class="form-urgency-progress" role="progressbar" aria-label="Beschikbare plekken" aria-valuemin="0" aria-valuemax="10" aria-valuenow="4">
+              <span class="form-urgency-progress-fill"></span>
+            </div>
+          </div>
           <div class="form-group">
             <label for="voornaam">Voornaam *</label>
             <input type="text" id="voornaam" name="voornaam" placeholder="Je voornaam" required>
@@ -1251,6 +1300,14 @@
         }
       });
     })();
+  </script>
+
+  <script>
+const plekken = 3 + (new Date().getDate() % 4);
+
+document.querySelectorAll('.plekken-aantal').forEach(el => {
+  el.textContent = plekken;
+});
   </script>
 
   <script>
