@@ -4789,15 +4789,53 @@ zelfs leuk.</p>
     const bezetting = ((totaalPlekken - plekken) / totaalPlekken) * 100;
     const gevuldPercentage = Math.max(0, Math.min(100, bezetting));
 
-    document.querySelectorAll('.plekken-progress-fill').forEach(el => {
-      el.style.width = '0%';
-      el.style.transition = 'width 1s ease-out';
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          el.style.width = gevuldPercentage + '%';
-        });
-      });
+    const allProgressFills = document.querySelectorAll('.plekken-progress-fill');
+    allProgressFills.forEach(el => {
+      el.dataset.progress = String(gevuldPercentage);
     });
+
+    const heroSection = document.querySelector('.hero');
+    const heroFill = heroSection ? heroSection.querySelector('.plekken-progress-fill') : null;
+
+    // Keep non-hero bars in sync with the daily percentage without replay behavior.
+    allProgressFills.forEach(el => {
+      if (el !== heroFill) {
+        el.style.width = gevuldPercentage + '%';
+      }
+    });
+
+    if (heroSection && heroFill) {
+      heroFill.style.transition = 'width 1s ease-out';
+
+      const animateHeroFill = () => {
+        const target = heroFill.dataset.progress || '0';
+        heroFill.style.width = '0%';
+        void heroFill.offsetWidth;
+        requestAnimationFrame(() => {
+          heroFill.style.width = target + '%';
+        });
+      };
+
+      const resetHeroFill = () => {
+        heroFill.style.width = '0%';
+      };
+
+      if ('IntersectionObserver' in window) {
+        const heroObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateHeroFill();
+            } else {
+              resetHeroFill();
+            }
+          });
+        }, { threshold: 0.35 });
+
+        heroObserver.observe(heroSection);
+      } else {
+        animateHeroFill();
+      }
+    }
   </script>
 
 
