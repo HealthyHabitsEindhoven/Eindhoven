@@ -309,12 +309,16 @@
       position:relative;
       z-index:2;
       padding:48px 0;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
     }
     .hero h1{
       font-size:clamp(32px,5vw,56px);
       font-weight:700;
       line-height:1.2;
-      margin:0 0 12px;
+      margin:0 0 10px;
       letter-spacing:-0.02em;
     }
     .hero p{
@@ -327,19 +331,20 @@
       display:flex;
       gap:16px;
       flex-wrap:wrap;
-      margin-top:24px;
+      margin-top:0;
+      justify-content:center;
     }
     .hero-btn{
       display:inline-block;
-      padding:14px 28px;
+      padding:16px 32px;
       border-radius:12px;
       font-weight:700;
-      font-size:16px;
+      font-size:17px;
       text-decoration:none;
       transition:filter 0.2s ease;
       cursor:pointer;
       border:none;
-      min-width:200px;
+      min-width:220px;
       text-align:center;
     }
     .hero-btn-primary{
@@ -362,12 +367,12 @@
       margin-top:18px;
       display:flex;
       flex-direction:column;
-      align-items:flex-start;
-      gap:6px;
-      text-align:left;
+      align-items:center;
+      gap:4px;
+      text-align:center;
     }
     .hero .hero-urgency .hero-urgency-text{
-      margin:0;
+      margin:0 0 2px;
       color:rgba(255,255,255,.9);
       font-size:15px;
       font-weight:600;
@@ -375,8 +380,9 @@
       white-space:nowrap;
     }
     .hero-urgency-bar{
-      width:200px;
-      height:6px;
+      width:240px;
+      max-width:76vw;
+      height:8px;
       border-radius:999px;
       background:rgba(255,255,255,.18);
       overflow:hidden;
@@ -390,11 +396,14 @@
       background:var(--accent);
     }
     .hero-social-proof{
-      margin:12px 0 8px;
+      margin:0 0 14px;
       text-align:center;
       color:#cccccc;
       font-size:15px;
+      font-weight:500;
+      opacity:.9;
       line-height:1.45;
+      white-space:nowrap;
     }
     .hero-social-proof-strong{
       display:block;
@@ -3103,13 +3112,13 @@
     <div class="hero__overlay"></div>
     <div class="container hero-content">
       <h1>De sportschool waar je<br>niet aan je lot wordt<br>overgelaten.</h1>
+      <div class="hero-social-proof" aria-label="Social proof">
+        ⭐ 4.8 Google reviews · 600+ leden in Eindhoven
+      </div>
       <div class="hero-buttons">
         <a href="/4-weken-proberen.html" class="hero-btn hero-btn-primary">4 weken proberen</a>
       </div>
       <div class="hero-urgency" aria-label="Beschikbaarheid">
-        <div class="hero-social-proof" aria-label="Social proof" style="margin:-4px 0 4px;">
-          ⭐ 4.8 Google reviews · 600+ leden in Eindhoven
-        </div>
         <p class="hero-urgency-text">Nog <span class="plekken-aantal">3</span> plekken beschikbaar</p>
         <span class="hero-urgency-bar" aria-hidden="true"><span class="hero-urgency-bar-fill plekken-progress-fill"></span></span>
       </div>
@@ -4640,36 +4649,41 @@ zelfs leuk.</p>
     /* Mobiele hero polish */
     @media (max-width: 768px) {
       .hero .hero-content{
-        text-align: left !important;
+        text-align: center !important;
+        align-items: center !important;
       }
       /* Hero buttons: beide even breed, onder elkaar, strak uitgelijnd */
       .hero-buttons {
         display: flex !important;
         flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 10px !important;
+        align-items: center !important;
+        gap: 0 !important;
         margin-top: 0 !important;
       }
       .hero-btn {
         width: auto !important;
-        min-width: 0 !important;
-        padding: 12px 22px !important;
+        min-width: 220px !important;
+        padding: 15px 28px !important;
+        font-size: 17px !important;
         text-align: center !important;
       }
       .hero-urgency{
         margin-top: 18px !important;
-        margin-left: 0 !important;
-        width: 100% !important;
-        align-items: flex-start !important;
-        text-align: left !important;
-        gap: 6px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: auto !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 4px !important;
       }
       .hero-urgency-bar{
-        width: 65% !important;
-        max-width: 65% !important;
+        width: min(240px, 72vw) !important;
+        max-width: min(240px, 72vw) !important;
       }
       .hero-social-proof{
-        margin: 8px 0 6px !important;
+        margin: 0 0 10px !important;
+        font-size: 14px !important;
+        white-space: normal !important;
       }
       .hero img{
         object-position: 65% 85% !important;
@@ -4753,17 +4767,22 @@ zelfs leuk.</p>
       const primaryBtn = document.querySelector('.hero .hero-btn-primary');
       const urgency = document.querySelector('.hero-urgency');
       const urgencyBar = document.querySelector('.hero-urgency-bar');
-      if(!heroContent || !primaryBtn || !urgency || !urgencyBar) return;
+      const socialProof = document.querySelector('.hero .hero-social-proof');
+      if(!heroContent || !primaryBtn || !urgency || !urgencyBar || !socialProof) return;
 
       function alignUrgencyBlock(){
-        const contentRect = heroContent.getBoundingClientRect();
         const buttonRect = primaryBtn.getBoundingClientRect();
-        const leftOffset = Math.max(0, buttonRect.left - contentRect.left);
 
-        urgency.style.marginLeft = leftOffset + 'px';
-        urgency.style.marginRight = '0';
+        socialProof.style.width = buttonRect.width + 'px';
+        socialProof.style.marginLeft = 'auto';
+        socialProof.style.marginRight = 'auto';
+
         urgency.style.width = buttonRect.width + 'px';
-        urgencyBar.style.width = (buttonRect.width * 1.25) + 'px';
+        urgency.style.marginLeft = 'auto';
+        urgency.style.marginRight = 'auto';
+
+        const barWidth = Math.max(220, Math.min(260, buttonRect.width));
+        urgencyBar.style.width = barWidth + 'px';
       }
 
       if(document.readyState === 'loading'){
