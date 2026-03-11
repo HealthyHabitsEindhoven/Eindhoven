@@ -1,3 +1,21 @@
 ---
 alwaysApply: true
+description: Push workflow for this project
 ---
+# Git Push Workflow
+
+When the user asks to "push" (or equivalent), run this exact flow from the project root:
+
+1. `rm -f .git/index.lock`
+2. `git add .`
+3. `git commit -m "update"`
+4. `git push origin main`
+
+Behavior rules:
+
+- Always `cd` to the repository root before running git commands.
+- Always run `git add .` even if nothing is currently staged.
+- If commit fails because there are no changes, stop and return exactly:
+  `Nothing to commit, everything up to date.`
+- Do not skip lock cleanup; run `rm -f .git/index.lock` first.
+- Prefer running commands in the project terminal environment.
