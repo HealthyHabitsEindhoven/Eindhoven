@@ -72,9 +72,18 @@
       gap:32px;
     }
     .topbar__logo img{
-      height:54px;
+      height:91px;
       width:auto;
       display:block;
+    }
+    .topbar__logo a{
+      color:var(--text);
+      text-decoration:none;
+      font-weight:inherit;
+    }
+    .topbar__logo a:hover{
+      color:var(--text);
+      text-decoration:none;
     }
     .topbar__cta a{
       text-decoration:none;
@@ -105,15 +114,17 @@
       text-align:center;
       display:flex;
       align-items:center;
+      width:100%;
+      max-width:none;
     }
     .hero-section::before{
       content:"";
       position:absolute;
       inset:0;
       background-image:url("assets/images/fitness/fitness-6.jpeg");
-      background-size:contain;
+      background-size:cover;
       background-repeat:no-repeat;
-      background-position:center center;
+      background-position:center;
       z-index:0;
     }
     .hero-section::after{
@@ -186,6 +197,13 @@
       border-radius:999px;
       background:var(--accent);
     }
+    .hero-soft-proof{
+      margin:12px auto 0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.45;
+      max-width:520px;
+    }
 
     .gold-divider{
       width:120px;
@@ -216,97 +234,6 @@
       line-height:1.65;
       margin:0;
       white-space:pre-line;
-    }
-    .section{
-      padding:72px 0;
-    }
-    .section--black{
-      background:var(--bg-main);
-    }
-    .section--dark{
-      background:var(--bg-warm);
-    }
-    .section h2{
-      text-align:center;
-      font-size:clamp(30px,4vw,42px);
-      line-height:1.15;
-      margin:0 0 18px;
-      letter-spacing:-0.01em;
-    }
-    .sub{
-      margin:0 auto;
-      color:var(--muted);
-      max-width:760px;
-      font-size:18px;
-      line-height:1.65;
-    }
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:20px;
-      margin-top:26px;
-    }
-    .card{
-      background:rgba(255,255,255,.04);
-      border:1px solid var(--line);
-      border-radius:16px;
-      overflow:hidden;
-    }
-    .card img{
-      width:100%;
-      height:220px;
-      object-fit:cover;
-    }
-    .card-body{
-      padding:22px;
-    }
-    .card h3{
-      margin:0 0 12px;
-      font-size:22px;
-      line-height:1.2;
-      position:relative;
-      padding-bottom:10px;
-    }
-    .card h3::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:0;
-      width:54px;
-      height:2px;
-      border-radius:1px;
-      background:var(--accent);
-    }
-    .card p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.55;
-      font-size:16px;
-    }
-    .testimonials-grid{
-      margin-top:24px;
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:20px;
-    }
-    .testimonial-card{
-      background:rgba(255,255,255,.04);
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:24px;
-    }
-    .testimonial-text{
-      margin:0 0 16px;
-      color:var(--text);
-      font-size:18px;
-      line-height:1.6;
-    }
-    .testimonial-author{
-      margin:0;
-      color:var(--muted);
-      font-size:15px;
-      font-weight:600;
-      line-height:1.4;
     }
     .aanbod-carousel-wrapper{
       position:relative;
@@ -395,6 +322,61 @@
     }
     .aanbod-carousel-btn:active{
       transform:scale(0.95);
+    }
+
+    .reviews-section{
+      padding:72px 0;
+      background:var(--bg-main);
+    }
+    .reviews-section h2{
+      text-align:center;
+      font-size:clamp(30px,4vw,42px);
+      line-height:1.15;
+      margin:0 0 22px;
+      letter-spacing:-0.01em;
+    }
+    .testimonials-grid{
+      margin-top:24px;
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:20px;
+    }
+    .testimonial-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:24px;
+    }
+    .testimonial-text{
+      margin:0 0 16px;
+      color:var(--text);
+      font-size:18px;
+      line-height:1.6;
+    }
+    .testimonial-author{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:600;
+      line-height:1.4;
+    }
+    .testimonial-author img{
+      width:36px;
+      height:36px;
+      border-radius:50%;
+      object-fit:cover;
+      border:1px solid rgba(255,255,255,.2);
+      display:block;
+    }
+    .reviews-social-proof{
+      margin:34px auto 0;
+      max-width:760px;
+      text-align:center;
+      color:#ffffff;
+      font-size:17px;
+      line-height:1.5;
     }
 
     .geruststelling-section{
@@ -486,16 +468,6 @@
       filter:brightness(1.1);
     }
 
-    .ps-block{
-      margin:26px auto 0;
-      max-width:600px;
-      color:var(--muted);
-      font-size:15px;
-      line-height:1.7;
-      text-align:left;
-      white-space:pre-line;
-    }
-
     .footer{
       padding:30px 0;
       background:var(--bg-main);
@@ -535,35 +507,23 @@
       .geruststelling-section{
         padding:52px 0;
       }
-      .section{
-        padding:52px 0;
-      }
       .uitleg-content h2{
         font-size:24px;
-      }
-      .section h2{
-        font-size:30px;
       }
       .uitleg-content p{
         font-size:16px;
       }
-      .sub{
-        font-size:16px;
+      .aanbod-carousel-wrapper{
+        margin-top:24px;
       }
-      .cards,.testimonials-grid{
+      .reviews-section{
+        padding:52px 0;
+      }
+      .testimonials-grid{
         grid-template-columns:1fr;
-      }
-      .card img{
-        height:200px;
-      }
-      .card h3{
-        font-size:21px;
       }
       .testimonial-text{
         font-size:17px;
-      }
-      .aanbod-carousel-wrapper{
-        margin-top:24px;
       }
       .hero-intro{
         font-size:18px;
@@ -581,6 +541,9 @@
       .hero-urgency{
         font-size:13px;
       }
+      .hero-soft-proof{
+        font-size:13px;
+      }
       .hero-urgency-bar{
         width:180px;
         height:6px;
@@ -592,7 +555,7 @@
         padding-top:78px;
       }
       .topbar__logo img{
-        height:46px;
+        height:77px;
       }
       .topbar__cta button{
         padding:10px 12px;
@@ -602,9 +565,6 @@
       .form{
         padding:24px;
       }
-      .ps-block{
-        font-size:14px;
-      }
     }
   </style>
 </head>
@@ -613,7 +573,7 @@
   <div class="topbar">
     <div class="container">
       <div class="topbar__logo">
-        <a href="/index.html"><img src="/assets/logo/HH logo.png" alt="Healthy Habits"></a>
+        <a href="https://healthyhabits-eindhoven.nl/" class="logo"><img src="logo/favicon.png" alt="Healthy Habits logo"></a>
       </div>
       <div class="topbar__cta">
         <a href="#zomerfit-form"><button>Ja, ik wil 4 weken Zomerfit</button></a>
@@ -624,12 +584,12 @@
   <section class="hero-section">
     <div class="container">
       <div class="gold-divider"></div>
-      <h1>[[naam_klant]], nog 102 dagen tot de zomer ☀️</h1>
+      <h1>Nog 102 dagen tot de zomer ☀️</h1>
       <p class="hero-intro">Wil jij je deze zomer weer fitter voelen en lekkerder in je vel zitten?</p>
       <p class="hero-social-proof">⭐ 4,8 Google reviews • 600+ leden in Eindhoven</p>
       <a class="cta-button" href="#zomerfit-form">Ja, ik wil 4 weken Zomerfit</a>
       <div class="hero-urgency">
-        Nog 10 plekken beschikbaar
+        Nog <span class="hero-urgency-count">8</span> plekken beschikbaar
         <div class="hero-urgency-bar" aria-hidden="true">
           <span class="hero-urgency-bar-fill"></span>
         </div>
@@ -642,8 +602,7 @@
       <div class="uitleg-content">
         <div class="gold-divider"></div>
         <h2>Opnieuw beginnen hoeft niet ingewikkeld te zijn</h2>
-        <p>Juist daarom hebben we nu ook small group trainingen.
-Je traint in een klein groepje, altijd onder begeleiding van een coach.
+        <p>Je traint in een klein groepje, altijd onder begeleiding van een coach.
 
 Extra motiverend, gezellig en laagdrempelig om weer ritme op te bouwen.</p>
         <div class="aanbod-carousel-wrapper">
@@ -669,6 +628,16 @@ Extra motiverend, gezellig en laagdrempelig om weer ritme op te bouwen.</p>
                   <img src="assets/images/fitness/fitness-7.jpeg" alt="Motiverende trainingssfeer in kleine groepen" loading="lazy" decoding="async" width="1200" height="800">
                 </div>
               </div>
+              <div class="aanbod-card">
+                <div class="aanbod-card__image">
+                  <img src="assets/images/aanbod-home/3.jpeg" alt="Sfeerbeeld Healthy Habits training" loading="lazy" decoding="async" width="1200" height="800">
+                </div>
+              </div>
+              <div class="aanbod-card">
+                <div class="aanbod-card__image">
+                  <img src="assets/images/aanbod-home/buiten.jpeg" alt="Buitensfeer en beweging bij Healthy Habits" loading="lazy" decoding="async" width="1200" height="800">
+                </div>
+              </div>
             </div>
           </div>
           <div class="aanbod-carousel-nav">
@@ -680,51 +649,28 @@ Extra motiverend, gezellig en laagdrempelig om weer ritme op te bouwen.</p>
     </div>
   </section>
 
-  <section class="section section--black">
-    <div class="container">
-      <h2>Waarom opnieuw beginnen bij Healthy Habits makkelijk is</h2>
-      <div class="cards">
-        <article class="card">
-          <img src="assets/images/fitness/fitness-3.jpeg" alt="Kleine groepstraining met persoonlijke aandacht" loading="lazy" decoding="async" width="1200" height="800">
-          <div class="card-body">
-            <h3>Kleine groepen</h3>
-            <p>Altijd begeleiding en persoonlijke aandacht.</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="assets/images/fitness/fitness-5.jpeg" alt="Laagdrempelig starten met begeleiding" loading="lazy" decoding="async" width="1200" height="800">
-          <div class="card-body">
-            <h3>Laagdrempelig starten</h3>
-            <p>Geen extreme workouts, maar rustig weer in beweging komen.</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="assets/images/fitness/fitness-8.jpeg" alt="Gezellige sfeer tijdens training" loading="lazy" decoding="async" width="1200" height="800">
-          <div class="card-body">
-            <h3>Gezellige sfeer</h3>
-            <p>Geen sportschool waar iedereen met zichzelf bezig is.</p>
-          </div>
-        </article>
-      </div>
-      <p class="sub" style="text-align:center;color:#ffffff;font-size:17px;margin:34px auto 8px;max-width:760px;"><span style="color:#caa030;">⭐</span> 4,8 / 5 beoordeling op Google<br>600+ leden bij Healthy Habits in Eindhoven</p>
-    </div>
-  </section>
-
-  <section class="section section--dark">
+  <section class="reviews-section">
     <div class="container">
       <h2>Wat onze leden zeggen</h2>
       <div class="testimonials-grid">
         <article class="testimonial-card">
-          <p class="testimonial-text">"Na een paar jaar weer begonnen bij Healthy Habits.
-Het voelt meteen weer vertrouwd."</p>
-          <p class="testimonial-author">— Monique</p>
+          <p class="testimonial-text">"Ik sport hier al jaren. Het fijne is dat je in een klein groepje traint
+en altijd begeleiding hebt. Daardoor blijf je het volhouden."</p>
+          <div class="testimonial-author">
+            <img src="assets/images/landing-yoga/hans.jpeg" alt="Hans profiel foto" loading="lazy" decoding="async" width="72" height="72">
+            <span>Hans — lid bij Healthy Habits</span>
+          </div>
         </article>
         <article class="testimonial-card">
-          <p class="testimonial-text">"De small group trainingen zijn echt motiverend.
-Je blijft veel makkelijker volhouden."</p>
-          <p class="testimonial-author">— Peter</p>
+          <p class="testimonial-text">"De sfeer is ontspannen en motiverend tegelijk.
+Je wordt goed geholpen door de coach en dat maakt het sporten leuker."</p>
+          <div class="testimonial-author">
+            <img src="assets/images/landing-yoga/Janneke.jpeg" alt="Olga profiel foto" loading="lazy" decoding="async" width="72" height="72">
+            <span>Olga — lid bij Healthy Habits</span>
+          </div>
         </article>
       </div>
+      <p class="reviews-social-proof">⭐ 4.8 / 5 beoordeling op Google<br>600+ leden bij Healthy Habits in Eindhoven</p>
     </div>
   </section>
 
@@ -732,6 +678,10 @@ Je blijft veel makkelijker volhouden."</p>
     <div class="container">
       <div class="uitleg-content">
         <div class="gold-divider"></div>
+        <p style="font-size:18px;color:var(--muted);line-height:1.65;margin:0 0 24px;white-space:pre-line;">Steeds meer oud-leden beginnen weer 🙂
+Misschien zien we jou binnenkort ook weer.
+
+Daarom geven we je nu 4 weken Zomerfit cadeau.</p>
         <h2>Ja, ik wil 4 weken Zomerfit</h2>
 
         <div class="hero-form-wrapper">
@@ -742,10 +692,6 @@ Je blijft veel makkelijker volhouden."</p>
             <div class="form-group">
               <label for="voornaam">Voornaam *</label>
               <input type="text" id="voornaam" name="voornaam" placeholder="Je voornaam" required>
-            </div>
-            <div class="form-group">
-              <label for="achternaam">Achternaam *</label>
-              <input type="text" id="achternaam" name="achternaam" placeholder="Je achternaam" required>
             </div>
             <div class="form-group">
               <label for="email">E-mail *</label>
@@ -764,14 +710,9 @@ Je blijft veel makkelijker volhouden."</p>
             </div>
 
             <button type="submit" class="form-submit">Reserveer mijn plek</button>
-            <p class="form-note">We nemen meestal binnen 1 werkdag contact met je op.</p>
+            <p class="form-note">Gratis proberen • Je zit nergens aan vast • Persoonlijke begeleiding</p>
           </form>
         </div>
-
-        <div class="ps-block">PS
-
-De laatste weken zien we steeds meer oud-leden weer even binnenlopen 🙂
-Misschien zien we jou binnenkort ook weer.</div>
       </div>
     </div>
   </section>
@@ -781,6 +722,42 @@ Misschien zien we jou binnenkort ook weer.</div>
   </footer>
 
   <!-- Form submit handler -->
+  <script>
+    (function(){
+      const countEls = document.querySelectorAll('.hero-urgency-count');
+      const progressEls = document.querySelectorAll('.hero-urgency-bar-fill');
+      if(countEls.length === 0) return;
+
+      const initialDate = new Date('2026-03-11T00:00:00');
+      const now = new Date();
+      const msPerDay = 24 * 60 * 60 * 1000;
+      const daysSinceStart = Math.max(0, Math.floor((now - initialDate) / msPerDay));
+
+      let spotsLeft = 8;
+      if(daysSinceStart >= 2){
+        spotsLeft = 2;
+      } else if(daysSinceStart >= 1){
+        spotsLeft = 4;
+      }
+
+      const totalSpots = 10;
+      const fillWidth = Math.max(0, Math.min(100, (spotsLeft / totalSpots) * 100));
+
+      countEls.forEach((el) => {
+        el.textContent = String(spotsLeft);
+      });
+      progressEls.forEach((el) => {
+        el.style.width = '0%';
+        el.style.transition = 'width 1.2s ease';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            el.style.width = fillWidth + '%';
+          });
+        });
+      });
+    })();
+  </script>
+
   <script>
     // Aanbod carousel - simpele scroll-gebaseerde navigatie met automatische scroll
     (function(){

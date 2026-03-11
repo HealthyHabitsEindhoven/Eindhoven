@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -e
+
+cd "$(dirname "$0")"
+rm -f .git/index.lock
+git add .
+
+if git diff --cached --quiet; then
+  echo "Nothing to commit, everything up to date."
+  git push origin main
+else
+  git commit -m "update"
+  git push origin main
+fi
