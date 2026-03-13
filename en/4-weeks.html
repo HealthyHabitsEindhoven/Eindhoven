@@ -12,10 +12,10 @@
 
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Our Offer | Gym Eindhoven City Center | Healthy Habits</title>
-  <meta name="description" content="Discover our complete offer: guided training, fitness, group classes, yoga, nutrition and more. Boutique gym in Eindhoven city center with personal guidance.">
+  <title>Try 4 Weeks | Gym Eindhoven Center | Healthy Habits</title>
+  <meta name="description" content="Try 4 weeks of guided training in Eindhoven center with no obligations. Small-scale gym with personal coaching. Start today.">
   <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://healthyhabitseindhoven.github.io/aanbod.html">
+  <link rel="canonical" href="https://healthyhabitseindhoven.github.io/en/4-weeks.html">
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="/logo/favicon.png">
@@ -90,14 +90,14 @@
     .topbar__nav{
       display:flex;
       align-items:center;
-      gap:32px;
+      gap:16px;
       flex:1;
       justify-content:center;
     }
     .topbar__nav a{
       color:var(--text);
       text-decoration:none;
-      font-size:17px;
+      font-size:18px;
       font-weight:500;
       transition:color 0.2s ease;
     }
@@ -136,53 +136,6 @@
       transform:translateY(0);
       pointer-events:auto;
     }
-
-    .language-toggle{
-      display:inline-flex;
-      align-items:center;
-      gap:2px;
-      padding:2px;
-      margin-inline:0;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.08);
-      flex-shrink:0;
-      white-space:nowrap;
-    }
-    .language-toggle a{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:28px;
-      padding:3px 7px;
-      border-radius:999px;
-      color:var(--muted);
-      text-decoration:none;
-      font-size:12px;
-      font-weight:700;
-      line-height:1;
-      border-bottom:none !important;
-      transition:background .2s ease,color .2s ease;
-    }
-    .language-toggle a:hover{
-      color:var(--text);
-      background:rgba(255,255,255,.10);
-    }
-    .language-toggle a.active,
-    .language-toggle a.active:hover{
-      background:var(--accent);
-      color:#000;
-    }
-    .topbar__mobile-controls{
-      display:none;
-      align-items:center;
-      gap:8px;
-      flex-shrink:0;
-    }
-    .language-toggle-mobile{
-      display:none;
-    }
-
     .topbar__cta{
       flex-shrink:0;
     }
@@ -236,255 +189,220 @@
     body{ padding-top:90px; }
 
     /* =========================
-       SUCCESVERHALEN SECTIE (HEADER)
+       HERO
     ========================== */
-    .succesverhalen-section{
-      padding:80px 0 0;
-      background:var(--bg-warm);
-    }
-    .succesverhalen-header{
+    .hero-section{
+      padding:80px 0 60px;
+      background:var(--bg-main);
       text-align:center;
+    }
+    .hero-intro{
+      font-size:18px;
+      color:var(--muted);
+      margin:0 0 16px;
+      text-align:center;
+      font-weight:normal;
+    }
+    .hero-section h1{
+      font-size:clamp(32px,5vw,48px);
+      margin:0 0 16px;
+      color:var(--text);
+    }
+    .hero-section .hero-subtitle{
+      font-size:18px;
+      color:var(--muted);
+      margin:0 0 40px;
+      max-width:600px;
+      margin-left:auto;
+      margin-right:auto;
+      line-height:1.5;
+    }
+    .hero-form-wrapper{
+      max-width:600px;
+      margin:0 auto;
+    }
+    .hero-section .form{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:32px;
+      text-align:left;
+    }
+    .hero-note{
+      font-size:14px;
+      color:var(--muted);
+      margin:20px 0 0;
+      text-align:center;
+    }
+
+    /* =========================
+       UITLEG SECTIE
+    ========================== */
+    .uitleg-section{
+      padding:60px 0;
+      background:var(--bg-main);
+      text-align:center;
+    }
+    .uitleg-content{
+      max-width:700px;
+      margin:0 auto;
+    }
+    .uitleg-content h2{
+      font-size:28px;
+      margin:0 0 24px;
+      color:var(--text);
+    }
+    .uitleg-content p{
+      font-size:18px;
+      color:var(--muted);
+      line-height:1.6;
+      margin:0;
+    }
+
+    /* =========================
+       GERUSTSTELLING
+    ========================== */
+    .geruststelling-section{
+      padding:40px 0 60px;
+      background:var(--bg-warm);
+      text-align:center;
+    }
+    .geruststelling-text{
+      font-size:16px;
+      color:var(--muted);
+      margin:0;
+    }
+    .form{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:32px;
+      max-width:600px;
+      margin:0 auto;
+    }
+    .form-group{
+      margin-bottom:20px;
+    }
+    .form-group:last-child{
       margin-bottom:0;
     }
-    .succesverhalen-header h1{
-      font-size:32px;
-      margin:0 0 12px;
-      color:var(--text);
+    .form-explanation{
+      font-size:13px;
+      color:rgba(203,213,225,0.7);
+      line-height:1.6;
+      margin:0 0 24px;
+      font-weight:normal;
     }
-    .succesverhalen-header p{
-      color:var(--muted);
-      font-size:18px;
-      margin:0;
-    }
-    .hero-tags{
+    .form-urgency{
+      margin:0 0 24px;
+      color:rgba(203,213,225,0.9);
       font-size:14px;
-      color:var(--text);
-      margin:0;
-      padding:12px 16px;
-      line-height:1.4;
-      text-align:center;
-      background:rgba(255,255,255,.05);
-      border-top:3px solid var(--accent);
-      border-radius:0;
-      width:100%;
-      display:block;
-      font-weight:500;
-      letter-spacing:0.02em;
+      line-height:1.55;
     }
-    .split-video .hero-tags{
-      margin-top:0;
-      border-top-left-radius:0;
-      border-top-right-radius:0;
-    }
-    @media(max-width:768px){
-      .hero-tags{
-        padding:10px 12px;
-        font-size:13px;
-        line-height:1.3;
-      }
-    }
-
-    /* =========================
-       SPLIT CONTENT BLOCK
-    ========================== */
-    .split-block{
-      background:#000;
-      padding:56px 0;
-      border-bottom:1px solid rgba(255,255,255,.08);
-    }
-    .split-grid{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:40px;
-      align-items:center;
-    }
-    .split-video{
-      position:relative;
-      border-radius:var(--radius);
-      background:rgba(255,255,255,.03);
-      border:1px solid var(--line);
-      cursor:pointer;
-      transition:all 300ms ease;
-    }
-    .split-video .video-wrapper{
-      overflow:hidden;
-      border-radius:var(--radius);
-      aspect-ratio:16/9;
-      position:relative;
-      width:100%;
-      background:#000;
-    }
-    .split-video .video-wrapper iframe{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      border:0;
-      display:block;
-    }
-    @media(max-width:900px){
-      .topbar__mobile-controls{
-        display:flex;
-        align-items:center;
-        gap:8px;
-      }
-      .topbar__nav .language-toggle{
-        display:none !important;
-      }
-      .topbar__nav.mobile-open .language-toggle{
-        display:none !important;
-      }
-      .language-toggle-mobile{
-        display:inline-flex !important;
-      }
-
-      .split-grid{
-        grid-template-columns:1fr;
-        gap:40px;
-      }
-      .split-video{
-        order:2;
-        max-width:100%;
-        width:100%;
-      }
-      .split-video .video-wrapper{
-        max-width:100%;
-        width:100%;
-      }
-    }
-
-    /* =========================
-       AANBOD SECTIE
-    ========================== */
-    .aanbod-section{
-      padding:48px 0 80px;
-      background:var(--bg-warm);
-    }
-    .aanbod-header{
-      text-align:center;
-      margin-bottom:48px;
-    }
-    .aanbod-header h1{
-      font-size:32px;
-      margin:0 0 12px;
-      color:var(--text);
-    }
-    .aanbod-header p{
-      color:var(--muted);
-      font-size:18px;
+    .form-urgency p{
       margin:0;
     }
-    .aanbod-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:24px;
-      max-width:1400px;
-      margin:0 auto;
-      align-items:stretch;
+    .form-urgency p + p{
+      margin-top:2px;
     }
-    .succes-card{
-      background:rgba(255,255,255,.04);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      overflow:hidden;
-      position:relative;
-      display:flex;
-      flex-direction:column;
-      height:100%;
-      min-height:550px;
-      align-items:stretch;
-      transition:box-shadow 0.3s ease, border-color 0.3s ease;
-    }
-    .succes-card__title-header a{
-      color:inherit;
-      text-decoration:none;
-    }
-    .succes-card:hover{
-      box-shadow:0 8px 24px rgba(0,0,0,0.3);
-      border-color:rgba(255,255,255,.25);
-    }
-    .succes-card__title-header{
-      padding:24px 24px 12px 24px;
-      font-size:20px;
+    .form-urgency-availability{
+      margin:14px 0 12px !important;
+      color:rgba(203,213,225,0.9);
       font-weight:700;
-      color:var(--text);
-      margin:0;
-      text-align:left;
-      flex-shrink:0;
     }
-    .card-top-title{
-      font-size:20px !important;
-      font-weight:700 !important;
-    }
-    .card-subtitle{
-      font-size:16px !important;
-      font-weight:500 !important;
-    }
-    .card-desc{
-      font-size:14px !important;
-      font-weight:400 !important;
-      line-height:1.5 !important;
-      color:var(--muted) !important;
-    }
-    .succes-card__image{
-      width:100%;
-      aspect-ratio:1/1;
+    .form-urgency-bar{
+      margin-top:0;
+      width:52%;
+      height:6px;
+      border-radius:999px;
+      background:rgba(255,255,255,.18);
       overflow:hidden;
-      background:rgba(255,255,255,.03);
-      flex-shrink:0;
-      position:relative;
-      border-radius:0;
     }
-    .succes-card__image img{
-      width:100%;
+    .form-urgency-bar-fill{
+      display:block;
+      width:0;
       height:100%;
-      object-fit:cover;
+      background:var(--accent);
+      border-radius:999px;
+    }
+    .form-group label{
       display:block;
-    }
-    .succes-card__content{
-      padding:18px;
-      flex:1 1 auto;
-      display:flex;
-      flex-direction:column;
-      align-items:flex-start;
-      justify-content:flex-start;
-      background:rgba(255,255,255,.04);
-      overflow:visible;
-      min-height:auto;
-      flex-shrink:0;
-    }
-    .succes-card__result{
-      margin:0 0 6px;
+      margin-bottom:8px;
       color:var(--text);
-      flex-shrink:0;
-      display:block;
-    }
-    .succes-card__result h2{
-      margin:0 0 0;
-      color:var(--text);
-      font-size:17px;
+      font-size:14px;
       font-weight:500;
     }
-    .succes-card__description{
-      margin:7px 0 0 0;
+    .form-group input,
+    .form-group select{
+      width:100%;
+      padding:12px 16px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      border-radius:12px;
+      color:var(--text);
+      font-size:16px;
+      font-family:inherit;
+      transition:background 0.2s ease, border-color 0.2s ease;
+    }
+    .form-group input[type="text"]{
+      width:100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus{
+      outline:none;
+      background:rgba(255,255,255,.08);
+      border-color:var(--accent);
+    }
+    .form-group input::placeholder{
+      color:rgba(255,255,255,.4);
+    }
+    .form-submit{
+      width:100%;
+      padding:14px 24px;
+      background:var(--accent);
+      color:#000;
+      border:none;
+      border-radius:8px;
+      font-weight:700;
+      font-size:16px;
+      cursor:pointer;
+      transition:filter 0.2s ease;
+      margin-top:8px;
+    }
+    .form-submit:hover{
+      filter:brightness(1.1);
+    }
+    .form-note{
+      text-align:center;
+      font-size:12px;
       color:var(--muted);
+      margin-top:12px;
+    }
+    .form-privacy{
+      font-size:13px;
+      color:var(--muted);
+      margin-top:16px;
+      text-align:center;
       line-height:1.5;
-      flex-shrink:0;
-      display:block;
-      font-size:14px;
-      font-weight:400;
+    }
+    .form-privacy a{
+      color:var(--accent);
+      text-decoration:underline;
+    }
+    .form-privacy a:hover{
+      color:var(--text);
+    }
+    @media(max-width:600px){
+      .hero-explanation{
+        text-align:left;
+        font-size:14px;
+      }
     }
 
     /* =========================
        RESPONSIVE
     ========================== */
     @media(max-width:900px){
-      .succesverhalen-header h1{
-        font-size:28px;
-      }
-      .succesverhalen-header p{
-        font-size:16px;
-      }
       .topbar__menu-toggle{
         display:flex;
         flex-direction:column;
@@ -508,17 +426,6 @@
         border-top:1px solid rgba(255,255,255,.08);
         z-index:10000;
         box-shadow:0 4px 12px rgba(0,0,0,.3);
-      }
-
-      .topbar__nav.mobile-open .language-toggle{
-        align-self:flex-start;
-        margin-top:4px;
-        border-bottom:none;
-      }
-      .topbar__nav.mobile-open .language-toggle a{
-        font-size:12px;
-        padding:4px 8px;
-        border-bottom:none !important;
       }
       .topbar__nav.mobile-open a{
         font-size:16px;
@@ -565,16 +472,19 @@
       .topbar__cta{
         display:none !important;
       }
-      .aanbod-grid{
+      .topbar__nav{
+        gap:20px;
+      }
+      .topbar__nav a{
+        font-size:14px;
+      }
+      .benefits-grid,
+      .steps-grid{
         grid-template-columns:repeat(2,1fr);
         gap:20px;
       }
     }
     @media(max-width:560px){
-      .aanbod-grid{
-        grid-template-columns:1fr;
-        gap:20px;
-      }
       .topbar .container{
         gap:16px;
       }
@@ -584,128 +494,27 @@
       .topbar__nav a{
         font-size:13px;
       }
+        margin-right:8px;
+        gap:4px;
+      }
       .topbar__cta button{
         padding:8px 12px;
         font-size:12px;
       }
-      .aanbod-header h1{
-        font-size:28px;
+      .benefits-grid,
+      .steps-grid{
+        grid-template-columns:1fr;
+        gap:20px;
       }
-      .aanbod-header p{
+      .uitleg-content h2{
+        font-size:24px;
+      }
+      .uitleg-content p{
         font-size:16px;
       }
     }
-    /* =========================
-       COOKIE BANNER
-    ========================== */
-    .cookie-banner{
-      position:fixed;
-      bottom:0;
-      left:0;
-      right:0;
-      background:var(--bg-warm);
-      border-top:1px solid var(--line);
-      padding:24px;
-      z-index:10000;
-      transform:translateY(100%);
-      transition:transform 0.3s ease;
-      box-shadow:0 -4px 12px rgba(0,0,0,.3);
-    }
-    .cookie-banner.show{
-      transform:translateY(0);
-    }
-    .cookie-banner-content{
-      max-width:1100px;
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:24px;
-      flex-wrap:wrap;
-    }
-    .cookie-banner-text{
-      flex:1;
-      min-width:250px;
-      font-size:14px;
-      color:var(--text);
-      line-height:1.5;
-    }
-    .cookie-banner-text a{
-      color:var(--accent);
-      text-decoration:underline;
-    }
-    .cookie-banner-buttons{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-    .cookie-btn{
-      padding:10px 20px;
-      border-radius:8px;
-      font-size:14px;
-      font-weight:600;
-      cursor:pointer;
-      border:none;
-      transition:filter 0.2s ease;
-    }
-    .cookie-btn-accept{
-      background:var(--accent);
-      color:#000;
-    }
-    .cookie-btn-accept:hover{
-      filter:brightness(1.1);
-    }
-    .cookie-btn-reject{
-      background:rgba(255,255,255,.08);
-      color:var(--text);
-      border:1px solid var(--line);
-    }
-    .cookie-btn-reject:hover{
-      background:rgba(255,255,255,.12);
-    }
-    .cookie-btn-settings{
-      background:transparent;
-      color:var(--muted);
-      border:1px solid var(--line);
-    }
-    .cookie-btn-settings:hover{
-      color:var(--text);
-      border-color:var(--accent);
-    }
-    .cookie-settings{
-      max-width:1100px;
-      margin:0 auto;
-      padding-top:24px;
-      border-top:1px solid var(--line);
-      margin-top:24px;
-      display:none;
-    }
-    .cookie-settings.show{
-      display:block;
-    }
-    .cookie-setting-item{
-      margin-bottom:20px;
-    }
-    .cookie-setting-item label{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      font-size:14px;
-      color:var(--text);
-      cursor:pointer;
-    }
-    .cookie-setting-item input[type="checkbox"]{
-      width:20px;
-      height:20px;
-      cursor:pointer;
-    }
-    .cookie-setting-item p{
-      font-size:12px;
-      color:var(--muted);
-      margin:4px 0 0 0;
-    }
 
-        /* =========================
+    /* =========================
        FOOTER
     ========================== */
     .footer{
@@ -902,6 +711,115 @@
       }
     }
 
+    /* =========================
+       COOKIE BANNER
+    ========================== */
+    .cookie-banner{
+      position:fixed;
+      bottom:0;
+      left:0;
+      right:0;
+      background:var(--bg-warm);
+      border-top:1px solid var(--line);
+      padding:24px;
+      z-index:10000;
+      transform:translateY(100%);
+      transition:transform 0.3s ease;
+      box-shadow:0 -4px 12px rgba(0,0,0,.3);
+    }
+    .cookie-banner.show{
+      transform:translateY(0);
+    }
+    .cookie-banner-content{
+      max-width:1100px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      flex-wrap:wrap;
+    }
+    .cookie-banner-text{
+      flex:1;
+      min-width:250px;
+      font-size:14px;
+      color:var(--text);
+      line-height:1.5;
+    }
+    .cookie-banner-text a{
+      color:var(--accent);
+      text-decoration:underline;
+    }
+    .cookie-banner-buttons{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .cookie-btn{
+      padding:10px 20px;
+      border-radius:8px;
+      font-size:14px;
+      font-weight:600;
+      cursor:pointer;
+      border:none;
+      transition:filter 0.2s ease;
+    }
+    .cookie-btn-accept{
+      background:var(--accent);
+      color:#000;
+    }
+    .cookie-btn-accept:hover{
+      filter:brightness(1.1);
+    }
+    .cookie-btn-reject{
+      background:rgba(255,255,255,.08);
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+    .cookie-btn-reject:hover{
+      background:rgba(255,255,255,.12);
+    }
+    .cookie-btn-settings{
+      background:transparent;
+      color:var(--muted);
+      border:1px solid var(--line);
+    }
+    .cookie-btn-settings:hover{
+      color:var(--text);
+      border-color:var(--accent);
+    }
+    .cookie-settings{
+      max-width:1100px;
+      margin:0 auto;
+      padding-top:24px;
+      border-top:1px solid var(--line);
+      margin-top:24px;
+      display:none;
+    }
+    .cookie-settings.show{
+      display:block;
+    }
+    .cookie-setting-item{
+      margin-bottom:20px;
+    }
+    .cookie-setting-item label{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      font-size:14px;
+      color:var(--text);
+      cursor:pointer;
+    }
+    .cookie-setting-item input[type="checkbox"]{
+      width:20px;
+      height:20px;
+      cursor:pointer;
+    }
+    .cookie-setting-item p{
+      font-size:12px;
+      color:var(--muted);
+      margin:4px 0 0 0;
+    }
   </style>
   <link rel="stylesheet" href="/assets/css/nav-dropdown.css">
 </head>
@@ -913,22 +831,16 @@
       <div class="topbar__logo">
         <a href="/en/index.html"><img src="/assets/logo/HH logo.png" alt="Healthy Habits"></a>
       </div>
-      <div class="topbar__mobile-controls">
-        <div class="language-toggle language-toggle-mobile" aria-label="Language switch">
-          <a href="/aanbod.html">NL</a>
-          <a href="/en/aanbod.html" class="active">EN</a>
-        </div>
-        <button class="topbar__menu-toggle" id="menuToggle" aria-label="Menu">
+      <button class="topbar__menu-toggle" id="menuToggle" aria-label="Menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
-      </div>
-            <nav class="topbar__nav" id="topbarNav">
+      <nav class="topbar__nav" id="topbarNav">
         <div class="topbar__nav-item mobile-accordion">
           <div class="mobile-accordion__row">
             <a href="/en/aanbod.html" class="mobile-accordion__label" id="aanbodAccordionLabel">Our offer</a>
-            <button class="accordion-toggle" type="button" aria-expanded="false" aria-controls="aanbodAccordionPanel" aria-label="Show submenu for Our offer">
+            <button class="accordion-toggle" type="button" aria-expanded="false" aria-controls="aanbodAccordionPanel" aria-label="Show submenu Our offer">
               <svg viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
@@ -944,155 +856,81 @@
         <a href="/en/tarieven.html">Prices</a>
         <a href="/en/lidmaatschapstest.html">Online membership test</a>
         <a href="/en/over-ons.html">Our team</a>
-        <div class="language-toggle" aria-label="Language switch">
-          <a href="/aanbod.html">NL</a>
-          <a href="/en/aanbod.html" class="active">EN</a>
-        </div>
+        <a href="/en/4-weeks.html" class="mobile-nav-cta">Try 4 weeks</a>
       </nav>
-            <div class="topbar__cta" id="topbarCta">
+      <div class="topbar__cta" id="topbarCta">
         <a href="/en/4-weeks.html"><button>Try 4 weeks</button></a>
       </div>
     </div>
   </div>
 
-  <!-- SUCCESVERHALEN SECTIE -->
-  <section class="succesverhalen-section">
+  <!-- HERO -->
+  <section class="hero-section">
     <div class="container">
-      <div class="succesverhalen-header">
-        <h1>Our offer</h1>
+      <h1>Try 4 weeks</h1>
+      <p class="hero-intro">Why only hear about what we offer when you can experience it yourself?</p>
+      <div class="hero-form-wrapper">
+        <form class="form" id="proberenForm">
+          <input type="hidden" name="page_name" value="4-weken-proberen">
+          <div class="form-urgency">
+            <p>We believe training should never feel overcrowded.</p>
+            <p>That is why we have a limited number of start spots.</p>
+            <p class="form-urgency-availability">Only <span class="plekken-aantal">4</span> spots left</p>
+            <div class="form-urgency-bar" aria-hidden="true">
+              <span class="form-urgency-bar-fill plekken-progress-fill"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="voornaam">First name *</label>
+            <input type="text" id="voornaam" name="voornaam" placeholder="Your first name" required>
+          </div>
+          <div class="form-group">
+            <label for="achternaam">Last name *</label>
+            <input type="text" id="achternaam" name="achternaam" placeholder="Your last name" required>
+          </div>
+          <div class="form-group">
+            <label for="telefoon">Phone *</label>
+            <input 
+              type="tel"
+              id="telefoon"
+              name="telefoon"
+              placeholder="Phone number"
+              required
+              pattern="^(06[0-9]{8}|\\+[1-9][0-9]{7,14})$"
+              title="Enter a valid phone number (NL: 06xxxxxxxx or international: +31612345678)">
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          </div>
+          <button type="submit" class="form-submit">Start my 4 weeks (request)</button>
+          <p class="form-note">No obligation · no automatic signup · personal contact</p>
+          <p class="form-privacy">By submitting this form, you agree to our <a href="/en/privacy.html">privacy policy</a>.</p>
+        </form>
       </div>
     </div>
   </section>
 
-  <!-- AANBOD SECTIE -->
-  <section class="aanbod-section">
+  <!-- UITLEG -->
+  <section class="uitleg-section">
     <div class="container">
-      <div class="aanbod-grid">
-        <div class="succes-card">
-          <h3 class="succes-card__title-header card-top-title"><a href="/milon.html">Milon</a></h3>
-          <div class="succes-card__image">
-            <img src="/assets/images/aanbod-pagina/1milon.jpg" alt="Milon" loading="lazy">
-          </div>
-          <div class="succes-card__content">
-            <h2 class="succes-card__result card-subtitle">Training in just 35 minutes</h2>
-            <p class="succes-card__description card-desc">The safest way to train, ideal for beginners. Milon fully adapts to your body so you can be sure you perform every exercise correctly.</p>
-          </div>
-        </div>
-        <div class="succes-card">
-          <h3 class="succes-card__title-header card-top-title">Fitness</h3>
-          <div class="succes-card__image">
-            <img src="/assets/images/aanbod-pagina/2fitness.jpg" alt="Fitness" loading="lazy">
-          </div>
-          <div class="succes-card__content">
-            <h2 class="succes-card__result card-subtitle">Open gym</h2>
-            <p class="succes-card__description card-desc">Train whenever you want with modern equipment. Our coaches guide you where needed and ensure you train safely and effectively.</p>
-          </div>
-        </div>
-        <div class="succes-card">
-          <h3 class="succes-card__title-header card-top-title">Circuit-training</h3>
-          <div class="succes-card__image">
-            <img src="/assets/images/aanbod-pagina/circuit.jpeg" alt="Circuit-training" loading="lazy">
-          </div>
-          <div class="succes-card__content">
-            <h2 class="succes-card__result card-subtitle">Training in a group</h2>
-            <p class="succes-card__description card-desc">You train in a circuit with a maximum of 6 other members.<br>Every minute you switch exercises.<br><br>Always under the guidance of a coach,<br>so you can be sure you perform the exercises correctly.</p>
-          </div>
-        </div>
-        <div class="succes-card">
-          <h3 class="succes-card__title-header card-top-title">Nutrition</h3>
-          <div class="succes-card__image">
-            <img src="/assets/images/aanbod-pagina/3voeding.jpg" alt="Nutrition" loading="lazy">
-          </div>
-          <div class="succes-card__content">
-            <h2 class="succes-card__result card-subtitle">A plan you can stick to</h2>
-            <p class="succes-card__description card-desc">No strict meal plans, but nutrition that fits your life. Practical, personal and focused on results you can maintain.</p>
-          </div>
-        </div>
-        <div class="succes-card">
-          <h3 class="succes-card__title-header card-top-title">Yoga</h3>
-          <div class="succes-card__image">
-            <img src="/assets/images/aanbod-pagina/4yoga.jpg" alt="Yoga" loading="lazy">
-          </div>
-          <div class="succes-card__content">
-            <h2 class="succes-card__result card-subtitle">More calm and mobility</h2>
-            <p class="succes-card__description card-desc">Improve your posture, flexibility and relaxation. Yoga helps your body recover and brings balance alongside your training.</p>
-          </div>
-        </div>
-        <div class="succes-card">
-          <h3 class="succes-card__title-header card-top-title">Pixformance</h3>
-          <div class="succes-card__image">
-            <img src="/assets/images/aanbod-pagina/5pixformance.jpg" alt="Pixformance" loading="lazy">
-          </div>
-          <div class="succes-card__content">
-            <h2 class="succes-card__result card-subtitle">Targeted training with feedback</h2>
-            <p class="succes-card__description card-desc">Exercises are clearly explained on screen. This helps you train with proper technique and get more out of every movement.</p>
-          </div>
-        </div>
-        <div class="succes-card">
-          <h3 class="succes-card__title-header card-top-title">BBB</h3>
-          <div class="succes-card__image">
-            <img src="/assets/images/aanbod-pagina/6BBB.jpeg" alt="BBB" loading="lazy">
-          </div>
-          <div class="succes-card__content">
-            <h2 class="succes-card__result card-subtitle">Abs, Glutes and Legs</h2>
-            <p class="succes-card__description card-desc">An energetic group class focused on abs, legs and glutes. Effective training in a friendly and welcoming environment.</p>
-          </div>
-        </div>
-        <div class="succes-card">
-          <h3 class="succes-card__title-header card-top-title">Barre</h3>
-          <div class="succes-card__image">
-            <img src="/assets/images/aanbod-pagina/7Barre.jpg" alt="Barre" loading="lazy">
-          </div>
-          <div class="succes-card__content">
-            <h2 class="succes-card__result card-subtitle">Train elegantly and powerfully</h2>
-            <p class="succes-card__description card-desc">A mix of ballet, yoga and pilates. Strengthen your muscles, improve your posture and build a longer, leaner line.</p>
-          </div>
-        </div>
-        <div class="succes-card">
-          <h3 class="succes-card__title-header card-top-title">Pilates</h3>
-          <div class="succes-card__image">
-            <img src="/assets/images/aanbod-pagina/8pilates.jpeg" alt="Pilates" loading="lazy">
-          </div>
-          <div class="succes-card__content">
-            <h2 class="succes-card__result card-subtitle">Strong core and control</h2>
-            <p class="succes-card__description card-desc">Focus on stability and control. Strengthen your deep muscles for a strong base and better daily movement.</p>
-          </div>
-        </div>
-        <div class="succes-card">
-          <h3 class="succes-card__title-header card-top-title">Cardio</h3>
-          <div class="succes-card__image">
-            <img src="/assets/images/aanbod-pagina/9cardio.jpg" alt="Cardio" loading="lazy">
-          </div>
-          <div class="succes-card__content">
-            <h2 class="succes-card__result card-subtitle">Build fitness and burn fat</h2>
-            <p class="succes-card__description card-desc">Dynamic workouts that raise your heart rate. Improve endurance and burn calories efficiently.</p>
-          </div>
-        </div>
-        <div class="succes-card">
-          <h3 class="succes-card__title-header card-top-title">Sauna</h3>
-          <div class="succes-card__image">
-            <img src="/assets/images/aanbod-pagina/10sauna.jpg" alt="Sauna" loading="lazy">
-          </div>
-          <div class="succes-card__content">
-            <h2 class="succes-card__result card-subtitle">Relaxation and recovery</h2>
-            <p class="succes-card__description card-desc">Relax your muscles in our sauna after your workout. Recover faster, feel better and enjoy the calm and warmth.</p>
-          </div>
-        </div>
-        <div class="succes-card">
-          <h3 class="succes-card__title-header card-top-title">Community</h3>
-          <div class="succes-card__image">
-            <img src="/assets/images/aanbod-pagina/11gezelligheid.jpeg" alt="Community" loading="lazy">
-          </div>
-          <div class="succes-card__content">
-            <h2 class="succes-card__result card-subtitle">Train together and connect</h2>
-            <p class="succes-card__description card-desc">More than training. A warm community where you meet new people and work on your goals together in a great atmosphere.</p>
-          </div>
-        </div>
+      <div class="uitleg-content">
+        <h2>What does trying 4 weeks include?</h2>
+        <p>You train for 4 weeks at Healthy Habits in a calm, personal environment.<br>
+        Together with our coaches, you discover what works for you and what feels right.<br>
+        After this period, you can calmly decide whether you want to continue.</p>
       </div>
     </div>
   </section>
 
-    <!-- FOOTER -->
+  <!-- GERUSTSTELLING -->
+  <section class="geruststelling-section">
+    <div class="container">
+      <p class="geruststelling-text">No obligations. You are not tied to anything.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
@@ -1100,7 +938,7 @@
           <h3>Contact</h3>
           <p class="footer-email">info@healthy-habits.nl</p>
           <p class="footer-phone">(040) 843 01 37</p>
-          <a href="mailto:info@healthy-habits.nl?subject=Question via website" class="footer-direct-mail">Email us directly &gt;</a>
+          <a href="mailto:info@healthy-habits.nl?subject=Question via website" class="footer-direct-mail">Send email directly &gt;</a>
         </div>
         <div class="footer-col">
           <h3>Address</h3>
@@ -1157,7 +995,7 @@
         <p class="footer-whatsapp-text">Quick question?</p>
         <a href="https://wa.me/31408430137" target="_blank" rel="noopener noreferrer" class="footer-whatsapp-btn">
           <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-          Happy to help
+          I am happy to help
         </a>
       </div>
     </div>
@@ -1167,7 +1005,7 @@
   <div class="cookie-banner" id="cookieBanner">
     <div class="cookie-banner-content">
       <div class="cookie-banner-text">
-        <p>This website uses cookies. Functional cookies are necessary for the website to function. Marketing cookies (for videos) are only placed with your consent. <a href="/en/privacy.html">More information</a></p>
+        <p>This website uses cookies. Functional cookies are necessary for the website to work. Marketing cookies (for videos) are only placed with your consent. <a href="/en/privacy.html">More information</a></p>
       </div>
       <div class="cookie-banner-buttons">
         <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accept</button>
@@ -1201,8 +1039,7 @@
   </div>
 
   <script>
-    // Kaarten worden automatisch even hoog gemaakt door grid align-items: stretch
-    
+
     // Mobile menu toggle
     (function(){
       const menuToggle = document.getElementById('menuToggle');
@@ -1319,6 +1156,7 @@
         loadMarketingContent();
       }
     })();
+
   </script>
 
   <!-- JSON-LD Structured Data -->
@@ -1333,10 +1171,78 @@
       "addressCountry": "NL"
     },
     "url": "https://healthyhabitseindhoven.github.io/Eindhoven/",
-    "description": "Boutique gym in Eindhoven city center with guided training. Warm, personal and healthy training."
+    "description": "Small-scale gym in Eindhoven center with guided training. Warm, personal and healthy exercise."
   }
   </script>
 
+  <!-- Form submit handler -->
+  <script>
+    (function(){
+      const form = document.getElementById('proberenForm');
+      if(!form) return;
+      
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalText = submitButton ? submitButton.textContent : '';
+        
+        try {
+          // Disable button and show loading state
+          if(submitButton){
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+          }
+          
+          // POST to Zapier with FormData directly
+          const formData = new FormData(form);
+          const response = await fetch('https://hooks.zapier.com/hooks/catch/16872475/uqalft8/', {
+            method: 'POST',
+            body: formData,
+            keepalive: true
+          });
+          
+          // Check if response is ok
+          if(!response.ok){
+            throw new Error('Zapier request failed');
+          }
+          
+          // Redirect to bedankt page after successful POST
+          window.location.href = '/bedankt.html';
+          
+        } catch(error){
+          console.error('Form submit error:', error);
+          // Re-enable button on error
+          if(submitButton){
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+          }
+          alert('Something went wrong. Please try again.');
+        }
+      });
+    })();
+  </script>
+  <script>
+    const plekken = 3 + (Math.floor(Date.now() / 86400000) % 4);
+
+    document.querySelectorAll('.plekken-aantal').forEach(el => {
+      el.textContent = plekken;
+    });
+
+    const totaalPlekken = 12;
+    const bezetting = ((totaalPlekken - plekken) / totaalPlekken) * 100;
+    const gevuldPercentage = Math.max(0, Math.min(100, bezetting));
+
+    document.querySelectorAll('.plekken-progress-fill').forEach(el => {
+      el.style.width = '0%';
+      el.style.transition = 'width 1s ease-out';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          el.style.width = gevuldPercentage + '%';
+        });
+      });
+    });
+  </script>
   <script src="/assets/js/nav-dropdown.js"></script>
 </body>
 </html>
