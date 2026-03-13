@@ -136,6 +136,41 @@
       transform:translateY(0);
       pointer-events:auto;
     }
+
+    .language-toggle{
+      display:inline-flex;
+      align-items:center;
+      gap:4px;
+      padding:3px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.08);
+      flex-shrink:0;
+    }
+    .language-toggle a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:34px;
+      padding:6px 10px;
+      border-radius:999px;
+      color:var(--muted);
+      text-decoration:none;
+      font-size:12px;
+      font-weight:700;
+      line-height:1;
+      border-bottom:none !important;
+      transition:background .2s ease,color .2s ease;
+    }
+    .language-toggle a:hover{
+      color:var(--text);
+      background:rgba(255,255,255,.10);
+    }
+    .language-toggle a.active,
+    .language-toggle a.active:hover{
+      background:var(--accent);
+      color:#000;
+    }
     .topbar__cta{
       flex-shrink:0;
     }
@@ -1192,6 +1227,17 @@
         z-index:10000;
         box-shadow:0 4px 12px rgba(0,0,0,.3);
       }
+
+      .topbar__nav.mobile-open .language-toggle{
+        align-self:flex-start;
+        margin-top:4px;
+        border-bottom:none;
+      }
+      .topbar__nav.mobile-open .language-toggle a{
+        font-size:12px;
+        padding:8px 12px;
+        border-bottom:none !important;
+      }
       .topbar__nav.mobile-open a{
         font-size:16px;
         padding:12px 0;
@@ -1610,6 +1656,11 @@
         <a href="/tarieven.html">Prijzen</a>
         <a href="/lidmaatschapstest.html">Online-lidmaatschapstest</a>
         <a href="/over-ons.html">Ons team</a>
+        <div class="language-toggle" aria-label="Language switch">
+          <a href="/yoga.html" class="active">NL</a>
+          <a href="/en/yoga.html">EN</a>
+        </div>
+
         <a href="/4-weken-proberen.html" class="mobile-nav-cta">4 weken proberen</a>
       </nav>
       <div class="topbar__cta" id="topbarCta">

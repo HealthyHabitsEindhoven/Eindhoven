@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="nl">
+<html lang="en">
 <head>
   <!-- Google tag (gtag.js) - MUST BE FIRST -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LPZ4B3M8KX"></script>
@@ -12,10 +12,10 @@
 
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Fitness | Healthy Habits Eindhoven</title>
-  <meta name="description" content="Ontdek fitness bij Healthy Habits Eindhoven: rustig, overzichtelijk en altijd met begeleiding. Start met 4 weken proberen.">
+  <title>Yoga & Groepslessen | Healthy Habits Eindhoven</title>
+  <meta name="description" content="Discover yoga and group classes at Healthy Habits Eindhoven. Small groups, personal attention, and a calm class schedule.">
   <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://healthyhabitseindhoven.github.io/fitness.html">
+  <link rel="canonical" href="https://healthyhabitseindhoven.github.io/yoga.html">
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="/logo/favicon.png">
@@ -47,7 +47,7 @@
       color:var(--text);
     }
 
-    img{width:100%;max-width:100%;display:block}
+    img{width:100%;max-width:100%;height:auto;display:block}
     .container{width:min(var(--max),calc(100% - 36px));max-width:100%;margin:0 auto;box-sizing:border-box}
 
     /* =========================
@@ -517,78 +517,310 @@
       line-height:1.5;
       font-size:15px;
     }
-    .milon-carousel{
-      position:relative;
+    .lessen-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 18px;
+    }
+    .lessen-grid .milon-step{
+      height:100%;
+    }
+    .lessen-grid .milon-step .num{
+      margin-bottom:4px;
+      font-size:12px;
+    }
+    .lessen-grid .milon-step p{
+      color:var(--muted);
+      font-size:14px;
+    }
+    @media (max-width: 1024px) {
+      .lessen-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .lessen-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 768px) {
+      .carousel-title {
+        font-size: 24px;
+        margin-bottom: 24px;
+      }
+      .carousel-subtitle{
+        font-size:17px;
+        margin:10px auto 24px;
+      }
+      /* Verberg alleen de labels 'Ochtend' en 'Avond' in het rooster op mobiel */
+      .schedule .timeblock-title,
+      .schedule .daypart-title,
+      .schedule .part-title,
+      .schedule h4.daypart,
+      .schedule h4.part,
+      .schedule .daypart,
+      .schedule .daypart-label,
+      .schedule-table td.part::before {
+        display: none !important;
+        content: none !important;
+      }
+    }
+    .yoga-rooster{
+      background:var(--bg-main);
+      padding:72px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .rooster-media{
+      max-width:460px;
+      margin:0 auto 22px;
       border-radius:var(--radius);
       border:1px solid var(--line);
       overflow:hidden;
       background:rgba(255,255,255,.03);
     }
-    .milon-carousel__viewport{
-      overflow:hidden;
-    }
-    .milon-carousel__track{
-      display:flex;
-      transition:transform .3s ease;
-      will-change:transform;
-    }
-    .milon-carousel__slide{
-      min-width:100%;
-      flex:0 0 100%;
-      margin:0;
-    }
-    .milon-carousel__slide img{
+    .rooster-media img{
+      display:block;
       width:100%;
-      height:clamp(420px, 52vw, 520px);
+      height:220px;
       object-fit:cover;
       object-position:center;
+    }
+    .section-title{
+      margin:0 0 18px;
+      font-size:32px;
+      color:var(--text);
+    }
+    .rooster-panel{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:14px;
+      background:rgba(255,255,255,.03);
+      overflow:hidden;
+    }
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .schedule-table th,
+    .schedule-table td {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 18px 22px;
+      vertical-align: top;
+    }
+    .schedule-table thead th {
+      font-weight: 700;
+      opacity: 0.95;
+      border-top:none;
+    }
+    .day-col {
+      width: 180px;
+      font-weight: 700;
+    }
+    .part-col {
+      text-align: left;
+    }
+    .slot {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 16px;
+      padding: 6px 0;
+    }
+    .slot .time {
+      font-weight: 700;
+      opacity: 0.95;
+      color:var(--text);
+    }
+    .slot .name {
+      opacity: 0.95;
+      color:var(--muted);
+    }
+    .lessen-section{
+      background:#000000;
+      padding:72px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .lessen-intro{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      max-width:720px;
+      margin-bottom:18px;
+    }
+    .lessen-intro h2{
+      margin:0;
+      font-size:32px;
+      color:var(--text);
+    }
+    .lessen-intro p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:17px;
+    }
+    .lessen-layout{
+      display:block !important;
+    }
+    .lessen-left{
+      width:100% !important;
+      max-width:100% !important;
+    }
+    .lessen-layout.grid,
+    .lessen-layout.grid-2,
+    .lessen-layout.two-col{
+      grid-template-columns:1fr !important;
+    }
+
+    .yoga-carousel-section{ margin-top:18px; }
+    .carousel-title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 32px;
+    }
+    .carousel-subtitle{
+      max-width:680px;
+      margin:12px auto 28px;
+      font-size:19px;
+      color:var(--muted);
+      text-align:center;
+      line-height:1.55;
+    }
+    .yoga-carousel{
+      position:relative;
+      width:100%;
+      border-radius:18px;
+      overflow:hidden;
+      background:rgba(255,255,255,0.03);
+    }
+    .yoga-carousel-viewport{ overflow:hidden; width:100%; }
+    .yoga-carousel-track{
+      display:flex;
+      transition:transform 350ms ease;
+      will-change:transform;
+    }
+    .yoga-carousel-track img{
+      width:100%;
+      height:clamp(220px, 35vw, 420px);
+      object-fit:cover;
+      flex:0 0 100%;
       display:block;
     }
-    .milon-carousel__arrow{
+    .yoga-carousel-btn{
       position:absolute;
       top:50%;
       transform:translateY(-50%);
-      width:42px;
-      height:42px;
+      border:0;
+      width:44px;
+      height:44px;
       border-radius:999px;
-      border:1px solid rgba(255,255,255,.25);
-      background:rgba(0,0,0,.5);
+      background:rgba(0,0,0,0.45);
       color:#fff;
-      display:grid;
-      place-items:center;
+      font-size:28px;
+      line-height:44px;
       cursor:pointer;
-      font-size:22px;
-      line-height:1;
       z-index:2;
+      backdrop-filter:blur(6px);
     }
-    .milon-carousel__arrow:hover{
-      background:rgba(0,0,0,.7);
-      border-color:rgba(255,255,255,.45);
-    }
-    .milon-carousel__arrow--prev{
-      left:12px;
-    }
-    .milon-carousel__arrow--next{
-      right:12px;
-    }
-    .milon-carousel__dots{
+    .yoga-carousel-btn.prev { left:12px; }
+    .yoga-carousel-btn.next { right:12px; }
+    .yoga-carousel-dots{
       display:flex;
-      justify-content:center;
       gap:8px;
-      padding:12px 14px 14px;
-      background:rgba(0,0,0,.35);
+      justify-content:center;
+      margin-top:12px;
+      margin-bottom:14px;
     }
-    .milon-carousel__dot{
+    .yoga-carousel-dot{
       width:9px;
       height:9px;
-      border-radius:50%;
-      border:none;
-      background:rgba(255,255,255,.35);
+      border-radius:999px;
+      border:0;
+      background:rgba(255,255,255,0.25);
       cursor:pointer;
-      padding:0;
     }
-    .milon-carousel__dot.is-active{
-      background:var(--accent);
+    .yoga-carousel-dot.is-active{
+      background:rgba(255,255,255,0.85);
+    }
+    .docenten-section {
+      padding: 80px 0 60px;
+      text-align: center;
+      background:#000000;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .docenten-sub {
+      max-width: 600px;
+      margin: 16px auto 48px;
+      font-size: 18px;
+      opacity: 0.85;
+      color:var(--muted);
+    }
+    .docenten-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      align-items:stretch;
+    }
+    .team-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      height:100%;
+      min-height:420px;
+      align-items:stretch;
+      transition:box-shadow 0.3s ease, border-color 0.3s ease;
+      text-align:left;
+    }
+    .team-card:hover{
+      box-shadow:0 8px 24px rgba(0,0,0,0.3);
+      border-color:rgba(255,255,255,.25);
+    }
+    .team-card__name{
+      padding:24px 24px 12px 24px;
+      font-size:20px;
+      font-weight:700;
+      color:var(--text);
+      margin:0;
+      flex-shrink:0;
+    }
+    .team-card__image{
+      width:100%;
+      aspect-ratio:1/1;
+      overflow:hidden;
+      background:rgba(255,255,255,.03);
+      flex-shrink:0;
+      position:relative;
+      border-radius:0;
+      background-size:cover;
+      background-position:center center;
+      background-repeat:no-repeat;
+    }
+    .team-card__image img{
+      display:none;
+    }
+    .team-card__content{
+      padding:18px;
+      flex:1 1 auto;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      justify-content:flex-start;
+      background:rgba(255,255,255,.04);
+      overflow:visible;
+      min-height:auto;
+      flex-shrink:0;
+    }
+    .team-card__type{
+      margin:0;
+      color:var(--muted);
+      line-height:1.5;
+      flex-shrink:0;
+      display:block;
+      font-size:14px;
+      font-weight:400;
     }
 
     .milon-mini-cta{
@@ -775,22 +1007,21 @@
         min-height:64vh;
       }
       .milon-benefits,
-      .milon-how{
+      .yoga-rooster{
         padding:56px 0;
       }
       .milon-benefits h2,
-      .milon-how h2,
+      .yoga-rooster h2,
       .milon-mini-cta h2{
         font-size:28px;
       }
-      .milon-steps{
-        grid-template-columns:1fr;
-      }
+      .day-col { width: 140px; }
+      .slot { grid-template-columns: 120px 1fr; }
     }
     @media(max-width:560px){
       .milon-hero .hero-sub,
       .milon-benefits .lead,
-      .milon-how .intro,
+      .yoga-rooster .intro,
       .milon-mini-cta p{
         font-size:16px;
       }
@@ -801,11 +1032,46 @@
       .milon-cta-row{
         align-items:stretch;
       }
-      .milon-carousel__slide img{
-        height:clamp(260px, 62vw, 320px);
+    }
+    @media (max-width: 680px) {
+      .schedule-table thead { display: none; }
+      .schedule-table tr { display: block; padding: 12px 0; }
+      .schedule-table td { display: block; }
+      .day-col { width: auto; }
+      .schedule-table td.part {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255,255,255,0.08);
       }
-      .milon-carousel__arrow{
-        display:none;
+      .schedule-table td.part::before {
+        display: block;
+        font-weight: 700;
+        margin-bottom: 8px;
+        opacity: 0.9;
+      }
+      .schedule-table td.part.morning::before { content: "Ochtend"; }
+      .schedule-table td.part.evening::before { content: "Avond"; }
+      .slot{
+        grid-template-columns:1fr;
+        gap:2px;
+      }
+    }
+    @media (max-width: 1024px) {
+      .docenten-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .docenten-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px){
+      .yoga-carousel-btn{
+        width:40px;
+        height:40px;
+        font-size:26px;
+        line-height:40px;
       }
     }
 
@@ -1363,7 +1629,7 @@
   <div class="topbar">
     <div class="container">
       <div class="topbar__logo">
-        <a href="/index.html"><img src="/assets/logo/HH logo.png" alt="Healthy Habits" width="48" height="48" decoding="async"></a>
+        <a href="/en/index.html"><img src="/assets/logo/HH logo.png" alt="Healthy Habits" width="48" height="48" decoding="async"></a>
       </div>
       <button class="topbar__menu-toggle" id="menuToggle" aria-label="Menu">
         <span></span>
@@ -1373,118 +1639,248 @@
       <nav class="topbar__nav" id="topbarNav">
         <div class="topbar__nav-item mobile-accordion">
           <div class="mobile-accordion__row">
-            <a href="/aanbod.html" class="mobile-accordion__label" id="aanbodAccordionLabel">Ons aanbod</a>
-            <button class="accordion-toggle" type="button" aria-expanded="false" aria-controls="aanbodAccordionPanel" aria-label="Toon sublinks Ons aanbod">
+            <a href="/en/aanbod.html" class="mobile-accordion__label" id="aanbodAccordionLabel">Our offer</a>
+            <button class="accordion-toggle" type="button" aria-expanded="false" aria-controls="aanbodAccordionPanel" aria-label="Toon sublinks Our offer">
               <svg viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </button>
           </div>
           <div class="topbar__submenu accordion-panel" id="aanbodAccordionPanel">
-            <a class="accordion-link" href="/milon.html">Milon</a>
-            <a class="accordion-link" href="/fitness.html">Fitness</a>
-            <a class="accordion-link" href="/yoga.html">Yoga</a>
+            <a class="accordion-link" href="/en/milon.html">Milon</a>
+            <a class="accordion-link" href="/en/fitness.html">Fitness</a>
+            <a class="accordion-link" href="/en/yoga.html">Yoga</a>
           </div>
         </div>
-        <a href="/succesverhalen.html">Succesverhalen</a>
-        <a href="/tarieven.html">Prijzen</a>
-        <a href="/lidmaatschapstest.html">Online-lidmaatschapstest</a>
-        <a href="/over-ons.html">Ons team</a>
+        <a href="/en/succesverhalen.html">Success stories</a>
+        <a href="/en/tarieven.html">Prices</a>
+        <a href="/en/lidmaatschapstest.html">Online membership test</a>
+        <a href="/en/over-ons.html">Our team</a>
         <div class="language-toggle" aria-label="Language switch">
-          <a href="/fitness.html" class="active">NL</a>
-          <a href="/en/fitness.html">EN</a>
+          <a href="/yoga.html">NL</a>
+          <a href="/en/yoga.html" class="active">EN</a>
         </div>
-
-        <a href="/4-weken-proberen.html" class="mobile-nav-cta">4 weken proberen</a>
+<a href="/4-weken-proberen.html" class="mobile-nav-cta">Try 4 weeks</a>
       </nav>
       <div class="topbar__cta" id="topbarCta">
-        <a href="/4-weken-proberen.html"><button>4 weken proberen</button></a>
+        <a href="/4-weken-proberen.html"><button>Try 4 weeks</button></a>
       </div>
     </div>
   </div>
 
   <!-- HERO -->
   <section class="milon-hero">
-    <img src="/assets/images/fitness/fitness-1.jpeg" alt="Fitness bij Healthy Habits" loading="eager" decoding="async">
+    <img src="/assets/images/yoga/yoga-1.jpeg" alt="Yoga en groepslessen bij Healthy Habits" loading="eager" decoding="async">
     <div class="milon-hero__overlay"></div>
     <div class="container milon-hero__content">
-      <h1>Fitness</h1>
-      <p class="hero-sub">Rustig, overzichtelijk en altijd met begeleiding.</p>
+      <h1>Yoga &amp; Groepslessen</h1>
+      <p class="hero-sub">Calm, strength, and flexibility - in a warm, personal setting.</p>
       <div class="hero-line"></div>
       <div class="milon-cta-row">
-        <a class="milon-btn milon-btn--primary" href="#proberen-form">Start 4 weken proberen</a>
-        <a class="milon-btn milon-btn--secondary" href="#voordelen">Bekijk voordelen</a>
+        <a class="milon-btn milon-btn--secondary" href="#rooster">View the schedule</a>
+        <a class="milon-btn milon-btn--primary" href="#proberen-form">Start Try 4 weeks</a>
       </div>
-      <p class="milon-trust">Geen drukte. Wel aandacht. Jij sport op jouw tempo.</p>
+      <p class="milon-trust">Kleine groepen. Persoonlijke aandacht.</p>
     </div>
   </section>
 
-  <!-- VOORDELEN -->
-  <section class="milon-benefits section-black" id="voordelen">
-    <div class="container split-grid">
-      <div class="split-text">
-        <h2>Waarom fitness bij Healthy Habits anders voelt</h2>
-        <p class="lead">Je sport in een rustige omgeving waar je je meteen op je gemak voelt.</p>
-        <p class="lead">Er is altijd een coach in de buurt voor uitleg, houding en motivatie.</p>
-        <ul class="milon-bullets">
-          <li>Rustige setting (geen ‘drukke sportschool vibe’)</li>
-          <li>Altijd begeleiding als je dat wilt</li>
-          <li>Train op je eigen niveau en tempo</li>
-          <li>Combinatie van kracht + conditie</li>
-          <li>Duidelijke structuur, zonder gedoe</li>
-        </ul>
-      </div>
-      <div class="milon-media">
-        <img src="/assets/images/fitness/fitness-2.jpeg" alt="Fitnessruimte bij Healthy Habits" loading="lazy" decoding="async">
-      </div>
-    </div>
-  </section>
-
-  <!-- HOE WERKT HET -->
-  <section class="milon-how">
+  <section class="lessen-section">
     <div class="container">
-      <h2>Hoe werkt het?</h2>
-      <p class="intro">Simpel en overzichtelijk. Je weet precies wat je doet.</p>
-      <div class="milon-steps">
-        <article class="milon-step">
-          <span class="num">Stap 1</span>
-          <p>We starten met een korte uitleg</p>
-        </article>
-        <article class="milon-step">
-          <span class="num">Stap 2</span>
-          <p>Je traint je programma (coach helpt waar nodig)</p>
-        </article>
-        <article class="milon-step">
-          <span class="num">Stap 3</span>
-          <p>Klaar — met een goed gevoel de deur uit</p>
-        </article>
+      <div class="lessen-intro">
+        <h2>Which classes can you join?</h2>
       </div>
-      <div class="milon-carousel" id="fitnessCarousel">
-        <div class="milon-carousel__viewport">
-          <div class="milon-carousel__track">
-            <figure class="milon-carousel__slide">
-              <img src="/assets/images/fitness/fitness-3.jpeg" alt="Fitness training 1" loading="lazy" decoding="async">
-            </figure>
-            <figure class="milon-carousel__slide">
-              <img src="/assets/images/fitness/fitness-4.jpeg" alt="Fitness training 2" loading="lazy" decoding="async">
-            </figure>
-            <figure class="milon-carousel__slide">
-              <img src="/assets/images/fitness/fitness-5.jpeg" alt="Fitness training 3" loading="lazy" decoding="async">
-            </figure>
-            <figure class="milon-carousel__slide">
-              <img src="/assets/images/fitness/fitness-6.jpeg" alt="Fitness training 4" loading="lazy" decoding="async">
-            </figure>
-            <figure class="milon-carousel__slide">
-              <img src="/assets/images/fitness/fitness-7.jpeg" alt="Fitness training 5" loading="lazy" decoding="async">
-            </figure>
-            <figure class="milon-carousel__slide">
-              <img src="/assets/images/fitness/fitness-8.jpeg" alt="Fitness training 6" loading="lazy" decoding="async">
-            </figure>
+      <div class="lessen-layout">
+        <div class="lessen-left">
+          <div class="lessen-grid">
+            <article class="milon-step"><span class="num">Hatha Yoga</span><p>Rustige opbouw, ademhaling en houding.</p></article>
+            <article class="milon-step"><span class="num">Yin Yoga</span><p>Diepe ontspanning en langere stretches.</p></article>
+            <article class="milon-step"><span class="num">Mindful Yoga</span><p>Rust in je hoofd, soepelheid in je lijf.</p></article>
+            <article class="milon-step"><span class="num">Pilates</span><p>Core, houding en gecontroleerde kracht.</p></article>
+            <article class="milon-step"><span class="num">Barre Klassiek</span><p>Elegant, krachtig en stevig.</p></article>
+            <article class="milon-step"><span class="num">BBB</span><p>Benen, Billen, Buik — actief en energiek.</p></article>
           </div>
         </div>
-        <button class="milon-carousel__arrow milon-carousel__arrow--prev" type="button" aria-label="Vorige foto">&lsaquo;</button>
-        <button class="milon-carousel__arrow milon-carousel__arrow--next" type="button" aria-label="Volgende foto">&rsaquo;</button>
-        <div class="milon-carousel__dots" aria-label="Carrousel navigatie"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="yoga-carousel-section">
+    <div class="container">
+      <h2 class="carousel-title">View our beautiful studio</h2>
+      <p class="carousel-subtitle">Find your calm in the heart of Eindhoven city center.</p>
+      <div class="yoga-carousel" aria-label="Yoga sfeerfoto's">
+        <button class="yoga-carousel-btn prev" type="button" aria-label="Vorige foto">‹</button>
+
+        <div class="yoga-carousel-viewport">
+          <div class="yoga-carousel-track">
+            <img src="/assets/images/yoga/yoga-1.jpeg" alt="Yoga sfeerfoto 1" loading="lazy" />
+            <img src="/assets/images/yoga/yoga-2.jpeg" alt="Yoga sfeerfoto 2" loading="lazy" />
+            <img src="/assets/images/yoga/yoga-3.jpeg" alt="Yoga sfeerfoto 3" loading="lazy" />
+            <img src="/assets/images/yoga/yoga-4.jpeg" alt="Yoga sfeerfoto 4" loading="lazy" />
+            <img src="/assets/images/yoga/yoga-5.jpeg" alt="Yoga sfeerfoto 5" loading="lazy" />
+          </div>
+        </div>
+
+        <button class="yoga-carousel-btn next" type="button" aria-label="Volgende foto">›</button>
+      </div>
+      <div class="yoga-carousel-dots" aria-label="Carousel navigatie"></div>
+    </div>
+  </section>
+
+  <section class="docenten-section">
+    <div class="container">
+      <h2 class="section-title">Always an instructor who fits you</h2>
+      <p class="docenten-sub">
+        Calm, energetic, or technically focused - there is always an instructor who fits you.
+      </p>
+
+      <div class="docenten-grid">
+        <div class="team-card">
+          <h3 class="team-card__name">Florence</h3>
+          <div class="team-card__image" style="background-image:url('/assets/images/yoga/florence.jpeg');">
+            <img src="/assets/images/yoga/florence.jpeg" alt="Florence – team Healthy Habits Eindhoven" loading="lazy" style="display:none;">
+          </div>
+          <div class="team-card__content">
+            <p class="team-card__type">Pilates, Hatha yoga</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <h3 class="team-card__name">Tim</h3>
+          <div class="team-card__image" style="background-image:url('/assets/images/yoga/tim.jpeg');">
+            <img src="/assets/images/yoga/tim.jpeg" alt="Tim – team Healthy Habits Eindhoven" loading="lazy" style="display:none;">
+          </div>
+          <div class="team-card__content">
+            <p class="team-card__type">Mindfull, Hatha yoga</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <h3 class="team-card__name">Olga</h3>
+          <div class="team-card__image" style="background-image:url('/assets/images/yoga/olga.jpeg');">
+            <img src="/assets/images/yoga/olga.jpeg" alt="Olga – team Healthy Habits Eindhoven" loading="lazy" style="display:none;">
+          </div>
+          <div class="team-card__content">
+            <p class="team-card__type">Pilates, Yin yoga</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <h3 class="team-card__name">Sophie</h3>
+          <div class="team-card__image" style="background-image:url('/assets/images/yoga/sophie.jpeg');">
+            <img src="/assets/images/yoga/sophie.jpeg" alt="Sophie – team Healthy Habits Eindhoven" loading="lazy" style="display:none;">
+          </div>
+          <div class="team-card__content">
+            <p class="team-card__type">Barre-docent</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <h3 class="team-card__name">Dorine</h3>
+          <div class="team-card__image" style="background-image:url('/assets/images/yoga/dorine.jpeg');">
+            <img src="/assets/images/yoga/dorine.jpeg" alt="Dorine – team Healthy Habits Eindhoven" loading="lazy" style="display:none;">
+          </div>
+          <div class="team-card__content">
+            <p class="team-card__type">Yin yoga</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <h3 class="team-card__name">Marielle</h3>
+          <div class="team-card__image" style="background-image:url('/assets/images/yoga/marielle.jpeg');">
+            <img src="/assets/images/yoga/marielle.jpeg" alt="Marielle – team Healthy Habits Eindhoven" loading="lazy" style="display:none;">
+          </div>
+          <div class="team-card__content">
+            <p class="team-card__type">Yin yoga</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="yoga-rooster" id="rooster">
+    <div class="container">
+      <h2 class="section-title">Rooster</h2>
+      <div class="rooster-panel">
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th class="day-col"></th>
+              <th class="part-col">Ochtend</th>
+              <th class="part-col">Avond</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="day-col">Monday</td>
+              <td class="part morning">
+                <div class="slot"><span class="time">08:30 - 09:15</span><span class="name">BBB</span></div>
+                <div class="slot"><span class="time">09:30 - 10:30</span><span class="name">Mindful Yoga</span></div>
+                <div class="slot"><span class="time">10:35 - 11:50</span><span class="name">Hatha Yoga</span></div>
+              </td>
+              <td class="part evening">
+                <div class="slot"><span class="time">17:30 - 18:15</span><span class="name">BBB</span></div>
+                <div class="slot"><span class="time">18:30 - 19:45</span><span class="name">Hatha Yoga</span></div>
+                <div class="slot"><span class="time">19:45 - 21:00</span><span class="name">Yin Yoga</span></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="day-col">Tuesday</td>
+              <td class="part morning">
+                <div class="slot"><span class="time">08:00 - 08:50</span><span class="name">Pilates</span></div>
+                <div class="slot"><span class="time">09:30 - 10:45</span><span class="name">Yin Yoga</span></div>
+              </td>
+              <td class="part evening">
+                <div class="slot"><span class="time">18:25 - 19:15</span><span class="name">Pilates</span></div>
+                <div class="slot"><span class="time">19:30 - 20:45</span><span class="name">Hatha Alignment</span></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="day-col">Wednesday</td>
+              <td class="part morning">
+                <div class="slot"><span class="time">08:30 - 09:15</span><span class="name">BBB</span></div>
+                <div class="slot"><span class="time">09:30 - 10:45</span><span class="name">Yin Yoga</span></div>
+              </td>
+              <td class="part evening">
+                <div class="slot"><span class="time">18:30 - 19:20</span><span class="name">Barre klassiek</span></div>
+                <div class="slot"><span class="time">19:30 - 20:30</span><span class="name">Pilates</span></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="day-col">Thursday</td>
+              <td class="part morning">
+                <div class="slot"><span class="time">08:00 - 09:00</span><span class="name">Pilates</span></div>
+                <div class="slot"><span class="time">09:15 - 10:30</span><span class="name">Yin Yoga</span></div>
+              </td>
+              <td class="part evening">
+                <div class="slot"><span class="time">18:30 - 19:15</span><span class="name">BBB</span></div>
+                <div class="slot"><span class="time">19:30 - 20:45</span><span class="name">Yin Yoga</span></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="day-col">Friday</td>
+              <td class="part morning">
+                <div class="slot"><span class="time">08:30 - 09:30</span><span class="name">Pilates</span></div>
+                <div class="slot"><span class="time">09:30 - 10:15</span><span class="name">BBB</span></div>
+              </td>
+              <td class="part evening">
+                <div class="slot"><span class="time">17:00 - 17:45</span><span class="name">BBB</span></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="day-col">Zaterdag</td>
+              <td class="part morning">
+                <div class="slot"><span class="time">09:00 - 09:50</span><span class="name">Barre Klassiek</span></div>
+                <div class="slot"><span class="time">10:00 - 11:15</span><span class="name">Hatha Yoga</span></div>
+              </td>
+              <td class="part evening"></td>
+            </tr>
+            <tr>
+              <td class="day-col">Zondag</td>
+              <td class="part morning">
+                <div class="slot"><span class="time">08:30 - 09:15</span><span class="name">Dans</span></div>
+                <div class="slot"><span class="time">09:30 - 10:15</span><span class="name">BBB</span></div>
+                <div class="slot"><span class="time">10:30 - 11:15</span><span class="name">BBB</span></div>
+              </td>
+              <td class="part evening"></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -1494,7 +1890,7 @@
     <div class="container">
       <h1>
         <span class="h2-wrapper">
-          4 weken Fitness proberen
+          4 weken Yoga proberen
           <span class="title-underline-wrapper">
             <span class="title-underline-svg">
               <svg viewBox="0 0 500 8" preserveAspectRatio="none" aria-hidden="true">
@@ -1504,11 +1900,11 @@
           </span>
         </span>
       </h1>
-      <p class="hero-intro">Ontdek hoe fijn sporten in onze fitness kan zijn.</p>
+      <p class="hero-intro">Discover how nice it is to train in small groups.</p>
       <div class="hero-form-wrapper">
         <form class="form" id="proberenForm">
           <input type="hidden" name="page_name" value="4-weken-proberen">
-          <p class="form-explanation">We werken met een beperkt aantal startplekken per maand, zodat we iedereen persoonlijk kunnen begeleiden.</p>
+          <p class="form-explanation">We work with a limited number of start spots per month, so we can guide everyone personally.</p>
           <div class="form-group">
             <label for="voornaam">Voornaam *</label>
             <input type="text" id="voornaam" name="voornaam" placeholder="Je voornaam" required>
@@ -1526,7 +1922,7 @@
               placeholder="Telefoonnummer"
               required
               pattern="^(06[0-9]{8}|\\+[1-9][0-9]{7,14})$"
-              title="Vul een geldig telefoonnummer in (NL: 06xxxxxxxx of internationaal: +31612345678)">
+              title="Enter a valid phone number (NL: 06xxxxxxxx or international: +31612345678)">
           </div>
           <div class="form-group">
             <label for="email">E-mail *</label>
@@ -1534,7 +1930,7 @@
           </div>
           <button type="submit" class="form-submit">Start mijn 4 weken (aanvraag)</button>
           <p class="form-note">Vrijblijvend · geen automatische inschrijving · persoonlijk contact</p>
-          <p class="form-privacy">Door dit formulier te versturen ga je akkoord met onze <a href="/privacy.html">privacyverklaring</a>.</p>
+          <p class="form-privacy">By submitting this form, you agree to our <a href="/en/privacy.html">privacy policy</a>.</p>
         </form>
       </div>
     </div>
@@ -1548,47 +1944,47 @@
           <h3>Contact</h3>
           <p class="footer-email">info@healthy-habits.nl</p>
           <p class="footer-phone">(040) 843 01 37</p>
-          <a href="mailto:info@healthy-habits.nl?subject=Vraag via website" class="footer-direct-mail">Direct mailen &gt;</a>
+          <a href="mailto:info@healthy-habits.nl?subject=Question via website" class="footer-direct-mail">Email us directly &gt;</a>
         </div>
         <div class="footer-col">
-          <h3>Adres</h3>
+          <h3>Address</h3>
           <p>Willemstraat 22</p>
           <p>5611HD Eindhoven</p>
         </div>
         <div class="footer-col">
-          <h3>Openingstijden</h3>
+          <h3>Opening hours</h3>
           <div class="footer-hours">
             <div class="footer-hours-row">
-              <span class="footer-hours-day">Maandag</span>
+              <span class="footer-hours-day">Monday</span>
               <span class="footer-hours-time">8:30 – 12:30 / 16:00 – 21:00</span>
             </div>
             <div class="footer-hours-row">
-              <span class="footer-hours-day">Dinsdag</span>
+              <span class="footer-hours-day">Tuesday</span>
               <span class="footer-hours-time">7:00 – 12:30 / 16:00 – 21:00</span>
             </div>
             <div class="footer-hours-row">
-              <span class="footer-hours-day">Woensdag</span>
+              <span class="footer-hours-day">Wednesday</span>
               <span class="footer-hours-time">8:30 – 12:30 / 16:00 – 21:00</span>
             </div>
             <div class="footer-hours-row">
-              <span class="footer-hours-day">Donderdag</span>
+              <span class="footer-hours-day">Thursday</span>
               <span class="footer-hours-time">7:00 – 12:30 / 16:00 – 21:00</span>
             </div>
             <div class="footer-hours-row">
-              <span class="footer-hours-day">Vrijdag</span>
+              <span class="footer-hours-day">Friday</span>
               <span class="footer-hours-time">8:30 – 12:30 / 16:00 – 20:00</span>
             </div>
             <div class="footer-hours-row">
-              <span class="footer-hours-day">Za / zo</span>
+              <span class="footer-hours-day">Sat / Sun</span>
               <span class="footer-hours-time">8:30 – 13:00</span>
             </div>
           </div>
         </div>
         <div class="footer-col">
-          <h3>Over</h3>
+          <h3>About</h3>
           <div class="footer-links">
-            <a href="/#">Algemene voorwaarden</a>
-            <a href="/privacy.html">Privacyverklaring</a>
+            <a href="/#">Terms and conditions</a>
+            <a href="/en/privacy.html">Privacy policy</a>
             <a href="/#" id="cookieSettingsFooter">Cookies</a>
           </div>
           <div class="footer-social">
@@ -1602,10 +1998,10 @@
         </div>
       </div>
       <div class="footer-whatsapp">
-        <p class="footer-whatsapp-text">Korte vraag?</p>
+        <p class="footer-whatsapp-text">Quick question?</p>
         <a href="https://wa.me/31408430137" target="_blank" rel="noopener noreferrer" class="footer-whatsapp-btn">
           <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-          Ik help je graag
+          Happy to help
         </a>
       </div>
     </div>
@@ -1615,19 +2011,19 @@
   <div class="cookie-banner" id="cookieBanner">
     <div class="cookie-banner-content">
       <div class="cookie-banner-text">
-        <p>Deze website gebruikt cookies. Functionele cookies zijn noodzakelijk voor de werking van de website. Marketing cookies (voor video's) worden alleen geplaatst met je toestemming. <a href="/privacy.html">Meer informatie</a></p>
+        <p>This website uses cookies. Functional cookies are necessary for the website to function. Marketing cookies (for videos) are only placed with your consent. <a href="/en/privacy.html">More information</a></p>
       </div>
       <div class="cookie-banner-buttons">
-        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accepteren</button>
-        <button class="cookie-btn cookie-btn-reject" id="cookieReject">Weigeren</button>
-        <button class="cookie-btn cookie-btn-settings" id="cookieSettings">Instellen</button>
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accept</button>
+        <button class="cookie-btn cookie-btn-reject" id="cookieReject">Reject</button>
+        <button class="cookie-btn cookie-btn-settings" id="cookieSettings">Settings</button>
       </div>
       <div class="cookie-settings" id="cookieSettingsPanel">
         <div class="cookie-setting-item">
           <label>
             <span>
-              <strong>Functionele cookies</strong>
-              <p>Noodzakelijk voor het functioneren van de website. Deze kunnen niet worden uitgeschakeld.</p>
+              <strong>Functional cookies</strong>
+              <p>Necessary for the website to function. These cannot be disabled.</p>
             </span>
             <input type="checkbox" checked disabled>
           </label>
@@ -1636,13 +2032,13 @@
           <label>
             <span>
               <strong>Marketing cookies</strong>
-              <p>Voor embedded video's (YouTube/Vimeo). Deze worden alleen geplaatst met je toestemming.</p>
+              <p>For embedded videos (YouTube/Vimeo). These are only placed with your consent.</p>
             </span>
             <input type="checkbox" id="cookieMarketing">
           </label>
         </div>
         <div class="cookie-banner-buttons" style="margin-top:16px;">
-          <button class="cookie-btn cookie-btn-accept" id="cookieSave">Opslaan</button>
+          <button class="cookie-btn cookie-btn-accept" id="cookieSave">Save</button>
         </div>
       </div>
     </div>
@@ -1685,89 +2081,6 @@
           });
         });
       }
-    })();
-
-    // Fitness carousel (manual controls + swipe)
-    (function(){
-      const carousel = document.getElementById('fitnessCarousel');
-      if(!carousel) return;
-
-      const track = carousel.querySelector('.milon-carousel__track');
-      const slides = Array.from(carousel.querySelectorAll('.milon-carousel__slide'));
-      const dotsWrap = carousel.querySelector('.milon-carousel__dots');
-      const prevBtn = carousel.querySelector('.milon-carousel__arrow--prev');
-      const nextBtn = carousel.querySelector('.milon-carousel__arrow--next');
-      if(!track || slides.length === 0 || !dotsWrap) return;
-
-      let currentIndex = 0;
-      let touchStartX = 0;
-      let touchEndX = 0;
-      const swipeThreshold = 40;
-
-      function renderDots(){
-        dotsWrap.innerHTML = '';
-        slides.forEach((_, index) => {
-          const dot = document.createElement('button');
-          dot.type = 'button';
-          dot.className = 'milon-carousel__dot' + (index === currentIndex ? ' is-active' : '');
-          dot.setAttribute('aria-label', 'Ga naar foto ' + (index + 1));
-          dot.addEventListener('click', function(){
-            goTo(index);
-          });
-          dotsWrap.appendChild(dot);
-        });
-      }
-
-      function update(){
-        track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
-        const dots = dotsWrap.querySelectorAll('.milon-carousel__dot');
-        dots.forEach((dot, index) => {
-          dot.classList.toggle('is-active', index === currentIndex);
-        });
-      }
-
-      function goTo(index){
-        if(index < 0) index = slides.length - 1;
-        if(index >= slides.length) index = 0;
-        currentIndex = index;
-        update();
-      }
-
-      if(prevBtn){
-        prevBtn.addEventListener('click', function(){
-          goTo(currentIndex - 1);
-        });
-      }
-      if(nextBtn){
-        nextBtn.addEventListener('click', function(){
-          goTo(currentIndex + 1);
-        });
-      }
-
-      carousel.addEventListener('touchstart', function(event){
-        touchStartX = event.changedTouches[0].clientX;
-      }, { passive: true });
-
-      carousel.addEventListener('touchmove', function(event){
-        touchEndX = event.changedTouches[0].clientX;
-      }, { passive: true });
-
-      carousel.addEventListener('touchend', function(event){
-        if(!touchEndX) touchEndX = event.changedTouches[0].clientX;
-        const deltaX = touchEndX - touchStartX;
-        if(Math.abs(deltaX) > swipeThreshold){
-          if(deltaX < 0){
-            goTo(currentIndex + 1);
-          } else {
-            goTo(currentIndex - 1);
-          }
-        }
-        touchStartX = 0;
-        touchEndX = 0;
-      }, { passive: true });
-
-      renderDots();
-      update();
     })();
 
     // Cookie banner
@@ -1852,6 +2165,77 @@
     })();
   </script>
 
+  <script>
+    (function () {
+      const carousel = document.querySelector(".yoga-carousel");
+      if (!carousel) return;
+
+      const track = carousel.querySelector(".yoga-carousel-track");
+      const slides = Array.from(track.querySelectorAll("img"));
+      const prevBtn = carousel.querySelector(".yoga-carousel-btn.prev");
+      const nextBtn = carousel.querySelector(".yoga-carousel-btn.next");
+      const dotsWrap = carousel.closest(".yoga-carousel-section")?.querySelector(".yoga-carousel-dots")
+        || document.querySelector(".yoga-carousel-dots");
+
+      let index = 0;
+
+      function renderDots() {
+        if (!dotsWrap) return;
+        dotsWrap.innerHTML = "";
+        slides.forEach((_, i) => {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "yoga-carousel-dot" + (i === index ? " is-active" : "");
+          b.setAttribute("aria-label", `Ga naar foto ${i + 1}`);
+          b.addEventListener("click", () => {
+            index = i;
+            update();
+          });
+          dotsWrap.appendChild(b);
+        });
+      }
+
+      function update() {
+        track.style.transform = `translateX(${-index * 100}%)`;
+        const dots = dotsWrap ? dotsWrap.querySelectorAll(".yoga-carousel-dot") : [];
+        dots.forEach((d, i) => d.classList.toggle("is-active", i === index));
+      }
+
+      prevBtn?.addEventListener("click", () => {
+        index = (index - 1 + slides.length) % slides.length;
+        update();
+      });
+
+      nextBtn?.addEventListener("click", () => {
+        index = (index + 1) % slides.length;
+        update();
+      });
+
+      // Swipe mobiel
+      let startX = null;
+      track.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+
+      track.addEventListener("touchend", (e) => {
+        if (startX == null) return;
+        const endX = e.changedTouches[0].clientX;
+        const dx = endX - startX;
+        startX = null;
+
+        if (Math.abs(dx) > 40) {
+          index = dx > 0
+            ? (index - 1 + slides.length) % slides.length
+            : (index + 1) % slides.length;
+          update();
+        }
+      }, { passive: true });
+
+      renderDots();
+      update();
+    })();
+  </script>
+
   <!-- Form submit handler -->
   <script>
     (function(){
@@ -1912,7 +2296,7 @@
       "addressCountry": "NL"
     },
     "url": "https://healthyhabitseindhoven.github.io/Eindhoven/",
-    "description": "Kleinschalige sportschool in Eindhoven centrum met begeleid sporten. Warm, persoonlijk en gezond sporten."
+    "description": "Kleinschalige sportschool in Eindhoven centrum met guided training. Warm, persoonlijk en gezond sporten."
   }
   </script>
 

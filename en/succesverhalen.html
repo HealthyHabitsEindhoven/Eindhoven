@@ -96,6 +96,41 @@
     .topbar__nav a:hover{
       color:var(--accent);
     }
+
+    .language-toggle{
+      display:inline-flex;
+      align-items:center;
+      gap:4px;
+      padding:3px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.08);
+      flex-shrink:0;
+    }
+    .language-toggle a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:34px;
+      padding:6px 10px;
+      border-radius:999px;
+      color:var(--muted);
+      text-decoration:none;
+      font-size:12px;
+      font-weight:700;
+      line-height:1;
+      border-bottom:none !important;
+      transition:background .2s ease,color .2s ease;
+    }
+    .language-toggle a:hover{
+      color:var(--text);
+      background:rgba(255,255,255,.10);
+    }
+    .language-toggle a.active,
+    .language-toggle a.active:hover{
+      background:var(--accent);
+      color:#000;
+    }
     .topbar__cta{
       flex-shrink:0;
     }
@@ -239,6 +274,17 @@
         border-top:1px solid rgba(255,255,255,.08);
         z-index:10000;
         box-shadow:0 4px 12px rgba(0,0,0,.3);
+      }
+
+      .topbar__nav.mobile-open .language-toggle{
+        align-self:flex-start;
+        margin-top:4px;
+        border-bottom:none;
+      }
+      .topbar__nav.mobile-open .language-toggle a{
+        font-size:12px;
+        padding:8px 12px;
+        border-bottom:none !important;
       }
       .topbar__nav.mobile-open a{
         font-size:16px;
@@ -614,12 +660,14 @@
         <a href="/en/tarieven.html">Prices</a>
         <a href="/en/lidmaatschapstest.html">Online membership test</a>
         <a href="/en/over-ons.html">Our team</a>
-        <a href="/">NL</a>
-        <a href="/en/">EN</a>
-        <a href="/en/4-weken-proberen.html" class="mobile-nav-cta">Try 4 weeks</a>
+        <div class="language-toggle" aria-label="Language switch">
+          <a href="/succesverhalen.html">NL</a>
+          <a href="/en/succesverhalen.html" class="active">EN</a>
+        </div>
+<a href="/en/4-weken-proberen.html" class="mobile-nav-cta">Try 4 weeks</a>
       </nav>
       <div class="topbar__cta" id="topbarCta">
-        <a href="/en/4-weken-proberen.html"><button>Try 4 weeks</button></a>
+        <a href="/4-weken-proberen.html"><button>Try 4 weeks</button></a>
       </div>
     </div>
   </div>
@@ -634,7 +682,7 @@
       <div class="succesverhalen-grid">
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_4513.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/madelon.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Madelon</h3>
@@ -643,7 +691,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_4764.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Ronald.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Frank</h3>
@@ -652,7 +700,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_4969.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Ingrid.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Marayam</h3>
@@ -661,7 +709,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_4974.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Esther.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Rob</h3>
@@ -670,7 +718,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_5025.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Harry.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Miriam</h3>
@@ -679,7 +727,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_5372.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Laura.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Selen</h3>
@@ -688,7 +736,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_5413.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Jan.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -697,7 +745,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_5509.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Marlies.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -706,7 +754,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_5611 2.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Bas.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -715,7 +763,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_5800.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Franceska.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -724,7 +772,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_5828.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Karin.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -733,7 +781,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_5855 2.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Nienke.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -742,7 +790,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_5855.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Renee.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -751,7 +799,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_5926.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Robbert.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -760,7 +808,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_5953.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/madelon.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -769,7 +817,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_6119.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Ronald.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -778,7 +826,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_6236.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Ingrid.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -787,7 +835,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_6684.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Esther.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -796,7 +844,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_6931.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Harry.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -805,7 +853,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_6936.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Laura.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -814,7 +862,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_6954.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Jan.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -823,7 +871,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_6958.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Marlies.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -832,7 +880,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_6959 2.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Bas.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -841,7 +889,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_6960.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Franceska.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -850,7 +898,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_6962.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Karin.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -859,7 +907,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_6964.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Nienke.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -868,7 +916,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_6965.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Renee.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -877,7 +925,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_6967.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Robbert.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -886,7 +934,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_6968.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/madelon.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -895,7 +943,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_6970.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Ronald.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -904,7 +952,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_6971.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Ingrid.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -913,7 +961,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_6972.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Esther.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -922,7 +970,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_6974.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Harry.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -931,7 +979,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_6976.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Laura.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -940,7 +988,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/PHOTO-2024-10-23-11-37-44.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Jan.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -949,7 +997,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/PHOTO-2025-06-06-19-50-05 2.jpg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Marlies.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -958,7 +1006,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/PHOTO-2025-06-13-09-00-32.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Bas.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
@@ -967,7 +1015,7 @@
         </div>
         <div class="succes-card">
           <div class="succes-card__image">
-            <img src="/assets/images/succesverhalen/IMG_5611 2.jpeg" alt="Success story" loading="lazy">
+            <img src="/assets/images/Succesverhalen-pagina/Franceska.jpeg" alt="Success story" loading="lazy">
           </div>
           <div class="succes-card__content">
             <h3 class="succes-card__name">Name</h3>
