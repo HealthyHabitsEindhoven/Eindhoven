@@ -173,6 +173,16 @@
       background:var(--accent);
       color:#000;
     }
+    .topbar__mobile-controls{
+      display:none;
+      align-items:center;
+      gap:8px;
+      flex-shrink:0;
+    }
+    .language-toggle-mobile{
+      display:none;
+    }
+
     .topbar__cta{
       flex-shrink:0;
     }
@@ -313,6 +323,18 @@
       display:block;
     }
     @media(max-width:900px){
+      .topbar__mobile-controls{
+        display:flex;
+        align-items:center;
+        gap:8px;
+      }
+      .topbar__nav .language-toggle{
+        display:none;
+      }
+      .language-toggle-mobile{
+        display:inline-flex;
+      }
+
       .split-grid{
         grid-template-columns:1fr;
         gap:40px;
@@ -1367,11 +1389,17 @@
       <div class="topbar__logo">
         <a href="/en/index.html"><img src="/assets/logo/HH logo.png" alt="Healthy Habits" width="48" height="48" decoding="async"></a>
       </div>
-      <button class="topbar__menu-toggle" id="menuToggle" aria-label="Menu">
+      <div class="topbar__mobile-controls">
+        <div class="language-toggle language-toggle-mobile" aria-label="Language switch">
+          <a href="/milon.html">NL</a>
+          <a href="/en/milon.html" class="active">EN</a>
+        </div>
+        <button class="topbar__menu-toggle" id="menuToggle" aria-label="Menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
+      </div>
             <nav class="topbar__nav" id="topbarNav">
         <div class="topbar__nav-item mobile-accordion">
           <div class="mobile-accordion__row">

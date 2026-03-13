@@ -97,7 +97,7 @@
     .topbar__nav a{
       color:var(--text);
       text-decoration:none;
-      font-size:17px;
+      font-size:18px;
       font-weight:500;
       transition:color 0.2s ease;
     }
@@ -173,6 +173,16 @@
       background:var(--accent);
       color:#000;
     }
+    .topbar__mobile-controls{
+      display:none;
+      align-items:center;
+      gap:8px;
+      flex-shrink:0;
+    }
+    .language-toggle-mobile{
+      display:none;
+    }
+
     .topbar__cta{
       flex-shrink:0;
     }
@@ -313,6 +323,19 @@
       display:block;
     }
     @media(max-width:900px){
+      .topbar__mobile-controls{
+        display:flex;
+        align-items:center;
+        gap:8px;
+      }
+    .topbar__nav .language-toggle{
+      margin-left:-4px;
+      transform:translateX(10px);
+    }
+      .language-toggle-mobile{
+        display:inline-flex;
+      }
+
       .split-grid{
         grid-template-columns:1fr;
         gap:40px;
@@ -888,11 +911,17 @@
       <div class="topbar__logo">
         <a href="/index.html"><img src="/assets/logo/HH logo.png" alt="Healthy Habits"></a>
       </div>
-      <button class="topbar__menu-toggle" id="menuToggle" aria-label="Menu">
+      <div class="topbar__mobile-controls">
+        <div class="language-toggle language-toggle-mobile" aria-label="Language switch">
+          <a href="/aanbod.html" class="active">NL</a>
+          <a href="/en/aanbod.html">EN</a>
+        </div>
+        <button class="topbar__menu-toggle" id="menuToggle" aria-label="Menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
+      </div>
       <nav class="topbar__nav" id="topbarNav">
         <div class="topbar__nav-item mobile-accordion">
           <div class="mobile-accordion__row">
@@ -966,7 +995,7 @@
           </div>
           <div class="succes-card__content">
             <h2 class="succes-card__result card-subtitle">Sporten in een groep</h2>
-            <p class="succes-card__description card-desc">Je traint in een circuit met maximaal 6 andere sporters.<br>Elke minuut wissel je van oefening.<br><br>Altijd onder begeleiding van een trainer,<br>zodat je zeker weet dat je de oefeningen goed uitvoert.</p>
+            <p class="succes-card__description card-desc">Je traint in een circuit met maximaal 6 andere sporters. Elke minuut wissel je van oefening. Altijd onder begeleiding van een trainer, zodat je zeker weet dat je de oefeningen goed uitvoert.</p>
           </div>
         </div>
         <div class="succes-card">
