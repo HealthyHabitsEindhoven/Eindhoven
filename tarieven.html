@@ -793,12 +793,18 @@
         align-items:center;
         gap:8px;
       }
-    .topbar__nav .language-toggle{
-      margin-left:-4px;
-      transform:translateX(10px);
+    @media(min-width:901px){
+      .topbar__nav .language-toggle{
+        margin-left:-8px;
+        margin-right:-2px;
+        transform:translateX(12px);
+      }
+      .topbar__cta{
+        margin-left:10px;
+      }
     }
       .language-toggle-mobile{
-        display:inline-flex;
+        display:inline-flex !important;
       }
 
       .footer-grid{
