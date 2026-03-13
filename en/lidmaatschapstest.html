@@ -1,0 +1,2909 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) - MUST BE FIRST -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LPZ4B3M8KX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LPZ4B3M8KX');
+  </script>
+
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Online Membership Test | Gym Eindhoven City Center</title>
+  <meta name="description" content="Take the free online membership test and discover which membership fits you best. Guided training in Eindhoven city center. No obligation and personal advice.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://healthyhabitseindhoven.github.io/lidmaatschapstest.html">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/logo/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/logo/favicon.png">
+  <link rel="apple-touch-icon" href="/logo/favicon.png">
+  
+  <!-- Preload hero image for iOS Safari -->
+  <link rel="preload" as="image" href="/assets/images/home/lidmaatschapstest.jpeg" imagesrcset="/assets/images/home/lidmaatschapstest.jpeg 1920w">
+
+  <style>
+    :root{
+      --accent:#C3A300;
+      --bg:#0b0c10;
+      --bg-main:#0b0c10;
+      --bg-warm:#0f1115;
+      --bg-accent:#121418;
+      --text:#f3f4f6;
+      --muted:#cbd5e1;
+      --line:rgba(255,255,255,.15);
+      --radius:18px;
+      --max:1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      max-width:100%;
+      overflow-x:hidden;
+      margin:0;
+      padding:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:var(--bg-main);
+      color:var(--text);
+    }
+
+    img{width:100%;max-width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 36px));max-width:100%;margin:0 auto;box-sizing:border-box}
+
+    /* =========================
+       TOP MENU BAR
+    ========================== */
+    .topbar{
+      right:0;
+      max-width:100%;
+      box-sizing:border-box;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:90px;
+      background:#000;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .container{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:32px;
+    }
+    .topbar__logo{
+      font-weight:800;
+      letter-spacing:.04em;
+      font-size:18px;
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+    }
+    .topbar__logo img{
+      height:54px;
+      width:auto;
+      display:block;
+    }
+    .topbar__nav{
+      display:flex;
+      align-items:center;
+      gap:32px;
+      flex:1;
+      justify-content:center;
+    }
+    .topbar__nav a{
+      color:var(--text);
+      text-decoration:none;
+      font-size:17px;
+      font-weight:500;
+      transition:color 0.2s ease;
+    }
+    .topbar__nav a:hover{
+      color:var(--accent);
+    }
+    .topbar__nav-item{
+      position:relative;
+    }
+    .topbar__submenu{
+      position:absolute;
+      top:100%;
+      left:0;
+      min-width:170px;
+      padding-top:10px;
+      opacity:0;
+      visibility:hidden;
+      transform:translateY(6px);
+      transition:opacity .2s ease, transform .2s ease, visibility .2s ease;
+      pointer-events:none;
+      z-index:10001;
+    }
+    .topbar__submenu a{
+      display:block;
+      background:var(--bg-warm);
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:10px 14px;
+      font-size:15px;
+      white-space:nowrap;
+      box-shadow:0 8px 20px rgba(0,0,0,.35);
+    }
+    .topbar__nav-item:hover .topbar__submenu{
+      opacity:1;
+      visibility:visible;
+      transform:translateY(0);
+      pointer-events:auto;
+    }
+    .topbar__cta{
+      flex-shrink:0;
+    }
+    .topbar__cta a{
+      text-decoration:none;
+    }
+    .topbar__cta button{
+      background:var(--accent);
+      color:#000;
+      border:none;
+      padding:12px 22px;
+      border-radius:8px;
+      font-weight:700;
+      font-size:16px;
+      cursor:pointer;
+      transition:filter 0.2s ease;
+    }
+    .topbar__cta button:hover{
+      filter:brightness(1.1);
+    }
+    .mobile-nav-cta{
+      display:none !important;
+    }
+    .topbar__menu-toggle{
+      display:none;
+      background:none;
+      border:none;
+      cursor:pointer;
+      padding:8px;
+      flex-shrink:0;
+      z-index:10001;
+    }
+    .topbar__menu-toggle span{
+      display:block;
+      width:24px;
+      height:2px;
+      background:var(--accent);
+      margin:5px 0;
+      transition:all 0.3s ease;
+      border-radius:2px;
+    }
+    .topbar__menu-toggle.active span:nth-child(1){
+      transform:rotate(45deg) translate(7px, 7px);
+    }
+    .topbar__menu-toggle.active span:nth-child(2){
+      opacity:0;
+    }
+    .topbar__menu-toggle.active span:nth-child(3){
+      transform:rotate(-45deg) translate(7px, -7px);
+    }
+    body{ padding-top:90px; }
+
+    /* =========================
+       HERO
+    ========================== */
+    .section-black{
+      background:#000 !important;
+    }
+    .section-black,
+    .section-black .container,
+    .section-black .inner,
+    .section-black .content{
+      background:transparent !important;
+    }
+    .hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      background:#000;
+      margin-bottom:0 !important;
+    }
+    .hero img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center center;
+      filter:brightness(.6);
+    }
+    .hero__overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,.72) 18%, rgba(0,0,0,.18) 55%, rgba(0,0,0,.05) 100%);
+      z-index:1;
+    }
+    .hero-content{
+      position:relative;
+      z-index:2;
+      padding:48px 0;
+      text-align:center;
+    }
+    .hero h1{
+      font-size:clamp(32px,5vw,56px);
+      margin:0 0 12px;
+    }
+    .hero p{
+      max-width:55ch;
+      color:var(--muted);
+      font-size:18px;
+      margin:0 0 32px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .hero-buttons{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-top:24px;
+    }
+    .hero-btn{
+      display:inline-block;
+      padding:14px 28px;
+      border-radius:12px;
+      font-weight:700;
+      font-size:16px;
+      text-decoration:none;
+      transition:filter 0.2s ease;
+      cursor:pointer;
+      border:none;
+    }
+    .hero-btn-primary{
+      background:var(--accent);
+      color:#000;
+    }
+    .hero-btn-primary:hover{
+      filter:brightness(1.1);
+    }
+    .hero-btn-secondary{
+      background:rgba(255,255,255,.08);
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+    .hero-btn-secondary:hover{
+      background:rgba(255,255,255,.12);
+      border-color:rgba(255,255,255,.25);
+    }
+    .hero-bullets{
+      list-style:none;
+      padding:0;
+      margin:0 0 32px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .hero-bullets li{
+      color:var(--text);
+      font-size:16px;
+      line-height:1.5;
+      padding-left:28px;
+      position:relative;
+    }
+    .hero-bullets li:before{
+      content:"•";
+      position:absolute;
+      left:0;
+      color:var(--accent);
+      font-weight:700;
+      font-size:18px;
+    }
+
+    /* =========================
+       TEST INTRO
+    ========================== */
+    .test-intro-section{
+      padding:80px 0;
+      background:#000;
+      margin-top:0 !important;
+    }
+    .test-intro-section > .container{
+      text-align:center;
+    }
+    .test-intro-section h2{
+      font-size:28px;
+      margin:0 0 8px;
+      color:var(--text);
+      position:relative;
+      display:inline-block;
+    }
+    .test-intro-subtitle{
+      font-size:16px;
+      color:var(--muted);
+      font-weight:normal;
+      margin:0 0 16px;
+      text-align:center;
+    }
+    .test-intro-section p{
+      font-size:16px;
+      color:var(--muted);
+      line-height:1.6;
+      margin:0;
+      max-width:700px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .test-intro-section h2{
+      position:relative;
+      display:inline-block;
+    }
+    .h2-wrapper{
+      position:relative;
+      display:inline-block;
+    }
+    .title-underline-wrapper{
+      position:absolute;
+      top:calc(100% - 1px);
+      left:0;
+      width:100%;
+    }
+    .title-underline-svg{
+      display:block;
+      width:100%;
+      height:10px;
+      overflow:visible;
+    }
+    .title-underline-svg svg{
+      width:100%;
+      height:10px;
+      display:block;
+    }
+    .title-underline-path{
+      stroke:#C3A300;
+      stroke-width:3;
+      fill:none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      stroke-dasharray:1800;
+      stroke-dashoffset:1800;
+      animation:draw-wavy-line 5s ease-in-out forwards;
+      animation-delay:0.3s;
+    }
+    @keyframes draw-wavy-line{
+      0%{
+        stroke-dashoffset:1800;
+      }
+      100%{
+        stroke-dashoffset:0;
+      }
+    }
+
+    /* =========================
+       WAAROM SECTIE
+    ========================== */
+    .waarom-section{
+      padding:80px 0;
+      background:var(--bg-main);
+    }
+    .waarom-section h2{
+      font-size:28px;
+      text-align:center;
+      margin:0 0 48px;
+      color:var(--text);
+    }
+    .waarom-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:24px;
+      max-width:900px;
+      margin:0 auto;
+    }
+    .waarom-item{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:32px;
+      display:flex;
+      gap:20px;
+      align-items:flex-start;
+    }
+    .waarom-icon{
+      width:48px;
+      height:48px;
+      flex-shrink:0;
+      color:var(--accent);
+    }
+    .waarom-content{
+      flex:1;
+    }
+    .waarom-item h3{
+      font-size:18px;
+      margin:0 0 8px;
+      color:var(--text);
+    }
+    .waarom-item p{
+      font-size:14px;
+      color:var(--muted);
+      margin:0;
+      line-height:1.5;
+    }
+    .waarom-cta{
+      text-align:center;
+      margin-top:48px;
+    }
+
+    /* =========================
+       REVIEWS CAROUSEL
+    ========================== */
+    .reviews-carousel-nav{
+      display:none;
+    }
+    @media(max-width:767px){
+      .reviews-carousel-nav{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:16px;
+        margin-top:32px;
+      }
+    }
+    .reviews-carousel-btn{
+      width:44px;
+      height:44px;
+      min-width:44px;
+      min-height:44px;
+      border-radius:50%;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      font-size:24px;
+      line-height:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:all 0.3s ease;
+      position:relative;
+    }
+    .reviews-carousel-btn:hover,
+    .reviews-carousel-btn:focus{
+      border-color:var(--accent);
+      background:rgba(255,255,255,.08);
+      outline:none;
+    }
+    .reviews-carousel-btn:hover::before,
+    .reviews-carousel-btn:focus::before,
+    .reviews-carousel-btn:active::before{
+      content:'';
+      position:absolute;
+      inset:-2px;
+      border-radius:50%;
+      border:2px solid var(--accent);
+      pointer-events:none;
+    }
+    .reviews-carousel-btn:active{
+      transform:scale(0.95);
+    }
+
+    .reviews-section{
+      padding:80px 0;
+      background:#000000;
+    }
+    .reviews-header{
+      text-align:center;
+      margin-bottom:48px;
+    }
+    .reviews-header h2{
+      font-size:28px;
+      margin:0 0 8px;
+      color:var(--text);
+    }
+    .reviews-header p{
+      color:var(--muted);
+      font-size:16px;
+      margin:0;
+    }
+    .reviews-carousel-wrapper{
+      position:relative;
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 60px;
+    }
+    @media(max-width:1023px){
+      .reviews-carousel-wrapper{
+        padding:0 40px;
+      }
+    }
+    @media(max-width:767px){
+      .reviews-carousel-wrapper{
+        padding:0 20px;
+      }
+    }
+    .reviews-carousel-track{
+      display:flex;
+      align-items:stretch;
+      gap:24px;
+      overflow:hidden;
+    }
+    @media(max-width:767px){
+      .reviews-carousel-track{
+        overflow-x:auto;
+        overflow-y:hidden;
+        scroll-behavior:smooth;
+        scroll-snap-type:x mandatory;
+        -webkit-overflow-scrolling:touch;
+      }
+    }
+    .reviews-carousel-slides{
+      display:flex;
+      gap:24px;
+      transition:transform 0.6s ease;
+      align-items:stretch;
+    }
+    @media(max-width:767px){
+      .reviews-carousel-slides{
+        gap:16px;
+        transition:none;
+      }
+    }
+    @media(max-width:767px){
+      /* Slider track en slides: auto height voor flexibele kaarten */
+      .reviews-section .reviews-carousel-track{
+        height:auto !important;
+        align-items:stretch !important;
+      }
+      .reviews-section .reviews-carousel-slides{
+        height:auto !important;
+        align-items:stretch !important;
+      }
+      /* Testimonial cards op mobiel: 1 card zichtbaar, verticaal gestapeld */
+      .reviews-section .review-card{
+        flex:0 0 calc(100% - 40px) !important;
+        flex-direction:column !important;
+        min-width:calc(100% - 40px);
+        max-width:calc(100% - 40px);
+        width:calc(100% - 40px);
+        height:auto !important;
+        min-height:0 !important;
+        max-height:none !important;
+        border-radius:var(--radius);
+        flex-shrink:0;
+        scroll-snap-align:start;
+        overflow:hidden;
+        background:rgba(255,255,255,.04);
+        border:1px solid var(--line);
+        display:flex;
+        align-items:stretch;
+        margin:0 auto;
+        transform:none !important;
+        gap:0;
+      }
+      .reviews-section .review-card.active{
+        flex:0 0 calc(100% - 40px) !important;
+        transform:none !important;
+        height:auto !important;
+      }
+      /* Header met naam+leeftijd */
+      .reviews-section .review-card__header-mobile{
+        display:block;
+        width:100%;
+        background:rgba(255,255,255,.04);
+        border-bottom:1px solid var(--line);
+        color:var(--text);
+        padding:12px 18px;
+        font-size:14px;
+        font-weight:600;
+        letter-spacing:0.5px;
+        border-radius:var(--radius) var(--radius) 0 0;
+        margin:0;
+        flex-shrink:0;
+      }
+      /* Image wrapper met aspect-ratio */
+      .reviews-section .review-card__image{
+        width:100% !important;
+        height:auto !important;
+        aspect-ratio:4/3 !important;
+        overflow:hidden;
+        background:rgba(255,255,255,.03);
+        flex-shrink:0;
+        position:relative;
+        border-radius:0;
+        display:block;
+      }
+      .reviews-section .review-card__image img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        object-position:center center;
+        display:block;
+      }
+      /* Desktop content verbergen */
+      .reviews-section .review-card__content{
+        display:none !important;
+      }
+      /* Mobile content */
+      .reviews-section .review-card__content-mobile{
+        display:block;
+        padding:18px;
+        flex:1;
+        overflow:visible;
+        max-height:none !important;
+        -webkit-line-clamp:unset !important;
+      }
+      .reviews-section .review-card__content-mobile .card__title{
+        margin:0 0 6px;
+        font-size:inherit;
+        font-weight:600;
+        color:var(--text);
+        overflow:visible;
+        max-height:none !important;
+      }
+      .reviews-section .review-card__content-mobile .card__text{
+        margin:0;
+        color:var(--muted);
+        line-height:1.45;
+        font-size:inherit;
+        overflow:visible;
+      }
+      .reviews-section .review-card__content-mobile .card__text::before{
+        content:"\201C";
+      }
+      .reviews-section .review-card__content-mobile .card__text::after{
+        content:"\201D";
+        max-height:none !important;
+        -webkit-line-clamp:unset !important;
+      }
+    }
+
+    /* Card basis styling — breedte wordt door JS gezet */
+    .review-card{
+      flex:0 0 auto;
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:24px;
+      overflow:hidden;
+      display:flex;
+      flex-direction:row;
+      gap:0;
+      transition:all 0.4s ease;
+      opacity:1;
+      align-items:stretch;
+      height:100%;
+    }
+    .review-card.active{
+      opacity:1;
+      border-color:rgba(255,255,255,.25);
+    }
+    .review-card__image{
+      flex:0 0 48%;
+      width:48%;
+      overflow:hidden;
+      background:rgba(255,255,255,.03);
+      border-radius:var(--radius) 0 0 var(--radius);
+      flex-shrink:0;
+      display:flex;
+      align-items:stretch;
+    }
+    .review-card__image img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      object-position:center center;
+    }
+    .review-card__content{
+      flex:1;
+      padding:20px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+    }
+    .review-card__name{
+      font-size:20px;
+      font-weight:600;
+      margin:0 0 4px;
+      color:var(--text);
+    }
+    .review-card__age{
+      font-size:14px;
+      color:var(--muted);
+      margin:0 0 16px;
+    }
+    .review-card__quote{
+      margin-top:0;
+      padding-top:0;
+      font-size:14px;
+      line-height:1.6;
+      color:var(--text);
+      font-style:normal;
+    }
+    .review-card__quote::before{
+      content:"\201C";
+    }
+    .review-card__quote::after{
+      content:"\201D";
+    }
+    /* Desktop/tablet: verberg mobile header en content, gelijke hoogte kaarten */
+    @media(min-width:768px){
+      .review-card__header-mobile,
+      .review-card__content-mobile{
+        display:none !important;
+      }
+      .reviews-section .review-card{
+        height:100% !important;
+        min-height:0 !important;
+        max-height:none !important;
+        flex-direction:row !important;
+      }
+      .reviews-section .review-card__image{
+        height:auto !important;
+        aspect-ratio:auto !important;
+        flex:0 0 48% !important;
+        width:48% !important;
+      }
+      .reviews-section .review-card__content{
+        display:flex !important;
+        flex:1 !important;
+        padding:20px !important;
+        flex-direction:column !important;
+      }
+      .reviews-section .review-card__content-mobile{
+        display:none !important;
+      }
+      .reviews-section .reviews-carousel-track{
+        align-items:stretch !important;
+      }
+      .reviews-section .reviews-carousel-slides{
+        align-items:stretch !important;
+      }
+    }
+    /* Desktop: min-height voor strakke uitlijning */
+    @media(min-width:1024px){
+      .reviews-section .review-card{
+        min-height:220px;
+      }
+    }
+    /* Tablet: iets lager */
+    @media(min-width:768px) and (max-width:1023px){
+      .reviews-section .review-card{
+        min-height:200px;
+      }
+    }
+    .reviews-nav{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      border-radius:50%;
+      width:44px;
+      height:44px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      color:var(--text);
+      transition:all 0.3s ease;
+      z-index:10;
+    }
+    .reviews-nav:hover{
+      background:rgba(255,255,255,.1);
+      border-color:var(--accent);
+    }
+    .reviews-nav.prev{
+      left:0;
+    }
+    .reviews-nav.next{
+      right:0;
+    }
+    .reviews-nav:disabled{
+      opacity:0.3;
+      cursor:not-allowed;
+    }
+
+    /* =========================
+       TEST WIZARD
+    ========================== */
+    .test-section{
+      padding:80px 0;
+      background:var(--bg-main);
+    }
+    .test-wrapper{
+      max-width:700px;
+      margin:0 auto;
+    }
+    .test-intro-section .test-wrapper{
+      margin-top:48px;
+    }
+    .test-wizard{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:48px;
+    }
+    .test-progress{
+      margin-bottom:40px;
+    }
+    .test-progress-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:12px;
+    }
+    .test-progress-text{
+      font-size:14px;
+      color:var(--muted);
+    }
+    .test-progress-bar{
+      position:relative;
+      height:6px;
+      background:rgba(255,255,255,.18);
+      border-radius:999px;
+      overflow:hidden;
+    }
+    .test-progress-fill{
+      position:absolute;
+      top:0;
+      left:0;
+      height:100%;
+      background:var(--accent);
+      border-radius:999px;
+      transition:width 0.3s ease;
+      width:0%;
+    }
+    .test-step{
+      display:none;
+    }
+    .test-step.active{
+      display:block;
+    }
+    .test-step h3{
+      font-size:24px;
+      margin:0 0 32px;
+      color:var(--text);
+      line-height:1.4;
+    }
+    .test-options{
+      list-style:none;
+      padding:0;
+      margin:0 0 40px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .test-option{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:18px 20px;
+      cursor:pointer;
+      transition:all 0.2s ease;
+    }
+    .test-option:hover{
+      background:rgba(255,255,255,.06);
+      border-color:var(--accent);
+    }
+    .test-option input[type="checkbox"],
+    .test-option input[type="radio"]{
+      margin-right:12px;
+      cursor:pointer;
+    }
+    .test-option label{
+      cursor:pointer;
+      color:var(--text);
+      font-size:16px;
+      display:flex;
+      align-items:center;
+      margin:0;
+      font-weight:400;
+    }
+    .test-input-group{
+      margin-bottom:40px;
+    }
+    .test-input-group label{
+      display:block;
+      margin-bottom:12px;
+      color:var(--text);
+      font-weight:600;
+      font-size:16px;
+    }
+    .test-input-group input,
+    .test-input-group textarea{
+      width:100%;
+      padding:14px 18px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      border-radius:12px;
+      color:var(--text);
+      font-size:16px;
+      font-family:inherit;
+      transition:border-color .2s ease, background .2s ease;
+    }
+    .test-input-group textarea{
+      resize:vertical;
+      min-height:120px;
+    }
+    .test-input-group input:focus,
+    .test-input-group textarea:focus{
+      outline:none;
+      border-color:var(--accent);
+      background:rgba(255,255,255,.08);
+    }
+    .test-input-group input::placeholder,
+    .test-input-group textarea::placeholder{
+      color:rgba(255,255,255,.4);
+    }
+    .test-input-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+    @media(max-width:560px){
+      .test-input-row{
+        grid-template-columns:1fr;
+      }
+    }
+    .test-buttons{
+      display:flex;
+      gap:16px;
+      justify-content:space-between;
+    }
+    .test-btn{
+      padding:14px 28px;
+      border-radius:12px;
+      font-weight:700;
+      font-size:16px;
+      cursor:pointer;
+      transition:filter 0.2s ease;
+      border:none;
+      flex:1;
+    }
+    .test-btn-primary{
+      background:var(--accent);
+      color:#000;
+    }
+    .test-btn-primary:hover:not(:disabled){
+      filter:brightness(1.1);
+    }
+    .test-btn-primary{
+      pointer-events:auto !important;
+      cursor:pointer !important;
+    }
+    .test-btn-primary.disabled-visual{
+      opacity:0.5;
+      cursor:not-allowed;
+    }
+    .test-btn-primary:disabled{
+      opacity:0.5;
+      cursor:not-allowed;
+      pointer-events:auto !important; /* ALWAYS allow clicks, validation happens in function */
+    }
+    .test-btn-secondary{
+      background:rgba(255,255,255,.08);
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+    .test-btn-secondary:hover:not(:disabled){
+      background:rgba(255,255,255,.12);
+    }
+    .test-btn-secondary:disabled{
+      opacity:0;
+      pointer-events:none;
+    }
+    .test-success{
+      display:none;
+      text-align:center;
+      padding:48px 24px;
+    }
+    .test-success.active{
+      display:block;
+    }
+    .test-success h3{
+      font-size:28px;
+      margin:0 0 16px;
+      color:var(--text);
+    }
+    .test-success p{
+      font-size:18px;
+      color:var(--muted);
+      margin:0;
+      line-height:1.6;
+    }
+
+    @media(max-width:767px){
+      .reviews-carousel-wrapper{
+        padding:0 20px;
+      }
+      .reviews-nav{
+        display:none;
+      }
+      .review-card{
+        flex:0 0 calc(100% - 40px) !important;
+        flex-direction:column !important;
+        min-width:calc(100% - 40px);
+        max-width:calc(100% - 40px);
+        width:calc(100% - 40px);
+        border-radius:var(--radius);
+        flex-shrink:0;
+        scroll-snap-align:start;
+        overflow:hidden;
+        background:rgba(255,255,255,.04);
+        border:1px solid var(--line);
+        display:flex;
+        align-items:stretch;
+        margin:0 auto;
+        transform:none !important;
+      }
+      .review-card.active{
+        flex:0 0 calc(100% - 40px) !important;
+        transform:none !important;
+        height:auto !important;
+      }
+      .review-card__image{
+        width:100% !important;
+        height:auto !important;
+        aspect-ratio:4/3 !important;
+        overflow:hidden;
+        background:rgba(255,255,255,.03);
+        flex-shrink:0;
+        position:relative;
+        border-radius:0;
+      }
+      .review-card__image img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        object-position:center center;
+        display:block;
+      }
+      /* Verberg desktop content op mobiel */
+      .review-card__content{
+        display:none !important;
+      }
+      /* Toon mobile header en content */
+      .review-card__header-mobile{
+        display:block;
+        width:100%;
+        background:rgba(255,255,255,.04);
+        border-bottom:1px solid var(--line);
+        color:var(--text);
+        padding:12px 18px;
+        font-size:14px;
+        font-weight:600;
+        letter-spacing:0.5px;
+        border-radius:var(--radius) var(--radius) 0 0;
+        margin:0;
+        flex-shrink:0;
+      }
+      .review-card__content-mobile{
+        display:block;
+        padding:18px;
+        flex:1;
+        overflow:visible;
+        max-height:none !important;
+        -webkit-line-clamp:unset !important;
+      }
+      .review-card__content-mobile .card__title{
+        margin:0 0 6px;
+        font-size:inherit;
+        font-weight:600;
+        color:var(--text);
+        overflow:visible;
+        max-height:none !important;
+      }
+      .review-card__content-mobile .card__text{
+        margin:0;
+        color:var(--muted);
+        line-height:1.45;
+        font-size:inherit;
+        overflow:visible;
+        max-height:none !important;
+        -webkit-line-clamp:unset !important;
+      }
+    }
+    /* Desktop/tablet: verberg mobile header en content, gelijke hoogte */
+    @media(min-width:768px){
+      .review-card__header-mobile,
+      .review-card__content-mobile{
+        display:none !important;
+      }
+      .review-card{
+        height:100% !important;
+        max-height:none !important;
+      }
+      .review-card__image{
+        height:auto !important;
+        aspect-ratio:auto !important;
+      }
+      .review-card__content{
+        display:flex !important;
+      }
+      .review-card__content-mobile{
+        display:none !important;
+      }
+      .review-card__name{
+        font-size:20px;
+        font-weight:700;
+        color:var(--text);
+        margin:0 0 4px;
+      }
+      .review-card__age{
+        font-size:16px;
+        font-weight:400;
+        opacity:0.8;
+        margin:0 0 8px;
+      }
+      .review-card__quote{
+        font-size:14px;
+        line-height:1.5;
+        margin:7px 0 0 0;
+        color:var(--muted);
+        font-weight:400;
+      }
+    }
+
+    /* =========================
+       FAQ ACCORDION
+    ========================== */
+    .faq-section{
+      padding:80px 0;
+      background:#000000;
+    }
+    .faq-section h2{
+      font-size:28px;
+      text-align:center;
+      margin:0 0 48px;
+      color:var(--text);
+    }
+    .faq-list{
+      max-width:700px;
+      margin:0 auto;
+      list-style:none;
+      padding:0;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    .faq-item{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+    }
+    .faq-question{
+      padding:20px 24px;
+      cursor:pointer;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      color:var(--text);
+      font-size:16px;
+      font-weight:600;
+      transition:background 0.2s ease;
+    }
+    .faq-question:hover{
+      background:rgba(255,255,255,.06);
+    }
+    .faq-question::after{
+      content:"+";
+      font-size:24px;
+      color:var(--accent);
+      font-weight:300;
+      transition:transform 0.3s ease;
+    }
+    .faq-item.active .faq-question::after{
+      transform:rotate(45deg);
+    }
+    .faq-answer{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height 0.3s ease;
+    }
+    .faq-item.active .faq-answer{
+      max-height:500px;
+    }
+    .faq-answer-content{
+      padding:0 24px 20px;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.6;
+    }
+    .faq-question-text{
+      border-bottom:2px solid transparent;
+      transition:border-color 0.2s ease;
+    }
+    .faq-item.active .faq-question-text{
+      border-bottom-color:var(--accent);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media(max-width:900px){
+      .topbar__menu-toggle{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+      }
+      .topbar__nav,
+      .topbar__cta{
+        display:none;
+      }
+      .topbar__nav.mobile-open{
+        display:flex;
+        position:fixed;
+        top:77px;
+        left:0;
+        right:0;
+        background:#000;
+        flex-direction:column;
+        padding:24px;
+        gap:20px;
+        border-top:1px solid rgba(255,255,255,.08);
+        z-index:10000;
+        box-shadow:0 4px 12px rgba(0,0,0,.3);
+      }
+      .topbar__nav.mobile-open a{
+        font-size:16px;
+        padding:12px 0;
+        border-bottom:1px solid rgba(255,255,255,.08);
+      }
+      .topbar__nav.mobile-open a:last-child{
+        border-bottom:none;
+      }
+      .topbar__nav.mobile-open .topbar__nav-item{
+        width:100%;
+      }
+      .topbar__nav.mobile-open .topbar__submenu{
+        position:static;
+        opacity:1;
+        visibility:visible;
+        transform:none;
+        pointer-events:auto;
+        padding-top:0;
+        min-width:0;
+      }
+      .topbar__nav.mobile-open .topbar__submenu a{
+        background:transparent;
+        border:none;
+        border-bottom:1px solid rgba(255,255,255,.08);
+        border-radius:0;
+        box-shadow:none;
+        font-size:16px;
+        padding:10px 0 10px 16px;
+      }
+      .topbar__nav.mobile-open .mobile-nav-cta{
+        display:block !important;
+        background:var(--accent);
+        color:#000;
+        text-align:center;
+        font-weight:800;
+        font-size:15px;
+        padding:14px 20px;
+        border-radius:12px;
+        border-bottom:none;
+        margin-top:8px;
+        text-decoration:none;
+      }
+      .topbar__cta{
+        display:none !important;
+      }
+      .topbar__nav{
+        gap:20px;
+      }
+      .topbar__nav a{
+        font-size:14px;
+      }
+      .waarom-grid{
+        grid-template-columns:1fr;
+      }
+      .reviews-grid{
+        grid-template-columns:1fr;
+      }
+      .hero-buttons{
+        flex-direction:column;
+      }
+      .hero-btn{
+        width:100%;
+        text-align:center;
+      }
+      .form{
+        padding:32px;
+      }
+    }
+    @media(max-width:560px){
+      .topbar .container{
+        gap:16px;
+      }
+      .topbar__nav{
+        gap:12px;
+      }
+      .topbar__nav a{
+        font-size:13px;
+      }
+      .hero{
+        min-height:80vh;
+      }
+      .hero h1{
+        font-size:28px;
+      }
+      .hero p{
+        font-size:16px;
+      }
+      .test-intro-section,
+      .waarom-section,
+      .reviews-section,
+      .test-section,
+      .faq-section{
+        padding:60px 0;
+      }
+      .form{
+        padding:24px;
+      }
+    }
+    .form-privacy{
+      font-size:13px;
+      color:var(--muted);
+      margin-top:16px;
+      text-align:center;
+      line-height:1.5;
+    }
+    .form-privacy a{
+      color:var(--accent);
+      text-decoration:underline;
+    }
+    .form-privacy a:hover{
+      color:var(--text);
+    }
+
+    /* =========================
+       COOKIE BANNER
+    ========================== */
+    .cookie-banner{
+      position:fixed;
+      bottom:0;
+      left:0;
+      right:0;
+      background:var(--bg-warm);
+      border-top:1px solid var(--line);
+      padding:24px;
+      z-index:10000;
+      transform:translateY(100%);
+      transition:transform 0.3s ease;
+      box-shadow:0 -4px 12px rgba(0,0,0,.3);
+    }
+    .cookie-banner.show{
+      transform:translateY(0);
+    }
+    .cookie-banner-content{
+      max-width:1100px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      flex-wrap:wrap;
+    }
+    .cookie-banner-text{
+      flex:1;
+      min-width:250px;
+      font-size:14px;
+      color:var(--text);
+      line-height:1.5;
+    }
+    .cookie-banner-text a{
+      color:var(--accent);
+      text-decoration:underline;
+    }
+    .cookie-banner-buttons{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .cookie-btn{
+      padding:10px 20px;
+      border-radius:8px;
+      font-size:14px;
+      font-weight:600;
+      cursor:pointer;
+      border:none;
+      transition:filter 0.2s ease;
+    }
+    .cookie-btn-accept{
+      background:var(--accent);
+      color:#000;
+    }
+    .cookie-btn-accept:hover{
+      filter:brightness(1.1);
+    }
+    .cookie-btn-reject{
+      background:rgba(255,255,255,.08);
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+    .cookie-btn-reject:hover{
+      background:rgba(255,255,255,.12);
+    }
+    .cookie-btn-settings{
+      background:transparent;
+      color:var(--muted);
+      border:1px solid var(--line);
+    }
+    .cookie-btn-settings:hover{
+      color:var(--text);
+      border-color:var(--accent);
+    }
+    .cookie-settings{
+      max-width:1100px;
+      margin:0 auto;
+      padding-top:24px;
+      border-top:1px solid var(--line);
+      margin-top:24px;
+      display:none;
+    }
+    .cookie-settings.show{
+      display:block;
+    }
+    .cookie-setting-item{
+      margin-bottom:20px;
+    }
+    .cookie-setting-item label{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      font-size:14px;
+      color:var(--text);
+      cursor:pointer;
+    }
+    .cookie-setting-item input[type="checkbox"]{
+      width:20px;
+      height:20px;
+      cursor:pointer;
+    }
+    .cookie-setting-item p{
+      font-size:12px;
+      color:var(--muted);
+      margin:4px 0 0 0;
+    }
+
+        /* =========================
+       FOOTER
+    ========================== */
+    .footer{
+      padding:64px 0 32px;
+      background:var(--bg-warm);
+      border-top:1px solid var(--line);
+      margin-top:80px;
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:48px;
+      max-width:1200px;
+      margin:0 auto;
+    }
+    .footer-col{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    .footer-col h3{
+      font-size:16px;
+      font-weight:700;
+      color:var(--text);
+      margin:0 0 8px;
+      letter-spacing:0.02em;
+    }
+    .footer-col p{
+      font-size:14px;
+      color:var(--muted);
+      margin:0;
+      line-height:1.6;
+    }
+    .footer-col a{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:14px;
+      transition:color 0.2s ease;
+      display:inline-block;
+    }
+    .footer-col a:hover{
+      color:var(--accent);
+    }
+    .footer-email,
+    .footer-phone{
+      color:var(--text);
+      font-size:14px;
+    }
+    .footer-direct-mail{
+      display:inline-block;
+      margin-top:8px;
+      padding:10px 20px;
+      background:var(--accent);
+      color:#000;
+      text-decoration:none;
+      border-radius:8px;
+      font-size:14px;
+      font-weight:600;
+      transition:filter 0.2s ease;
+    }
+    .footer-direct-mail:hover{
+      filter:brightness(1.1);
+      color:#000;
+    }
+    .footer-hours{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .footer-hours-row{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.5;
+    }
+    .footer-hours-day{
+      min-width:80px;
+      flex-shrink:0;
+    }
+    .footer-hours-time{
+      text-align:right;
+      flex:1;
+    }
+    .footer-links{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .footer-social{
+      display:flex;
+      gap:12px;
+      margin-top:8px;
+    }
+    .footer-social a{
+      width:40px;
+      height:40px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(255,255,255,.08);
+      border:1px solid var(--line);
+      border-radius:8px;
+      transition:all 0.2s ease;
+      text-decoration:none;
+    }
+    .footer-social a:hover{
+      background:rgba(255,255,255,.12);
+      border-color:rgba(255,255,255,.2);
+      transform:translateY(-2px);
+    }
+    .footer-social svg{
+      width:20px;
+      height:20px;
+      fill:var(--text);
+    }
+    .footer-whatsapp{
+      margin-top:24px;
+      padding-top:24px;
+      border-top:1px solid var(--line);
+      text-align:center;
+    }
+    .footer-whatsapp-text{
+      font-size:14px;
+      color:var(--muted);
+      margin:0 0 12px;
+    }
+    .footer-whatsapp-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 24px;
+      background:rgba(255,255,255,.08);
+      border:1px solid var(--line);
+      border-radius:8px;
+      color:var(--text);
+      text-decoration:none;
+      font-size:14px;
+      font-weight:500;
+      transition:all 0.2s ease;
+    }
+    .footer-whatsapp-btn:hover{
+      background:rgba(255,255,255,.12);
+      border-color:var(--accent);
+      color:var(--accent);
+    }
+    .footer-whatsapp-btn svg{
+      width:20px;
+      height:20px;
+      fill:currentColor;
+    }
+    @media(max-width:900px){
+      .footer-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:32px;
+      }
+    }
+    @media(max-width:600px){
+      .footer{
+        padding:48px 0 24px;
+      }
+      .footer-grid{
+        grid-template-columns:1fr;
+        gap:32px;
+      }
+      .footer-hours-row{
+        font-size:12px;
+      }
+      .footer-hours-day{
+        min-width:70px;
+      }
+    }
+
+  </style>
+  <link rel="stylesheet" href="/assets/css/nav-dropdown.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar__logo">
+        <a href="/en/index.html"><img src="/assets/logo/HH logo.png" alt="Healthy Habits"></a>
+      </div>
+      <button class="topbar__menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="topbar__nav" id="topbarNav">
+        <div class="topbar__nav-item mobile-accordion">
+          <div class="mobile-accordion__row">
+            <a href="/en/aanbod.html" class="mobile-accordion__label" id="aanbodAccordionLabel">Our offer</a>
+            <button class="accordion-toggle" type="button" aria-expanded="false" aria-controls="aanbodAccordionPanel" aria-label="Show submenu for Our offer">
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+      </div>
+          <div class="topbar__submenu accordion-panel" id="aanbodAccordionPanel">
+            <a class="accordion-link" href="/milon.html">Milon</a>
+            <a class="accordion-link" href="/fitness.html">Fitness</a>
+            <a class="accordion-link" href="/yoga.html">Yoga</a>
+          </div>
+        </div>
+        <a href="/en/succesverhalen.html">Success stories</a>
+        <a href="/en/tarieven.html">Prices</a>
+        <a href="/en/lidmaatschapstest.html">Online membership test</a>
+        <a href="/en/over-ons.html">Our team</a>
+        <a href="/">NL</a>
+        <a href="/en/">EN</a>
+        <a href="/en/4-weken-proberen.html" class="mobile-nav-cta">Try 4 weeks</a>
+      </nav>
+      <div class="topbar__cta" id="topbarCta">
+        <a href="/4-weken-proberen.html">
+          <button>Try 4 weeks</button>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. HERO -->
+  <section class="hero section-black">
+    <img src="/assets/images/home/lidmaatschapstest.jpeg" alt="Healthy Habits atmosphere" width="1920" height="1080" decoding="async" loading="eager">
+    <div class="hero__overlay"></div>
+    <div class="container hero-content">
+      <h1>Discover which membership fits you best</h1>
+    </div>
+  </section>
+
+  <!-- 2. TEST INTRO + WIZARD -->
+  <section class="test-intro-section section-black" id="test">
+    <div class="container">
+      <p>We offer different memberships, with or without yoga and monthly or yearly options.<br>With 7 short questions in our online membership test, we help you discover what suits you best.</p>
+      
+      <!-- WIZARD -->
+      <div class="test-wrapper" style="margin-top:48px;">
+        <form id="online-lidmaatschap-form" class="test-wizard" action="https://hooks.zapier.com/hooks/catch/16872475/uqac534/">
+          <input type="hidden" name="page_name" value="online-lidmaatschapstest">
+          <input type="hidden" name="source" value="online-lidmaatschapstest">
+          <!-- Hidden inputs for answers -->
+          <input type="hidden" name="q1" id="q1" value="">
+          <input type="hidden" name="q2" id="q2" value="">
+          <input type="hidden" name="q3" id="q3" value="">
+          <input type="hidden" name="q4" id="q4" value="">
+          <input type="hidden" name="q5" id="q5" value="">
+          <input type="hidden" name="q6" id="q6" value="">
+          <input type="hidden" name="q7" id="q7" value="">
+          <!-- Progress bar -->
+          <div class="test-progress">
+            <div class="test-progress-header">
+              <span class="test-progress-text" id="progressText">Question 1 of 7</span>
+            </div>
+            <div class="test-progress-bar">
+              <div class="test-progress-fill" id="progressFill"></div>
+            </div>
+          </div>
+
+          <!-- Success message -->
+          <div class="test-success" id="testSuccess">
+            <h3>Thank you!</h3>
+            <p>We will contact you soon.</p>
+          </div>
+
+          <!-- Step 1: Doel -->
+          <div class="test-step active" data-step="1">
+            <h3>What is your main goal?</h3>
+            <ul class="test-options">
+              <li class="test-option">
+                <label>
+                  <input type="checkbox" name="doel" value="fitter">
+                  Get fitter
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="checkbox" name="doel" value="lose weight">
+                  Lose weight
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="checkbox" name="doel" value="stronger">
+                  Get stronger
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="checkbox" name="doel" value="minder-klachten">
+                  Fewer complaints / move better
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="checkbox" name="doel" value="gezond-ritme">
+                  Build a healthy routine
+                </label>
+              </li>
+            </ul>
+            <div class="test-buttons">
+              <button type="button" class="test-btn test-btn-secondary" onclick="prevStep()" disabled>Previous</button>
+              <button type="button" class="test-btn test-btn-primary" id="nextBtn1" onclick="nextStep()">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Frequentie -->
+          <div class="test-step" data-step="2">
+            <h3>How often would you like to train per week?</h3>
+            <ul class="test-options">
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="frequentie" value="1x">
+                  1x
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="frequentie" value="2x">
+                  2x
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="frequentie" value="3x">
+                  3x
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="frequentie" value="4x">
+                  4x or more
+                </label>
+              </li>
+            </ul>
+            <div class="test-buttons">
+              <button type="button" class="test-btn test-btn-secondary" onclick="prevStep()">Previous</button>
+              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Voorkeur -->
+          <div class="test-step" data-step="3">
+            <h3>What suits you best?</h3>
+            <ul class="test-options">
+              <li class="test-option">
+                <label>
+                  <input type="checkbox" name="voorkeur" value="rustig-begeleid">
+                  Calm and guided
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="checkbox" name="voorkeur" value="zelfstandig-plan">
+                  Independent with a plan
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="checkbox" name="voorkeur" value="groepslessen">
+                  Group classes
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="checkbox" name="voorkeur" value="combinatie">
+                  Combination
+                </label>
+              </li>
+            </ul>
+            <div class="test-buttons">
+              <button type="button" class="test-btn test-btn-secondary" onclick="prevStep()">Previous</button>
+              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Nieuwe vraag 1 -->
+          <div class="test-step" data-step="4">
+            <h3>Do you have training experience?</h3>
+            <ul class="test-options">
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="ervaring" value="beginner">
+                  I am just starting
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="ervaring" value="enigszins">
+                  I train occasionally
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="ervaring" value="ervaren">
+                  I train regularly
+                </label>
+              </li>
+            </ul>
+            <div class="test-buttons">
+              <button type="button" class="test-btn test-btn-secondary" onclick="prevStep()">Previous</button>
+              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 5: Nieuwe vraag 2 -->
+          <div class="test-step" data-step="5">
+            <h3>When do you prefer to train?</h3>
+            <ul class="test-options">
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="tijdstip" value="ochtend">
+                  Morning
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="tijdstip" value="middag">
+                  Afternoon
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="tijdstip" value="avond">
+                  Evening
+                </label>
+              </li>
+              <li class="test-option">
+                <label>
+                  <input type="radio" name="tijdstip" value="maakt-niet-uit">
+                  No preference
+                </label>
+              </li>
+            </ul>
+            <div class="test-buttons">
+              <button type="button" class="test-btn test-btn-secondary" onclick="prevStep()">Previous</button>
+              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 6: Name -->
+          <div class="test-step" data-step="6">
+            <h3>What is your name?</h3>
+            <div class="test-input-group">
+              <input type="text" name="naam" placeholder="Your full name" required>
+            </div>
+            <div class="test-buttons">
+              <button type="button" class="test-btn test-btn-secondary" onclick="prevStep()">Previous</button>
+              <button type="button" class="test-btn test-btn-primary" onclick="nextStep()">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 7: Contact -->
+          <div class="test-step" data-step="7">
+            <h3>What are your email and phone number?</h3>
+            <div class="test-input-row">
+              <div class="test-input-group">
+                <label>E-mail *</label>
+                <input type="email" name="email" placeholder="you@example.com" required>
+              </div>
+              <div class="test-input-group">
+                <label>Phone *</label>
+                <input 
+                  type="tel"
+                  name="telefoon"
+                  placeholder="Phone number"
+                  required
+                  pattern="^(06[0-9]{8}|\\+[1-9][0-9]{7,14})$"
+                  title="Enter a valid phone number (NL: 06xxxxxxxx or international: +31612345678)">
+              </div>
+            </div>
+            <!-- Honeypot -->
+            <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+            <div class="test-buttons">
+              <button type="button" class="test-btn test-btn-secondary" onclick="prevStep()">Previous</button>
+              <button type="submit" class="test-btn test-btn-primary">Send</button>
+            </div>
+            <p class="form-privacy" style="margin-top:16px;">By submitting this form, you agree to our <a href="/en/privacy.html">privacy policy</a>.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 3. WAAROM DEZE LIDMAATSCHAPSTEST -->
+  <section class="waarom-section">
+    <div class="container">
+      <h2>Why this online membership test?</h2>
+      <div class="waarom-grid">
+        <div class="waarom-item">
+          <div class="waarom-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+            </svg>
+          </div>
+          <div class="waarom-content">
+            <h3>Free</h3>
+            <p>Er zijn geen kosten voor het invullen van de online-lidmaatschapstest.</p>
+          </div>
+        </div>
+        <div class="waarom-item">
+          <div class="waarom-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+              <rect x="7" y="14" width="3" height="4" fill="currentColor"/>
+              <rect x="11" y="11" width="3" height="7" fill="currentColor"/>
+              <rect x="15" y="7" width="3" height="11" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="waarom-content">
+            <h3>Insight into your personal situation</h3>
+            <p>Your answers help us determine the program that fits you best.</p>
+          </div>
+        </div>
+        <div class="waarom-item">
+          <div class="waarom-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="12" cy="12" r="10" fill="currentColor"/>
+              <path d="M12 6v6l4 2" stroke="#000" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="waarom-content">
+            <h3>Quick contact</h3>
+            <p>We will contact you quickly for an introduction and personal advice.</p>
+          </div>
+        </div>
+        <div class="waarom-item">
+          <div class="waarom-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <rect x="4" y="11" width="16" height="9" rx="1.5" fill="currentColor"/>
+              <path d="M12 3L2 12h3v-1h14v1h3L12 3z" fill="currentColor"/>
+              <rect x="10" y="16" width="4" height="4" rx="0.5" fill="rgba(0,0,0,0.3)"/>
+            </svg>
+          </div>
+          <div class="waarom-content">
+            <h3>The first step toward a healthier lifestyle</h3>
+            <p>Many people need help getting started. This is the ideal way to begin step by step and keep going.</p>
+          </div>
+        </div>
+      </div>
+      <div class="waarom-cta">
+        <a href="#test" class="hero-btn hero-btn-primary">TO THE ONLINE MEMBERSHIP TEST</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. WHAT OUR MEMBERS SAY -->
+  <section class="reviews-section experience-section hh-testimonials">
+    <div class="container">
+      <div class="reviews-header">
+        <h2>What our members say</h2>
+        <p>Real stories from people achieving their goals</p>
+      </div>
+      <div class="reviews-carousel-wrapper">
+        <button class="reviews-nav prev" id="prevReview" aria-label="Previous review">‹</button>
+        <div class="reviews-carousel-track" id="reviewsTrack">
+          <div class="reviews-carousel-slides" id="reviewsSlides">
+            <article class="review-card active exp-card" data-name="Madelon" data-age="52" data-goal="–10 kg" data-result="I wanted to be as fit as possible for my son's wedding, and I achieved exactly that!">
+              <div class="review-card__header-mobile card__header">Madelon, 52</div>
+              <div class="review-card__image exp-media hh-testi-media card__media">
+                <img class="hh-testi-img" src="/assets/images/Success stories-pagina/madelon.jpeg" alt="Madelon" loading="lazy" decoding="async">
+              </div>
+              <div class="review-card__content exp-body">
+                <h3 class="review-card__name">Madelon</h3>
+                <p class="review-card__age">52 years</p>
+                <p class="review-card__quote">I wanted to be as fit as possible for my son's wedding, and I achieved exactly that!</p>
+              </div>
+              <div class="review-card__content-mobile card__body">
+                <h3 class="card__title">Goal: –10 kg</h3>
+                <p class="card__text">I wanted to be as fit as possible for my son's wedding, and I achieved exactly that!</p>
+            </div>
+            </article>
+
+            <article class="review-card exp-card" data-name="Ronald" data-age="54" data-goal="Fitter and healthier" data-result="What a great and welcoming place. Training without being surrounded by bodybuilders is wonderful.">
+              <div class="review-card__header-mobile card__header">Ronald, 54</div>
+              <div class="review-card__image exp-media hh-testi-media card__media">
+                <img class="hh-testi-img" src="/assets/images/Success stories-pagina/Ronald.jpeg" alt="Ronald" loading="lazy" decoding="async">
+              </div>
+              <div class="review-card__content exp-body">
+                <h3 class="review-card__name">Ronald</h3>
+                <p class="review-card__age">54 years</p>
+                <p class="review-card__quote">What a great and welcoming place. Training without being surrounded by bodybuilders is wonderful.</p>
+              </div>
+              <div class="review-card__content-mobile card__body">
+                <h3 class="card__title">Goal: Fitter and healthier</h3>
+                <p class="card__text">What a great and welcoming place. Training without being surrounded by bodybuilders is wonderful.</p>
+            </div>
+            </article>
+
+            <article class="review-card exp-card" data-name="Ingrid" data-age="47" data-goal="–20 kg" data-result="The combination of nutrition and training truly gave me a new life. Really, wow! Compliments to this gym!">
+              <div class="review-card__header-mobile card__header">Ingrid, 47</div>
+              <div class="review-card__image exp-media hh-testi-media card__media">
+                <img class="hh-testi-img" src="/assets/images/Success stories-pagina/Ingrid.jpeg" alt="Ingrid" loading="lazy" decoding="async">
+              </div>
+              <div class="review-card__content exp-body">
+                <h3 class="review-card__name">Ingrid</h3>
+                <p class="review-card__age">47 years</p>
+                <p class="review-card__quote">The combination of nutrition and training truly gave me a new life. Really, wow! Compliments to this gym!</p>
+              </div>
+              <div class="review-card__content-mobile card__body">
+                <h3 class="card__title">Goal: –20 kg</h3>
+                <p class="card__text">The combination of nutrition and training truly gave me a new life. Really, wow! Compliments to this gym!</p>
+              </div>
+            </article>
+
+            <article class="review-card exp-card" data-name="Esther" data-age="38" data-goal="Geen schouderklachten meer" data-result="I struggled with a frozen shoulder for a long time. Through Joris' progressive exercises, I regained mobility and strength, and I am pain-free again!">
+              <div class="review-card__header-mobile card__header">Esther, 38</div>
+              <div class="review-card__image exp-media hh-testi-media card__media">
+                <img class="hh-testi-img" src="/assets/images/Success stories-pagina/Esther.jpeg" alt="Esther" loading="lazy" decoding="async">
+              </div>
+              <div class="review-card__content exp-body">
+                <h3 class="review-card__name">Esther</h3>
+                <p class="review-card__age">38 years</p>
+                <p class="review-card__quote">I struggled with a frozen shoulder for a long time. Through Joris' progressive exercises, I regained mobility and strength, and I am pain-free again!</p>
+              </div>
+              <div class="review-card__content-mobile card__body">
+                <h3 class="card__title">Goal: Geen schouderklachten meer</h3>
+                <p class="card__text">I struggled with a frozen shoulder for a long time. Through Joris' progressive exercises, I regained mobility and strength, and I am pain-free again!</p>
+            </div>
+            </article>
+
+            <article class="review-card exp-card" data-name="Harry" data-age="52" data-goal="–7,3 kg in 2 maanden" data-result="I wanted to lose as much weight as possible as quickly as possible, and I succeeded thanks to the great Healthy Habits team.">
+              <div class="review-card__header-mobile card__header">Harry, 52</div>
+              <div class="review-card__image exp-media hh-testi-media card__media">
+                <img class="hh-testi-img" src="/assets/images/Success stories-pagina/Harry.jpeg" alt="Harry" loading="lazy" decoding="async">
+              </div>
+              <div class="review-card__content exp-body">
+                <h3 class="review-card__name">Harry</h3>
+                <p class="review-card__age">52 years</p>
+                <p class="review-card__quote">I wanted to lose as much weight as possible as quickly as possible, and I succeeded thanks to the great Healthy Habits team.</p>
+              </div>
+              <div class="review-card__content-mobile card__body">
+                <h3 class="card__title">Goal: –7,3 kg in 2 maanden</h3>
+                <p class="card__text">I wanted to lose as much weight as possible as quickly as possible, and I succeeded thanks to the great Healthy Habits team.</p>
+            </div>
+            </article>
+
+            <article class="review-card exp-card" data-name="Laura" data-age="36" data-goal="Enjoyable training" data-result="Slowly, but in a pleasant and fun way, I have already lost 6.4 kg. Very happy!">
+              <div class="review-card__header-mobile card__header">Laura, 36</div>
+              <div class="review-card__image exp-media hh-testi-media card__media">
+                <img class="hh-testi-img" src="/assets/images/Success stories-pagina/Laura.jpeg" alt="Laura" loading="lazy" decoding="async">
+              </div>
+              <div class="review-card__content exp-body">
+                <h3 class="review-card__name">Laura</h3>
+                <p class="review-card__age">36 years</p>
+                <p class="review-card__quote">Slowly, but in a pleasant and fun way, I have already lost 6.4 kg. Very happy!</p>
+              </div>
+              <div class="review-card__content-mobile card__body">
+                <h3 class="card__title">Goal: Enjoyable training</h3>
+                <p class="card__text">Slowly, but in a pleasant and fun way, I have already lost 6.4 kg. Very happy!</p>
+            </div>
+            </article>
+          </div>
+        </div>
+        <button class="reviews-nav next" id="nextReview" aria-label="Next review">›</button>
+        <div class="reviews-carousel-nav">
+          <button class="reviews-carousel-btn" id="reviewsPrev" aria-label="Previous">‹</button>
+          <button class="reviews-carousel-btn" id="reviewsNext" aria-label="Next">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <h2>FAQ</h2>
+      <ul class="faq-list">
+        <li class="faq-item">
+          <div class="faq-question">
+            <span class="faq-question-text">Is de online-lidmaatschapstest gratis?</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Yes, the test is completely free and without obligation. There are no costs involved.
+            </div>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            <span class="faq-question-text">Am I committed to anything?</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              No, filling in the test is fully without obligation. You are not committed to anything and there are no obligations.
+            </div>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            <span class="faq-question-text">What happens after the test?</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              We contact you within 1 business day to briefly discuss your situation and give you personal advice based on your answers.
+            </div>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            <span class="faq-question-text">Who is Healthy Habits suitable for?</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Healthy Habits is suitable for anyone who wants to get fitter, lose weight, get stronger or simply adopt a healthier lifestyle. We offer personal guidance and a warm, calm environment.
+            </div>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            <span class="faq-question-text">Can I try first?</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Yes, you can try 4 weeks at Healthy Habits. It is a perfect way to discover if it suits you without committing right away.
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+    <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>Contact</h3>
+          <p class="footer-email">info@healthy-habits.nl</p>
+          <p class="footer-phone">(040) 843 01 37</p>
+          <a href="mailto:info@healthy-habits.nl?subject=Question via website" class="footer-direct-mail">Email us directly &gt;</a>
+        </div>
+        <div class="footer-col">
+          <h3>Address</h3>
+          <p>Willemstraat 22</p>
+          <p>5611HD Eindhoven</p>
+        </div>
+        <div class="footer-col">
+          <h3>Opening hours</h3>
+          <div class="footer-hours">
+            <div class="footer-hours-row">
+              <span class="footer-hours-day">Monday</span>
+              <span class="footer-hours-time">8:30 – 12:30 / 16:00 – 21:00</span>
+            </div>
+            <div class="footer-hours-row">
+              <span class="footer-hours-day">Tuesday</span>
+              <span class="footer-hours-time">7:00 – 12:30 / 16:00 – 21:00</span>
+            </div>
+            <div class="footer-hours-row">
+              <span class="footer-hours-day">Wednesday</span>
+              <span class="footer-hours-time">8:30 – 12:30 / 16:00 – 21:00</span>
+            </div>
+            <div class="footer-hours-row">
+              <span class="footer-hours-day">Thursday</span>
+              <span class="footer-hours-time">7:00 – 12:30 / 16:00 – 21:00</span>
+            </div>
+            <div class="footer-hours-row">
+              <span class="footer-hours-day">Friday</span>
+              <span class="footer-hours-time">8:30 – 12:30 / 16:00 – 20:00</span>
+            </div>
+            <div class="footer-hours-row">
+              <span class="footer-hours-day">Sat / Sun</span>
+              <span class="footer-hours-time">8:30 – 13:00</span>
+            </div>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>About</h3>
+          <div class="footer-links">
+            <a href="/#">Terms and conditions</a>
+            <a href="/en/privacy.html">Privacy policy</a>
+            <a href="/#" id="cookieSettingsFooter">Cookies</a>
+          </div>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/HealthyHabitsEindhoven" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/healthy_habits_eindhoven/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-whatsapp">
+        <p class="footer-whatsapp-text">Quick question?</p>
+        <a href="https://wa.me/31408430137" target="_blank" rel="noopener noreferrer" class="footer-whatsapp-btn">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Happy to help
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- COOKIE BANNER -->
+  <div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-banner-content">
+      <div class="cookie-banner-text">
+        <p>This website uses cookies. Functional cookies are necessary for the website to function. Marketing cookies (for videos) are only placed with your consent. <a href="/en/privacy.html">More information</a></p>
+      </div>
+      <div class="cookie-banner-buttons">
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accept</button>
+        <button class="cookie-btn cookie-btn-reject" id="cookieReject">Reject</button>
+        <button class="cookie-btn cookie-btn-settings" id="cookieSettings">Settings</button>
+      </div>
+      <div class="cookie-settings" id="cookieSettingsPanel">
+        <div class="cookie-setting-item">
+          <label>
+            <span>
+              <strong>Functional cookies</strong>
+              <p>Necessary for the website to function. These cannot be disabled.</p>
+            </span>
+            <input type="checkbox" checked disabled>
+          </label>
+        </div>
+        <div class="cookie-setting-item">
+          <label>
+            <span>
+              <strong>Marketing cookies</strong>
+              <p>For embedded videos (YouTube/Vimeo). These are only placed with your consent.</p>
+            </span>
+            <input type="checkbox" id="cookieMarketing">
+          </label>
+        </div>
+        <div class="cookie-banner-buttons" style="margin-top:16px;">
+          <button class="cookie-btn cookie-btn-accept" id="cookieSave">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    // Wizard state
+    let currentStep = 1;
+    const totalSteps = 7;
+    
+    // Store answers as user progresses
+    const answers = {};
+
+    // Update progress
+    function updateProgress(){
+      const progress = (currentStep / totalSteps) * 100;
+      document.getElementById('progressFill').style.width = progress + '%';
+      document.getElementById('progressText').textContent = `Vraag ${currentStep} van ${totalSteps}`;
+    }
+
+    // Validate current step
+    function validateStep(step){
+      const stepEl = document.querySelector(`.test-step[data-step="${step}"]`);
+      
+      if(step === 1){
+        // Minimaal 1 doel geselecteerd
+        const checked = stepEl.querySelectorAll('input[name="doel"]:checked');
+        return checked.length > 0;
+      } else if(step === 2){
+        // Radio button geselecteerd
+        return stepEl.querySelector('input[name="frequentie"]:checked') !== null;
+      } else if(step === 3){
+        // Minimaal 1 voorkeur geselecteerd
+        const checked = stepEl.querySelectorAll('input[name="voorkeur"]:checked');
+        return checked.length > 0;
+      } else if(step === 4){
+        // Radio button ervaring geselecteerd
+        return stepEl.querySelector('input[name="ervaring"]:checked') !== null;
+      } else if(step === 5){
+        // Radio button tijdstip geselecteerd
+        return stepEl.querySelector('input[name="tijdstip"]:checked') !== null;
+      } else if(step === 6){
+        // Name niet leeg
+        const input = stepEl.querySelector('input[name="naam"]');
+        return input && input.value.trim().length > 0;
+      } else if(step === 7){
+        // E-mail en telefoon valide
+        const email = stepEl.querySelector('input[name="email"]');
+        const telefoon = stepEl.querySelector('input[name="telefoon"]');
+        const emailValid = email && email.value.trim().length > 0 && email.validity.valid;
+        const telefoonValid = telefoon && telefoon.value.trim().length > 0 && telefoon.validity.valid;
+        return emailValid && telefoonValid;
+      }
+      return false;
+    }
+
+    // Update button states - BUTTON IS ALWAYS CLICKABLE, validation in function
+    function updateButtons(){
+      const stepEl = document.querySelector(`.test-step[data-step="${currentStep}"]`);
+      if(!stepEl) {
+        console.log("updateButtons: stepEl not found for step", currentStep);
+        return;
+      }
+      
+      const prevBtn = stepEl.querySelector('.test-btn-secondary');
+      const nextBtn = stepEl.querySelector('.test-btn-primary');
+      
+      if(!prevBtn || !nextBtn) {
+        console.log("updateButtons: buttons not found");
+        return;
+      }
+      
+      // Previous button
+      if(currentStep === 1){
+        prevBtn.disabled = true;
+      } else {
+        prevBtn.disabled = false;
+      }
+      
+      // Next button - ALWAYS CLICKABLE, just change visual style
+      const isValid = validateStep(currentStep);
+      console.log("updateButtons: step", currentStep, "isValid:", isValid);
+      
+      // Remove disabled attribute completely - button is always clickable
+      nextBtn.removeAttribute('disabled');
+      nextBtn.style.pointerEvents = 'auto';
+      nextBtn.style.cursor = 'pointer';
+      
+      if(isValid){
+        nextBtn.style.opacity = '1';
+        nextBtn.classList.remove('disabled-visual');
+        console.log("Next button VISUALLY ENABLED");
+      } else {
+        nextBtn.style.opacity = '0.5';
+        nextBtn.classList.add('disabled-visual');
+        console.log("Next button VISUALLY DISABLED (but still clickable)");
+      }
+    }
+
+    // Save current step answers
+    function saveStepAnswers(step){
+      const stepEl = document.querySelector(`.test-step[data-step="${step}"]`);
+      if(!stepEl) return;
+      
+      if(step === 1){
+        // Checkboxes: doel
+        const checked = Array.from(stepEl.querySelectorAll('input[name="doel"]:checked')).map(cb => cb.value);
+        answers.vraag1_doel = checked;
+      } else if(step === 2){
+        // Radio: frequentie
+        const selected = stepEl.querySelector('input[name="frequentie"]:checked');
+        answers.vraag2_frequentie = selected ? selected.value : null;
+      } else if(step === 3){
+        // Checkboxes: voorkeur
+        const checked = Array.from(stepEl.querySelectorAll('input[name="voorkeur"]:checked')).map(cb => cb.value);
+        answers.vraag3_voorkeur = checked;
+      } else if(step === 4){
+        // Radio: ervaring
+        const selected = stepEl.querySelector('input[name="ervaring"]:checked');
+        answers.vraag4_ervaring = selected ? selected.value : null;
+      } else if(step === 5){
+        // Radio: tijdstip
+        const selected = stepEl.querySelector('input[name="tijdstip"]:checked');
+        answers.vraag5_tijdstip = selected ? selected.value : null;
+      } else if(step === 6){
+        // Text: naam
+        const input = stepEl.querySelector('input[name="naam"]');
+        answers.vraag6_naam = input ? input.value.trim() : '';
+      } else if(step === 7){
+        // Email and telefoon
+        const email = stepEl.querySelector('input[name="email"]');
+        const telefoon = stepEl.querySelector('input[name="telefoon"]');
+        answers.vraag7_email = email ? email.value.trim() : '';
+        answers.vraag7_telefoon = telefoon ? telefoon.value.trim() : '';
+      }
+    }
+
+    // Next step (global function)
+    window.nextStep = function(){
+      console.log("NEXT CLICK - Step:", currentStep);
+      
+      // Validate - show warning if invalid, but don't block
+      if(!validateStep(currentStep)){
+        console.log("Validation failed - staying on step");
+        alert('Select an option before continuing.');
+        return;
+      }
+      
+      // Save current step answers to hidden inputs before moving forward
+      saveStepAnswers(currentStep);
+      
+      // Move to next step immediately (no waiting)
+      if(currentStep < totalSteps){
+        document.querySelector(`.test-step[data-step="${currentStep}"]`).classList.remove('active');
+        currentStep++;
+        document.querySelector(`.test-step[data-step="${currentStep}"]`).classList.add('active');
+        updateProgress();
+        updateButtons();
+        
+        // Focus first input if available
+        const firstInput = document.querySelector(`.test-step[data-step="${currentStep}"] input, .test-step[data-step="${currentStep}"] textarea`);
+        if(firstInput){
+          setTimeout(() => firstInput.focus(), 100);
+        }
+      }
+    }
+
+    // Previous step (global function)
+    window.prevStep = function(){
+      if(currentStep > 1){
+        document.querySelector(`.test-step[data-step="${currentStep}"]`).classList.remove('active');
+        currentStep--;
+        document.querySelector(`.test-step[data-step="${currentStep}"]`).classList.add('active');
+        updateProgress();
+        updateButtons();
+      }
+    }
+
+    // Save final step answers before submit (called by new submit handler)
+    function prepareFormSubmit(){
+      // Only allow submit on last step
+      if(currentStep !== totalSteps){
+        return false;
+      }
+      
+      // Validate last step
+      if(!validateStep(totalSteps)){
+        alert('Vul alle velden correct in.');
+        return false;
+      }
+
+      // Honeypot check
+      const honeypot = document.querySelector('input[name="website"]').value;
+      if(honeypot){
+        return false; // Bot detected
+      }
+      
+      // Save final step answers to hidden inputs
+      saveStepAnswers(totalSteps);
+      return true;
+    }
+
+    // Add event listeners for validation - USE EVENT DELEGATION (always works)
+    (function(){
+      const form = document.querySelector('form.test-wizard');
+      if(!form) return;
+      
+      // Event delegation on form - catches ALL input changes
+      form.addEventListener('change', function(e){
+        if(e.target.matches('.test-option input, .test-input-group input, .test-input-group textarea')){
+          console.log("Input changed via delegation:", e.target.name, e.target.value, e.target.checked);
+          // Update buttons IMMEDIATELY
+          setTimeout(() => updateButtons(), 0);
+        }
+      });
+      
+      // Also on input event for text fields
+      form.addEventListener('input', function(e){
+        if(e.target.matches('.test-input-group input, .test-input-group textarea')){
+          console.log("Input typed via delegation:", e.target.name, e.target.value);
+          updateButtons();
+        }
+      });
+      
+      // Click on option boxes
+      form.addEventListener('click', function(e){
+        if(e.target.closest('.test-option')){
+          // Update after a tiny delay to let checkbox state update
+          setTimeout(() => {
+          updateButtons();
+          }, 50);
+        }
+      });
+
+      // Initialize
+      updateProgress();
+      updateButtons();
+      
+      // Also update buttons periodically as fallback (every 500ms)
+      setInterval(() => {
+        updateButtons();
+      }, 500);
+    })();
+
+    // FAQ accordion
+    (function(){
+      const faqItems = document.querySelectorAll('.faq-item');
+      
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', function(){
+          const isActive = item.classList.contains('active');
+          
+          // Close all items
+          faqItems.forEach(i => i.classList.remove('active'));
+          
+          // Open clicked item if it wasn't active
+          if(!isActive){
+            item.classList.add('active');
+          }
+        });
+      });
+    })();
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href="#test"]').forEach(link => {
+      link.addEventListener('click', function(e){
+        e.preventDefault();
+        document.getElementById('test').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Set underline width equal to text width
+    function setUnderlineWidths(){
+      const h2Wrappers = document.querySelectorAll('.h2-wrapper');
+      h2Wrappers.forEach(function(wrapper){
+        const underlineWrapper = wrapper.querySelector('.title-underline-wrapper');
+        if(underlineWrapper){
+          const textWidth = wrapper.offsetWidth;
+          underlineWrapper.style.width = textWidth + 'px';
+        }
+      });
+    }
+
+    // Set width on load and resize
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', setUnderlineWidths);
+    } else {
+      setUnderlineWidths();
+    }
+    window.addEventListener('resize', setUnderlineWidths);
+
+    // Reviews Carousel - responsive: 3 cards desktop, 2 tablet, 1 mobiel
+    (function(){
+      const slidesContainer = document.getElementById('reviewsSlides');
+      const trackContainer = document.getElementById('reviewsTrack');
+      const prevBtn = document.getElementById('prevReview');
+      const nextBtn = document.getElementById('nextReview');
+      const mobilePrevBtn = document.getElementById('reviewsPrev');
+      const mobileNextBtn = document.getElementById('reviewsNext');
+      
+      if(!slidesContainer) return;
+      
+      // Responsive breakpoints
+      const isMobile = () => window.innerWidth < 768;
+      const getVisibleCards = () => window.innerWidth >= 1024 ? 3 : 2; // tablet=2, desktop=3
+      
+      // Mobile: scroll-snap, 1 card zichtbaar
+      if(trackContainer && isMobile()){
+        const cards = Array.from(slidesContainer.querySelectorAll('.review-card'));
+        
+        function scrollToNext(){
+          if(cards.length === 0) return;
+          const cardWidth = cards[0].offsetWidth;
+          const gap = 16;
+          trackContainer.scrollBy({ left: cardWidth + gap, behavior: 'smooth' });
+        }
+        function scrollToPrev(){
+          if(cards.length === 0) return;
+          const cardWidth = cards[0].offsetWidth;
+          const gap = 16;
+          trackContainer.scrollBy({ left: -(cardWidth + gap), behavior: 'smooth' });
+        }
+        
+        if(mobileNextBtn) mobileNextBtn.addEventListener('click', scrollToNext);
+        if(mobilePrevBtn) mobilePrevBtn.addEventListener('click', scrollToPrev);
+        if(prevBtn) prevBtn.style.display = 'none';
+        if(nextBtn) nextBtn.style.display = 'none';
+        return;
+      }
+      
+      // Desktop / Tablet: translateX carousel
+      const originalCards = Array.from(slidesContainer.children);
+      if(originalCards.length === 0) return;
+
+      // Clone voor oneindige loop
+      const cardsToCloneAtStart = originalCards.slice(-3);
+      const cardsToCloneAtEnd = originalCards.slice(0, 3);
+      
+      cardsToCloneAtStart.forEach(card => {
+        const clone = card.cloneNode(true);
+        clone.classList.remove('active');
+        slidesContainer.insertBefore(clone, originalCards[0]);
+      });
+      cardsToCloneAtEnd.forEach(card => {
+        const clone = card.cloneNode(true);
+        clone.classList.remove('active');
+        slidesContainer.appendChild(clone);
+      });
+
+      const allCards = Array.from(slidesContainer.children);
+      const offset = cardsToCloneAtStart.length;
+      let currentIndex = offset;
+      let isTransitioning = false;
+
+      function sizeCards(){
+        const viewportWidth = trackContainer.offsetWidth;
+        const visible = getVisibleCards();
+        const gap = 24;
+        const cardWidth = (viewportWidth - (visible - 1) * gap) / visible;
+        allCards.forEach(card => {
+          card.style.flex = '0 0 ' + cardWidth + 'px';
+          card.style.maxWidth = cardWidth + 'px';
+          card.style.minWidth = cardWidth + 'px';
+        });
+        return cardWidth;
+      }
+
+      function updateCarousel(disableTransition){
+        if(disableTransition){
+          slidesContainer.style.transition = 'none';
+        } else {
+          slidesContainer.style.transition = 'transform 0.6s ease';
+        }
+
+        allCards.forEach((card, i) => {
+          card.classList.toggle('active', i === currentIndex);
+        });
+
+        const cardWidth = sizeCards();
+        const gap = 24;
+        // Schuif zodat currentIndex de eerste zichtbare kaart is
+        const translateX = currentIndex * (cardWidth + gap);
+        slidesContainer.style.transform = 'translateX(-' + translateX + 'px)';
+      }
+
+      function resetToOriginalCards(newIndex, withoutAnimation){
+        if(withoutAnimation) slidesContainer.style.transition = 'none';
+        currentIndex = offset + newIndex;
+        updateCarousel(withoutAnimation);
+        if(withoutAnimation){
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              slidesContainer.style.transition = 'transform 0.6s ease';
+            });
+          });
+        }
+      }
+
+      function nextSlide(){
+        if(isTransitioning) return;
+        isTransitioning = true;
+        currentIndex++;
+        updateCarousel();
+        setTimeout(() => {
+          if(currentIndex >= offset + originalCards.length){
+            resetToOriginalCards((currentIndex - offset) % originalCards.length, true);
+          }
+          isTransitioning = false;
+        }, 650);
+      }
+
+      function prevSlide(){
+        if(isTransitioning) return;
+        isTransitioning = true;
+        currentIndex--;
+        updateCarousel();
+        setTimeout(() => {
+          if(currentIndex < offset){
+            const idx = (currentIndex - offset + originalCards.length) % originalCards.length;
+            resetToOriginalCards(idx, true);
+          }
+          isTransitioning = false;
+        }, 650);
+      }
+
+      if(prevBtn) prevBtn.addEventListener('click', prevSlide);
+      if(nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+      // Initialize
+      setTimeout(() => {
+      updateCarousel(true);
+        setTimeout(() => {
+          updateCarousel();
+        }, 50);
+      }, 100);
+      
+      // Update on resize
+      let resizeTimer;
+      window.addEventListener('resize', function(){
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          updateCarousel(true);
+          isTransitioning = false;
+        }, 250);
+      });
+    })();
+  </script>
+
+  <script>
+    // Mobile menu toggle
+    (function(){
+      const menuToggle = document.getElementById('menuToggle');
+      const topbarNav = document.getElementById('topbarNav');
+      const topbarCta = document.getElementById('topbarCta');
+      
+      if(menuToggle && topbarNav){
+        menuToggle.addEventListener('click', function(){
+          const isOpen = menuToggle.classList.contains('active');
+          
+          if(isOpen){
+            menuToggle.classList.remove('active');
+            topbarNav.classList.remove('mobile-open');
+            topbarCta.classList.remove('mobile-open');
+            document.body.style.overflow = '';
+          } else {
+            menuToggle.classList.add('active');
+            topbarNav.classList.add('mobile-open');
+            topbarCta.classList.add('mobile-open');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+        
+        // Sluit menu bij klik op link
+        const navLinks = topbarNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+          link.addEventListener('click', function(){
+            menuToggle.classList.remove('active');
+            topbarNav.classList.remove('mobile-open');
+            topbarCta.classList.remove('mobile-open');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+    })();
+
+    // Cookie banner
+    (function(){
+      const cookieBanner = document.getElementById('cookieBanner');
+      const cookieAccept = document.getElementById('cookieAccept');
+      const cookieReject = document.getElementById('cookieReject');
+      const cookieSettings = document.getElementById('cookieSettings');
+      const cookieSettingsPanel = document.getElementById('cookieSettingsPanel');
+      const cookieMarketing = document.getElementById('cookieMarketing');
+      const cookieSave = document.getElementById('cookieSave');
+
+      if(!cookieBanner) return;
+
+      // Check if user has already made a choice
+      const cookieConsent = localStorage.getItem('cookieConsent');
+      if(!cookieConsent){
+        // Show banner after a short delay
+        setTimeout(() => {
+          cookieBanner.classList.add('show');
+        }, 1000);
+      }
+
+      function saveCookiePreferences(marketing){
+        localStorage.setItem('cookieConsent', 'true');
+        localStorage.setItem('cookieMarketing', marketing ? 'true' : 'false');
+        cookieBanner.classList.remove('show');
+        
+        // Load marketing content if accepted
+        if(marketing){
+          loadMarketingContent();
+        }
+      }
+
+      function loadMarketingContent(){
+        console.log('Marketing cookies accepted - video embeds can be loaded');
+      }
+
+      // Accept all
+      if(cookieAccept){
+        cookieAccept.addEventListener('click', function(){
+          saveCookiePreferences(true);
+        });
+      }
+
+      // Reject all (only functional)
+      if(cookieReject){
+        cookieReject.addEventListener('click', function(){
+          saveCookiePreferences(false);
+        });
+      }
+
+      // Show settings
+      if(cookieSettings){
+        cookieSettings.addEventListener('click', function(){
+          cookieSettingsPanel.classList.toggle('show');
+        });
+      }
+
+      // Save settings
+      if(cookieSave){
+        cookieSave.addEventListener('click', function(){
+          const marketing = cookieMarketing ? cookieMarketing.checked : false;
+          saveCookiePreferences(marketing);
+        });
+      }
+
+      // Load marketing content if previously accepted
+      if(cookieConsent === 'true' && localStorage.getItem('cookieMarketing') === 'true'){
+        loadMarketingContent();
+      }
+    })();
+
+  </script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "Healthy Habits Eindhoven",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Eindhoven",
+      "addressCountry": "NL"
+    },
+    "url": "https://healthyhabitseindhoven.github.io/Eindhoven/",
+    "description": "Boutique gym in Eindhoven city center with guided training. Warm, personal and healthy training."
+  }
+  </script>
+
+  <script>
+  (function () {
+    const form = document.getElementById('online-lidmaatschap-form');
+    if (!form) return;
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      // Prepare form (validate, save answers)
+      if(!prepareFormSubmit()){
+        return;
+      }
+
+      try {
+        const actionUrl = form.getAttribute('action');
+        const formData = new FormData(form);
+
+        await fetch(actionUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: formData
+        });
+
+        window.location.href = '/bedankt.html';
+      } catch (err) {
+        alert('Oeps, er ging iets mis. Probeer het opnieuw.');
+      }
+    });
+  })();
+  </script>
+
+  <script src="/assets/js/nav-dropdown.js"></script>
+</body>
+</html>

@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) - MUST BE FIRST -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LPZ4B3M8KX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LPZ4B3M8KX');
+  </script>
+
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Privacy policy | Healthy Habits Eindhoven</title>
+  <meta name="description" content="Privacy policy of Healthy Habits Eindhoven. Read how we handle your personal data in line with GDPR.">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://healthyhabitseindhoven.github.io/privacy.html">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/logo/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/logo/favicon.png">
+  <link rel="apple-touch-icon" href="/logo/favicon.png">
+
+  <style>
+    :root{
+      --accent:#C3A300;
+      --bg:#0b0c10;
+      --bg-main:#0b0c10;
+      --bg-warm:#0f1115;
+      --bg-accent:#121418;
+      --text:#f3f4f6;
+      --muted:#cbd5e1;
+      --line:rgba(255,255,255,.15);
+      --radius:18px;
+      --max:1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      max-width:100%;
+      overflow-x:hidden;
+      margin:0;
+      padding:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:var(--bg-main);
+      color:var(--text);
+    }
+
+    img{width:100%;max-width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 36px));max-width:100%;margin:0 auto;box-sizing:border-box}
+
+    /* =========================
+       TOP MENU BAR
+    ========================== */
+    .topbar{
+      right:0;
+      max-width:100%;
+      box-sizing:border-box;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:90px;
+      background:#000;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .container{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:32px;
+    }
+    .topbar__logo{
+      font-weight:800;
+      letter-spacing:.04em;
+      font-size:18px;
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+    }
+    .topbar__logo img{
+      height:54px;
+      width:auto;
+      display:block;
+    }
+    .topbar__nav{
+      display:flex;
+      align-items:center;
+      gap:32px;
+      flex:1;
+      justify-content:center;
+    }
+    .topbar__nav a{
+      color:var(--text);
+      text-decoration:none;
+      font-size:17px;
+      font-weight:500;
+      transition:color 0.2s ease;
+    }
+    .topbar__nav a:hover{
+      color:var(--accent);
+    }
+    .topbar__nav-item{
+      position:relative;
+    }
+    .topbar__submenu{
+      position:absolute;
+      top:100%;
+      left:0;
+      min-width:170px;
+      padding-top:10px;
+      opacity:0;
+      visibility:hidden;
+      transform:translateY(6px);
+      transition:opacity .2s ease, transform .2s ease, visibility .2s ease;
+      pointer-events:none;
+      z-index:10001;
+    }
+    .topbar__submenu a{
+      display:block;
+      background:var(--bg-warm);
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:10px 14px;
+      font-size:15px;
+      white-space:nowrap;
+      box-shadow:0 8px 20px rgba(0,0,0,.35);
+    }
+    .topbar__nav-item:hover .topbar__submenu{
+      opacity:1;
+      visibility:visible;
+      transform:translateY(0);
+      pointer-events:auto;
+    }
+    .topbar__cta{
+      flex-shrink:0;
+    }
+    .topbar__cta a{
+      text-decoration:none;
+    }
+    .topbar__cta button{
+      background:var(--accent);
+      color:#000;
+      border:none;
+      padding:12px 22px;
+      border-radius:8px;
+      font-weight:700;
+      font-size:16px;
+      cursor:pointer;
+      transition:filter 0.2s ease;
+    }
+    .topbar__cta button:hover{
+      filter:brightness(1.1);
+    }
+    .mobile-nav-cta{
+      display:none !important;
+    }
+    .topbar__menu-toggle{
+      display:none;
+      background:none;
+      border:none;
+      cursor:pointer;
+      padding:8px;
+      flex-shrink:0;
+      z-index:10001;
+    }
+    .topbar__menu-toggle span{
+      display:block;
+      width:24px;
+      height:2px;
+      background:var(--accent);
+      margin:5px 0;
+      transition:all 0.3s ease;
+      border-radius:2px;
+    }
+    .topbar__menu-toggle.active span:nth-child(1){
+      transform:rotate(45deg) translate(7px, 7px);
+    }
+    .topbar__menu-toggle.active span:nth-child(2){
+      opacity:0;
+    }
+    .topbar__menu-toggle.active span:nth-child(3){
+      transform:rotate(-45deg) translate(7px, -7px);
+    }
+    body{ padding-top:90px; }
+
+    /* =========================
+       PRIVACY CONTENT
+    ========================== */
+    .privacy-section{
+      padding:80px 0;
+      background:var(--bg-main);
+    }
+    .privacy-content{
+      max-width:800px;
+      margin:0 auto;
+    }
+    .privacy-content h1{
+      font-size:clamp(32px,5vw,48px);
+      margin:0 0 24px;
+      color:var(--text);
+    }
+    .privacy-content h2{
+      font-size:24px;
+      margin:40px 0 16px;
+      color:var(--text);
+    }
+    .privacy-content p{
+      font-size:16px;
+      color:var(--muted);
+      margin:0 0 16px;
+      line-height:1.6;
+    }
+    .privacy-content ul{
+      font-size:16px;
+      color:var(--muted);
+      margin:0 0 16px;
+      padding-left:24px;
+      line-height:1.6;
+    }
+    .privacy-content li{
+      margin-bottom:8px;
+    }
+    .privacy-content a{
+      color:var(--accent);
+      text-decoration:underline;
+    }
+    .privacy-content a:hover{
+      color:var(--text);
+    }
+
+        /* =========================
+       FOOTER
+    ========================== */
+    .footer{
+      padding:64px 0 32px;
+      background:var(--bg-warm);
+      border-top:1px solid var(--line);
+      margin-top:80px;
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:48px;
+      max-width:1200px;
+      margin:0 auto;
+    }
+    .footer-col{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    .footer-col h3{
+      font-size:16px;
+      font-weight:700;
+      color:var(--text);
+      margin:0 0 8px;
+      letter-spacing:0.02em;
+    }
+    .footer-col p{
+      font-size:14px;
+      color:var(--muted);
+      margin:0;
+      line-height:1.6;
+    }
+    .footer-col a{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:14px;
+      transition:color 0.2s ease;
+      display:inline-block;
+    }
+    .footer-col a:hover{
+      color:var(--accent);
+    }
+    .footer-email,
+    .footer-phone{
+      color:var(--text);
+      font-size:14px;
+    }
+    .footer-direct-mail{
+      display:inline-block;
+      margin-top:8px;
+      padding:10px 20px;
+      background:var(--accent);
+      color:#000;
+      text-decoration:none;
+      border-radius:8px;
+      font-size:14px;
+      font-weight:600;
+      transition:filter 0.2s ease;
+    }
+    .footer-direct-mail:hover{
+      filter:brightness(1.1);
+      color:#000;
+    }
+    .footer-hours{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .footer-hours-row{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.5;
+    }
+    .footer-hours-day{
+      min-width:80px;
+      flex-shrink:0;
+    }
+    .footer-hours-time{
+      text-align:right;
+      flex:1;
+    }
+    .footer-links{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .footer-social{
+      display:flex;
+      gap:12px;
+      margin-top:8px;
+    }
+    .footer-social a{
+      width:40px;
+      height:40px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(255,255,255,.08);
+      border:1px solid var(--line);
+      border-radius:8px;
+      transition:all 0.2s ease;
+      text-decoration:none;
+    }
+    .footer-social a:hover{
+      background:rgba(255,255,255,.12);
+      border-color:rgba(255,255,255,.2);
+      transform:translateY(-2px);
+    }
+    .footer-social svg{
+      width:20px;
+      height:20px;
+      fill:var(--text);
+    }
+    .footer-whatsapp{
+      margin-top:24px;
+      padding-top:24px;
+      border-top:1px solid var(--line);
+      text-align:center;
+    }
+    .footer-whatsapp-text{
+      font-size:14px;
+      color:var(--muted);
+      margin:0 0 12px;
+    }
+    .footer-whatsapp-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 24px;
+      background:rgba(255,255,255,.08);
+      border:1px solid var(--line);
+      border-radius:8px;
+      color:var(--text);
+      text-decoration:none;
+      font-size:14px;
+      font-weight:500;
+      transition:all 0.2s ease;
+    }
+    .footer-whatsapp-btn:hover{
+      background:rgba(255,255,255,.12);
+      border-color:var(--accent);
+      color:var(--accent);
+    }
+    .footer-whatsapp-btn svg{
+      width:20px;
+      height:20px;
+      fill:currentColor;
+    }
+    @media(max-width:900px){
+      .footer-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:32px;
+      }
+    }
+    @media(max-width:600px){
+      .footer{
+        padding:48px 0 24px;
+      }
+      .footer-grid{
+        grid-template-columns:1fr;
+        gap:32px;
+      }
+      .footer-hours-row{
+        font-size:12px;
+      }
+      .footer-hours-day{
+        min-width:70px;
+      }
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media(max-width:900px){
+      .topbar__menu-toggle{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+      }
+      .topbar__nav,
+      .topbar__cta{
+        display:none;
+      }
+      .topbar__nav.mobile-open{
+        display:flex;
+        position:fixed;
+        top:77px;
+        left:0;
+        right:0;
+        background:#000;
+        flex-direction:column;
+        padding:24px;
+        gap:20px;
+        border-top:1px solid rgba(255,255,255,.08);
+        z-index:10000;
+        box-shadow:0 4px 12px rgba(0,0,0,.3);
+      }
+      .topbar__nav.mobile-open a{
+        font-size:16px;
+        padding:12px 0;
+        border-bottom:1px solid rgba(255,255,255,.08);
+      }
+      .topbar__nav.mobile-open a:last-child{
+        border-bottom:none;
+      }
+      .topbar__nav.mobile-open .topbar__nav-item{
+        width:100%;
+      }
+      .topbar__nav.mobile-open .topbar__submenu{
+        position:static;
+        opacity:1;
+        visibility:visible;
+        transform:none;
+        pointer-events:auto;
+        padding-top:0;
+        min-width:0;
+      }
+      .topbar__nav.mobile-open .topbar__submenu a{
+        background:transparent;
+        border:none;
+        border-bottom:1px solid rgba(255,255,255,.08);
+        border-radius:0;
+        box-shadow:none;
+        font-size:16px;
+        padding:10px 0 10px 16px;
+      }
+      .topbar__nav.mobile-open .mobile-nav-cta{
+        display:block !important;
+        background:var(--accent);
+        color:#000;
+        text-align:center;
+        font-weight:800;
+        font-size:15px;
+        padding:14px 20px;
+        border-radius:12px;
+        border-bottom:none;
+        margin-top:8px;
+        text-decoration:none;
+      }
+      .topbar__cta{
+        display:none !important;
+      }
+      .privacy-section{
+        padding:48px 0;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="/assets/css/nav-dropdown.css">
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar__logo">
+        <a href="/en/index.html"><img src="/assets/logo/HH logo.png" alt="Healthy Habits"></a>
+      </div>
+      <button class="topbar__menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="topbar__nav" id="topbarNav">
+        <div class="topbar__nav-item mobile-accordion">
+          <div class="mobile-accordion__row">
+            <a href="/en/aanbod.html" class="mobile-accordion__label" id="aanbodAccordionLabel">Our offer</a>
+            <button class="accordion-toggle" type="button" aria-expanded="false" aria-controls="aanbodAccordionPanel" aria-label="Show submenu for Our offer">
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="topbar__submenu accordion-panel" id="aanbodAccordionPanel">
+            <a class="accordion-link" href="/milon.html">Milon</a>
+            <a class="accordion-link" href="/fitness.html">Fitness</a>
+            <a class="accordion-link" href="/yoga.html">Yoga</a>
+          </div>
+        </div>
+        <a href="/en/succesverhalen.html">Success stories</a>
+        <a href="/en/tarieven.html">Prices</a>
+        <a href="/en/lidmaatschapstest.html">Online membership test</a>
+        <a href="/en/over-ons.html">Our team</a>
+        <a href="/">NL</a>
+        <a href="/en/">EN</a>
+        <a href="/en/4-weken-proberen.html" class="mobile-nav-cta">Try 4 weeks</a>
+      </nav>
+      <div class="topbar__cta" id="topbarCta">
+        <a href="/4-weken-proberen.html"><button>Try 4 weeks</button></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRIVACY CONTENT -->
+  <section class="privacy-section">
+    <div class="container">
+      <div class="privacy-content">
+        <h1>Privacy policy</h1>
+        <p><strong>Laatst bijgewerkt:</strong> yesnuari 2025</p>
+
+        <h2>1. Who are we?</h2>
+        <p>Healthy Habits Eindhoven<br>
+        Willemstraat 22<br>
+        Eindhoven</p>
+        <p>For questions about this privacy policy, you can contact us via the contact details on our website.</p>
+
+        <h2>2. Which data do we collect?</h2>
+        <p>We collect the following personal data when you fill in a form on our website:</p>
+        <ul>
+          <li><strong>Name:</strong> to address you personally</li>
+          <li><strong>Email address:</strong> to contact you</li>
+          <li><strong>Phone number:</strong> to call you for appointments and intake conversations</li>
+          <li><strong>Optional information:</strong> such as your goal, preferences and other information you voluntarily share in forms</li>
+        </ul>
+
+        <h2>3. Why do we collect this data?</h2>
+        <p>We use your data for the following purposes:</p>
+        <ul>
+          <li>Answering your questions and requests</li>
+          <li>Het plannen van intakegesprekken en proeflessen</li>
+          <li>Processing membership registrations</li>
+          <li>Het afnemen van de online lidmaatschapstest</li>
+          <li>Maintaining contact about your membership</li>
+        </ul>
+
+        <h2>4. With whom do we share your data?</h2>
+        <p>We only share your data with:</p>
+        <ul>
+          <li><strong>Zapier:</strong> for processing form submissions. Zapier handles your data in accordance with their privacy policy.</li>
+          <li><strong>YouTube/Vimeo:</strong> when you watch videos on our website, these platforms may place cookies (only with your consent).</li>
+        </ul>
+        <p>We do not sell or rent your data to third parties.</p>
+
+        <h2>5. Bewaartermijnen</h2>
+        <p>We do not keep your data longer than necessary for the purposes for which it was collected. In general, we keep data for up to 24 months after the last contact, unless a legal retention period applies.</p>
+
+        <h2>6. Your rights</h2>
+        <p>You have the following rights regarding your personal data:</p>
+        <ul>
+          <li><strong>Right of access:</strong> you can request which data we have about you</li>
+          <li><strong>Right to rectification:</strong> you can have incorrect data corrected</li>
+          <li><strong>Right to erasure:</strong> you can request deletion of your data</li>
+          <li><strong>Right to object:</strong> you can object to the processing of your data</li>
+          <li><strong>Data portability:</strong> you can receive your data in a structured format</li>
+        </ul>
+        <p>To exercise these rights, you can contact us via the contact details on our website.</p>
+
+        <h2>7. Cookies</h2>
+        <p>Our website uses cookies for:</p>
+        <ul>
+          <li><strong>Functional cookies:</strong> these are necessary for proper website functionality</li>
+          <li><strong>Marketing cookies:</strong> for embedded videos (YouTube/Vimeo) - these are only placed with your consent</li>
+        </ul>
+        <p>You can adjust your cookie preferences via the cookie banner on our website.</p>
+
+        <h2>8. Wijzigingen</h2>
+        <p>We reserve the right to update this privacy policy. Changes are published on this page with an updated date.</p>
+
+        <h2>9. Contact</h2>
+        <p>For questions about this privacy policy or the processing of your personal data, you can contact us via the contact details on our website.</p>
+      </div>
+    </div>
+  </section>
+
+    <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>Contact</h3>
+          <p class="footer-email">info@healthy-habits.nl</p>
+          <p class="footer-phone">(040) 843 01 37</p>
+          <a href="mailto:info@healthy-habits.nl?subject=Question via website" class="footer-direct-mail">Email us directly &gt;</a>
+        </div>
+        <div class="footer-col">
+          <h3>Address</h3>
+          <p>Willemstraat 22</p>
+          <p>5611HD Eindhoven</p>
+        </div>
+        <div class="footer-col">
+          <h3>Opening hours</h3>
+          <div class="footer-hours">
+            <div class="footer-hours-row">
+              <span class="footer-hours-day">Monday</span>
+              <span class="footer-hours-time">8:30 – 12:30 / 16:00 – 21:00</span>
+            </div>
+            <div class="footer-hours-row">
+              <span class="footer-hours-day">Tuesday</span>
+              <span class="footer-hours-time">7:00 – 12:30 / 16:00 – 21:00</span>
+            </div>
+            <div class="footer-hours-row">
+              <span class="footer-hours-day">Wednesday</span>
+              <span class="footer-hours-time">8:30 – 12:30 / 16:00 – 21:00</span>
+            </div>
+            <div class="footer-hours-row">
+              <span class="footer-hours-day">Thursday</span>
+              <span class="footer-hours-time">7:00 – 12:30 / 16:00 – 21:00</span>
+            </div>
+            <div class="footer-hours-row">
+              <span class="footer-hours-day">Friday</span>
+              <span class="footer-hours-time">8:30 – 12:30 / 16:00 – 20:00</span>
+            </div>
+            <div class="footer-hours-row">
+              <span class="footer-hours-day">Sat / Sun</span>
+              <span class="footer-hours-time">8:30 – 13:00</span>
+            </div>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>About</h3>
+          <div class="footer-links">
+            <a href="/#">Terms and conditions</a>
+            <a href="/en/privacy.html">Privacy policy</a>
+            <a href="/#" id="cookieSettingsFooter">Cookies</a>
+          </div>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/HealthyHabitsEindhoven" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/healthy_habits_eindhoven/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-whatsapp">
+        <p class="footer-whatsapp-text">Quick question?</p>
+        <a href="https://wa.me/31408430137" target="_blank" rel="noopener noreferrer" class="footer-whatsapp-btn">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Happy to help
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    (function(){
+      const menuToggle = document.getElementById('menuToggle');
+      const topbarNav = document.getElementById('topbarNav');
+      const topbarCta = document.getElementById('topbarCta');
+      
+      if(menuToggle && topbarNav){
+        menuToggle.addEventListener('click', function(){
+          const isOpen = menuToggle.classList.contains('active');
+          
+          if(isOpen){
+            menuToggle.classList.remove('active');
+            topbarNav.classList.remove('mobile-open');
+            topbarCta.classList.remove('mobile-open');
+            document.body.style.overflow = '';
+          } else {
+            menuToggle.classList.add('active');
+            topbarNav.classList.add('mobile-open');
+            topbarCta.classList.add('mobile-open');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+        
+        // Sluit menu bij klik op link
+        const navLinks = topbarNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+          link.addEventListener('click', function(){
+            menuToggle.classList.remove('active');
+            topbarNav.classList.remove('mobile-open');
+            topbarCta.classList.remove('mobile-open');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+    })();
+  </script>
+
+  <script src="/assets/js/nav-dropdown.js"></script>
+</body>
+</html>
