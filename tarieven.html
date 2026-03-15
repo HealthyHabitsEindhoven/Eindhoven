@@ -1092,7 +1092,6 @@
     }
   </style>
   <link rel="stylesheet" href="/assets/css/nav-dropdown.css">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 
@@ -1224,7 +1223,6 @@
             pattern="^(06[0-9]{8}|\\+[1-9][0-9]{7,14})$"
             title="Vul een geldig telefoonnummer in (NL: 06xxxxxxxx of internationaal: +31612345678)">
         </div>
-        <div class="g-recaptcha" data-sitekey="6LdgWossAAAAH7BAmN27L1NoIXmB6WCL3uQX0ND" style="margin-bottom:16px"></div>
         <button type="submit" class="form-submit">Ontdek jouw tarief (30 sec)</button>
         <p class="form-note">Vrijblijvend · reactie binnen 1 werkdag</p>
         <p class="form-privacy">Door dit formulier te versturen ga je akkoord met onze <a href="/privacy.html">privacyverklaring</a>.</p>
@@ -1235,8 +1233,6 @@
           const form = document.getElementById('leadFormTarieven');
           if(!form) return;
           form.addEventListener('submit', function(e){
-          const rcResp = typeof grecaptcha !== 'undefined' ? grecaptcha.getResponse() : '';
-          if(!rcResp){ e.preventDefault(); alert('Vul eerst de reCAPTCHA in om te bevestigen dat je geen robot bent.'); return; }
 
             setTimeout(function(){
               window.location.href = './bedankt.html';
