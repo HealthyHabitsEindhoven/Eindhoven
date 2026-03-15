@@ -1383,6 +1383,7 @@
 
   </style>
   <link rel="stylesheet" href="/assets/css/nav-dropdown.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 
@@ -1564,6 +1565,7 @@
             <label for="email">E-mail *</label>
             <input type="email" id="email" name="email" placeholder="je@voorbeeld.nl" required>
           </div>
+          <div class="g-recaptcha" data-sitekey="6LdgWossAAAAH7BAmN27L1NoIXmB6WCL3uQX0ND" style="margin-bottom:16px"></div>
           <button type="submit" class="form-submit">Start mijn 4 weken (aanvraag)</button>
           <p class="form-note">Vrijblijvend · geen automatische inschrijving · persoonlijk contact</p>
           <p class="form-privacy">By submitting this form, you agree to our <a href="/en/privacy.html">privacy policy</a>.</p>
@@ -1892,6 +1894,9 @@
       
       form.addEventListener('submit', async function(e){
         e.preventDefault();
+
+        const rcResp = typeof grecaptcha !== 'undefined' ? grecaptcha.getResponse() : '';
+        if(!rcResp){ alert('Please complete the reCAPTCHA to confirm you are not a robot.'); return; }
         
         const submitButton = form.querySelector('button[type="submit"]');
         const originalText = submitButton ? submitButton.textContent : '';

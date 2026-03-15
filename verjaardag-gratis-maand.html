@@ -385,6 +385,7 @@
       }
     }
   </style>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 
@@ -426,6 +427,7 @@
             <span>Ik ga akkoord dat Healthy Habits mij vandaag kort contacteert om dit cadeau te activeren.</span>
           </label>
 
+          <div class="g-recaptcha" data-sitekey="6LdgWossAAAAH7BAmN27L1NoIXmB6WCL3uQX0ND" style="margin-bottom:16px"></div>
           <button type="submit" class="form-submit">Claim mijn gratis maand</button>
         </form>
 
@@ -527,6 +529,9 @@
 
     form.addEventListener('submit', function(e){
       e.preventDefault();
+
+        const rcResp = typeof grecaptcha !== 'undefined' ? grecaptcha.getResponse() : '';
+        if(!rcResp){ alert('Vul eerst de reCAPTCHA in om te bevestigen dat je geen robot bent.'); return; }
 
       var payload = {
         voornaam: form.querySelector('input[name="voornaam"]').value,

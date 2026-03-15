@@ -1079,6 +1079,7 @@
     }
   </style>
   <link rel="stylesheet" href="/assets/css/nav-dropdown.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 
@@ -1209,6 +1210,7 @@
             pattern="^(06[0-9]{8}|\\+[1-9][0-9]{7,14})$"
             title="Enter a valid phone number (NL: 06xxxxxxxx or international: +31612345678)">
         </div>
+        <div class="g-recaptcha" data-sitekey="6LdgWossAAAAH7BAmN27L1NoIXmB6WCL3uQX0ND" style="margin-bottom:16px"></div>
         <button type="submit" class="form-submit">Discover your rate (30 sec)</button>
         <p class="form-note">Vrijblijvend · reactie binnen 1 werkdag</p>
         <p class="form-privacy">By submitting this form, you agree to our <a href="/en/privacy.html">privacy policy</a>.</p>
@@ -1218,7 +1220,10 @@
         (function(){
           const form = document.getElementById('leadFormTarieven');
           if(!form) return;
-          form.addEventListener('submit', function(){
+          form.addEventListener('submit', function(e){
+          const rcResp = typeof grecaptcha !== 'undefined' ? grecaptcha.getResponse() : '';
+          if(!rcResp){ e.preventDefault(); alert('Please complete the reCAPTCHA to confirm you are not a robot.'); return; }
+
             setTimeout(function(){
               window.location.href = '/bedankt.html';
             }, 300);
