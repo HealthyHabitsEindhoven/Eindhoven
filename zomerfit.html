@@ -567,7 +567,6 @@
       }
     }
   </style>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 
@@ -710,7 +709,6 @@ Daarom geven we je nu 4 weken Zomerfit cadeau.</p>
                 title="Vul een geldig telefoonnummer in (NL: 06xxxxxxxx of internationaal: +31612345678)">
             </div>
 
-            <div class="g-recaptcha" data-sitekey="6LdgWossAAAAH7BAmN27L1NoIXmB6WCL3uQX0ND" style="margin-bottom:16px"></div>
             <button type="submit" class="form-submit">Reserveer mijn plek</button>
             <p class="form-note">Gratis proberen • Je zit nergens aan vast • Persoonlijke begeleiding</p>
           </form>
@@ -882,9 +880,6 @@ Daarom geven we je nu 4 weken Zomerfit cadeau.</p>
 
       form.addEventListener('submit', async function(e){
         e.preventDefault();
-
-        const rcResp = typeof grecaptcha !== 'undefined' ? grecaptcha.getResponse() : '';
-        if(!rcResp){ alert('Vul eerst de reCAPTCHA in om te bevestigen dat je geen robot bent.'); return; }
 
         const submitButton = form.querySelector('button[type="submit"]');
         const originalText = submitButton ? submitButton.textContent : '';
