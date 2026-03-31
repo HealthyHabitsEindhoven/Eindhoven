@@ -3160,6 +3160,7 @@ if (location.pathname === "/index.html") {
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "w1gm4igjwd");
 </script>
+<script src="https://www.google.com/recaptcha/api.js?render=6Lcm5p8sAAAAAH50fgKk8Qb-qJ00TXb7-6CW7GqT"></script>
 </head>
 
 <body>
@@ -3649,6 +3650,7 @@ zelfs leuk.</p>
                 pattern="^(06[0-9]{8}|\\+[1-9][0-9]{7,14})$"
                 title="Vul een geldig telefoonnummer in (NL: 06xxxxxxxx of internationaal: +31612345678)">
             </div>
+            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response-index">
             <button type="submit" class="form-submit">Laten we kennismaken</button>
             <p class="form-privacy">Door dit formulier te versturen ga je akkoord met onze <a href="/privacy.html">privacyverklaring</a>.</p>
           </form>
@@ -3658,10 +3660,20 @@ zelfs leuk.</p>
               const form = document.getElementById('leadFormIndex');
               if(!form) return;
               form.addEventListener('submit', function(e){
-
-                setTimeout(function(){
-                  window.location.href = './bedankt.html';
-                }, 300);
+                e.preventDefault();
+                const btn = form.querySelector('button[type="submit"]');
+                btn.disabled = true;
+                grecaptcha.ready(function(){
+                  grecaptcha.execute('6Lcm5p8sAAAAAH50fgKk8Qb-qJ00TXb7-6CW7GqT', {action: 'submit'}).then(function(token){
+                    document.getElementById('g-recaptcha-response-index').value = token;
+                    form.submit();
+                    setTimeout(function(){
+                      window.location.href = './bedankt.html';
+                    }, 300);
+                  }).catch(function(){
+                    btn.disabled = false;
+                  });
+                });
               });
             })();
           </script>
